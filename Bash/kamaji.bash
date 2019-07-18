@@ -213,15 +213,27 @@ function EchoAndExecute() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function EchoError() {
+  #
+  local -r    Message=${*}
+  #
+  local -r    ErrorTag=$(echoInColorRedBold "ERROR:")
+  #
+  echoInColorWhiteBold "${ErrorTag} ${Message}" 1>&2
+  #
+  return 1
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function EchoAndExit() {
   #
   local -r -i ExitStatus=${1}
   shift 1
   local -r    Message=${*}
   #
-  local -r    ErrorTag=$(echoInColorRedBold "ERROR:")
-  #
-  echoInColorWhiteBold "${ErrorTag} ${Message}" 1>&2
+  EchoError "${Message}"
   #
   exit ${ExitStatus}
   #
@@ -500,7 +512,7 @@ function KamajiMake_bash() {
      #
      Status=${?}
      #
-     if [ ${Status} -eq 0 ]
+     if [ ${Status} -eq 0 ] && [ ${#DefineFSpec} -gt 0 ]
      then
         #
         local -r WorkinDSpec=${__KamajiWorkinDSpec}
@@ -637,7 +649,7 @@ function KamajiMake_delta() {
   #
   Status=${?}
   #
-  if [ ${Status} -eq 0 ]
+  if [ ${Status} -eq 0 ] && [ ${#MaskedFSpec} -gt 0 ]
   then
      #
      local -r InfoTag=$(echoInColorYellow "INFO:")
@@ -743,7 +755,7 @@ function KamajiMake_grade() {
   #
   Status=${?}
   #
-  if [ ${Status} -eq 0 ]
+  if [ ${Status} -eq 0 ] && [ ${#DeltasFSpec} -gt 0 ]
   then
      #
      local -r OutputFSpec=${DeltasFSpec%.masked.delta}
@@ -841,7 +853,7 @@ function KamajiMake_masked() {
   #
   Status=${?}
   #
-  if [ ${Status} -eq 0 ]
+  if [ ${Status} -eq 0 ] && [ ${#OutputFSpec} -gt 0 ]
   then
      #
      #  Mask the current output file.
@@ -872,7 +884,7 @@ function KamajiMake_masked() {
   #
   #  Mask the golden baseline output file.
   #
-  if [ ${Status} -eq 0 ]
+  if [ ${Status} -eq 0 ] && [ ${#OutputFSpec} -gt 0 ]
   then
      #
      local -r OutputFName=$(basename ${OutputFSpec})
@@ -921,7 +933,7 @@ function KamajiMake_output() {
   #
   local    Result=
   #
-  local -i Status=1
+  local -i Status=0
   #
   #  We create output from an executable source.
   #
@@ -977,12 +989,18 @@ function KamajiMake_output() {
      #
      Status=${?}
      #
-  elif [ -x ${GivenSourceFSpec} ]
-  then
+  else
      #
      RunnerFSpec=${GivenSourceFSpec}
      #
-     Status=0
+  fi
+  #
+  if [ ${Status} -ne 0 ] || [ ${#RunnerFSpec} -eq 0 ] || [ ! -x ${RunnerFSpec} ]
+  then
+     #
+     EchoError "The ${RunnerFSpec-given} file is not executable."
+     #
+     Status=1
      #
   fi
   #
@@ -1080,6 +1098,10 @@ function KamajiMake() {
   [ ${#MakeFunctionName} -eq 0 ] && MakeFunctionName=KamajiMakeUsingMake
   #
   ${MakeFunctionName} ${GivenSourceFSpec} "${GivenTargetFType}" ${GivenForcingMake}
+  #
+  local ZStatus=${?}
+  #
+  return $ZStatus
   #
 }
 
