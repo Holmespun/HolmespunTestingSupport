@@ -87,20 +87,18 @@ function testsForUsage() {
   #
   clut_case_name		Bobo
   clut_case_comment		"General usage should be displayed."
+  clut_case_comment		"The working directory will also be created because a command was issued."
   clut_case_parameter		bobo
   clut_case_end
   #
-  clut_case_name		HelpCompile
-  clut_case_parameter		help compile
-  clut_case_end
-  #
-  clut_case_name		HelpInvoke
-  clut_case_parameter		help invoke
-  clut_case_end
-  #
-  clut_case_name		HelpGrade
-  clut_case_parameter		help grade
-  clut_case_end
+  for Command in compile invoke grade mask configure
+  do
+    #
+    clut_case_name		Help_${Command}
+    clut_case_parameter		help ${Command}
+    clut_case_end
+    #
+  done
   #
 }
 
@@ -117,7 +115,7 @@ function testsForCompile() {
   clut_case_end
   #
   clut_case_name		ClutFromClutBash_Compile
-  clut_case_comment		"Although the CLUT has aready been compiled, and that output is up-to-date,"	\
+  clut_case_comment		"Although the CLUT has already been compiled, and that output is up-to-date,"	\
 				"the CLUT will be compiled again because the user specifically requested it."
   clut_case_initialize		mkdir Testing
   clut_case_initialize		create_program_script PROGRAM.bash
@@ -125,6 +123,20 @@ function testsForCompile() {
   clut_case_initialize		kamaji.bash compile Testing/PROGRAM.bash.clut
   clut_case_parameter		verbose verbose
   clut_case_parameter		compile Testing/PROGRAM.bash.clut
+  clut_case_end
+  #
+  clut_case_name		ExecutableScript_Compile
+  clut_case_comment		"A executable script need not be compiled."
+  clut_case_initialize		create_program_script PROGRAM.bash
+  clut_case_parameter		verbose verbose
+  clut_case_parameter		comp PROGRAM.bash
+  clut_case_end
+  #
+  clut_case_name		ExecutableScriptOutput_Compile
+  clut_case_comment		"An output file cannot be compiled, and the script that it is based need not be."
+  clut_case_initialize		create_program_script PROGRAM.bash
+  clut_case_parameter		verbose verbose
+  clut_case_parameter		comp PROGRAM.bash.output
   clut_case_end
   #
 }
@@ -150,6 +162,20 @@ function testsForExecute() {
   clut_case_initialize		kamaji.bash invoke Testing/PROGRAM.bash.clut
   clut_case_parameter		verbose verbose
   clut_case_parameter		execute Testing/PROGRAM.bash.clut
+  clut_case_end
+  #
+  clut_case_name		ExecutableScript_Execute
+  clut_case_comment		"A executable script can be invoked to create an output file."
+  clut_case_initialize		create_program_script PROGRAM.bash
+  clut_case_parameter		verbose verbose
+  clut_case_parameter		exec PROGRAM.bash
+  clut_case_end
+  #
+  clut_case_name		ExecutableBashOutput_Execute
+  clut_case_comment		"An output file cannot be invoked."
+  clut_case_initialize		create_program_script PROGRAM.bash
+  clut_case_parameter		verbose verbose
+  clut_case_parameter		invo PROGRAM.bash.output
   clut_case_end
   #
 }

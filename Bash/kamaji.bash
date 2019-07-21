@@ -14,9 +14,66 @@
 ###
 #----------------------------------------------------------------------------------------------------------------------
 #
+#	BackupIfExists
+#	DiagnosticHeavy
+#	DiagnosticLight
+#	DiagnosticComplex
+#	EchoAbsoluteDirectorySpecFor
+#	EchoAgeRelation
+#	EchoAndExecute
+#	EchoError
+#	EchoAndExit
+#	EchoExecutableFilesMatching
+#	EchoFileSpec
+#	EchoFileType
+#	EchoMeaningOf
+#	EchoPara
+#	EchoPara80
+#	EchoPara80-4
+#	IsAnExecutableScript
+#
+#	KamajiEchoConfigurationValue
+#	KamajiLoadConfigurationValues
+#	KamajiCheckConfigurationValues
+#	KamajiMakeUsingMake
+#	KamajiApplyMasking
+#
+#	KamajiMake_bash
+#	KamajiMake_clut
+#	KamajiMake_delta
+#	KamajiMake_grade
+#	KamajiMake_masked
+#	KamajiMake_output
+#
+#	KamajiMake
+#
+#	KamajiCommandCompile
+#	KamajiCommandConfigure
+#	KamajiCommandExecute
+#	KamajiCommandGrade
+#	KamajiCommandMask
+#
+#	KamajiUsageCompile
+#	KamajiUsageConfigure
+#	KamajiUsageExecute
+#	KamajiUsageGrade
+#	KamajiUsageMask
+#
+#	KamajiModifierSilent
+#	KamajiModifierUsage
+#	KamajiModifierVerbose
+#
+#	KamajiMain
+#
+#----------------------------------------------------------------------------------------------------------------------
+#
 #  20190704 BGH; created.
 #  20190714 BGH; having KamajiMake return the specification of the file it created or verified to exist.
 #  20190714 BGH; verbose output to stderr to make the KamajiMake work.
+#  20190720 BGH; masked baseline output in a Baseline subdirectory of the working directory.
+#
+#  TODO: Allow the user to request make commands.
+#  TODO: New commands rework, workout, vimdiff=review (grade and vimdiff), and bless=baseline (cp if fresh, or grade)
 #
 #  Copyright (c) 2019 Brian G. Holmes
 #
@@ -59,6 +116,8 @@ declare -A __KamajiConfigurationValue
 
 declare    __KamajiGoldenDSpec="TBD"
 
+declare    __KamajiScriptExtensionList="TBD"
+
 declare    __KamajiVerbosityRequested="TBD"
 
 declare -r __KamajiWhereWeWere=${PWD}
@@ -98,7 +157,7 @@ function DiagnosticComplex() {
   elif [ "${__KamajiVerbosityRequested}" = "heavy" ]
   then
      #
-     echoInColorBlue "${MessageLight} ${MessageHeavy}" 1>&2
+     echoInColorWhite "${MessageLight} $(echoInColorBlue ${MessageHeavy})" 1>&2
      #
   fi
   #
@@ -325,9 +384,11 @@ function EchoMeaningOf() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function EchoPara80() {
+function EchoPara() {
   #
-  local -r WordList="${*}"
+  local -r -i CharWide=${1}
+  shift 1
+  local -r    WordList="${*}"
   #
   local    ParagraphText=
   local -i ParagraphWide=0
@@ -338,7 +399,7 @@ function EchoPara80() {
     ParagraphWide+=1
     ParagraphWide+=${#WordItem}
     #
-    if [ ${ParagraphWide} -gt 80 ]
+    if [ ${ParagraphWide} -gt ${CharWide} ]
     then
        #
        echo "${ParagraphText:1}"
@@ -357,6 +418,31 @@ function EchoPara80() {
   #
   echo "${ParagraphText:1}"
   echo ""
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoPara80() { EchoPara 80 ${*}; }
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoPara80-4() { EchoPara 76 ${*} | sed --expression='s,^,    ,'; }
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function IsAnExecutableScript() {
+  #
+  local -r ScriptFSpec=${1}
+  #
+  if [ -x ${ScriptFSpec} ]
+  then
+     #
+     local -r ModifiedScriptExtensionList=${__KamajiScriptExtensionList/:${ScriptFSpec##*.}/}
+     #
+     [ ${#ModifiedScriptExtensionList} -ne ${#__KamajiScriptExtensionList} ] && true
+     #
+  fi
   #
 }
 
@@ -401,19 +487,29 @@ function KamajiLoadConfigurationValues() {
     #
   done
   #
+  __KamajiGoldenDSpec=$(KamajiEchoConfigurationValue baseline-folder .)
+  #
+  __KamajiScriptExtensionList=$(KamajiEchoConfigurationValue script-type-list "bash sh py rb")
+  #
+  __KamajiScriptExtensionList=":${__KamajiScriptExtensionList// /:}:"
+  #
   __KamajiVerbosityRequested=$(KamajiEchoConfigurationValue verbosity-level quiet)
   #
-  __KamajiWorkinDSpec=$(KamajiEchoConfigurationValue working-folder .)
+  __KamajiWorkinDSpec=$(KamajiEchoConfigurationValue working-folder Working)
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiCheckConfigurationValues() {
   #
   [ ${#__KamajiWorkinDSpec} -eq 0 ] && EchoAndExit 1 "The working-folder is improperly configured."
-  #
-  [ ! -d ${__KamajiWorkinDSpec} ] && EchoAndExecute mkdir --parents ${__KamajiWorkinDSpec}
-  #
-  __KamajiGoldenDSpec=$(KamajiEchoConfigurationValue baseline-folder .)
   #
   [ ${#__KamajiGoldenDSpec} -eq 0 ]  && EchoAndExit 1 "The baseline-folder is improperly configured."
   #
   [ ! -d ${__KamajiGoldenDSpec} ] && EchoAndExit 1 "The baseline-folder '${__KamajiGoldenDSpec}' does not exist."
+  #
+  [ ! -d ${__KamajiWorkinDSpec} ] && mkdir --parents ${__KamajiWorkinDSpec}/Baseline
   #
   __KamajiAbsoluteGoldenDSpec=$(EchoAbsoluteDirectorySpecFor . ${__KamajiGoldenDSpec})
   __KamajiAbsoluteWorkinDSpec=$(EchoAbsoluteDirectorySpecFor . ${__KamajiWorkinDSpec})
@@ -482,7 +578,7 @@ function KamajiApplyMasking() {
      #
   else
      #
-     EchoAndExit ${Status} "The sed --file=${SedScriptFSpec} command returned a non-zero status."
+     EchoAndExit ${Status} "The 'sed --file=${SedScriptFSpec}' command returned a non-zero status."
      #
   fi
   #
@@ -496,6 +592,7 @@ function KamajiMake_bash() {
   local -r GivenTargetFType=${2}
   local -r GivenForcingMake=${3-}
   #
+  local -r SourceDSpec=$(dirname ${GivenSourceFSpec})
   local -r SourceFName=$(basename ${GivenSourceFSpec})
   #
   local -r SourceFRoot=${SourceFName%.*}
@@ -518,7 +615,7 @@ function KamajiMake_bash() {
         local -r WorkinDSpec=${__KamajiWorkinDSpec}
         #
         local -r SourceFSpec=${DefineFSpec}
-        local -r TargetFSpec=$(EchoFileSpec ${WorkinDSpec} ${SourceFName} ${TargetFType})
+        local -r TargetFSpec=$(EchoFileSpec ${WorkinDSpec} ${SourceFName} ${GivenTargetFType})
         #
         Result=${TargetFSpec}
         #
@@ -563,7 +660,7 @@ function KamajiMake_bash() {
 	   local -r AbsSourceDSpec=$(EchoAbsoluteDirectorySpecFor . ${SourceDSpec})
 	   local -r AbsRunnerDSpec=$(EchoAbsoluteDirectorySpecFor . $(dirname ${RunnerFSpec}))
 	   #
-           local -r TargetFName=${SourceFName}.${TargetFType}
+           local -r TargetFName=${SourceFName}.${GivenTargetFType}
 	   #
 	   local -r SourceToRunnerDSpec=$(echoRelativePath ${AbsSourceDSpec} ${AbsRunnerDSpec})
 	   local -r SourceToWorkinDSpec=$(echoRelativePath ${AbsSourceDSpec} ${AbsWorkinDSpec})
@@ -656,7 +753,10 @@ function KamajiMake_delta() {
      #
      local -r OutputFSpec=${MaskedFSpec%.masked}
      #
-     local -r GoldenFSpec=${OutputFSpec}.golden.masked
+     local -r OutputDSpec=$(dirname  ${OutputFSpec})
+     local -r OutputFName=$(basename ${OutputFSpec})
+     #
+     local -r GoldenFSpec=${OutputDSpec}/Baseline/${OutputFName}.masked
      local -r TargetFSpec=${MaskedFSpec}.${GivenTargetFType}
      #
      DiagnosticComplex "${__KamajiScriptName} make ${TargetFSpec}" "# from ${GoldenFSpec} and ${OutputFSpec}"
@@ -694,12 +794,11 @@ function KamajiMake_delta() {
               if [ -s ${TargetFSpec} ]
 	      then
                  #
+	     	 spit ${TargetFSpec} "${InfoTag} vimdiff ${GoldenFSpec} ${MaskedFSpec}"
+                 #
 	         if [ $(cat ${TargetFSpec} | wc --lines) -le 50 ]
 	         then
-	     	    spit ${TargetFSpec} "${InfoTag} vimdiff ${GoldenFSpec} ${MaskedFSpec}"
 	     	    spit ${TargetFSpec} "${InfoTag} cp ${OutputFSpec} ${__KamajiGoldenDSpec}/"
-	         else
-	     	    spit ${TargetFSpec} "${InfoTag} vimdiff ${GoldenFSpec} ${SourceFSpec}"
                  fi
                  #
 	      fi
@@ -890,7 +989,7 @@ function KamajiMake_masked() {
      local -r OutputFName=$(basename ${OutputFSpec})
      #
      SourceFSpec=${__KamajiGoldenDSpec}/${OutputFName}
-     TargetFSpec=${__KamajiWorkinDSpec}/${OutputFName}.golden.${GivenTargetFType}
+     TargetFSpec=${__KamajiWorkinDSpec}/Baseline/${OutputFName}.${GivenTargetFType}
      #
      DiagnosticComplex "${__KamajiScriptName} make ${TargetFSpec}" "# from ${SourceFSpec}"
      #
@@ -967,7 +1066,7 @@ function KamajiMake_output() {
         #
         #  Check to see if the source program is a script.
         #
-	for ScriptFType in bash py sh
+	for ScriptFType in ${__KamajiScriptExtensionList//:/ }
 	do
 	  #
 	  if [ -x ${SourceDSpec}/${SourceFRoot}.${ScriptFType} ]
@@ -989,9 +1088,18 @@ function KamajiMake_output() {
      #
      Status=${?}
      #
-  else
+  elif IsAnExecutableScript ${SourceDSpec}/${SourceFRoot}
+  then
      #
      RunnerFSpec=${GivenSourceFSpec}
+     #
+     Status=0
+     #
+  else
+     #
+     RunnerFSpec=$(KamajiMake ${GivenSourceFSpec})
+     #
+     Status=${?}
      #
   fi
   #
@@ -1020,15 +1128,14 @@ function KamajiMake_output() {
      local -r WorkinDSpec=${__KamajiWorkinDSpec}
      #
      local    TargetFSpec=$(EchoFileSpec ${WorkinDSpec} ${SourceFRoot} ${GivenTargetFType})
-     local -r SourceFSpec=${RunnerFSpec}
      #
-     DiagnosticComplex "${__KamajiScriptName} make ${TargetFSpec}" "# from ${SourceFSpec}"
+     DiagnosticComplex "${__KamajiScriptName} make ${TargetFSpec}" "# from ${RunnerFSpec}"
      #
      local    ReasonToAct=
      #
      [ ${#GivenForcingMake} -gt 0 ] && ReasonToAct="GT Explicitly requested action."
      #
-     [ ${#ReasonToAct} -eq 0 ] && ReasonToAct=$(EchoAgeRelation ${SourceFSpec} ${TargetFSpec})
+     [ ${#ReasonToAct} -eq 0 ] && ReasonToAct=$(EchoAgeRelation ${RunnerFSpec} ${TargetFSpec})
      #
      DiagnosticHeavy "# ${ReasonToAct}"
      #
@@ -1037,18 +1144,21 @@ function KamajiMake_output() {
      if [ "${ReasonToAct:0:2}" = "GT" ]
      then
         #
-        if [ -x ${SourceFSpec} ]
+        if [ -x ${RunnerFSpec} ]
         then
            #
   	   #  CLUT bash scripts must be run from the directory in which they reside, so we do so for all programs.
            #
-           local -r RealSourceFName=$(basename ${SourceFSpec})
+           #RunnerFSpec
+           #
+           local -r RunnerDSpec=$(dirname  ${RunnerFSpec})
+           local -r RunnerFName=$(basename ${RunnerFSpec})
            #
            local -r TargetFName=$(basename ${TargetFSpec})
            #
-           local -r SourceToTargetDSpec=$(echoRelativePath ${SourceDSpec} ${WorkinDSpec})
+           local -r RunnerToTargetDSpec=$(echoRelativePath ${RunnerDSpec} ${WorkinDSpec})
            #
-           EchoAndExecute "(cd ${SourceDSpec}; ${RealSourceFName} > ${SourceToTargetDSpec}/${TargetFName}.partial 2>&1)"
+           EchoAndExecute "(cd ${RunnerDSpec}; ${RunnerFName} > ${RunnerToTargetDSpec}/${TargetFName}.partial 2>&1)"
            #
            Status=${?}
            #
@@ -1061,7 +1171,7 @@ function KamajiMake_output() {
 	      #
 	      EchoAndExecute "cat ${TargetFSpec}.partial"
 	      #
-	      EchoAndExit ${Status} "${SourceFSpec} returned a non-zero exit status."
+	      EchoAndExit ${Status} "${RunnerFSpec} returned a non-zero exit status."
 	      #
 	      Result=
 	      #
@@ -1069,7 +1179,7 @@ function KamajiMake_output() {
            #
         else
            #
-           EchoAndExit 1 "${SourceFSpec} is not an executable file."
+           EchoAndExit 1 "${RunnerFSpec} is not an executable file."
            #
            Result=
            #
@@ -1095,13 +1205,14 @@ function KamajiMake() {
   #
   local    MakeFunctionName=$(declare -F KamajiMake_${GivenTargetFType})
   #
-  [ ${#MakeFunctionName} -eq 0 ] && MakeFunctionName=KamajiMakeUsingMake
+  if [ ${#MakeFunctionName} -eq 0 ] && ! IsAnExecutableScript ${GivenSourceFSpec}
+  then
+     #
+     MakeFunctionName=KamajiMakeUsingMake
+     #
+  fi
   #
-  ${MakeFunctionName} ${GivenSourceFSpec} "${GivenTargetFType}" ${GivenForcingMake}
-  #
-  local ZStatus=${?}
-  #
-  return $ZStatus
+  [ ${#MakeFunctionName} -eq 0 ] || ${MakeFunctionName} ${GivenSourceFSpec} "${GivenTargetFType}" ${GivenForcingMake}
   #
 }
 
@@ -1195,25 +1306,11 @@ function KamajiCommandMask() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function KamajiModifierSilent() {
-  #
-  local -r Modifier=${1}
-  shift 1
-  local -r ModifiedCommand="${*}"
-  #
-  __KamajiVerbosityRequested="quiet"
-  #
-  KamajiMain ${ModifiedCommand}
-  #
-}
-
-#----------------------------------------------------------------------------------------------------------------------
-
 function KamajiUsageCompile() {
   #
   local -r Command="${1}"
   #
-  EchoPara80	"Compile..."
+  EchoPara80	"$(echoInColorWhiteBold "Compile...")"
   #
   EchoPara80	"The compile command is used to compile and link both CLUT definitions and unit test"		\
 		"exercises. CLUT definitions are stored in files that have the word \"clut\" as their name"	\
@@ -1234,14 +1331,80 @@ function KamajiUsageConfigure() {
   #
   local -r Command="${1}"
   #
+  EchoPara80	"$(echoInColorWhiteBold "Configure|Set...")"
+  #
   EchoPara80	"Configuration vales are stored in the ./${__KamajiConfigurationFName} file,"			\
-		"a text file that contains named value pairs:"							\
-  		"baseline-folder <spec> - the directory where baseline output files are stored;"		\
-  		"mask-sed-script <text> - the user-define sed script for masking output files;"			\
-  		"verbose-if-true <text> - if \"true\" then this script will produce verbose output."
+		"a text file that contains comments, blank lines, and named value pairs:"
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "baseline-folder") <directory-specification> -"				\
+		"Specification for the directory where baseline output files are stored."			\
+		"The default baseline-folder is the current directory."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "mask-sed-script") <file-specification> -"				\
+		"Specification for the user-defined sed script that is used to mask output files."		\
+		"The default mask-sed-script is the ${__KamajiConfigurationFName%.*}.sed file in the current"	\
+		"directory."	
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "script-type-list") [<extension>]... -"					\
+		"List of file name extensions that are used to store executable scripts."			\
+		"The ${__KamajiConfigurationFName} script will assume that files with these extensions are"	\
+		"up-to-date and ready for use."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "verbosity-level") <adjective> -"					\
+		"Level of disgnostic output produced by the ${__KamajiConfigurationFName} script."		\
+		"The default level is called 'quiet' and results in no disgnostic output at all."		\
+		"The 'light' level will describe the commands used to fulfill the user-requested command."	\
+		"The 'heavy' level will augment light output with every significant Linux command it uses"	\
+		"to fulfill the user-requested command."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "working-folder") <directory-specification> -"				\
+		"Specification for the directory where intermediate and unverified output files are created."	\
+		"If the working-folder does not already exist then it will be silently created."		\
+		"The default working-folder is called Working."
   #
   EchoPara80	"The \$HOME/${__KamajiConfigurationFName} configuration file can be used to"			\
-		"override values in the ./${__KamajiConfigurationFName} file."
+		"override values in the file with the same name in the current directory."			\
+		"Named values may also be used to override values previously named in the same file."		\
+		"Here is an example of what one might contain:"
+  #
+  echo		"    #"
+  echo		"    #  My kamaji configuration file."
+  echo		"    #"
+  echo		"    baseline-folder  Testing"
+  echo		"    mask-sed-script  Testing/kamaji_masking_script.sed"
+  echo		"    script-type-list bash rb ruby sh"
+  echo		"    verbosity-level  heavy"
+  echo		"    working-folder   working"
+  echo		"    working-folder   Workspace"
+  echo		""
+  echo		"    #"
+  echo		"    #  Kamaji ignores values with names it does not recognize."
+  echo		"    #"
+  echo		"    always-ignored   I miss Morbo."
+  echo		"    #"
+  #
+  local Directory
+  #
+  for Directory in . ${HOME}
+  do
+    #
+    echo ""
+    #
+    if [ -s ${Directory}/${__KamajiConfigurationFName} ]
+    then
+       #
+       echo "The ${Directory}/${__KamajiConfigurationFName} currently contains:"
+       echo ""
+       #
+       sed --expression='s,^,    ,' ${Directory}/${__KamajiConfigurationFName}
+       #
+    else
+       #
+       echo "The ${Directory}/${__KamajiConfigurationFName} is empty or does not exist."
+       #
+    fi
+    #
+  done
   #
 }
 
@@ -1251,7 +1414,7 @@ function KamajiUsageExecute() {
   #
   local -r Command="${1}"
   #
-  EchoPara80	"Execute|Invoke|Run..."
+  EchoPara80	"$(echoInColorWhiteBold "Execute|Invoke|Run...")"
   #
   EchoPara80	"Executable files are invoked to produce output files."						\
 		"Output file names are based on the executable files that are used to create them."		\
@@ -1266,7 +1429,7 @@ function KamajiUsageGrade() {
   #
   local -r Command="${1}"
   #
-  EchoPara80	"Grade..."
+  EchoPara80	"$(echoInColorWhiteBold "Grade...")"
   #
   EchoPara80	"A passing grade is granted when a current output file matches the baseline output"		\
 		"file of the same name."									\
@@ -1284,7 +1447,7 @@ function KamajiUsageMask() {
   #
   local -r Command="${1}"
   #
-  EchoPara80	"Mask..."
+  EchoPara80	"$(echoInColorWhiteBold "Mask...")"
   #
   EchoPara80	"Output files are masked before they are compared to remove"					\
 		"non-deterministic values, like dates, times, and account-specific directory names."		\
@@ -1296,13 +1459,27 @@ function KamajiUsageMask() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiModifierSilent() {
+  #
+  local -r Modifier=${1}
+  shift 1
+  local -r ModifiedCommand="${*}"
+  #
+  __KamajiVerbosityRequested="quiet"
+  #
+  KamajiMain ${ModifiedCommand}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiModifierUsage() {
   #
   local -r Modifier=${1}
   shift 1
   local -r ModifiedCommand="${*}"
   #
-  echo "USAGE: ${__KamajiScriptName} [<modifier>]... [<command>] [<parameter>]..."
+  echo "$(echoInColorYellow USAGE:) ${__KamajiScriptName} [<modifier>]... [<command>] [<parameter>]..."
   echo ""
   echo "Where <modifier> is one of the following:"
   echo "      verbose"
@@ -1310,11 +1487,11 @@ function KamajiModifierUsage() {
   echo "      usage"
   echo ""
   echo "Where <modifier> <command> is one of the following:"
-  echo "      compile   [<specification>]..."
-  echo "      execute   [<specification>]..."
-  echo "      grade     [<specification>]..."
-  echo "      mask	[<specification>]..."
-  echo "      set	<name> <value>"
+  echo "      compile  [<specification>]..."
+  echo "      execute  [<specification>]..."
+  echo "      grade    [<specification>]..."
+  echo "      mask     [<specification>]..."
+  echo "      set      <name> <value>"
   echo ""
   #
   if [ ${#ModifiedCommand} -eq 0 ]
@@ -1433,6 +1610,8 @@ function KamajiMain() {
      ${ModifierFunctionFor[${ModifierCorrected}]} ${ModifierCorrected} ${ParameterList}
      #
   else
+     #
+     KamajiCheckConfigurationValues
      #
      local -A CommandFunctionFor
      #
