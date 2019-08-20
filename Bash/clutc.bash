@@ -1848,7 +1848,7 @@ declare -r __ClutWorkinDRoot=$(dirname ${__ClutResultFSpec})/${__ClutSourceFName
 ###
 #----------------------------------------------------------------------------------------------------------------------
 
-declare -r __ClutWorkinDName=$(echoDatStampedFSpec ${__ClutWorkinDRoot})
+declare -r __ClutWorkinDName=$(echoDatStampedFSpec ${__ClutWorkinDRoot}).$$
 
 #----------------------------------------------------------------------------------------------------------------------
 #
@@ -2490,7 +2490,6 @@ function __clutCompileTimeMain() {
   spit ${ClutRunTimeFSpec} "  local    WorkinLName="
   spit ${ClutRunTimeFSpec} "  #"
   spit ${ClutRunTimeFSpec} "  local    ArgumentItem"
-  spit ${ClutRunTimeFSpec} "  local    WorkinDName"
   spit ${ClutRunTimeFSpec} "  #"
   spit ${ClutRunTimeFSpec} "  for ArgumentItem in \${ArgumentList}"
   spit ${ClutRunTimeFSpec} "  do"
@@ -2542,18 +2541,9 @@ function __clutCompileTimeMain() {
   spit ${ClutRunTimeFSpec} "  #"
   spit ${ClutRunTimeFSpec} "  #  Create a run-time working directory, and remember its specification."
   spit ${ClutRunTimeFSpec} "  #"
-  spit ${ClutRunTimeFSpec} "  if [ \${#WorkinLName} -eq 0 ]"
-  spit ${ClutRunTimeFSpec} "  then"
-  spit ${ClutRunTimeFSpec} "     #"
-  spit ${ClutRunTimeFSpec} "     WorkinLName=\"${__ClutSourceFName%.clut}.clutr.working\""
-  spit ${ClutRunTimeFSpec} "     #"
-  spit ${ClutRunTimeFSpec} "     WorkinDName=\$(echoDatStampedFSpec \${WorkinLName}.).\$\$"
-  spit ${ClutRunTimeFSpec} "     #"
-  spit ${ClutRunTimeFSpec} "  else"
-  spit ${ClutRunTimeFSpec} "     #"
-  spit ${ClutRunTimeFSpec} "     WorkinDName=\$(echoDatStampedFSpec \${WorkinLName}.)"
-  spit ${ClutRunTimeFSpec} "     #"
-  spit ${ClutRunTimeFSpec} "  fi"
+  spit ${ClutRunTimeFSpec} "  [ \${#WorkinLName} -eq 0 ] && WorkinLName=\"${__ClutSourceFName%.clut}.clutr\""
+  spit ${ClutRunTimeFSpec} "  #"
+  spit ${ClutRunTimeFSpec} "  local -r WorkinDName=\$(echoDatStampedFSpec \${WorkinLName}.).\$\$"
   spit ${ClutRunTimeFSpec} "  #"
   spit ${ClutRunTimeFSpec} "  mkdir \${WorkinDName}"
   spit ${ClutRunTimeFSpec} "  #"

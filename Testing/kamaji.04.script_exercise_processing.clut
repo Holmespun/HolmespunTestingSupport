@@ -1,0 +1,70 @@
+#----------------------------------------------------------------------------------------------------------------------
+#
+#  kamaji.04.script_exercise_processing.clut
+#
+#  Copyright 2019 Brian G. Holmes
+#
+#	This program is part of the Holmespun Makefile Method.
+#
+#	The Holmespun Makefile Method is free software: you can redistribute it and/or modify it under the terms of the
+#	GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	The Holmespun Makefile Method is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+#	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+#	Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License along with this program.  If not, see
+#	<https://www.gnu.org/licenses/>.
+#
+#  See the COPYING.text file for further information.
+#
+#  20190818 BGH; created.
+#
+#----------------------------------------------------------------------------------------------------------------------
+
+set -u
+
+source $(dirname ${BASH_SOURCE[0]})/kamaji.00.common_functions.bash
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function testCaseDefinitions() {
+  #
+  clut_global_initialize	mkdir Testing
+  clut_global_initialize	spit .kamaji.conf "baseline-folder Testing"
+  clut_global_initialize	spit .kamaji.conf "verbosity-level heavy"
+  clut_global_initialize	create_exercise_script_alpha Testing/BETA_exercise.bash
+  #
+  clut_case_name		ScriptExercise_Grade_Fresh
+  clut_case_parameter		grades
+  clut_case_end
+  #
+  clut_case_name		ScriptExercise_Grade_Fail
+  clut_case_initialize		spit Testing/BETA_exercise.output "TC1: Bad news, everyone!"
+  clut_case_initialize		spit Testing/BETA_exercise.output "TC2: I miss Morbo."
+  clut_case_parameter		grades
+  clut_case_end
+  #
+  clut_case_name		ScriptExercise_Grade_Pass
+  clut_case_initialize		spit Testing/BETA_exercise.output "TC1: Good news, everyone!"
+  clut_case_initialize		spit Testing/BETA_exercise.output "TC2: I miss Morbo."
+  clut_case_parameter		grades
+  clut_case_end
+  #
+  for Extension in bash output output.masked output.delta output.grade nonsense
+  do
+    #
+    clut_case_name		ScriptExercise_Make_${Extension//./_}
+    clut_case_parameter		make BETA_exercise.${Extension}
+    clut_case_end
+    #
+  done
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+clut_definition_set		testCaseDefinitions
+
+#----------------------------------------------------------------------------------------------------------------------

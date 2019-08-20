@@ -1,0 +1,78 @@
+#----------------------------------------------------------------------------------------------------------------------
+#
+#  kamaji.01.usage.clut
+#
+#  Copyright 2019 Brian G. Holmes
+#
+#	This program is part of the Holmespun Makefile Method.
+#
+#	The Holmespun Makefile Method is free software: you can redistribute it and/or modify it under the terms of the
+#	GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	The Holmespun Makefile Method is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+#	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+#	Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License along with this program.  If not, see
+#	<https://www.gnu.org/licenses/>.
+#
+#  See the COPYING.text file for further information.
+#
+#  20190818 BGH; created.
+#
+#----------------------------------------------------------------------------------------------------------------------
+
+set -u
+
+source $(whereHolmespunLibraryBashing)/Library/spit_spite_spitn_and_spew.bash
+
+#======================================================================================================================
+
+function testCaseDefinitions() {
+  #
+  clut_case_name		NoArguments
+  clut_case_comment		"General usage should be displayed."
+  clut_case_end
+  #
+  clut_case_name		Usage
+  clut_case_comment		"General usage should be displayed."
+  clut_case_parameter		usage
+  clut_case_end
+  #
+  clut_case_name		Help
+  clut_case_comment		"General usage should be displayed."
+  clut_case_parameter		help
+  clut_case_end
+  #
+  clut_case_name		Bobo
+  clut_case_comment		"General usage should be displayed."
+  clut_case_comment		"The working directory will also be created because a command was issued."
+  clut_case_parameter		fast bobo
+  clut_case_end
+  #
+  for Command in configure export grade make set show
+  do
+    #
+    clut_case_name		Help_${Command}
+    clut_case_parameter		help ${Command}
+    clut_case_end
+    #
+  done
+  #
+  for Modifier in fast help meticulous noisy quiet silent usage verbose
+  do
+    #
+    clut_case_name		Help_${Modifier}
+    clut_case_parameter		usage ${Modifier}
+    clut_case_end
+    #
+  done
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+clut_definition_set		testCaseDefinitions
+
+#----------------------------------------------------------------------------------------------------------------------

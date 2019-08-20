@@ -1,0 +1,895 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.01.usage.clut (18 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. NoArguments.
+    |General usage should be displayed.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.3. Initial Workspace is empty.
+1.4. Target CLU Call.
+1.4.1.  kamaji
+1.4.1.1. Exit Status 1!
+1.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile (if not already executable), execute to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+1.5. Finalizations.
+1.6. Workspace Impact...
+1.6.1. The initial and final workspace contents are equivalent.
+
+2. Usage.
+    |General usage should be displayed.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.3. Initial Workspace is empty.
+2.4. Target CLU Call.
+2.4.1.  kamaji usage
+2.4.1.1. Exit Status 1!
+2.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile (if not already executable), execute to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+2.5. Finalizations.
+2.6. Workspace Impact...
+2.6.1. The initial and final workspace contents are equivalent.
+
+3. Help.
+    |General usage should be displayed.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.3. Initial Workspace is empty.
+3.4. Target CLU Call.
+3.4.1.  kamaji help
+3.4.1.1. Exit Status 1!
+3.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile (if not already executable), execute to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+3.5. Finalizations.
+3.6. Workspace Impact...
+3.6.1. The initial and final workspace contents are equivalent.
+
+4. Bobo.
+    |General usage should be displayed. The working directory will also be created because a command was issued.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.3. Initial Workspace is empty.
+4.4. Target CLU Call.
+4.4.1.  kamaji fast bobo
+4.4.1.1. Exit Status 1!
+4.4.1.2. STDERR [text]...
+    |[38;5;15m[1m[38;5;9m[1mERROR:[0m Unable to fulfill a 'bobo' request.[0m
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile (if not already executable), execute to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: .kamaji.sed
+    |Only in 04.Omega: Working
+4.6.1. .kamaji.sed (created) is empty.
+4.6.2. Working (created) contains 2 files.
+4.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#
+    |#  Where FName == file name withing the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |#
+    |__KamajiClassifiedList[Grade]=""
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |#
+    |#  (eof)
+4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+
+5. Help_configure.
+5.1. Requirements.
+    |None.
+5.2. Initializations.
+5.3. Initial Workspace is empty.
+5.4. Target CLU Call.
+5.4.1.  kamaji help configure
+5.4.1.1. Exit Status 1!
+5.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mConfigure|Set...[0m
+    |
+    |Configuration vales are stored in the ./.kamaji.conf file, a text file that
+    |contains comments, blank lines, and named value pairs:
+    |
+    |    [38;5;15m[1mbaseline-folder[0m <directory-specification> - Specification
+    |    for the directory where baseline output files are stored. The default
+    |    baseline-folder is the current directory.
+    |    
+    |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for
+    |    the user-defined sed script that is used to mask output files. The default
+    |    mask-sed-script is the .kamaji.sed file in the current directory.
+    |    
+    |    [38;5;15m[1mscript-type-list[0m [<extension>]... - List of file name
+    |    extensions that are used to store executable scripts. The .kamaji.conf
+    |    script will assume that files with these extensions are up-to-date and
+    |    ready for use.
+    |    
+    |    [38;5;15m[1mverbosity-level[0m <adjective> - Level of disgnostic output
+    |    produced by the .kamaji.conf script. The default level is called 'quiet'
+    |    and results in no disgnostic output at all. The 'light' level will describe
+    |    the acttions used to fulfill the user request. The 'heavy' level will
+    |    augment light output with every significant Linux command it uses to
+    |    fulfill the user request.
+    |    
+    |    [38;5;15m[1mworking-folder[0m <directory-specification> - Specification
+    |    for the directory where intermediate and unverified output files are
+    |    created. If the working-folder does not already exist then it will be
+    |    silently created. The default working-folder is called Working.
+    |    
+    |The $HOME/.kamaji.conf configuration file can be used to override values in the
+    |file with the same name in the current directory. Named values may also be used
+    |to override values previously named in the same file. Here is an example of
+    |what one might contain:
+    |
+    |    #
+    |    #  My kamaji configuration file.
+    |    #
+    |    baseline-folder  Testing
+    |    mask-sed-script  Testing/kamaji_masking_script.sed
+    |    script-type-list bash rb ruby sh
+    |    verbosity-level  heavy
+    |    working-folder   working
+    |    working-folder   Workspace
+    |
+    |Kamaji ignores values with names it does not recognize.
+    |
+5.5. Finalizations.
+5.6. Workspace Impact...
+5.6.1. The initial and final workspace contents are equivalent.
+
+6. Help_export.
+6.1. Requirements.
+    |None.
+6.2. Initializations.
+6.3. Initial Workspace is empty.
+6.4. Target CLU Call.
+6.4.1.  kamaji help export
+6.4.1.1. Exit Status 1!
+6.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mExport...[0m
+    |
+    |The kamaji script defines a ruleset that it uses to guide creation of every
+    |file in the working-folder; to determine what files need to be made or re-made,
+    |and the proper order in which that should happen.
+    |
+    |By default, kamaji generates its ruleset every time it is called so that it can
+    |properly react to dramatic changes in the baseline-folder. As the ruleset only
+    |changes when files are added or removed from the baseline-folder, it is
+    |inefficient to regenerate the ruleset when the baseline-folder has not changed
+    |in this way.
+    |
+    |Users can request that kamaji export its current ruleset for future use using
+    |the 'export' request. The ruleset-file-name configuration variable can be used
+    |to name the file in which the ruleset is stored.
+    |
+    |The 'fast' modifier can be used to ask kamaji to load an exported ruleset
+    |instead of generating one itself. The 'fast' modifier will generate and export
+    |a ruleset when it does not find one to load.
+    |
+6.5. Finalizations.
+6.6. Workspace Impact...
+6.6.1. The initial and final workspace contents are equivalent.
+
+7. Help_grade.
+7.1. Requirements.
+    |None.
+7.2. Initializations.
+7.3. Initial Workspace is empty.
+7.4. Target CLU Call.
+7.4.1.  kamaji help grade
+7.4.1.1. Exit Status 1!
+7.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mGrade...[0m
+    |
+    |A passing grade is granted for a test program when the program produces output
+    |that matches its expected/golden baseline output. Comparisons are made to
+    |output files only after they are masked to remove non-deterministic values
+    |(e.g. dates, times, account names).
+    |
+    |Masking is performed by a user-defined sed script; the mask-sed-script
+    |configuration value can be used to specify the location of that script.
+    |
+7.5. Finalizations.
+7.6. Workspace Impact...
+7.6.1. The initial and final workspace contents are equivalent.
+
+8. Help_make.
+8.1. Requirements.
+    |None.
+8.2. Initializations.
+8.3. Initial Workspace is empty.
+8.4. Target CLU Call.
+8.4.1.  kamaji help make
+8.4.1.1. Exit Status 1!
+8.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mMake...[0m
+    |
+    |Users can request that kamaji generate one or more specific files by naming
+    |them in a 'make' request. When the user asks kamaji to make a file that is
+    |already the most up-to-date version of itself, then kamaji ignores the request;
+    |it is not an error. Files are only remade after the files that thay are created
+    |from are remade, if necessary. Files are only remade when files that thay are
+    |created from have changed; either because the user changed them or because they
+    |themselves were remads .
+    |
+8.5. Finalizations.
+8.6. Workspace Impact...
+8.6.1. The initial and final workspace contents are equivalent.
+
+9. Help_set.
+9.1. Requirements.
+    |None.
+9.2. Initializations.
+9.3. Initial Workspace is empty.
+9.4. Target CLU Call.
+9.4.1.  kamaji help set
+9.4.1.1. Exit Status 1!
+9.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mConfigure|Set...[0m
+    |
+    |Configuration vales are stored in the ./.kamaji.conf file, a text file that
+    |contains comments, blank lines, and named value pairs:
+    |
+    |    [38;5;15m[1mbaseline-folder[0m <directory-specification> - Specification
+    |    for the directory where baseline output files are stored. The default
+    |    baseline-folder is the current directory.
+    |    
+    |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for
+    |    the user-defined sed script that is used to mask output files. The default
+    |    mask-sed-script is the .kamaji.sed file in the current directory.
+    |    
+    |    [38;5;15m[1mscript-type-list[0m [<extension>]... - List of file name
+    |    extensions that are used to store executable scripts. The .kamaji.conf
+    |    script will assume that files with these extensions are up-to-date and
+    |    ready for use.
+    |    
+    |    [38;5;15m[1mverbosity-level[0m <adjective> - Level of disgnostic output
+    |    produced by the .kamaji.conf script. The default level is called 'quiet'
+    |    and results in no disgnostic output at all. The 'light' level will describe
+    |    the acttions used to fulfill the user request. The 'heavy' level will
+    |    augment light output with every significant Linux command it uses to
+    |    fulfill the user request.
+    |    
+    |    [38;5;15m[1mworking-folder[0m <directory-specification> - Specification
+    |    for the directory where intermediate and unverified output files are
+    |    created. If the working-folder does not already exist then it will be
+    |    silently created. The default working-folder is called Working.
+    |    
+    |The $HOME/.kamaji.conf configuration file can be used to override values in the
+    |file with the same name in the current directory. Named values may also be used
+    |to override values previously named in the same file. Here is an example of
+    |what one might contain:
+    |
+    |    #
+    |    #  My kamaji configuration file.
+    |    #
+    |    baseline-folder  Testing
+    |    mask-sed-script  Testing/kamaji_masking_script.sed
+    |    script-type-list bash rb ruby sh
+    |    verbosity-level  heavy
+    |    working-folder   working
+    |    working-folder   Workspace
+    |
+    |Kamaji ignores values with names it does not recognize.
+    |
+9.5. Finalizations.
+9.6. Workspace Impact...
+9.6.1. The initial and final workspace contents are equivalent.
+
+10. Help_show.
+10.1. Requirements.
+    |None.
+10.2. Initializations.
+10.3. Initial Workspace is empty.
+10.4. Target CLU Call.
+10.4.1.  kamaji help show
+10.4.1.1. Exit Status 1!
+10.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mShow...[0m
+    |
+    |The 'show' request is used to produce makefiles that can be used to integrate
+    |kamaji into a makefile system. Two forms of makefile may be produced: explicit
+    |and layered. An explicit makefile contains a rule for every target that can be
+    |used in kamaji make requests. A layered makefile only contains rules for the
+    |most computing-intensive targets, so that the load-balancing aspects of a
+    |makefile can be used without translating every relationship into a makefle
+    |rule.
+    |
+10.5. Finalizations.
+10.6. Workspace Impact...
+10.6.1. The initial and final workspace contents are equivalent.
+
+11. Help_fast.
+11.1. Requirements.
+    |None.
+11.2. Initializations.
+11.3. Initial Workspace is empty.
+11.4. Target CLU Call.
+11.4.1.  kamaji usage fast
+11.4.1.1. Exit Status 1!
+11.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mFast...[0m
+    |
+    |When the number of files in the baseline-folder does not change, the 'fast'
+    |modifier can be used to improve the efficiency of kamaji. When the 'fast'
+    |modifier is used, kamaji loads a stored ruleset instead of generating a new
+    |one. An 'export ruleset' request can be used to store the current ruleset.
+    |
+11.5. Finalizations.
+11.6. Workspace Impact...
+11.6.1. The initial and final workspace contents are equivalent.
+
+12. Help_help.
+12.1. Requirements.
+    |None.
+12.2. Initializations.
+12.3. Initial Workspace is empty.
+12.4. Target CLU Call.
+12.4.1.  kamaji usage help
+12.4.1.1. Exit Status 1!
+12.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mUsage|Help...[0m
+    |
+    |You can get addition help by specifying the modifier or request you are
+    |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
+    |silent" and "kamaji usage export"
+    |
+12.5. Finalizations.
+12.6. Workspace Impact...
+12.6.1. The initial and final workspace contents are equivalent.
+
+13. Help_meticulous.
+13.1. Requirements.
+    |None.
+13.2. Initializations.
+13.3. Initial Workspace is empty.
+13.4. Target CLU Call.
+13.4.1.  kamaji usage meticulous
+13.4.1.1. Exit Status 1!
+13.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile (if not already executable), execute to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+13.5. Finalizations.
+13.6. Workspace Impact...
+13.6.1. The initial and final workspace contents are equivalent.
+
+14. Help_noisy.
+14.1. Requirements.
+    |None.
+14.2. Initializations.
+14.3. Initial Workspace is empty.
+14.4. Target CLU Call.
+14.4.1.  kamaji usage noisy
+14.4.1.1. Exit Status 1!
+14.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |
+    |Three levels of diagnostic output are controlled by the verbose and silent
+    |modifiers: A single verbose modifier is a request for light diagnostic output.
+    |Multiple verbose modifiers will produce heavy diagnostic output. The silent
+    |modifier turns off all diagnostic output.
+    |
+14.5. Finalizations.
+14.6. Workspace Impact...
+14.6.1. The initial and final workspace contents are equivalent.
+
+15. Help_quiet.
+15.1. Requirements.
+    |None.
+15.2. Initializations.
+15.3. Initial Workspace is empty.
+15.4. Target CLU Call.
+15.4.1.  kamaji usage quiet
+15.4.1.1. Exit Status 1!
+15.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |
+    |Three levels of diagnostic output are controlled by the verbose and silent
+    |modifiers: A single verbose modifier is a request for light diagnostic output.
+    |Multiple verbose modifiers will produce heavy diagnostic output. The silent
+    |modifier turns off all diagnostic output.
+    |
+15.5. Finalizations.
+15.6. Workspace Impact...
+15.6.1. The initial and final workspace contents are equivalent.
+
+16. Help_silent.
+16.1. Requirements.
+    |None.
+16.2. Initializations.
+16.3. Initial Workspace is empty.
+16.4. Target CLU Call.
+16.4.1.  kamaji usage silent
+16.4.1.1. Exit Status 1!
+16.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |
+    |Three levels of diagnostic output are controlled by the verbose and silent
+    |modifiers: A single verbose modifier is a request for light diagnostic output.
+    |Multiple verbose modifiers will produce heavy diagnostic output. The silent
+    |modifier turns off all diagnostic output.
+    |
+16.5. Finalizations.
+16.6. Workspace Impact...
+16.6.1. The initial and final workspace contents are equivalent.
+
+17. Help_usage.
+17.1. Requirements.
+    |None.
+17.2. Initializations.
+17.3. Initial Workspace is empty.
+17.4. Target CLU Call.
+17.4.1.  kamaji usage usage
+17.4.1.1. Exit Status 1!
+17.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mUsage|Help...[0m
+    |
+    |You can get addition help by specifying the modifier or request you are
+    |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
+    |silent" and "kamaji usage export"
+    |
+17.5. Finalizations.
+17.6. Workspace Impact...
+17.6.1. The initial and final workspace contents are equivalent.
+
+18. Help_verbose.
+18.1. Requirements.
+    |None.
+18.2. Initializations.
+18.3. Initial Workspace is empty.
+18.4. Target CLU Call.
+18.4.1.  kamaji usage verbose
+18.4.1.1. Exit Status 1!
+18.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ruleset]
+    |      grade  [<filename>]...
+    |      help   [<modifier>|<request>]
+    |      make   [<filename>]...
+    |      set    <name> <value>
+    |      show   [makefile [explicit|layered]]
+    |
+    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |
+    |Three levels of diagnostic output are controlled by the verbose and silent
+    |modifiers: A single verbose modifier is a request for light diagnostic output.
+    |Multiple verbose modifiers will produce heavy diagnostic output. The silent
+    |modifier turns off all diagnostic output.
+    |
+18.5. Finalizations.
+18.6. Workspace Impact...
+18.6.1. The initial and final workspace contents are equivalent.
+
+CLUT Source File: kamaji.01.usage.clut (18 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.

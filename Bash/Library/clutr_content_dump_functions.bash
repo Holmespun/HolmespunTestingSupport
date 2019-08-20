@@ -304,6 +304,7 @@ function clutFileRunTimeDumpFormatRegistrationStandard() {
   clutFileRunTimeDumpFormatRegistration	CPP		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CSS		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CSV		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	DELTA		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	DIFF		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	FA		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	FAI		__clutCaseRunTimeDumpTextPlain
@@ -322,11 +323,13 @@ function clutFileRunTimeDumpFormatRegistrationStandard() {
   clutFileRunTimeDumpFormatRegistration	LOG		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	MAKE		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	MAKEFILE	__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	MASKED		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	OUT		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	OUTPUT		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	PY		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	SECONDS		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	SED		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	SH		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	TEXT		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	TXT		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	XML		__clutCaseRunTimeDumpTextPlain

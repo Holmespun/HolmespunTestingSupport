@@ -1,0 +1,4340 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. Clut_Grade_Fresh.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.2.1. mkdir Testing
+1.2.2. spit .kamaji.conf baseline-folder Testing
+1.2.3. spit .kamaji.conf verbosity-level heavy
+1.2.4. create_production_script_alpha ALPHA.bash
+1.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+1.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+1.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+1.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+1.3.3. Testing contains one file.
+1.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+1.4. Target CLU Call.
+1.4.1.  kamaji grades
+1.4.1.1. Exit Status 1!
+1.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output[0m
+    |[38;5;12m(cd Working; ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.partial ALPHA.clut.output)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.masked[0m
+    |[38;5;12m(cd Working; sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.delta[0m
+    |[38;5;12m(cd Working; cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.grade[0m
+    |[38;5;12m(cd Working; cat ALPHA.clut.output.delta)[0m
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+    |[38;5;15m[1m[38;5;9m[1mERROR:[0m The latest ALPHA.clut.output differs from the baseline.[0m
+1.5. Finalizations.
+1.6. Workspace Impact...
+    |Only in 01.Omega: .kamaji.sed
+    |Only in 01.Omega: Working
+1.6.1. .kamaji.sed (created) is empty.
+1.6.2. Working (created) contains 15 files.
+1.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+1.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+1.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+1.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204845.6868/00.compiled.bash
+1.6.2.5. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+1.6.2.6. ALPHA.clut.output.delta...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+1.6.2.7. ALPHA.clut.output.masked...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+1.6.2.8. ALPHA.clutc.20190819_204845.6868 contains 3 files.
+1.6.2.8.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204845.6868/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:45.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/01.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/01.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+1.6.2.8.2. 00.namelist.text...
+    |NoArguments
+1.6.2.8.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+1.6.2.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190819_204845.6968
+1.6.2.10. ALPHA.clutr.20190819_204845.6968 contains 2 files.
+1.6.2.10.1. 01.Alpha is empty.
+1.6.2.10.2. 01.Omega is empty.
+
+2. Clut_Grade_Fail.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.2.1. mkdir Testing
+2.2.2. spit .kamaji.conf baseline-folder Testing
+2.2.3. spit .kamaji.conf verbosity-level heavy
+2.2.4. create_production_script_alpha ALPHA.bash
+2.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+2.2.6. spit Testing/ALPHA.clut.output This is some bogus baseline output.
+2.3. Initial Workspace contains 5 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+    |Testing/ALPHA.clut.output
+2.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+2.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+2.3.3. Testing contains 2 files.
+2.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+2.3.3.2. ALPHA.clut.output...
+    |This is some bogus baseline output.
+2.4. Target CLU Call.
+2.4.1.  kamaji grades
+2.4.1.1. Exit Status 1!
+2.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut.output Working/ALPHA.clut.golden[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output[0m
+    |[38;5;12m(cd Working; ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.partial ALPHA.clut.output)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.masked[0m
+    |[38;5;12m(cd Working; sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.golden.masked does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.golden.masked[0m
+    |[38;5;12m(cd Working; sed --file=.kamaji.sed ALPHA.clut.golden > ALPHA.clut.golden.masked.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.golden.masked.partial ALPHA.clut.golden.masked)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.delta[0m
+    |[38;5;12m(cd Working; diff --text --ignore-space-change ALPHA.clut.golden.masked ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.grade[0m
+    |[38;5;12m(cd Working; cat ALPHA.clut.output.delta)[0m
+    |1c1,31
+    |< This is some bogus baseline output.
+    |---
+    |> CLUT Output Begins...
+    |> CLUT Output Format Version: 5.5
+    |> CLUT Source File: ALPHA.clut (1 cases)
+    |> 
+    |> 0. Global Information
+    |> 0.1. Notations
+    |>     |No notations defined.
+    |> 0.2. Requirement Statements
+    |>     |No requirements defined.
+    |> 0.3. Requirement Coverage
+    |>     |No requirements defined.
+    |> 0.4. Comparable Masks
+    |>     |No masks defined.
+    |> 
+    |> 1. NoArguments.
+    |>     |This is the most trivial test case.
+    |> 1.1. Requirements.
+    |>     |None.
+    |> 1.2. Initializations.
+    |> 1.3. Initial Workspace is empty.
+    |> 1.4. Target CLU Call.
+    |> 1.4.1.  ALPHA.bash
+    |> 1.4.1.1. STDOUT [text]...
+    |>     |I am the greetest! Now I am leaving Earth for no raisin!
+    |> 1.5. Finalizations.
+    |> 1.6. Workspace Impact...
+    |> 1.6.1. The initial and final workspace contents are equivalent.
+    |> 
+    |> CLUT Source File: ALPHA.clut (1 cases)
+    |> CLUT Output Format Version: 5.5
+    |> CLUT Output Complete.
+    |[38;5;11mINFO:[0m vimdiff Working/ALPHA.clut.golden.masked Working/ALPHA.clut.output.masked
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+    |[38;5;15m[1m[38;5;9m[1mERROR:[0m The latest ALPHA.clut.output differs from the baseline.[0m
+2.5. Finalizations.
+2.6. Workspace Impact...
+    |Only in 02.Omega: .kamaji.sed
+    |Only in 02.Omega: Working
+2.6.1. .kamaji.sed (created) is empty.
+2.6.2. Working (created) contains 17 files.
+2.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+2.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+2.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+2.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204846.7539/00.compiled.bash
+2.6.2.5. ALPHA.clut.golden is a symbolic link to ../Testing/ALPHA.clut.output
+2.6.2.6. ALPHA.clut.golden.masked...
+    |This is some bogus baseline output.
+2.6.2.7. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+2.6.2.8. ALPHA.clut.output.delta...
+    |1c1,31
+    |< This is some bogus baseline output.
+    |---
+    |> CLUT Output Begins...
+    |> CLUT Output Format Version: 5.5
+    |> CLUT Source File: ALPHA.clut (1 cases)
+    |> 
+    |> 0. Global Information
+    |> 0.1. Notations
+    |>     |No notations defined.
+    |> 0.2. Requirement Statements
+    |>     |No requirements defined.
+    |> 0.3. Requirement Coverage
+    |>     |No requirements defined.
+    |> 0.4. Comparable Masks
+    |>     |No masks defined.
+    |> 
+    |> 1. NoArguments.
+    |>     |This is the most trivial test case.
+    |> 1.1. Requirements.
+    |>     |None.
+    |> 1.2. Initializations.
+    |> 1.3. Initial Workspace is empty.
+    |> 1.4. Target CLU Call.
+    |> 1.4.1.  ALPHA.bash
+    |> 1.4.1.1. STDOUT [text]...
+    |>     |I am the greetest! Now I am leaving Earth for no raisin!
+    |> 1.5. Finalizations.
+    |> 1.6. Workspace Impact...
+    |> 1.6.1. The initial and final workspace contents are equivalent.
+    |> 
+    |> CLUT Source File: ALPHA.clut (1 cases)
+    |> CLUT Output Format Version: 5.5
+    |> CLUT Output Complete.
+    |[38;5;11mINFO:[0m vimdiff Working/ALPHA.clut.golden.masked Working/ALPHA.clut.output.masked
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+2.6.2.9. ALPHA.clut.output.masked...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+2.6.2.10. ALPHA.clutc.20190819_204846.7539 contains 3 files.
+2.6.2.10.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204846.7539/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:46.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/02.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/02.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+2.6.2.10.2. 00.namelist.text...
+    |NoArguments
+2.6.2.10.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+2.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190819_204846.7639
+2.6.2.12. ALPHA.clutr.20190819_204846.7639 contains 2 files.
+2.6.2.12.1. 01.Alpha is empty.
+2.6.2.12.2. 01.Omega is empty.
+
+3. Clut_Make_clut.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.2.1. mkdir Testing
+3.2.2. spit .kamaji.conf baseline-folder Testing
+3.2.3. spit .kamaji.conf verbosity-level heavy
+3.2.4. create_production_script_alpha ALPHA.bash
+3.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+3.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+3.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+3.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+3.3.3. Testing contains one file.
+3.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+3.4. Target CLU Call.
+3.4.1.  kamaji make ALPHA.clut
+3.4.1.1. Exit Status 0!
+3.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+3.5. Finalizations.
+3.6. Workspace Impact...
+    |Only in 03.Omega: .kamaji.sed
+    |Only in 03.Omega: Working
+3.6.1. .kamaji.sed (created) is empty.
+3.6.2. Working (created) contains 3 files.
+3.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+3.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+3.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+
+4. Clut_Make_clut_bash.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.2.1. mkdir Testing
+4.2.2. spit .kamaji.conf baseline-folder Testing
+4.2.3. spit .kamaji.conf verbosity-level heavy
+4.2.4. create_production_script_alpha ALPHA.bash
+4.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+4.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+4.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+4.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+4.3.3. Testing contains one file.
+4.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+4.4. Target CLU Call.
+4.4.1.  kamaji make ALPHA.clut.bash
+4.4.1.1. Exit Status 0!
+4.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: .kamaji.sed
+    |Only in 04.Omega: Working
+4.6.1. .kamaji.sed (created) is empty.
+4.6.2. Working (created) contains 8 files.
+4.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+4.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+4.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+4.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204847.8469/00.compiled.bash
+4.6.2.5. ALPHA.clutc.20190819_204847.8469 contains 3 files.
+4.6.2.5.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204847.8469/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:47.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/04.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/04.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+4.6.2.5.2. 00.namelist.text...
+    |NoArguments
+4.6.2.5.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+
+5. Clut_Make_clut_output.
+5.1. Requirements.
+    |None.
+5.2. Initializations.
+5.2.1. mkdir Testing
+5.2.2. spit .kamaji.conf baseline-folder Testing
+5.2.3. spit .kamaji.conf verbosity-level heavy
+5.2.4. create_production_script_alpha ALPHA.bash
+5.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+5.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+5.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+5.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+5.3.3. Testing contains one file.
+5.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+5.4. Target CLU Call.
+5.4.1.  kamaji make ALPHA.clut.output
+5.4.1.1. Exit Status 0!
+5.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output[0m
+    |[38;5;12m(cd Working; ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.partial ALPHA.clut.output)[0m
+5.5. Finalizations.
+5.6. Workspace Impact...
+    |Only in 05.Omega: .kamaji.sed
+    |Only in 05.Omega: Working
+5.6.1. .kamaji.sed (created) is empty.
+5.6.2. Working (created) contains 13 files.
+5.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+5.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+5.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+5.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204848.8871/00.compiled.bash
+5.6.2.5. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+5.6.2.6. ALPHA.clutc.20190819_204848.8871 contains 3 files.
+5.6.2.6.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204848.8871/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:48.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/05.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/05.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+5.6.2.6.2. 00.namelist.text...
+    |NoArguments
+5.6.2.6.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+5.6.2.7. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190819_204848.8971
+5.6.2.8. ALPHA.clutr.20190819_204848.8971 contains 2 files.
+5.6.2.8.1. 01.Alpha is empty.
+5.6.2.8.2. 01.Omega is empty.
+
+6. Clut_Make_clut_output_masked.
+6.1. Requirements.
+    |None.
+6.2. Initializations.
+6.2.1. mkdir Testing
+6.2.2. spit .kamaji.conf baseline-folder Testing
+6.2.3. spit .kamaji.conf verbosity-level heavy
+6.2.4. create_production_script_alpha ALPHA.bash
+6.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+6.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+6.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+6.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+6.3.3. Testing contains one file.
+6.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+6.4. Target CLU Call.
+6.4.1.  kamaji make ALPHA.clut.output.masked
+6.4.1.1. Exit Status 0!
+6.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output[0m
+    |[38;5;12m(cd Working; ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.partial ALPHA.clut.output)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.masked[0m
+    |[38;5;12m(cd Working; sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked)[0m
+6.5. Finalizations.
+6.6. Workspace Impact...
+    |Only in 06.Omega: .kamaji.sed
+    |Only in 06.Omega: Working
+6.6.1. .kamaji.sed (created) is empty.
+6.6.2. Working (created) contains 14 files.
+6.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+6.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+6.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+6.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204849.9445/00.compiled.bash
+6.6.2.5. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+6.6.2.6. ALPHA.clut.output.masked...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+6.6.2.7. ALPHA.clutc.20190819_204849.9445 contains 3 files.
+6.6.2.7.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204849.9445/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:49.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/06.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/06.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+6.6.2.7.2. 00.namelist.text...
+    |NoArguments
+6.6.2.7.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+6.6.2.8. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190819_204849.9545
+6.6.2.9. ALPHA.clutr.20190819_204849.9545 contains 2 files.
+6.6.2.9.1. 01.Alpha is empty.
+6.6.2.9.2. 01.Omega is empty.
+
+7. Clut_Make_clut_output_delta.
+7.1. Requirements.
+    |None.
+7.2. Initializations.
+7.2.1. mkdir Testing
+7.2.2. spit .kamaji.conf baseline-folder Testing
+7.2.3. spit .kamaji.conf verbosity-level heavy
+7.2.4. create_production_script_alpha ALPHA.bash
+7.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+7.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+7.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+7.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+7.3.3. Testing contains one file.
+7.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+7.4. Target CLU Call.
+7.4.1.  kamaji make ALPHA.clut.output.delta
+7.4.1.1. Exit Status 0!
+7.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output[0m
+    |[38;5;12m(cd Working; ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.partial ALPHA.clut.output)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.masked[0m
+    |[38;5;12m(cd Working; sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.delta[0m
+    |[38;5;12m(cd Working; cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1)[0m
+7.5. Finalizations.
+7.6. Workspace Impact...
+    |Only in 07.Omega: .kamaji.sed
+    |Only in 07.Omega: Working
+7.6.1. .kamaji.sed (created) is empty.
+7.6.2. Working (created) contains 15 files.
+7.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+7.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+7.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+7.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204850.10044/00.compiled.bash
+7.6.2.5. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+7.6.2.6. ALPHA.clut.output.delta...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+7.6.2.7. ALPHA.clut.output.masked...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+7.6.2.8. ALPHA.clutc.20190819_204850.10044 contains 3 files.
+7.6.2.8.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204850.10044/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:50.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/07.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/07.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+7.6.2.8.2. 00.namelist.text...
+    |NoArguments
+7.6.2.8.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+7.6.2.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190819_204850.10144
+7.6.2.10. ALPHA.clutr.20190819_204850.10144 contains 2 files.
+7.6.2.10.1. 01.Alpha is empty.
+7.6.2.10.2. 01.Omega is empty.
+
+8. Clut_Make_clut_output_grade.
+8.1. Requirements.
+    |None.
+8.2. Initializations.
+8.2.1. mkdir Testing
+8.2.2. spit .kamaji.conf baseline-folder Testing
+8.2.3. spit .kamaji.conf verbosity-level heavy
+8.2.4. create_production_script_alpha ALPHA.bash
+8.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+8.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+8.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+8.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+8.3.3. Testing contains one file.
+8.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+8.4. Target CLU Call.
+8.4.1.  kamaji make ALPHA.clut.output.grade
+8.4.1.1. Exit Status 1!
+8.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.bash[0m
+    |[38;5;12m(cd Working; clutc ALPHA.clut ALPHA.bash ALPHA.clut.bash)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output[0m
+    |[38;5;12m(cd Working; ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.partial ALPHA.clut.output)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.masked[0m
+    |[38;5;12m(cd Working; sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1)[0m
+    |[38;5;12m(cd Working; mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.delta[0m
+    |[38;5;12m(cd Working; cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1)[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |[38;5;11mkamaji make ALPHA.clut.output.grade[0m
+    |[38;5;12m(cd Working; cat ALPHA.clut.output.delta)[0m
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+    |[38;5;15m[1m[38;5;9m[1mERROR:[0m The latest ALPHA.clut.output differs from the baseline.[0m
+8.5. Finalizations.
+8.6. Workspace Impact...
+    |Only in 08.Omega: .kamaji.sed
+    |Only in 08.Omega: Working
+8.6.1. .kamaji.sed (created) is empty.
+8.6.2. Working (created) contains 15 files.
+8.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+8.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+8.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+8.6.2.4. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190819_204850.10666/00.compiled.bash
+8.6.2.5. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+8.6.2.6. ALPHA.clut.output.delta...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/ALPHA.clut.output Testing/
+8.6.2.7. ALPHA.clut.output.masked...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+8.6.2.8. ALPHA.clutc.20190819_204850.10666 contains 3 files.
+8.6.2.8.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190819_204850.10666/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-08-19 at 20:48:50.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/08.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.03.clut_processing.clutr.20190819_204845.6589/08.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+8.6.2.8.2. 00.namelist.text...
+    |NoArguments
+8.6.2.8.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+8.6.2.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190819_204851.10766
+8.6.2.10. ALPHA.clutr.20190819_204851.10766 contains 2 files.
+8.6.2.10.1. 01.Alpha is empty.
+8.6.2.10.2. 01.Omega is empty.
+
+9. Clut_Make_clut_nonsense.
+9.1. Requirements.
+    |None.
+9.2. Initializations.
+9.2.1. mkdir Testing
+9.2.2. spit .kamaji.conf baseline-folder Testing
+9.2.3. spit .kamaji.conf verbosity-level heavy
+9.2.4. create_production_script_alpha ALPHA.bash
+9.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+9.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+9.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+9.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+9.3.3. Testing contains one file.
+9.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+9.4. Target CLU Call.
+9.4.1.  kamaji make ALPHA.clut.nonsense
+9.4.1.1. Exit Status 1!
+9.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed Working/.kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash Working/ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut Working/ALPHA.clut[0m
+    |[38;5;15m[1m[38;5;9m[1mERROR:[0m The 'ALPHA.clut.nonsense' file cannot be made; it is not a known derivative.[0m
+9.5. Finalizations.
+9.6. Workspace Impact...
+    |Only in 09.Omega: .kamaji.sed
+    |Only in 09.Omega: Working
+9.6.1. .kamaji.sed (created) is empty.
+9.6.2. Working (created) contains 3 files.
+9.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+9.6.2.2. ALPHA.bash is a symbolic link to ../ALPHA.bash
+9.6.2.3. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+
+CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.
