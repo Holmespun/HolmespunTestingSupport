@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.01.usage.clut (18 cases)
+CLUT Source File: kamaji.01.usage.clut (23 cases)
 
 0. Global Information
 0.1. Notations
@@ -26,18 +26,20 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
-    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
     |resolved using alphabetical order. No other modifiers or requests are applied
     |after a usage request is fulfilled.
@@ -46,8 +48,9 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |interest; for example, "kamaji help fast" or "kamaji usage grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
-    |compile (if not already executable), execute to produce output, mask that
-    |output, compare the masked output to its baseline, and then grade.
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
     |
     |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
     |written in compilable code or a scripting language. Compilable code must be
@@ -85,18 +88,20 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
-    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
     |resolved using alphabetical order. No other modifiers or requests are applied
     |after a usage request is fulfilled.
@@ -105,8 +110,9 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |interest; for example, "kamaji help fast" or "kamaji usage grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
-    |compile (if not already executable), execute to produce output, mask that
-    |output, compare the masked output to its baseline, and then grade.
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
     |
     |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
     |written in compilable code or a scripting language. Compilable code must be
@@ -144,18 +150,20 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
-    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
     |resolved using alphabetical order. No other modifiers or requests are applied
     |after a usage request is fulfilled.
@@ -164,8 +172,9 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |interest; for example, "kamaji help fast" or "kamaji usage grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
-    |compile (if not already executable), execute to produce output, mask that
-    |output, compare the masked output to its baseline, and then grade.
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
     |
     |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
     |written in compilable code or a scripting language. Compilable code must be
@@ -199,23 +208,25 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
 4.4.1.  kamaji fast bobo
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
-    |[38;5;15m[1m[38;5;9m[1mERROR:[0m Unable to fulfill a 'bobo' request.[0m
+    |[38;5;9m[1mERROR:[0m [38;5;15m[1mUnable to fulfill a 'bobo' request.[0m
     |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
-    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
     |resolved using alphabetical order. No other modifiers or requests are applied
     |after a usage request is fulfilled.
@@ -224,8 +235,9 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |interest; for example, "kamaji help fast" or "kamaji usage grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
-    |compile (if not already executable), execute to produce output, mask that
-    |output, compare the masked output to its baseline, and then grade.
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
     |
     |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
     |written in compilable code or a scripting language. Compilable code must be
@@ -258,17 +270,19 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
     |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
-    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
     |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
-    |#  Where FName == file name withing the working-folder
+    |#  Where FName == file name within the working-folder
     |#        FName == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |#
     |__KamajiClassifiedList[Grade]=""
+    |__KamajiClassifiedList[Output]=""
+    |__KamajiClassifiedList[Review]=""
     |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
     |#
     |__KamajiMyParentalList[.kamaji.sed]=""
     |#
@@ -290,16 +304,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mConfigure|Set...[0m
     |
@@ -365,16 +381,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mExport...[0m
     |
@@ -413,18 +431,23 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mGrade...[0m
+    |
+    |A 'grade' request will determine the pass or fail status of a one or more CLUT
+    |or unit test exercise.
     |
     |A passing grade is granted for a test program when the program produces output
     |that matches its expected/golden baseline output. Comparisons are made to
@@ -433,6 +456,23 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Masking is performed by a user-defined sed script; the mask-sed-script
     |configuration value can be used to specify the location of that script.
+    |
+    |A 'grade last' request with grade the output associated with the last make
+    |target processed by kamaji the last time it was invoked. The "last" target is
+    |the same no matter where it appears in the list of targets passed to a 'grade'
+    |request.
+    |
+    |A 'grade' request without any specific targets is the same as a 'grade' request
+    |for all known targets. Furthermore, those targets will be evaluated based when
+    |their base sources were last modified. In this way, when the user modifies the
+    |source file for a specific CLUT or unit test, then kamaji will give evaluation
+    |of that test a higher priority than for all others.
+    |
+    |Although grades are identified using the "grade" file name extension, the
+    |actual grade is not stored. This practice will cause kamaji to evaluate a CLUT
+    |or unit test exercise, and display the assigned grade, every time the user
+    |requests it. As such, the user will get explicit grade feedback for every test
+    |every time it is requested.
     |
 7.5. Finalizations.
 7.6. Workspace Impact...
@@ -451,16 +491,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mMake...[0m
     |
@@ -470,7 +512,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |it is not an error. Files are only remade after the files that thay are created
     |from are remade, if necessary. Files are only remade when files that thay are
     |created from have changed; either because the user changed them or because they
-    |themselves were remads .
+    |themselves were remade.
+    |
+    |A 'make grades' request is the same as a 'grade' request: Every output file is
+    |generated, compared to its associated baseline, and then graded based on that
+    |comparision.
+    |
+    |A 'make outputs' request is the same as an 'invoke' request: Every output file
+    |is generated.
+    |
+    |A 'make last' request will attempt to remake the last specific target of a
+    |'grade' or 'invoke' or 'make' request. This is an especially useful shorthand
+    |when kamaji is used for test-driven development.
     |
 8.5. Finalizations.
 8.6. Workspace Impact...
@@ -489,16 +542,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mConfigure|Set...[0m
     |
@@ -564,16 +619,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mShow...[0m
     |
@@ -602,16 +659,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mFast...[0m
     |
@@ -637,16 +696,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mUsage|Help...[0m
     |
@@ -671,18 +732,20 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
-    |Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
     |resolved using alphabetical order. No other modifiers or requests are applied
     |after a usage request is fulfilled.
@@ -691,8 +754,9 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |interest; for example, "kamaji help fast" or "kamaji usage grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
-    |compile (if not already executable), execute to produce output, mask that
-    |output, compare the masked output to its baseline, and then grade.
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
     |
     |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
     |written in compilable code or a scripting language. Compilable code must be
@@ -729,16 +793,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -764,16 +830,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -799,16 +867,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -834,16 +904,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mUsage|Help...[0m
     |
@@ -868,16 +940,18 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
     |
     |Where <modifier> is one of the following:
     |      fast
+    |      help
     |      silent
     |      verbose
     |
     |Where <request> is one of the following:
-    |      export [ruleset]
-    |      grade  [<filename>]...
-    |      help   [<modifier>|<request>]
-    |      make   [<filename>]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [makefile [explicit|layered]]
+    |      show   [ makefile [ explicit | layered ] ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -890,6 +964,253 @@ CLUT Source File: kamaji.01.usage.clut (18 cases)
 18.6. Workspace Impact...
 18.6.1. The initial and final workspace contents are equivalent.
 
-CLUT Source File: kamaji.01.usage.clut (18 cases)
+19. Help_execute.
+19.1. Requirements.
+    |None.
+19.2. Initializations.
+19.3. Initial Workspace is empty.
+19.4. Target CLU Call.
+19.4.1.  kamaji help execute
+19.4.1.1. Exit Status 1!
+19.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile [ explicit | layered ] ]
+    |
+    |[38;5;15m[1mExecute|Invoke|Run...[0m
+    |
+    |An 'invoke' request causes each CLUT or unit test exercise to be executed.
+    |Output from each CLUT or unit test exercise is captured in an output file.
+    |
+    |An 'invoke last' request will invoke the last make target processed by kamaji
+    |the last time it was itself invoked. The "last" target is the same no matter
+    |where it appears in the list of targets passed to an 'invoke' request.
+    |
+    |An 'invoke' request without any specific targets is the same as an 'invoke'
+    |request for all known targets. Furthermore, those targets will be invoked based
+    |when their base sources were last modified. In this way, when the user modifies
+    |the source file for a specific CLUT or unit test, then kamaji will give output
+    |generation for that test a higher priority than for all others.
+    |
+19.5. Finalizations.
+19.6. Workspace Impact...
+19.6.1. The initial and final workspace contents are equivalent.
+
+20. Help_invoke.
+20.1. Requirements.
+    |None.
+20.2. Initializations.
+20.3. Initial Workspace is empty.
+20.4. Target CLU Call.
+20.4.1.  kamaji help invoke
+20.4.1.1. Exit Status 1!
+20.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile [ explicit | layered ] ]
+    |
+    |[38;5;15m[1mExecute|Invoke|Run...[0m
+    |
+    |An 'invoke' request causes each CLUT or unit test exercise to be executed.
+    |Output from each CLUT or unit test exercise is captured in an output file.
+    |
+    |An 'invoke last' request will invoke the last make target processed by kamaji
+    |the last time it was itself invoked. The "last" target is the same no matter
+    |where it appears in the list of targets passed to an 'invoke' request.
+    |
+    |An 'invoke' request without any specific targets is the same as an 'invoke'
+    |request for all known targets. Furthermore, those targets will be invoked based
+    |when their base sources were last modified. In this way, when the user modifies
+    |the source file for a specific CLUT or unit test, then kamaji will give output
+    |generation for that test a higher priority than for all others.
+    |
+20.5. Finalizations.
+20.6. Workspace Impact...
+20.6.1. The initial and final workspace contents are equivalent.
+
+21. Help_run.
+21.1. Requirements.
+    |None.
+21.2. Initializations.
+21.3. Initial Workspace is empty.
+21.4. Target CLU Call.
+21.4.1.  kamaji help run
+21.4.1.1. Exit Status 1!
+21.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile [ explicit | layered ] ]
+    |
+    |[38;5;15m[1mExecute|Invoke|Run...[0m
+    |
+    |An 'invoke' request causes each CLUT or unit test exercise to be executed.
+    |Output from each CLUT or unit test exercise is captured in an output file.
+    |
+    |An 'invoke last' request will invoke the last make target processed by kamaji
+    |the last time it was itself invoked. The "last" target is the same no matter
+    |where it appears in the list of targets passed to an 'invoke' request.
+    |
+    |An 'invoke' request without any specific targets is the same as an 'invoke'
+    |request for all known targets. Furthermore, those targets will be invoked based
+    |when their base sources were last modified. In this way, when the user modifies
+    |the source file for a specific CLUT or unit test, then kamaji will give output
+    |generation for that test a higher priority than for all others.
+    |
+21.5. Finalizations.
+21.6. Workspace Impact...
+21.6.1. The initial and final workspace contents are equivalent.
+
+22. Help_review.
+22.1. Requirements.
+    |None.
+22.2. Initializations.
+22.3. Initial Workspace is empty.
+22.4. Target CLU Call.
+22.4.1.  kamaji help review
+22.4.1.1. Exit Status 1!
+22.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile [ explicit | layered ] ]
+    |
+    |[38;5;15m[1mReview...[0m
+    |
+    |A 'review' request can be used to inspect the masked output differences that
+    |led to a failed grade. The vimdiff command is used to present differences
+    |between the baseline and new output, with the masked baseline output in the
+    |left pane and the new output in the right pane.
+    |
+    |Users not familiar with editor may want to try the following vim commands: the
+    |:help command to request help; the :qa command to exit the editor; the h, j, k,
+    |l, and the arrow keys to move around in a pane; and [ctrl]-h, [ctrl]-l, and
+    |[ctrl]-w combinations to switch panes.
+    |
+    |The review-command configuration variable can be used to change the command
+    |used to perform a review; the comand may be decorated with any number of
+    |options. The command is called from within the working-folder, and is passed
+    |the masked baseline output and masked current output files in that order. A
+    |script can be used as a facade to make the simple, two-parameter interface
+    |match a command that requires something else.
+    |
+    |Kamaji will only review output files that have been given a failing grade.
+    |
+22.5. Finalizations.
+22.6. Workspace Impact...
+22.6.1. The initial and final workspace contents are equivalent.
+
+23. Help_vimdiff.
+23.1. Requirements.
+    |None.
+23.2. Initializations.
+23.3. Initial Workspace is empty.
+23.4. Target CLU Call.
+23.4.1.  kamaji help vimdiff
+23.4.1.1. Exit Status 1!
+23.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile [ explicit | layered ] ]
+    |
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+23.5. Finalizations.
+23.6. Workspace Impact...
+23.6.1. The initial and final workspace contents are equivalent.
+
+CLUT Source File: kamaji.01.usage.clut (23 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.

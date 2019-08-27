@@ -1,0 +1,940 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. ExportRuleset_Clut.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.2.1. mkdir Testing
+1.2.2. spit .kamaji.conf baseline-folder Testing
+1.2.3. spit .kamaji.conf verbosity-level heavy
+1.2.4. create_production_script_alpha ALPHA.bash
+1.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+1.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+1.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+1.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+1.3.3. Testing contains one file.
+1.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+1.4. Target CLU Call.
+1.4.1.  kamaji export ruleset
+1.4.1.1. Exit Status 0!
+1.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |kamaji export ruleset
+1.5. Finalizations.
+1.6. Workspace Impact...
+    |Only in 01.Omega: .kamaji.sed
+    |Only in 01.Omega: Working
+1.6.1. .kamaji.sed (created) is empty.
+1.6.2. Working (created) contains 4 files.
+1.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
+    |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
+    |#
+    |__KamajiClassifiedList[Clut]=" ALPHA.clut"
+    |__KamajiClassifiedList[Delta]=" ALPHA.clut.output.delta"
+    |__KamajiClassifiedList[Grade]=" ALPHA.clut.output.grade"
+    |__KamajiClassifiedList[OutputMasked]=" ALPHA.clut.output.masked"
+    |__KamajiClassifiedList[Output]=" ALPHA.clut.output"
+    |__KamajiClassifiedList[Review]=" ALPHA.clut.output.review"
+    |__KamajiClassifiedList[Script]=" ALPHA.bash ALPHA.clut.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked"
+    |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
+    |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.grade]=" ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.masked]=" ALPHA.clut.output.delta"
+    |__KamajiMyChildrenList[ALPHA.clut.output]=" ALPHA.clut.output.masked"
+    |__KamajiMyChildrenList[ALPHA.clut]=" ALPHA.clut.bash"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[ALPHA.bash]=""
+    |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
+    |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
+    |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.grade ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
+    |__KamajiMyParentalList[ALPHA.clut]=""
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
+    |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
+    |#
+    |#  (eof)
+1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+1.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+1.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+
+2. ExportRuleset_ScriptExercise.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.2.1. mkdir Testing
+2.2.2. spit .kamaji.conf baseline-folder Testing
+2.2.3. spit .kamaji.conf verbosity-level heavy
+2.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+2.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/BETA_exercise.bash
+2.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+2.3.2. Testing contains one file.
+2.3.2.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+2.4. Target CLU Call.
+2.4.1.  kamaji expo
+2.4.1.1. Exit Status 0!
+2.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |kamaji export ruleset
+2.5. Finalizations.
+2.6. Workspace Impact...
+    |Only in 02.Omega: .kamaji.sed
+    |Only in 02.Omega: Working
+2.6.1. .kamaji.sed (created) is empty.
+2.6.2. Working (created) contains 3 files.
+2.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
+    |#
+    |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
+    |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |#
+    |#  (eof)
+2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+
+3. ExportRuleset_CompiledExercise.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.2.1. mkdir Testing
+3.2.2. spit .kamaji.conf baseline-folder Testing
+3.2.3. spit .kamaji.conf verbosity-level heavy
+3.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+3.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+3.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+3.3.2. Testing contains one file.
+3.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+3.4. Target CLU Call.
+3.4.1.  kamaji ex
+3.4.1.1. Exit Status 0!
+3.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |kamaji export ruleset
+3.5. Finalizations.
+3.6. Workspace Impact...
+    |Only in 03.Omega: .kamaji.sed
+    |Only in 03.Omega: Working
+3.6.1. .kamaji.sed (created) is empty.
+3.6.2. Working (created) contains 3 files.
+3.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
+    |#
+    |__KamajiClassifiedList[Delta]=" GAMMA_exercise.output.delta"
+    |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
+    |__KamajiClassifiedList[Grade]=" GAMMA_exercise.output.grade"
+    |__KamajiClassifiedList[Naked]=" GAMMA_exercise"
+    |__KamajiClassifiedList[OutputMasked]=" GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" GAMMA_exercise.output"
+    |__KamajiClassifiedList[Review]=" GAMMA_exercise.output.review"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise.cpp]=" GAMMA_exercise"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.grade GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
+    |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
+    |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
+    |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output .kamaji.sed"
+    |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
+    |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
+    |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
+    |#
+    |#  (eof)
+3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+3.6.2.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+4. ExportRuleset_ThreeKinds_Export.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.2.1. mkdir Testing
+4.2.2. spit .kamaji.conf baseline-folder Testing
+4.2.3. spit .kamaji.conf verbosity-level heavy
+4.2.4. create_production_script_alpha ALPHA.bash
+4.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+4.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
+4.2.7. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+4.3. Initial Workspace contains 6 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+    |Testing/BETA_exercise.bash
+    |Testing/GAMMA_exercise.cpp
+4.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+4.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+4.3.3. Testing contains 3 files.
+4.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+4.3.3.2. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+4.3.3.3. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+4.4. Target CLU Call.
+4.4.1.  kamaji export ruleset
+4.4.1.1. Exit Status 0!
+4.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |kamaji export ruleset
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: .kamaji.sed
+    |Only in 04.Omega: Working
+4.6.1. .kamaji.sed (created) is empty.
+4.6.2. Working (created) contains 6 files.
+4.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
+    |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
+    |#
+    |__KamajiClassifiedList[Clut]=" ALPHA.clut"
+    |__KamajiClassifiedList[Delta]=" GAMMA_exercise.output.delta BETA_exercise.output.delta ALPHA.clut.output.delta"
+    |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade ALPHA.clut.output.grade GAMMA_exercise.output.grade"
+    |__KamajiClassifiedList[Naked]=" GAMMA_exercise"
+    |__KamajiClassifiedList[OutputMasked]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" GAMMA_exercise.output ALPHA.clut.output BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review ALPHA.clut.output.review GAMMA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" ALPHA.bash BETA_exercise.bash ALPHA.clut.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked GAMMA_exercise.output.masked BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
+    |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.grade]=" ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.masked]=" ALPHA.clut.output.delta"
+    |__KamajiMyChildrenList[ALPHA.clut.output]=" ALPHA.clut.output.masked"
+    |__KamajiMyChildrenList[ALPHA.clut]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise.cpp]=" GAMMA_exercise"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.grade GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
+    |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[ALPHA.bash]=""
+    |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
+    |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
+    |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.grade ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
+    |__KamajiMyParentalList[ALPHA.clut]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
+    |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
+    |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output .kamaji.sed"
+    |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
+    |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
+    |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
+    |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
+    |#
+    |#  (eof)
+4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+4.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+4.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+4.6.2.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+4.6.2.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+5. ExportRuleset_ThreeKinds_FastToExport.
+5.1. Requirements.
+    |None.
+5.2. Initializations.
+5.2.1. mkdir Testing
+5.2.2. spit .kamaji.conf baseline-folder Testing
+5.2.3. spit .kamaji.conf verbosity-level heavy
+5.2.4. create_production_script_alpha ALPHA.bash
+5.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+5.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
+5.2.7. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+5.3. Initial Workspace contains 6 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+    |Testing/BETA_exercise.bash
+    |Testing/GAMMA_exercise.cpp
+5.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+5.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+5.3.3. Testing contains 3 files.
+5.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+5.3.3.2. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+5.3.3.3. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+5.4. Target CLU Call.
+5.4.1.  kamaji fast make GAMMA_exercise
+5.4.1.1. Exit Status 0!
+5.4.1.2. STDERR [text]...
+    |kamaji export ruleset
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+5.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+5.5. Finalizations.
+5.6. Workspace Impact...
+    |Only in 05.Omega: .kamaji.sed
+    |Only in 05.Omega: Working
+5.6.1. .kamaji.sed (created) is empty.
+5.6.2. Working (created) contains 8 files.
+5.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise
+5.6.2.2. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
+    |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
+    |#
+    |__KamajiClassifiedList[Clut]=" ALPHA.clut"
+    |__KamajiClassifiedList[Delta]=" GAMMA_exercise.output.delta BETA_exercise.output.delta ALPHA.clut.output.delta"
+    |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade ALPHA.clut.output.grade GAMMA_exercise.output.grade"
+    |__KamajiClassifiedList[Naked]=" GAMMA_exercise"
+    |__KamajiClassifiedList[OutputMasked]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" GAMMA_exercise.output ALPHA.clut.output BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review ALPHA.clut.output.review GAMMA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" ALPHA.bash BETA_exercise.bash ALPHA.clut.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked GAMMA_exercise.output.masked BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
+    |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.grade]=" ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.masked]=" ALPHA.clut.output.delta"
+    |__KamajiMyChildrenList[ALPHA.clut.output]=" ALPHA.clut.output.masked"
+    |__KamajiMyChildrenList[ALPHA.clut]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise.cpp]=" GAMMA_exercise"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.grade GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
+    |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[ALPHA.bash]=""
+    |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
+    |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
+    |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.grade ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
+    |__KamajiMyParentalList[ALPHA.clut]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
+    |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
+    |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output .kamaji.sed"
+    |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
+    |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
+    |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
+    |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
+    |#
+    |#  (eof)
+5.6.2.3. .kamaji.sed is a symbolic link to ../.kamaji.sed
+5.6.2.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
+5.6.2.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+5.6.2.6. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+5.6.2.7. GAMMA_exercise...
+    |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
+5.6.2.8. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+6. ExportRuleset_ThreeKinds_FastToUseExport.
+6.1. Requirements.
+    |None.
+6.2. Initializations.
+6.2.1. mkdir Testing
+6.2.2. spit .kamaji.conf baseline-folder Testing
+6.2.3. spit .kamaji.conf verbosity-level heavy
+6.2.4. create_production_script_alpha ALPHA.bash
+6.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+6.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
+6.2.7. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+6.2.8. kamaji export ruleset
+6.2.8.1. Exit Status 0!
+6.2.8.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |kamaji export ruleset
+6.3. Initial Workspace contains 14 files...
+    |.kamaji.conf
+    |.kamaji.sed
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+    |Testing/BETA_exercise.bash
+    |Testing/GAMMA_exercise.cpp
+    |Working
+    |Working/.kamaji.ruleset.bash
+    |Working/.kamaji.sed
+    |Working/ALPHA.bash
+    |Working/ALPHA.clut
+    |Working/BETA_exercise.bash
+    |Working/GAMMA_exercise.cpp
+6.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+6.3.2. .kamaji.sed is empty.
+6.3.3. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+6.3.4. Testing contains 3 files.
+6.3.4.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+6.3.4.2. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+6.3.4.3. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+6.3.5. Working contains 6 files.
+6.3.5.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
+    |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
+    |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
+    |#
+    |__KamajiClassifiedList[Clut]=" ALPHA.clut"
+    |__KamajiClassifiedList[Delta]=" GAMMA_exercise.output.delta BETA_exercise.output.delta ALPHA.clut.output.delta"
+    |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade ALPHA.clut.output.grade GAMMA_exercise.output.grade"
+    |__KamajiClassifiedList[Naked]=" GAMMA_exercise"
+    |__KamajiClassifiedList[OutputMasked]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" GAMMA_exercise.output ALPHA.clut.output BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review ALPHA.clut.output.review GAMMA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" ALPHA.bash BETA_exercise.bash ALPHA.clut.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked GAMMA_exercise.output.masked BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
+    |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.grade]=" ALPHA.clut.output.review"
+    |__KamajiMyChildrenList[ALPHA.clut.output.masked]=" ALPHA.clut.output.delta"
+    |__KamajiMyChildrenList[ALPHA.clut.output]=" ALPHA.clut.output.masked"
+    |__KamajiMyChildrenList[ALPHA.clut]=" ALPHA.clut.bash"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise.cpp]=" GAMMA_exercise"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.grade GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.review"
+    |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
+    |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[ALPHA.bash]=""
+    |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
+    |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
+    |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.grade ALPHA.clut.output.delta"
+    |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
+    |__KamajiMyParentalList[ALPHA.clut]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
+    |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
+    |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output .kamaji.sed"
+    |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
+    |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
+    |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
+    |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
+    |#
+    |#  (eof)
+6.3.5.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+6.3.5.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+6.3.5.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+6.3.5.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+6.3.5.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+6.4. Target CLU Call.
+6.4.1.  kamaji fast make GAMMA_exercise
+6.4.1.1. Exit Status 0!
+6.4.1.2. STDERR [text]...
+    |[38;5;12msource Working/.kamaji.ruleset.bash[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+6.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+6.5. Finalizations.
+6.6. Workspace Impact...
+    |Only in 06.Omega/Working: .kamaji.last_target.text
+    |Only in 06.Omega/Working: GAMMA_exercise
+6.6.1. Working/.kamaji.last_target.text (created)...
+    |GAMMA_exercise
+6.6.2. Working/GAMMA_exercise (created)...
+    |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
+
+CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.

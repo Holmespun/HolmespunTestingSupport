@@ -15,17 +15,18 @@
 #----------------------------------------------------------------------------------------------------------------------
 #
 #	AppendArrayIndexValue
-#	BackupIfExists
 #	DiagnosticHeavy
 #	DiagnosticLight
 #	DiagnosticComplex
 #	EchoAbsoluteDirectorySpecFor
 #	EchoAgeRelation
-#	EchoAndExecute
-#	EchoError
-#	EchoAndExit
+#	EchoAndExecuteOutputSwap
+#	EchoAndExecuteInWorking
+#	EchoErrorAndExit
 #	EchoExecutableFilesMatching
+#	EchoFailureAndExit
 #	EchoFileSpec
+#	EchoImportantMessage
 #	EchoMeaningOf
 #	EchoPara
 #	EchoPara80
@@ -34,8 +35,10 @@
 #	SortArray
 #
 #	KamajiEchoArrayAssignments
+#	KamajiEchoListOfDecendantFName
 #	KamajiExitAfterUsage
 #	KamajiFileClassification
+#	KamajiOrderByLatestBaseSource
 #
 #	KamajiConfigurationCheckValues
 #	KamajiConfigurationEchoValue
@@ -46,7 +49,9 @@
 #	KamajiModifierUsage_configure
 #	KamajiModifierUsage_grades
 #	KamajiModifierUsage_export
+#	KamajiModifierUsage_invoke
 #	KamajiModifierUsage_make
+#	KamajiModifierUsage_review
 #	KamajiModifierUsage_show
 #	KamajiModifierUsage_fast
 #	KamajiModifierUsage
@@ -58,13 +63,17 @@
 #	KamajiBuildRulesForTestingSource_Script
 #	KamajiBuildRulesForTestingSource_Unknown
 #	KamajiBuildRulesForTestingSource
+#	KamajiBuildRulesLoadXtraDependents
 #	KamajiBuildRules
 #
 #	KamajiRequestConfigure
 #	KamajiRequestExport_ruleset
 #	KamajiRequestExport
+#	KamajiRequestGradeOrOutputOrReview
 #	KamajiRequestGrade
+#	KamajiRequestInvoke
 #	KamajiRequestMake
+#	KamajiRequestReview
 #	KamajiRequestShow_makefile_explicit
 #	KamajiRequestShow_makefile_layered
 #	KamajiRequestShow_makefile
@@ -73,10 +82,15 @@
 #	KamajiMake_Delta_from_GoldenMasked_OutputMasked
 #	KamajiMake_Delta_from_OutputMasked
 #	KamajiMake_Delta_from_OutputMasked_GoldenMasked
+#	KamajiMake_GoldenMasked_from_Golden_SedMaskingScript
 #	KamajiMake_GoldenMasked_from_SedMaskingScript_Golden
 #	KamajiMake_Grade_from_Delta
+#	KamajiMake_Output_from_Naked
 #	KamajiMake_Output_from_Script
+#	KamajiMake_OutputMasked_from_Output_SedMaskingScript
 #	KamajiMake_OutputMasked_from_SedMaskingScript_Output
+#	KamajiMake_Review_from_Delta_Grade
+#	KamajiMake_Review_from_Grade_Delta
 #	KamajiMake_Script_from_Clut_Naked
 #	KamajiMake_Script_from_Clut_Script
 #	KamajiMake_Script_from_Naked_Clut
@@ -124,6 +138,9 @@ source $(whereHolmespunLibraryBashing)/Library/spit_spite_spitn_and_spew.bash
 declare -r __KamajiScriptName=$(basename ${0})
 
 declare -r __KamajiConfigurationFName=.${__KamajiScriptName%%.*}.conf
+declare -r __KamajiXtraDependentFName=.${__KamajiScriptName%%.*}.deps
+
+declare -r __KamajiIfsOriginal="${IFS}"
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -131,9 +148,11 @@ declare -A __KamajiConfigurationValue
 
 declare    __KamajiGoldenDSpec="TBD"
 
-declare -r __KamajiInfoTag=$(echoInColorYellow "INFO:")
-
 declare    __KamajiDataFileNameList="TBD"
+
+declare    __KamajiLastMakeTargetFSpec="TBD"
+
+declare    __KamajiReviewCommand="TBD"
 
 declare    __KamajiScriptExtensionList="TBD"
 
@@ -148,13 +167,24 @@ declare    __KamajiSedScriptFName="TBD"
 
 declare    __KamajiRulesetIsReady="false"
 
+#----------------------------------------------------------------------------------------------------------------------
+
 declare -A __KamajiBaseSourceList
 declare -A __KamajiClassifiedList
 declare -A __KamajiMyChildrenList
 declare -A __KamajiMyParentalList
 declare -A __KamajiRepresentative
+declare -A __KamajiXtraParentList
 
-declare -A __KamajiUserDependants
+#----------------------------------------------------------------------------------------------------------------------
+
+declare -r __KamajiErrorTag=$(echoInColorRedBold "ERROR:")
+
+declare -r __KamajiFailTag=$(echoInColorRedBold "FAIL:")
+
+declare -r __KamajiInfoTag=$(echoInColorYellow "INFO:")
+
+declare -r __KamajiPassTag=$(echoInColorGreenBold "PASS:")
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -178,21 +208,11 @@ function AppendArrayIndexValue() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function BackupIfExists() {
-  #
-  local -r TargetFSpec=${1}
-  #
-  [ -e ${TargetFSpec} ] && EchoAndExecute mv ${TargetFSpec} ${TargetFSpec}.was
-  #
-}
-
-#----------------------------------------------------------------------------------------------------------------------
-
 function DiagnosticHeavy() { [ "${__KamajiVerbosityRequested}" = "heavy" ] && echoInColorBlue "${*}" 1>&2; }
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function DiagnosticLight() { [ "${__KamajiVerbosityRequested}" != "quiet" ] && echoInColorYellow "${*}" 1>&2; }
+function DiagnosticLight() { [ "${__KamajiVerbosityRequested}" != "quiet" ] && echo "${*}" 1>&2; }
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -305,24 +325,51 @@ function EchoAgeRelation() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function EchoAndExecute() {
+function EchoAndExecuteOutputSwap() {
   #
   local -r SystemRequest="${*}"
   #
-  DiagnosticHeavy "${SystemRequest}" 1>&2
-  #
-  local -r ErrorMessage=$(eval ${SystemRequest} 2>&1)
-  #
-  local    Status=${?}
+  exec 5>&2
+     #
+     local -r ErrorMessage=$(eval ${SystemRequest} 2>&1 1>&5)
+     #
+     local    Status=${?}
+     #
+  exec 5>&-
   #
   if [ ${#ErrorMessage} -gt 0 ]
   then
      #
      [ ${Status} -eq 0 ] && Status=1
      #
-     echoInColorRed ${ErrorMessage} 1>&2
+     echoInColorRed ${ErrorMessage}
      #
   fi
+  #
+  return ${Status}
+  #
+}
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoAndExecuteInWorking() {
+  #
+  local -r SystemRequest="${*}"
+  #
+  local -i Status
+  #
+  DiagnosticHeavy "${SystemRequest}" 1>&2
+  #
+  cd ${__KamajiWorkinDSpec}
+     #
+     IFS=
+        #
+        EchoAndExecuteOutputSwap ${SystemRequest} 2>&1 1>&2
+        #
+        Status=${?}
+        #
+     IFS="${__KamajiIfsOriginal}"
+     #
+  cd ..
   #
   return ${Status}
   #
@@ -330,27 +377,13 @@ function EchoAndExecute() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function EchoError() {
-  #
-  local -r    Message=${*}
-  #
-  local -r    ErrorTag=$(echoInColorRedBold "ERROR:")
-  #
-  echoInColorWhiteBold "${ErrorTag} ${Message}" 1>&2
-  #
-  return 1
-  #
-}
-
-#----------------------------------------------------------------------------------------------------------------------
-
-function EchoAndExit() {
+function EchoErrorAndExit() {
   #
   local -r -i ExitStatus=${1}
   shift 1
   local -r    Message=${*}
   #
-  EchoError "${Message}"
+  EchoImportantMessage "${__KamajiErrorTag}" "${Message}"
   #
   exit ${ExitStatus}
   #
@@ -399,6 +432,20 @@ function EchoExecutableFilesMatching() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function EchoFailureAndExit() {
+  #
+  local -r -i ExitStatus=${1}
+  shift 1
+  local -r    Message=${*}
+  #
+  EchoImportantMessage "${__KamajiFailTag}" "${Message}"
+  #
+  exit ${ExitStatus}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function EchoFileSpec() {
   #
   local -r TargetDSpec=${1}
@@ -410,6 +457,20 @@ function EchoFileSpec() {
   [ ${#TargetFType} -gt 0 ] && Result+=.${TargetFType}
   #
   echo "${Result}"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoImportantMessage() {
+  #
+  local -r    Tag=${1}
+  shift 1
+  local -r    Message=${*}
+  #
+  echo "${Tag} $(echoInColorWhiteBold ${Message})" 1>&2
+  #
+  return 1
   #
 }
 
@@ -527,7 +588,42 @@ function KamajiEchoArrayAssignments() {
     #
   done
   #
-  spit ${RulesetFSpec} "#"
+  [ ${#KeyValueList} -gt 0 ] && spit ${RulesetFSpec} "#"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiEchoListOfDecendantFName() {
+  #
+  local -r SourceFName=${1}
+  local -r TargetClass=${2}
+  #
+  local -r SourceFType=$(Xtension ${SourceFName})
+  #
+  local -r SourceClass=$(KamajiFileClassification ${SourceFName} ${SourceFType})
+  #
+  local    ChildsFName
+  #
+  local    ResultFList=
+  #
+  if [ "${SourceClass}" = "${TargetClass}" ]
+  then
+     #
+     echo "${SourceFName}"
+     #
+  else
+     #
+     for ChildsFName in ${__KamajiMyChildrenList[${SourceFName}]}
+     do
+       #
+       ResultFList+=" $(KamajiEchoListOfDecendantFName ${ChildsFName} ${TargetClass})"
+       #
+     done
+     #
+     echo " ${ResultFList}"
+     #
+  fi
   #
 }
 
@@ -537,7 +633,7 @@ function KamajiExitAfterUsage() {
   #
   local -r Message=${*}
   #
-  EchoError "${Message}"
+  EchoImportantMessage "${__KamajiErrorTag}" "${Message}"
   #
   KamajiModifierUsage N/A
   #
@@ -575,6 +671,11 @@ function KamajiFileClassification() {
      #
      Result="Clut"
      #
+  elif [ "${SourceFType}" = "cpp" ]
+  then
+     #
+     Result="Elf"
+     #
   elif [ "${SourceFType}" = "delta" ]
   then
      #
@@ -602,10 +703,10 @@ function KamajiFileClassification() {
      #
      Result="Output"
      #
-  elif [ "${SourceFType}" = "cpp" ]
+  elif [ "${SourceFType}" = "review" ]
   then
      #
-     Result="Elf"
+     Result="Review"
      #
   elif [ ${#SourceFType} -eq 0 ]
   then
@@ -615,6 +716,46 @@ function KamajiFileClassification() {
   fi
   #
   echo "${Result}"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiOrderByLatestBaseSource() {
+  #
+  local -r TargetFList="${*}"
+  #
+  local    TargetFName
+  #
+  local    SortingHat=
+  #
+  local -i BigTime
+  local -i OneTime
+  #
+  for TargetFName in ${TargetFList}
+  do
+    #
+    BigTime=0
+    #
+    for SourceFName in ${__KamajiBaseSourceList[${TargetFName}]}
+    do
+      #
+      OneTime=$(stat --format="%Y" ${SourceFName})
+      #
+      [ ${OneTime} -gt ${BigTime} ] && BigTime=${OneTime}
+      #
+    done
+    #
+    SortingHat+="${BigTime}:${TargetFName} "
+    #
+  done
+  #
+  for TargetFName in $(printf ${SortingHat// /\\n} | sort --reverse)
+  do
+    #
+    echo "${TargetFName##*:}"
+    #
+  done
   #
 }
 
@@ -667,7 +808,7 @@ function KamajiConfigurationEchoValue() {
 
 function KamajiConfigurationLoadValues() {
   #
-  local Key Value Tail Directory
+  local Key Value Directory
   #
   for Directory in . ${HOME}
   do
@@ -675,15 +816,10 @@ function KamajiConfigurationLoadValues() {
     if [ -s ${Directory}/${__KamajiConfigurationFName} ]
     then
        #
-       while read Key Value Tail
+       while read Key Value
        do
          #
-         if [ "${Key^^}" = "DEPENDANT:" ]
-         then
-            #
-	    AppendArrayIndexValue __KamajiUserDependants "$(basename ${Value})" "$(basename ${Tail})"
-            #
-         elif [ ${#Key} -gt 0 ] && [ "${Key:0:1}" != "#" ]
+         if [ ${#Key} -gt 0 ] && [ "${Key:0:1}" != "#" ]
 	 then
             #
             KeyIsNotListCheck=${Key%-list}
@@ -713,6 +849,8 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiDataFileNameList=":${__KamajiDataFileNameList// /:}:"
   #
+  __KamajiReviewCommand=$(KamajiConfigurationEchoValue review-command "vimdiff")
+  #
   __KamajiScriptExtensionList=$(KamajiConfigurationEchoValue script-type-list "bash sh py rb")
   #
   __KamajiScriptExtensionList=":${__KamajiScriptExtensionList// /:}:"
@@ -725,6 +863,15 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder Working)
   #
+  local LastMakeTargetFName=$(KamajiConfigurationEchoValue last-target-file-name .kamaji.last_target.text)
+  #
+  __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFName}
+  #
+# local LastMakeTargetFType=$(Xtension ${LastMakeTargetFName})
+# local LastMakeTargetFRoot=${LastMakeTargetFName%.${LastMakeTargetFType}}
+# #
+# __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFRoot}.$$.${LastMakeTargetFType}
+# #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -792,6 +939,9 @@ function KamajiModifierUsage_grades() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Grade...")"
   #
+  EchoPara80	"A 'grade' request will determine the pass or fail status of a one or more"			\
+		"CLUT or unit test exercise."
+  #
   EchoPara80	"A passing grade is granted for a test program when the program produces output"		\
 		"that matches its expected/golden baseline output."						\
 		"Comparisons are made to output files only after they are masked to remove"			\
@@ -799,6 +949,24 @@ function KamajiModifierUsage_grades() {
   #
   EchoPara80	"Masking is performed by a user-defined sed script;"						\
 		"the mask-sed-script configuration value can be used to specify the location of that script."
+  #
+  EchoPara80	"A 'grade last' request with grade the output associated with the last make target processed"	\
+		"by kamaji the last time it was invoked."							\
+		"The \"last\" target is the same no matter where it appears in the list of targets"		\
+		"passed to a 'grade' request."
+  #
+  EchoPara80	"A 'grade' request without any specific targets is the same as a 'grade' request for all known"	\
+		"targets."											\
+		"Furthermore, those targets will be evaluated based when their base sources were"		\
+		"last modified."										\
+		"In this way, when the user modifies the source file for a specific CLUT or unit test,"		\
+		"then kamaji will give evaluation of that test a higher priority than for all others."
+  #
+  EchoPara80	"Although grades are identified using the \"grade\" file name extension,"			\
+		"the actual grade is not stored."								\
+		"This practice will cause kamaji to evaluate a CLUT or unit test exercise,"			\
+		"and display the assigned grade, every time the user requests it."				\
+		"As such, the user will get explicit grade feedback for every test every time it is requested."
   #
 }
 
@@ -833,6 +1001,31 @@ function KamajiModifierUsage_export() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiModifierUsage_invoke() {
+  #
+  local -r Request="${1}"
+  #
+  EchoPara80	"$(echoInColorWhiteBold "Execute|Invoke|Run...")"
+  #
+  EchoPara80	"An 'invoke' request causes each CLUT or unit test exercise to be executed."			\
+		"Output from each CLUT or unit test exercise is captured in an output file."
+  #
+  EchoPara80	"An 'invoke last' request will invoke the last make target processed"				\
+		"by kamaji the last time it was itself invoked."						\
+		"The \"last\" target is the same no matter where it appears in the list of targets"		\
+		"passed to an 'invoke' request."
+  #
+  EchoPara80	"An 'invoke' request without any specific targets is the same as an 'invoke' request for"	\
+		"all known targets."										\
+		"Furthermore, those targets will be invoked based when their base sources were"			\
+		"last modified."										\
+		"In this way, when the user modifies the source file for a specific CLUT or unit test,"		\
+		"then kamaji will give output generation for that test a higher priority than for all others."
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiModifierUsage_make() {
   #
   local -r Request="${1}"
@@ -845,7 +1038,45 @@ function KamajiModifierUsage_make() {
 		"itself, then kamaji ignores the request; it is not an error."					\
 		"Files are only remade after the files that thay are created from are remade, if necessary."	\
 		"Files are only remade when files that thay are created from have changed;"			\
-		"either because the user changed them or because they themselves were remads ."
+		"either because the user changed them or because they themselves were remade."
+  #
+  EchoPara80	"A 'make grades' request is the same as a 'grade' request: Every output file is generated,"	\
+		"compared to its associated baseline, and then graded based on that comparision."
+  #
+  EchoPara80	"A 'make outputs' request is the same as an 'invoke' request: Every output file is generated."
+  #
+  EchoPara80	"A 'make last' request will attempt to remake the last specific target of"			\
+		"a 'grade' or 'invoke' or 'make' request."							\
+		"This is an especially useful shorthand when kamaji is used for test-driven development."
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiModifierUsage_review() {
+  #
+  local -r Request="${1}"
+  #
+  EchoPara80	"$(echoInColorWhiteBold "Review...")"
+  #
+  EchoPara80	"A 'review' request can be used to inspect the masked output differences that led to a"		\
+		"failed grade."											\
+		"The vimdiff command is used to present differences between the baseline and new output, "	\
+		"with the masked baseline output in the left pane and the new output in the right pane."
+  #
+  EchoPara80	"Users not familiar with editor may want to try the following vim commands:"			\
+		"the :help command to request help; the :qa command to exit the editor;"			\
+		"the h, j, k, l, and the arrow keys to move around in a pane;"					\
+		"and [ctrl]-h, [ctrl]-l, and [ctrl]-w combinations to switch panes."
+  #
+  EchoPara80	"The review-command configuration variable can be used to change the command used to perform a"	\
+		"review; the comand may be decorated with any number of options."				\
+		"The command is called from within the working-folder, and is passed the"			\
+		"masked baseline output and masked current output files in that order."				\
+		"A script can be used as a facade to make the simple, two-parameter interface"			\
+		"match a command that requires something else."
+  #
+  EchoPara80	"Kamaji will only review output files that have been given a failing grade."
   #
 }
 
@@ -938,6 +1169,8 @@ function KamajiModifierFast() {
      #
   fi
   #
+  DiagnosticHeavy "source ${RulesetFSpec}"
+  #
   source ${RulesetFSpec}
   #
   __KamajiRulesetIsReady="true"
@@ -974,28 +1207,34 @@ function KamajiModifierUsage() {
   echo ""
   echo "Where <modifier> is one of the following:"
   echo "      fast"
+  echo "      help"
   echo "      silent"
   echo "      verbose"
   echo ""
   echo "Where <request> is one of the following:"
-  echo "      export [ruleset]"
-  echo "      grade  [<filename>]..."
-  echo "      help   [<modifier>|<request>]"
-  echo "      make   [<filename>]..."
+  echo "      export [ ruleset ]"
+  echo "      grade  [ <filename> | last ]..."
+  echo "      invoke [ <filename> | last ]..."
+  echo "      make   [ <filename> | last | grades | outputs ]..."
+  echo "      review [ <filename> | last ]..."
   echo "      set    <name> <value>"
-  echo "      show   [makefile [explicit|layered]]"
+  echo "      show   [ makefile [ explicit | layered ] ]"
   echo ""
   #
   declare -A UsageModifierSubjectList
   #
   UsageModifierSubjectList[configure]=configure
   UsageModifierSubjectList[export]=export
+  UsageModifierSubjectList[execute]=invoke
   UsageModifierSubjectList[fast]=fast
   UsageModifierSubjectList[grades]=grades
+  UsageModifierSubjectList[invoke]=invoke
   UsageModifierSubjectList[help]=usage
   UsageModifierSubjectList[make]=make
   UsageModifierSubjectList[noisy]=verbose_and_silent
   UsageModifierSubjectList[quiet]=verbose_and_silent
+  UsageModifierSubjectList[review]=review
+  UsageModifierSubjectList[run]=invoke
   UsageModifierSubjectList[set]=configure
   UsageModifierSubjectList[show]=show
   UsageModifierSubjectList[silent]=verbose_and_silent
@@ -1012,7 +1251,8 @@ function KamajiModifierUsage() {
   if [ "${ModifiedCorrected}" = "NA" ]
   then
      #
-     EchoPara80	"Synonyms configure (set), help (usage), noisy (verbose), and quiet (silent) are supported."	\
+     EchoPara80	"Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help)"			\
+		"are supported."										\
 		"Modifier and request abbreviations are also supported;"					\
 		"ambiguity is resolved using alphabetical order."						\
 		"No other modifiers or requests are applied after a usage request is fulfilled."
@@ -1021,8 +1261,8 @@ function KamajiModifierUsage() {
 		"for example, \"${__KamajiScriptName} help fast\" or \"${__KamajiScriptName} usage grade\""
      #
      EchoPara80	"CLUT cases and unit test exercises are used and evaluated in similar ways:"			\
-		"compile (if not already executable), execute to produce output, mask that output, compare the"	\
-		"masked output to its baseline, and then grade."						\
+		"compile it (if not already executable), invoke it to produce output, mask that output,"	\
+		"compare the masked output to its baseline, and then grade it based on that comparison."
      #
      EchoPara80	"CLUT definitions are compiled into Bash scripts."						\
 		"Unit test exercises may be written in compilable code or a scripting language."		\
@@ -1114,11 +1354,11 @@ function KamajiBuildRulesForTestingSource_Clut() {
     #
   done
   #
-  [ ${#RunnerFSpec} -eq 0 ] && EchoAndExit 1 "Unable to find the executable file exercised by ${SourceFSpec}."
+  [ ${#RunnerFSpec} -eq 0 ] && EchoErrorAndExit 1 "Unable to find the executable file exercised by ${SourceFSpec}."
   #
   local -r RunnerFName=$(basename ${RunnerFSpec})
   #
-  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
   #
   #  All SourceFSpec are somewhere in __KamajiGoldenDSpec. All TargetFName are in __KamajiWorkinDSpec.
   #
@@ -1148,6 +1388,7 @@ function KamajiBuildRulesForTestingSource_Clut() {
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFName}.output.masked"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFName}.output.delta"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFName}.output.grade"	"${SourceFSpec}"
+  AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFName}.output.review"	"${SourceFSpec}"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFName}.output.masked"	"${__KamajiSedScriptFSpec}"
   #						----------------		-----------------
@@ -1166,6 +1407,8 @@ function KamajiBuildRulesForTestingSource_Clut() {
   AppendArrayIndexValue __KamajiMyChildrenList	"${SourceFName}.output"		"${SourceFName}.output.masked"
   AppendArrayIndexValue __KamajiMyChildrenList	"${SourceFName}.output.masked"	"${SourceFName}.output.delta"
   AppendArrayIndexValue __KamajiMyChildrenList	"${SourceFName}.output.delta"	"${SourceFName}.output.grade"
+  AppendArrayIndexValue __KamajiMyChildrenList	"${SourceFName}.output.delta"	"${SourceFName}.output.review"
+  AppendArrayIndexValue __KamajiMyChildrenList	"${SourceFName}.output.grade"	"${SourceFName}.output.review"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiMyChildrenList	"${__KamajiSedScriptFName}"	"${SourceFName}.output.masked"
   #						----------------		-----------------
@@ -1183,7 +1426,7 @@ function KamajiBuildRulesForTestingSource_Elf() {
   #
   local -r SourceFRoot=${SourceFName%.${SourceFType}}
   #
-  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
   #
   #  All SourceFName are somewhere in __KamajiGoldenDSpec. All TargetFName are in __KamajiWorkinDSpec.
   #
@@ -1206,6 +1449,7 @@ function KamajiBuildRulesForTestingSource_Elf() {
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.masked"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.delta"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.grade"	"${SourceFSpec}"
+  AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.review"	"${SourceFSpec}"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.masked"	"${__KamajiSedScriptFSpec}"
   #						----------------		-----------------
@@ -1223,6 +1467,8 @@ function KamajiBuildRulesForTestingSource_Elf() {
   AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output"		"${SourceFRoot}.output.masked"
   AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.masked"	"${SourceFRoot}.output.delta"
   AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.delta"	"${SourceFRoot}.output.grade"
+  AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.delta"	"${SourceFRoot}.output.review"
+  AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.grade"	"${SourceFRoot}.output.review"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiMyChildrenList	"${__KamajiSedScriptFName}"	"${SourceFRoot}.output.masked"
   #						----------------		-----------------
@@ -1240,7 +1486,7 @@ function KamajiBuildRulesForTestingSource_Output() {
   #
   local -r SourceFRoot=${SourceFName%.${SourceFType}}
   #
-  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
   #
   #  All SourceFName are somewhere in __KamajiGoldenDSpec. All TargetFName are in __KamajiWorkinDSpec.
   #
@@ -1262,6 +1508,7 @@ function KamajiBuildRulesForTestingSource_Output() {
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.golden.masked"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.delta"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.grade"	"${SourceFSpec}"
+  AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.review"	"${SourceFSpec}"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.golden.masked"	"${__KamajiSedScriptFSpec}"
   #						----------------		-----------------
@@ -1293,7 +1540,7 @@ function KamajiBuildRulesForTestingSource_Script() {
   #
   local -r SourceFRoot=${SourceFName%.${SourceFType}}
   #
-  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
   #
   #  All SourceFName are somewhere in __KamajiGoldenDSpec. All TargetFName are in __KamajiWorkinDSpec.
   #
@@ -1316,6 +1563,7 @@ function KamajiBuildRulesForTestingSource_Script() {
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.masked"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.delta"	"${SourceFSpec}"
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.grade"	"${SourceFSpec}"
+  AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.review"	"${SourceFSpec}"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiBaseSourceList	"${SourceFRoot}.output.masked"	"${__KamajiSedScriptFSpec}"
   #						----------------		-----------------
@@ -1332,6 +1580,8 @@ function KamajiBuildRulesForTestingSource_Script() {
   AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output"		"${SourceFRoot}.output.masked"
   AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.masked"	"${SourceFRoot}.output.delta"
   AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.delta"	"${SourceFRoot}.output.grade"
+  AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.delta"	"${SourceFRoot}.output.review"
+  AppendArrayIndexValue	__KamajiMyChildrenList	"${SourceFRoot}.output.grade"	"${SourceFRoot}.output.review"
   #						----------------		-----------------
   AppendArrayIndexValue __KamajiMyChildrenList	"${__KamajiSedScriptFName}"	"${SourceFRoot}.output.masked"
   #						----------------		-----------------
@@ -1380,39 +1630,17 @@ function KamajiBuildRulesForTestingSource() {
   if [ ${#DataFileNameLess} -ne ${#__KamajiDataFileNameList} ]
   then
      #
-     #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
-     #  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
-     #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
-     #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
-     #
-     #  Use of __KamajiMyChildrenList will cause the file to be added to the __KamajiMyParentalList of the children,
-     #  which in turn will cause the parent to be an unexpected part of the Make equasion for the child. For example,
-     #  adding a script as a dependant of a CLUT causes kamaji to think it need to create the CLUT from the script.
-     #  The __KamajiUserDependants are indirect sources of their targets, not direct ones.
+     #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
      #
      __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
-     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
      #
-     if [ "${__KamajiUserDependants[${SourceFName}]+IS_SET}" = "IS_SET" ]
-     then
-        #
-        for TargetFName in ${__KamajiUserDependants[${SourceFName}]}
-        do
-          #
-          AppendArrayIndexValue __KamajiBaseSourceList "${TargetFName}" "${SourceFName}"
-#         AppendArrayIndexValue __KamajiMyChildrenList "${SourceFName}" "${TargetFName}"
-          #
-        done
-        #
-     fi
+     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
      #
      return
      #
   fi
   #
   local    SourceClass=$(KamajiFileClassification ${SourceFSpec} ${SourceFType})
-  #
-#?[ "${SourceClass}" = "Unknown" ] && SourceClass="Elf"
   #
   local -r FunctionWeWant=${FUNCNAME}_${SourceClass}
   #
@@ -1421,6 +1649,49 @@ function KamajiBuildRulesForTestingSource() {
   [ ${#FunctionToCall} -eq 0 ] && KamajiExitAfterUsage "Fatal programming flaw; ${FunctionWeWant} is undefined."
   #
   ${FunctionToCall} ${SourceFSpec} ${SourceFType}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiBuildRulesLoadXtraDependents() {
+  #
+  local Directory ExternFSpec ExternFName TargetFSpec TargetFName
+  #
+  for Directory in . ${HOME}
+  do
+    #
+    if [ -s ${Directory}/${__KamajiXtraDependentFName} ]
+    then
+       #
+       while read ExternFSpec TargetFSpec
+       do
+         #
+         if [ -s ${ExternFSpec} ]
+	 then
+            #
+	    #  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+            #
+            ExternFName=$(basename ${ExternFSpec})
+            TargetFName=$(basename ${TargetFSpec})
+            #
+            [ "${ExternFSpec:0:1}" != "/" ] && ExternFSpec="../${ExternFSpec}"
+            #
+	    AppendArrayIndexValue __KamajiXtraParentList "${TargetFName}" "${ExternFName}"
+            #
+	    __KamajiRepresentative["${ExternFName}"]="../${ExternFSpec}"
+            #
+         else
+            #
+            EchoErrorAndExit 1 "Errant specification in extra dependant file: Cannot find the '${ExternFSpec}' file."
+            #
+         fi
+         #
+       done < ${Directory}/${__KamajiXtraDependentFName}
+       #
+    fi
+    #
+  done
   #
 }
 
@@ -1439,7 +1710,7 @@ function KamajiBuildRules() {
   #
   #  The Masking sed script is also golden.
   #
-  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+  #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
   #  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
   #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
   #
@@ -1479,6 +1750,8 @@ function KamajiBuildRules() {
   #  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
   #
   __KamajiClassifiedList[Grade]=
+  __KamajiClassifiedList[Output]=
+  __KamajiClassifiedList[Review]=
   #
   for SourceFName in ${!__KamajiMyParentalList[*]}
   do
@@ -1491,7 +1764,7 @@ function KamajiBuildRules() {
   #
   #  If the user requested a fast build without a saved ruleset then save the current ruleset for use next time.
   #
-  [ "${__KamajiRulesetIsReady}" = "save" ] && KamajiRequestExport_ruleset create ruleset
+  [ "${__KamajiRulesetIsReady}" = "save" ] && KamajiRequestExport_ruleset export ruleset
   #
   #  Mark the ruleset ready.
   #
@@ -1532,11 +1805,11 @@ function KamajiRequestExport_ruleset() {
   if [ "${__KamajiBaseSourceList[${RulesetFName}]+IS_SET}" = "IS_SET" ]
   then
      #  
-     EchoAndExit 1 "The '${RulesetFName}' name cannot be used to store the ruleset."
+     EchoErrorAndExit 1 "The '${RulesetFName}' name cannot be used to store the ruleset."
      #  
   fi
   #
-  [ -e ${RulesetFSpec} ] && EchoAndExecute mv ${RulesetFSpec} ${RulesetFSpec}.was
+  [ -e ${RulesetFSpec} ] && EchoAndExecuteInWorking mv ${RulesetFName} ${RulesetFName}.was
   #
   spit ${RulesetFSpec} "#"
   spit ${RulesetFSpec} "#  ${RulesetFSpec}"
@@ -1547,12 +1820,14 @@ function KamajiRequestExport_ruleset() {
 				"What files are direct sources of this target?"
   spit ${RulesetFSpec} "#  __KamajiMyChildrenList[SourceFName]=\"TargetFName...\":"			\
 				"What files are created directly from this source?"
-  spit ${RulesetFSpec} "#  __KamajiRepresentative[TargetFName]=\"SourceFSpec\":"			\
-				"What external file does this working file name represent?"
   spit ${RulesetFSpec} "#  __KamajiMyParentalList[TargetFName]=\"SourceFName...\":"			\
 				"What files are direct sources of this target?"
+  spit ${RulesetFSpec} "#  __KamajiRepresentative[TargetFName]=\"SourceFSpec\":"			\
+				"What external file does this file name represent?"
+  spit ${RulesetFSpec} "#  __KamajiXtraParentList[TargetFName]=\"SourceFName...\":"			\
+				"What files are user-defined sources of target?"
   spit ${RulesetFSpec} "#"
-  spit ${RulesetFSpec} "#  Where FName == file name withing the working-folder"
+  spit ${RulesetFSpec} "#  Where FName == file name within the working-folder"
   spit ${RulesetFSpec} "#        FName == file specification outside of the working-folder"
   #
   KamajiEchoArrayAssignments __KamajiBaseSourceList ${!__KamajiBaseSourceList[*]} | sort >> ${RulesetFSpec}
@@ -1560,6 +1835,7 @@ function KamajiRequestExport_ruleset() {
   KamajiEchoArrayAssignments __KamajiMyChildrenList ${!__KamajiMyChildrenList[*]} | sort >> ${RulesetFSpec}
   KamajiEchoArrayAssignments __KamajiMyParentalList ${!__KamajiMyParentalList[*]} | sort >> ${RulesetFSpec}
   KamajiEchoArrayAssignments __KamajiRepresentative ${!__KamajiRepresentative[*]} | sort >> ${RulesetFSpec}
+  KamajiEchoArrayAssignments __KamajiXtraParentList ${!__KamajiXtraParentList[*]} | sort >> ${RulesetFSpec}
   #
   spit ${RulesetFSpec} "#"
   spit ${RulesetFSpec} "#  (eof)"
@@ -1587,41 +1863,97 @@ function KamajiRequestExport() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function KamajiRequestGrade() {
+function KamajiRequestGradeOrOutputOrReview() {
   #
   local -r Request=${1}
-  shift 1
-  local    SourceFList="${*}"
+  local -r TargetClass=${2}
+  shift 2
+  local -r SourceFList="${*}"
   #
-  local    SourceFName
+  local    SourceFName TargetFName
+  #
+  local    TargetFList=
   #
   if [ ${#SourceFList} -eq 0 ]
   then
      #
-     if [ ${#__KamajiClassifiedList[Grade]} -gt 0 ]
+     if [ ${#__KamajiClassifiedList[${TargetClass}]} -gt 0 ]
      then
-        SourceFList=${__KamajiClassifiedList[Grade]}
+        TargetFList=$(KamajiOrderByLatestBaseSource ${__KamajiClassifiedList[${TargetClass}]})
      else
-	DiagnosticHeavy "# There are no files to grade; no CLUT or unit test exercises defined."
+	DiagnosticHeavy "# There are no files to ${Request}; no CLUT or unit test exercises defined."
      fi
+     #
+  else
+     #
+     for SourceFSpec in ${SourceFList}
+     do
+       #
+       SourceFName=$(basename ${SourceFSpec})
+       #
+       #  Support a request for a ${Request} based on the last target.
+       #  Otherwise, check to see that the target is one that we know.
+       #
+       if [ "${SourceFName}" = "last" ]
+       then
+          #
+          #  Use the last target as the target here.
+          #
+	  [ -e ${__KamajiLastMakeTargetFSpec} ] || continue
+	  #
+          SourceFName=$(cat ${__KamajiLastMakeTargetFSpec})
+          #
+       elif [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
+       then
+          #  
+          EchoErrorAndExit 1 "The '${SourceFName}' file cannot be ${Request}d; it is not a known derivative."  
+          #  
+       fi
+       #
+       #  Find the ${TargetClass} decendants of the target.
+       #
+       TargetFList+=" $(KamajiEchoListOfDecendantFName ${SourceFName} ${TargetClass})"
+       #  
+     done
      #
   fi
   #
-  for SourceFSpec in ${SourceFList}
+  for TargetFName in ${TargetFList}
   do
     #
-    SourceFName=$(basename ${SourceFSpec})
+    #  Save the target name to support the next "make last" request.
     #
-    if [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
-    then
-       #  
-       EchoAndExit 1 "The '${SourceFName}' file cannot be graded; it is not a known derivative."  
-       #  
-    fi
-    #  
-    KamajiMake ${SourceFName}
+    echo "${TargetFName}" > ${__KamajiLastMakeTargetFSpec}
+    #
+    #  Call for the target to be made.
+    #
+    KamajiMake ${TargetFName}
     #  
   done
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiRequestGrade() {
+  #
+  local -r Request=${1}
+  shift 1
+  local -r SourceFList="${*}"
+  #
+  KamajiRequestGradeOrOutputOrReview ${Request} Grade ${SourceFList}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiRequestInvoke() {
+  #
+  local -r Request=${1}
+  shift 1
+  local -r SourceFList="${*}"
+  #
+  KamajiRequestGradeOrOutputOrReview ${Request} Output ${SourceFList}
   #
 }
 
@@ -1630,20 +1962,83 @@ function KamajiRequestGrade() {
 function KamajiRequestMake() {
   #
   local -r Request=${1}
-  local -r GivnSourceFSpec="${2-}"
+  local -r GivnSourceFList="${2-}"
   #
-  [ ${#GivnSourceFSpec} -eq 0 ] && KamajiExitAfterUsage "Make target file name parameter required."
+  local    GivnSourceFName GivnSourceFSpec
   #
-  local -r GivnSourceFName=$(basename ${GivnSourceFSpec})
+  local    GivnSourceFLast=
   #
-  if [ "${__KamajiBaseSourceList[${GivnSourceFName}]+IS_SET}" != "IS_SET" ]
-  then
-     #  
-     EchoAndExit 1 "The '${GivnSourceFName}' file cannot be made; it is not a known derivative."  
-     #  
-  fi
+  for GivnSourceFSpec in ${GivnSourceFList}
+  do
+    #
+    GivnSourceFName=$(basename ${GivnSourceFSpec})
+    #
+    if [ "${GivnSourceFName}" = "last" ]
+    then
+       #
+       #  Use the last target as the current one.
+       #
+       if [ ${#GivnSourceFLast} -eq 0 ]
+       then
+	  #
+	  [ -e ${__KamajiLastMakeTargetFSpec} ] || continue
+	  #
+          GivnSourceFLast=$(cat ${__KamajiLastMakeTargetFSpec})
+	  #
+       fi
+       #
+       GivnSourceFName=${GivnSourceFLast}
+       #
+    elif [ "${GivnSourceFName}" = "grades" ]
+    then
+       #
+       KamajiRequestGrade grade
+       #
+       break
+       #
+    elif [ "${GivnSourceFName}" = "outputs" ]
+    then
+       #
+       KamajiRequestInvoke invoke
+       #
+       break
+       #
+    else
+       #
+       #  Check to see that the target is one that we know.
+       #
+       if [ "${__KamajiBaseSourceList[${GivnSourceFName}]+IS_SET}" != "IS_SET" ]
+       then
+          #  
+          EchoErrorAndExit 1 "The '${GivnSourceFName}' file cannot be made; it is not a known derivative."  
+          #  
+       fi
+       #
+       #  Save the target name to support the next "make last" request.
+       #
+       GivnSourceFLast=${GivnSourceFName}
+       #
+       echo "${GivnSourceFLast}" > ${__KamajiLastMakeTargetFSpec}
+       #
+    fi
+    #
+    #  Call for the target to be made.
+    #
+    KamajiMake ${GivnSourceFName}
+    #
+  done
   #
-  KamajiMake ${GivnSourceFName}
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiRequestReview() {
+  #
+  local -r Request=${1}
+  shift 1
+  local -r SourceFList="${*}"
+  #
+  KamajiRequestGradeOrOutputOrReview ${Request} Review ${SourceFList}
   #
 }
 
@@ -1740,6 +2135,13 @@ function KamajiRequestShow_makefile_explicit() {
 	 #
 	 NextOfParentFName+="${__KamajiMyParentalList[${ItemOfParentFName}]}"
 	 #
+      fi
+      #
+      if [ "${__KamajiXtraParentList[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
+      then
+         #
+         OutputLine+="${__KamajiXtraParentList[${ItemOfParentFName}]}"
+         #
       fi
       #
       CheckIndex=0
@@ -1936,8 +2338,8 @@ function KamajiMake_Delta_from_GoldenMasked_OutputMasked() {
   #
   local -r TargetFSpec=${__KamajiWorkinDSpec}/${TargetFName}
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec};"	\
-		 "diff --text --ignore-space-change ${GoldenMaskedFName} ${OutputMaskedFName} > ${TargetFName} 2>&1)"
+  EchoAndExecuteInWorking	\
+	"diff --text --ignore-space-change ${GoldenMaskedFName} ${OutputMaskedFName} > ${TargetFName} 2>&1"
   #
   Status=${?}
   #
@@ -1946,9 +2348,6 @@ function KamajiMake_Delta_from_GoldenMasked_OutputMasked() {
      #
      if [ -s ${TargetFSpec} ]
      then
-        #
-	spitn ${TargetFSpec} "${__KamajiInfoTag} vimdiff "
-	spit  ${TargetFSpec} "${__KamajiWorkinDSpec}/${GoldenMaskedFName} ${__KamajiWorkinDSpec}/${OutputMaskedFName}"
         #
 	if [ $(cat ${TargetFSpec} | wc --lines) -le 50 ]
 	then
@@ -1964,7 +2363,7 @@ function KamajiMake_Delta_from_GoldenMasked_OutputMasked() {
      #
   else
      #
-     EchoAndExit ${Status} "The diff command failed; this most-often happens because masking failed."
+     EchoErrorAndExit ${Status} "The diff command failed; this most-often happens because masking failed."
      #
   fi
   #
@@ -1977,7 +2376,7 @@ function KamajiMake_Delta_from_OutputMasked() {
   local -r TargetFName=${1}
   local -r OutputMaskedFName=${2}
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec}; cat ${OutputMaskedFName} > ${TargetFName} 2>&1)"
+  EchoAndExecuteInWorking "cat ${OutputMaskedFName} > ${TargetFName} 2>&1"
   #
   local -r TargetFSpec=${__KamajiWorkinDSpec}/${TargetFName}
   local -r OutputFSpec=${__KamajiWorkinDSpec}/${OutputMaskedFName%.masked}
@@ -2007,14 +2406,13 @@ function KamajiMake_GoldenMasked_from_Golden_SedMaskingScript() {
   local -r GoldenSourceFName=${2}
   local -r SedScriptFName=${3}
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec};"	\
-		 "sed --file=${SedScriptFName} ${GoldenSourceFName} > ${TargetFName}.partial 2>&1)"
+  EchoAndExecuteInWorking "sed --file=${SedScriptFName} ${GoldenSourceFName} > ${TargetFName}.partial"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoAndExit ${Status} "The sed command failed."
+  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The sed command failed."
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec}; mv ${TargetFName}.partial ${TargetFName})"
+  EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
   #
 }
 
@@ -2040,19 +2438,47 @@ function KamajiMake_Grade_from_Delta() {
   if [ -s ${__KamajiWorkinDSpec}/${SourceFName} ]
   then
      #
-     [ -e ${__KamajiWorkinDSpec}/${TargetFName} ] && EchoAndExecute "rm ${__KamajiWorkinDSpec}/${TargetFName}"
+     [ "${__KamajiVerbosityRequested}" != "quiet" ] && EchoAndExecuteInWorking "cat ${SourceFName}"
      #
-     DiagnosticHeavy "(cd ${__KamajiWorkinDSpec}; cat ${SourceFName})" 1>&2
-     #
-     (cd ${__KamajiWorkinDSpec}; cat ${SourceFName}) 1>&2	# EchoAndExecute considers any output an error message.
-     #
-     EchoAndExit 1 "The latest ${TargetFName%.grade} differs from the baseline."
+     EchoImportantMessage "${__KamajiFailTag}" "${TargetFName}"
      #
   else
      #
-     EchoAndExecute "(cd ${__KamajiWorkinDSpec}; touch ${TargetFName})"
+     EchoImportantMessage "${__KamajiPassTag}" "${TargetFName}"
      #
   fi
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiMake_Naked_from_Elf() {
+  #
+  local -r TargetFName=${1}
+  local -r SourceFName=${2}
+  #
+  EchoAndExecuteInWorking "make ${TargetFName}"
+  #
+  Status=${?}
+  #
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The 'make ${TargetFName}' command failed."
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiMake_Output_from_Naked() {
+  #
+  local -r TargetFName=${1}
+  local -r SourceFName=${2}
+  #
+  EchoAndExecuteInWorking "./${SourceFName} > ${TargetFName}.partial 2>&1"
+  #
+  Status=${?}
+  #
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed."
+  #
+  EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
   #
 }
 
@@ -2063,13 +2489,21 @@ function KamajiMake_Output_from_Script() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec}; ./${SourceFName} > ${TargetFName}.partial 2>&1)"
+  EchoAndExecuteInWorking "./${SourceFName} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoAndExit ${Status} "The ${SourceFName} script failed."
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed."
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec}; mv ${TargetFName}.partial ${TargetFName})"
+  EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiMake_OutputMasked_from_Output_SedMaskingScript() {
+  #
+  KamajiMake_GoldenMasked_from_Golden_SedMaskingScript ${*};
   #
 }
 
@@ -2083,17 +2517,53 @@ function KamajiMake_OutputMasked_from_SedMaskingScript_Output() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiMake_Review_from_Delta_Grade() {
+  #
+  local -r TargetFName=${1}
+  local -r DeltaSourceFName=${2}
+  local -r GradeSourceFName=${3}
+  #
+  if [ -s ${__KamajiWorkinDSpec}/${DeltaSourceFName} ]
+  then
+     #
+     local -r OutputFName=${DeltaSourceFName%.delta}
+     #
+     local -r OutputMaskedFName=${OutputFName}.masked
+     local -r GoldenMaskedFName=${OutputFName%.output}.golden.masked
+     #
+     EchoAndExecuteInWorking ${__KamajiReviewCommand} ${GoldenMaskedFName} ${OutputMaskedFName}
+     #
+     EchoAndExecuteInWorking touch ${TargetFName}ed
+     #
+  fi
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiMake_Review_from_Grade_Delta() {
+  #
+  local -r TargetFName=${1}
+  local -r GradeSourceFName=${2}
+  local -r DeltaSourceFName=${3}
+  #
+  KamajiMake_Review_from_Delta_Grade ${TargetFName} ${DeltaSourceFName} ${GradeSourceFName}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiMake_Script_from_Clut_Naked() {
   #
   local -r TargetFName=${1}
   local -r ClutSourceFName=${2}
   local -r ExecSourceFName=${3}
   #
-  EchoAndExecute "(cd ${__KamajiWorkinDSpec}; clutc ${ClutSourceFName} ${ExecSourceFName} ${TargetFName})"
+  EchoAndExecuteInWorking "clutc ${ClutSourceFName} ${ExecSourceFName} ${TargetFName}"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoAndExit ${Status} "CLUT compilation failed."
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "CLUT compilation failed."
   #
 }
 
@@ -2125,16 +2595,24 @@ function KamajiMake() {
   #
   #  Representatives must only exist; the files they represent are updated by the user.
   #
-  local    ListOfParentFName=${__KamajiMyParentalList[${TargetFName}]}
+  local    ListOfMyParentalFName=${__KamajiMyParentalList[${TargetFName}]}
+  local    ListOfXtraParentFName=
   #
-  if [ ${#ListOfParentFName} -eq 0 ] && [ ! -L ${__KamajiWorkinDSpec}/${TargetFName} ]
+  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -L ${__KamajiWorkinDSpec}/${TargetFName} ]
   then
      #
      local -r GoldenFSpec=${__KamajiRepresentative[${TargetFName}]}
      #
-     EchoAndExecute ln --symbolic ${GoldenFSpec} ${__KamajiWorkinDSpec}/${TargetFName}
+     EchoAndExecuteInWorking "ln --symbolic ${GoldenFSpec} ${TargetFName}"
      #
      return
+     #
+  fi
+  #
+  if [ "${__KamajiXtraParentList[${TargetFName}]+IS_SET}" = "IS_SET" ]
+  then
+     #
+     ListOfXtraParentFName="${__KamajiXtraParentList[${TargetFName}]}"
      #
   fi
   #
@@ -2144,7 +2622,7 @@ function KamajiMake() {
   #
   local ParentFName
   #
-  for ParentFName in ${ListOfParentFName}
+  for ParentFName in ${ListOfMyParentalFName}
   do
     #
     KamajiMake ${ParentFName}
@@ -2155,14 +2633,9 @@ function KamajiMake() {
   #
   #  Determine if we now need to make this target.
   #
-# if [ "${__KamajiUserDependants[${TargetFName}]+IS_SET}" = "IS_SET" ]
-# then
-#    ListOfParentFName+=" ${__KamajiUserDependants[${TargetFName}]}"
-# fi
-  #
   local ReasonToAct=
   #
-  for ParentFName in ${ListOfParentFName}
+  for ParentFName in ${ListOfMyParentalFName} ${ListOfXtraParentFName}
   do
     #
     ReasonToAct=$(EchoAgeRelation ${__KamajiWorkinDSpec}/${ParentFName} ${__KamajiWorkinDSpec}/${TargetFName})
@@ -2188,9 +2661,9 @@ function KamajiMake() {
      #
      local FunctionToCall=$(declare -F ${FunctionWeWant})
      #
-     [ ${#FunctionToCall} -eq 0 ] && EchoAndExit 1 "Undefined function ${FunctionWeWant} required."
+     [ ${#FunctionToCall} -eq 0 ] && EchoErrorAndExit 1 "Undefined function ${FunctionWeWant} required."
      #
-     ${FunctionToCall} ${TargetFName} ${ListOfParentFName}
+     ${FunctionToCall} ${TargetFName} ${ListOfMyParentalFName}
      #
   fi
   #
@@ -2232,7 +2705,7 @@ function KamajiMain() {
         #
 	KamajiBuildRules
         #
-        #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this working file name represent?
+        #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
         #
         #  Create each representative first because other files may have undeclared dependency on them.
         #
@@ -2253,9 +2726,13 @@ function KamajiMain() {
      local -A RequestFunctionFor
      #
      RequestFunctionFor[configure]=KamajiRequestConfigure
+     RequestFunctionFor[execute]=KamajiRequestInvoke
      RequestFunctionFor[export]=KamajiRequestExport
      RequestFunctionFor[grades]=KamajiRequestGrade
+     RequestFunctionFor[invoke]=KamajiRequestInvoke
      RequestFunctionFor[make]=KamajiRequestMake
+     RequestFunctionFor[review]=KamajiRequestReview
+     RequestFunctionFor[run]=KamajiRequestInvoke
      RequestFunctionFor[set]=KamajiRequestConfigure
      RequestFunctionFor[show]=KamajiRequestShow
      #

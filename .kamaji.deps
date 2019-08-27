@@ -1,0 +1,4 @@
+Testing/kamaji.00.common_functions.bash kamaji.02.modifiers.clut.output
+Testing/kamaji.00.common_functions.bash kamaji.03.clut_processing.clut.output
+Testing/kamaji.00.common_functions.bash kamaji.04.script_exercise_processing.clut.output
+Testing/kamaji.00.common_functions.bash kamaji.05.compiled_exercise_processing.clut.output

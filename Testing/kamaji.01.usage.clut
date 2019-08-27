@@ -51,11 +51,13 @@ function testCaseDefinitions() {
   clut_case_parameter		fast bobo
   clut_case_end
   #
-  for Command in configure export grade make set show
+  local Request Modifier
+  #
+  for Request in configure export grade make set show 
   do
     #
-    clut_case_name		Help_${Command}
-    clut_case_parameter		help ${Command}
+    clut_case_name		Help_${Request}
+    clut_case_parameter		help ${Request}
     clut_case_end
     #
   done
@@ -65,6 +67,15 @@ function testCaseDefinitions() {
     #
     clut_case_name		Help_${Modifier}
     clut_case_parameter		usage ${Modifier}
+    clut_case_end
+    #
+  done
+  #
+  for Request in execute invoke run review vimdiff
+  do
+    #
+    clut_case_name		Help_${Request}
+    clut_case_parameter		help ${Request}
     clut_case_end
     #
   done

@@ -29,6 +29,36 @@ source $(whereHolmespunLibraryBashing)/Library/spit_spite_spitn_and_spew.bash
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function create_exercise_compilable_alpha() {
+  #
+  local ScriptFSpec=${1}
+  #
+  spit ${ScriptFSpec} "//"
+  spit ${ScriptFSpec} "//  ${ScriptFSpec} created by ${FUNCNAME}."
+  spit ${ScriptFSpec} "//"
+  spit ${ScriptFSpec} "//  This is a unit test exercise program that represents a series of test cases."
+  spit ${ScriptFSpec} "//"
+  spit ${ScriptFSpec} ""
+  spit ${ScriptFSpec} "# include <iostream> 	//  std::cout"
+  spit ${ScriptFSpec} ""
+  spit ${ScriptFSpec} "int main() {"
+  spit ${ScriptFSpec} ""
+  spit ${ScriptFSpec} "    std::cout << \"TC1: I dunno. Fry?\" << std::endl;"
+  spit ${ScriptFSpec} "    std::cout << \"TC2: Now I gotta whatchacallit instead of a kajigger,"	\
+		      "you stupid whatchacallit!\" << std::endl;"
+  spit ${ScriptFSpec} ""
+  spit ${ScriptFSpec} "    return( 0 );"
+  spit ${ScriptFSpec} ""
+  spit ${ScriptFSpec} "}"
+  spit ${ScriptFSpec} ""
+  spit ${ScriptFSpec} "//"
+  #
+  chmod 755 ${ScriptFSpec}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function create_exercise_script_alpha() {
   #
   local ScriptFSpec=${1}
@@ -86,6 +116,14 @@ function create_production_script_alpha_clut() {
   spit ${ClutFSpec} "#"
   spit ${ClutFSpec} "clut_definition_set	testCollection"
   spit ${ClutFSpec} "#"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function dump_an_elf_file() {
+  #
+  echo "This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data."
   #
 }
 

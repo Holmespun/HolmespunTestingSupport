@@ -1,0 +1,730 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. CompiledExercise_Grade_Fresh.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.2.1. mkdir Testing
+1.2.2. spit .kamaji.conf baseline-folder Testing
+1.2.3. spit .kamaji.conf verbosity-level heavy
+1.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+1.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+1.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+1.3.2. Testing contains one file.
+1.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+1.4. Target CLU Call.
+1.4.1.  kamaji grades
+1.4.1.1. Exit Status 1!
+1.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.delta does not exist[0m
+    |kamaji make GAMMA_exercise.output.delta
+    |[38;5;12mcat GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
+    |kamaji make GAMMA_exercise.output.grade
+    |[38;5;12mcat GAMMA_exercise.output.delta[0m
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
+1.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+1.5. Finalizations.
+1.6. Workspace Impact...
+    |Only in 01.Omega: .kamaji.sed
+    |Only in 01.Omega: Working
+1.6.1. .kamaji.sed (created) is empty.
+1.6.2. Working (created) contains 7 files.
+1.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output.grade
+1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+1.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+1.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+1.6.2.5. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+1.6.2.6. GAMMA_exercise.output.delta...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+1.6.2.7. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+2. CompiledExercise_Grade_Fail.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.2.1. mkdir Testing
+2.2.2. spit .kamaji.conf baseline-folder Testing
+2.2.3. spit .kamaji.conf verbosity-level heavy
+2.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+2.2.5. create_exercise_compilable_alpha_output Testing/GAMMA_exercise.output WRONG
+2.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+    |Testing/GAMMA_exercise.output
+2.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+2.3.2. Testing contains 2 files.
+2.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+2.3.2.2. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
+2.4. Target CLU Call.
+2.4.1.  kamaji grades
+2.4.1.1. Exit Status 1!
+2.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.golden.masked does not exist[0m
+    |kamaji make GAMMA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.delta does not exist[0m
+    |kamaji make GAMMA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
+    |kamaji make GAMMA_exercise.output.grade
+    |[38;5;12mcat GAMMA_exercise.output.delta[0m
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
+2.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+    |2c2
+    |< TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
+    |---
+    |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+2.5. Finalizations.
+2.6. Workspace Impact...
+    |Only in 02.Omega: .kamaji.sed
+    |Only in 02.Omega: Working
+2.6.1. .kamaji.sed (created) is empty.
+2.6.2. Working (created) contains 9 files.
+2.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output.grade
+2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+2.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+2.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+2.6.2.5. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
+2.6.2.6. GAMMA_exercise.golden.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
+2.6.2.7. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+2.6.2.8. GAMMA_exercise.output.delta...
+    |2c2
+    |< TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
+    |---
+    |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+2.6.2.9. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+3. CompiledExercise_Grade_Pass.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.2.1. mkdir Testing
+3.2.2. spit .kamaji.conf baseline-folder Testing
+3.2.3. spit .kamaji.conf verbosity-level heavy
+3.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+3.2.5. create_exercise_compilable_alpha_output Testing/GAMMA_exercise.output RIGHT
+3.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+    |Testing/GAMMA_exercise.output
+3.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+3.3.2. Testing contains 2 files.
+3.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+3.3.2.2. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+3.4. Target CLU Call.
+3.4.1.  kamaji grades
+3.4.1.1. Exit Status 1!
+3.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.golden.masked does not exist[0m
+    |kamaji make GAMMA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.delta does not exist[0m
+    |kamaji make GAMMA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
+    |kamaji make GAMMA_exercise.output.grade
+    |[38;5;10m[1mPASS:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
+3.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+3.5. Finalizations.
+3.6. Workspace Impact...
+    |Only in 03.Omega: .kamaji.sed
+    |Only in 03.Omega: Working
+3.6.1. .kamaji.sed (created) is empty.
+3.6.2. Working (created) contains 9 files.
+3.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output.grade
+3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+3.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+3.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+3.6.2.5. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
+3.6.2.6. GAMMA_exercise.golden.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+3.6.2.7. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+3.6.2.8. GAMMA_exercise.output.delta is empty.
+3.6.2.9. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+4. CompiledExercise_Make_cpp.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.2.1. mkdir Testing
+4.2.2. spit .kamaji.conf baseline-folder Testing
+4.2.3. spit .kamaji.conf verbosity-level heavy
+4.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+4.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+4.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+4.3.2. Testing contains one file.
+4.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+4.4. Target CLU Call.
+4.4.1.  kamaji make GAMMA_exercise.cpp
+4.4.1.1. Exit Status 1!
+4.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'GAMMA_exercise.cpp' file cannot be made; it is not a known derivative.[0m
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: .kamaji.sed
+    |Only in 04.Omega: Working
+4.6.1. .kamaji.sed (created) is empty.
+4.6.2. Working (created) contains 2 files.
+4.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+4.6.2.2. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+5. CompiledExercise_Make_output.
+5.1. Requirements.
+    |None.
+5.2. Initializations.
+5.2.1. mkdir Testing
+5.2.2. spit .kamaji.conf baseline-folder Testing
+5.2.3. spit .kamaji.conf verbosity-level heavy
+5.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+5.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+5.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+5.3.2. Testing contains one file.
+5.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+5.4. Target CLU Call.
+5.4.1.  kamaji make GAMMA_exercise.output
+5.4.1.1. Exit Status 0!
+5.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+5.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+5.5. Finalizations.
+5.6. Workspace Impact...
+    |Only in 05.Omega: .kamaji.sed
+    |Only in 05.Omega: Working
+5.6.1. .kamaji.sed (created) is empty.
+5.6.2. Working (created) contains 5 files.
+5.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output
+5.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+5.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+5.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+5.6.2.5. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+6. CompiledExercise_Make_output_masked.
+6.1. Requirements.
+    |None.
+6.2. Initializations.
+6.2.1. mkdir Testing
+6.2.2. spit .kamaji.conf baseline-folder Testing
+6.2.3. spit .kamaji.conf verbosity-level heavy
+6.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+6.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+6.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+6.3.2. Testing contains one file.
+6.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+6.4. Target CLU Call.
+6.4.1.  kamaji make GAMMA_exercise.output.masked
+6.4.1.1. Exit Status 0!
+6.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+6.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+6.5. Finalizations.
+6.6. Workspace Impact...
+    |Only in 06.Omega: .kamaji.sed
+    |Only in 06.Omega: Working
+6.6.1. .kamaji.sed (created) is empty.
+6.6.2. Working (created) contains 6 files.
+6.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output.masked
+6.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+6.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+6.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+6.6.2.5. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+6.6.2.6. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+7. CompiledExercise_Make_output_delta.
+7.1. Requirements.
+    |None.
+7.2. Initializations.
+7.2.1. mkdir Testing
+7.2.2. spit .kamaji.conf baseline-folder Testing
+7.2.3. spit .kamaji.conf verbosity-level heavy
+7.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+7.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+7.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+7.3.2. Testing contains one file.
+7.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+7.4. Target CLU Call.
+7.4.1.  kamaji make GAMMA_exercise.output.delta
+7.4.1.1. Exit Status 0!
+7.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.delta does not exist[0m
+    |kamaji make GAMMA_exercise.output.delta
+    |[38;5;12mcat GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
+7.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+7.5. Finalizations.
+7.6. Workspace Impact...
+    |Only in 07.Omega: .kamaji.sed
+    |Only in 07.Omega: Working
+7.6.1. .kamaji.sed (created) is empty.
+7.6.2. Working (created) contains 7 files.
+7.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output.delta
+7.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+7.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+7.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+7.6.2.5. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+7.6.2.6. GAMMA_exercise.output.delta...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+7.6.2.7. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+8. CompiledExercise_Make_output_grade.
+8.1. Requirements.
+    |None.
+8.2. Initializations.
+8.2.1. mkdir Testing
+8.2.2. spit .kamaji.conf baseline-folder Testing
+8.2.3. spit .kamaji.conf verbosity-level heavy
+8.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+8.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+8.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+8.3.2. Testing contains one file.
+8.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+8.4. Target CLU Call.
+8.4.1.  kamaji make GAMMA_exercise.output.grade
+8.4.1.1. Exit Status 1!
+8.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.delta does not exist[0m
+    |kamaji make GAMMA_exercise.output.delta
+    |[38;5;12mcat GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
+    |kamaji make GAMMA_exercise.output.grade
+    |[38;5;12mcat GAMMA_exercise.output.delta[0m
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
+8.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+8.5. Finalizations.
+8.6. Workspace Impact...
+    |Only in 08.Omega: .kamaji.sed
+    |Only in 08.Omega: Working
+8.6.1. .kamaji.sed (created) is empty.
+8.6.2. Working (created) contains 7 files.
+8.6.2.1. .kamaji.last_target.text...
+    |GAMMA_exercise.output.grade
+8.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+8.6.2.3. GAMMA_exercise [UNKNOWN]...
+    |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
+    |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
+    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
+8.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+8.6.2.5. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+8.6.2.6. GAMMA_exercise.output.delta...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |[38;5;11mINFO:[0m No baseline output file defined.
+    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
+8.6.2.7. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+
+9. CompiledExercise_Make_nonsense.
+9.1. Requirements.
+    |None.
+9.2. Initializations.
+9.2.1. mkdir Testing
+9.2.2. spit .kamaji.conf baseline-folder Testing
+9.2.3. spit .kamaji.conf verbosity-level heavy
+9.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+9.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+9.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+9.3.2. Testing contains one file.
+9.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+9.4. Target CLU Call.
+9.4.1.  kamaji make GAMMA_exercise.nonsense
+9.4.1.1. Exit Status 1!
+9.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'GAMMA_exercise.nonsense' file cannot be made; it is not a known derivative.[0m
+9.5. Finalizations.
+9.6. Workspace Impact...
+    |Only in 09.Omega: .kamaji.sed
+    |Only in 09.Omega: Working
+9.6.1. .kamaji.sed (created) is empty.
+9.6.2. Working (created) contains 2 files.
+9.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+9.6.2.2. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.
