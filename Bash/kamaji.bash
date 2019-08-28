@@ -800,7 +800,7 @@ function KamajiConfigurationEchoValue() {
   #
   local    Result="${Default}"
   #
-  if [ "${__KamajiConfigurationValue[${Name}]+IS_SET}" = IS_SET ]
+  if [ "${__KamajiConfigurationValue[${Name}]+IS_SET}" = IS_SET ] && [ ${#__KamajiConfigurationValue[${Name}]} -gt 0 ]
   then
      Result="${__KamajiConfigurationValue[${Name}]}"
   fi
@@ -815,6 +815,18 @@ function KamajiConfigurationLoadValues() {
   #
   local Key Value Directory
   #
+  __KamajiConfigurationValue["baseline-folder"]=
+  __KamajiConfigurationValue["data-extension-list"]=
+  __KamajiConfigurationValue["data-filename-list"]=
+  __KamajiConfigurationValue["last-target-file-name"]=
+  __KamajiConfigurationValue["mask-sed-script"]=
+  __KamajiConfigurationValue["review-command"]=
+  __KamajiConfigurationValue["review-tailpipe"]=
+  __KamajiConfigurationValue["ruleset-file-name"]=
+  __KamajiConfigurationValue["script-type-list"]=
+  __KamajiConfigurationValue["verbosity-level"]=
+  __KamajiConfigurationValue["working-folder"]=
+  #
   for Directory in . ${HOME}
   do
     #
@@ -827,16 +839,25 @@ function KamajiConfigurationLoadValues() {
          if [ ${#Key} -gt 0 ] && [ "${Key:0:1}" != "#" ]
 	 then
             #
-            KeyIsNotListCheck=${Key%-list}
-            #
-            if [ ${#KeyIsNotListCheck} -eq ${#Key} ]
+            if [ "${__KamajiConfigurationValue[${Key}]+IS_SET}" = "IS_SET" ]
 	    then
                #
-	       __KamajiConfigurationValue[${Key}]=${Value}
+               KeyIsNotListCheck=${Key%-list}
+               #
+               if [ ${#KeyIsNotListCheck} -eq ${#Key} ]
+	       then
+                  #
+	          __KamajiConfigurationValue[${Key}]=${Value}
+                  #
+               else
+                  #
+	          AppendArrayIndexValue __KamajiConfigurationValue "${Key}" "${Value}"
+                  #
+               fi
                #
             else
                #
-	       AppendArrayIndexValue __KamajiConfigurationValue "${Key}" "${Value}"
+               EchoErrorAndExit 1 "The '${Key}' is not a known configuration variable name."
                #
             fi
             #
@@ -876,11 +897,55 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFName}
   #
-# local LastMakeTargetFType=$(Xtension ${LastMakeTargetFName})
-# local LastMakeTargetFRoot=${LastMakeTargetFName%.${LastMakeTargetFType}}
-# #
-# __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFRoot}.$$.${LastMakeTargetFType}
-# #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiModifierFast() {
+  #
+  local -r Modifier=${1}
+  shift 1
+  local -r ModifiedRequest="${*}"
+  #
+  [ "${__KamajiRulesetIsReady}" = "true" ] && KamajiMain ${ModifiedRequest} && return
+  #
+  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-file-name .kamaji.ruleset.bash)
+  #
+  local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
+  #
+  if [ ! -s ${RulesetFSpec} ]
+  then
+     #
+     __KamajiRulesetIsReady="save"
+     #
+     KamajiMain ${ModifiedRequest}
+     #
+     return
+     #
+  fi
+  #
+  DiagnosticHeavy "source ${RulesetFSpec}"
+  #
+  source ${RulesetFSpec}
+  #
+  __KamajiRulesetIsReady="true"
+  #
+  KamajiMain ${ModifiedRequest}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiModifierSilent() {
+  #
+  local -r Modifier=${1}
+  shift 1
+  local -r ModifiedRequest="${*}"
+  #
+  __KamajiVerbosityRequested="quiet"
+  #
+  KamajiMain ${ModifiedRequest}
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -906,52 +971,98 @@ function KamajiModifierUsage_configure() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Configure|Set...")"
   #
-  EchoPara80	"Configuration vales are stored in the ./${__KamajiConfigurationFName} file,"			\
+  EchoPara80	"Configuration values are stored in the ./${__KamajiConfigurationFName} file,"			\
 		"a text file that contains comments, blank lines, and named value pairs:"
   #
   EchoPara80-4	"$(echoInColorWhiteBold "baseline-folder") <directory-specification> -"				\
 		"Specification for the directory where baseline output files are stored."			\
 		"The default baseline-folder is the current directory."
   #
+  EchoPara80-4	"$(echoInColorWhiteBold "data-extension-list") <extension>... -"				\
+		"A list of name extensions for \"data\" files that are stored in the baseline-folder,"		\
+		"but do not represent CLUT or unit test exercises or their output."				\
+		"Data files are represented in the working-folder."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "data-filename-list") <filename>... -"					\
+		"A list of names for \"data\" files that are stored in the baseline-folder,"			\
+		"but do not represent CLUT or unit test exercises or their output."				\
+		"Data files are represented in the working-folder."
+  #
+  EchoPara80-4  "$(echoInColorWhiteBold "last-target-file-name") <filename> -"					\
+		"The name of the file in which the filename of the last make target is stored;"			\
+		"the file is stored in the working-folder."
+  #
   EchoPara80-4	"$(echoInColorWhiteBold "mask-sed-script") <file-specification> -"				\
 		"Specification for the user-defined sed script that is used to mask output files."		\
 		"The default mask-sed-script is the ${__KamajiConfigurationFName%.*}.sed file in the current"	\
-		"directory."	
+		"directory."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "review-command") <command> -"						\
+  		"The command used to perform a review; the comand may be decorated with any number of options."	\
+		"The command is called from within the working-folder, and is passed the"			\
+		"masked baseline output and masked current output files in that order."				\
+		"A script can be used as a facade to make the simple, two-parameter interface"			\
+		"match a command that requires something else."							\
+		"The default review-command is vimdiff."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "review-tailpipe") <command> [ | <command> ]...-"			\
+		"A command into which the review-command output is piped."					\
+		"For example, if you set the review-command to \"diff\" then you might want to"			\
+		"set the review-tailpipe to \"sed --expression='s,^,    ,' | less\" so that the diff"		\
+		"output will be indented, you can view it a page at a time, and it will not"			\
+		"clutter your display after your review."
+  #
+  EchoPara80-4	"$(echoInColorWhiteBold "ruleset-file-name") <filename> -"					\
+		"The name of the file in which the ruleset is stored."						\
+		"The ruleset is stored and used by the 'export ruleset' request and 'fast' modifier."		\
+		"the file is stored in the working-folder."
   #
   EchoPara80-4	"$(echoInColorWhiteBold "script-type-list") [<extension>]... -"					\
-		"List of file name extensions that are used to store executable scripts."			\
-		"The ${__KamajiConfigurationFName} script will assume that files with these extensions are"	\
-		"up-to-date and ready for use."
+		"A list of file name extensions that are used to store executable scripts."			\
   #
   EchoPara80-4	"$(echoInColorWhiteBold "verbosity-level") <adjective> -"					\
-		"Level of disgnostic output produced by the ${__KamajiConfigurationFName} script."		\
+		"The level of disgnostic output produced."							\
 		"The default level is called 'quiet' and results in no disgnostic output at all."		\
-		"The 'light' level will describe the acttions used to fulfill the user request."		\
-		"The 'heavy' level will augment light output with every significant Linux command it uses"	\
-		"to fulfill the user request."
+		"The 'light' level will describe the 'make' requests used to fulfill the user's request."	\
+		"The 'heavy' level will augment light output with a description of commands applied to files"	\
+		"in the working-folder and comments that describe data that it uses to decide what commands"	\
+		"should be applied."
   #
   EchoPara80-4	"$(echoInColorWhiteBold "working-folder") <directory-specification> -"				\
-		"Specification for the directory where intermediate and unverified output files are created."	\
+		"The specification for the directory where intermediate and unverified output files are"	\
+		"created."											\
 		"If the working-folder does not already exist then it will be silently created."		\
 		"The default working-folder is called Working."
   #
-  EchoPara80	"The \$HOME/${__KamajiConfigurationFName} configuration file can be used to"			\
-		"override values in the file with the same name in the current directory."			\
-		"Named values may also be used to override values previously named in the same file."		\
-		"Here is an example of what one might contain:"
+  EchoPara80	"Here is an example configuration file:"
   #
   echo		"    #"
   echo		"    #  My kamaji configuration file."
   echo		"    #"
-  echo		"    baseline-folder  Testing"
-  echo		"    mask-sed-script  Testing/kamaji_masking_script.sed"
-  echo		"    script-type-list bash rb ruby sh"
-  echo		"    verbosity-level  heavy"
-  echo		"    working-folder   working"
-  echo		"    working-folder   Workspace"
+  echo		"    baseline-folder         Testing"
+  echo		"    data-extension-list     sql text"
+  echo		"    data-filename-list      common_testing_functions.bash"
+  echo		"    last-target-file-name   .kamaji.last"
+  echo		"    mask-sed-script         .kamaji.sed-script"
+  echo		"    review-command          diff"
+  echo		"    review-tailpipe         sed --expression='s,^,    ,' | less"
+  echo		"    ruleset-file-name       .kamaki.fast-ruleset"
+  echo		"    script-type-list        sh py rb"
+  echo		"    verbosity-level         light"
+  echo		"    working-folder          Workspace"
+  echo		"    #"
+  echo		"    working-folder          Working"
+  echo		"    script-type-list        bash"
+  echo		"    #"
   echo		""
   #
-  EchoPara80	"Kamaji ignores values with names it does not recognize."
+  EchoPara80	"The \$HOME/${__KamajiConfigurationFName} configuration file can be used to"			\
+		"override values in the file with the same name in the current directory."			\
+		"For most named values,"									\
+		"subsequent values will override any previous association that uses the same name."		\
+		"In the above example, the working-folder name is associated with the \"Working\" value."	\
+		"The \"-list\" name values always add additional value associations to the name."		\
+		"In the above example, the script-type-list is associated with the \"sh py rb bash\" value."
   #
 }
 
@@ -1175,55 +1286,6 @@ function KamajiModifierUsage_verbose_and_silent() {
 		"A single verbose modifier is a request for light diagnostic output."				\
 		"Multiple verbose modifiers will produce heavy diagnostic output."				\
 		"The silent modifier turns off all diagnostic output."
-  #
-}
-
-#----------------------------------------------------------------------------------------------------------------------
-
-function KamajiModifierFast() {
-  #
-  local -r Modifier=${1}
-  shift 1
-  local -r ModifiedRequest="${*}"
-  #
-  [ "${__KamajiRulesetIsReady}" = "true" ] && KamajiMain ${ModifiedRequest} && return
-  #
-  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-file-name .kamaji.ruleset.bash)
-  #
-  local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
-  #
-  if [ ! -s ${RulesetFSpec} ]
-  then
-     #
-     __KamajiRulesetIsReady="save"
-     #
-     KamajiMain ${ModifiedRequest}
-     #
-     return
-     #
-  fi
-  #
-  DiagnosticHeavy "source ${RulesetFSpec}"
-  #
-  source ${RulesetFSpec}
-  #
-  __KamajiRulesetIsReady="true"
-  #
-  KamajiMain ${ModifiedRequest}
-  #
-}
-
-#----------------------------------------------------------------------------------------------------------------------
-
-function KamajiModifierSilent() {
-  #
-  local -r Modifier=${1}
-  shift 1
-  local -r ModifiedRequest="${*}"
-  #
-  __KamajiVerbosityRequested="quiet"
-  #
-  KamajiMain ${ModifiedRequest}
   #
 }
 
