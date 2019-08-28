@@ -71,7 +71,7 @@ function testCaseDefinitions() {
     #
   done
   #
-  for Request in execute invoke run review vimdiff
+  for Request in execute invoke run review bless baseline
   do
     #
     clut_case_name		Help_${Request}

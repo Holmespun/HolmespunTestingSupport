@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.01.usage.clut (23 cases)
+CLUT Source File: kamaji.01.usage.clut (24 cases)
 
 0. Global Information
 0.1. Notations
@@ -31,6 +31,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -93,6 +94,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -155,6 +157,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -218,6 +221,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -309,6 +313,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -386,6 +391,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -436,6 +442,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -496,6 +503,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -547,6 +555,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -624,6 +633,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -664,6 +674,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -701,6 +712,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -737,6 +749,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -798,6 +811,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -835,6 +849,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -872,6 +887,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -909,6 +925,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -945,6 +962,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -982,6 +1000,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1027,6 +1046,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1072,6 +1092,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1117,6 +1138,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1128,14 +1150,19 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |[38;5;15m[1mReview...[0m
     |
     |A 'review' request can be used to inspect the masked output differences that
-    |led to a failed grade. The vimdiff command is used to present differences
-    |between the baseline and new output, with the masked baseline output in the
-    |left pane and the new output in the right pane.
+    |led to a failed grade. The 'review' request is very similar to the 'grade'
+    |request: Reviews are based on grades, and they are always performed for failing
+    |grades. After you review a failing grade, then kamaji will make it easy to
+    |baseline the new output.
     |
-    |Users not familiar with editor may want to try the following vim commands: the
-    |:help command to request help; the :qa command to exit the editor; the h, j, k,
-    |l, and the arrow keys to move around in a pane; and [ctrl]-h, [ctrl]-l, and
-    |[ctrl]-w combinations to switch panes.
+    |The default command used to perform is vimdiff; it is used to present
+    |differences between the baseline and new output, with the masked baseline
+    |output in the left pane and the new output in the right pane.
+    |
+    |Users not familiar with the editor may want to make note of the following vim
+    |commands: the :help command to request help; the :qa command to exit the
+    |editor; the h, j, k, l, and arrow keys to move around in a pane; and the
+    |[ctrl]-h, [ctrl]-l, and [ctrl]-w combinations to switch panes.
     |
     |The review-command configuration variable can be used to change the command
     |used to perform a review; the comand may be decorated with any number of
@@ -1144,19 +1171,24 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |script can be used as a facade to make the simple, two-parameter interface
     |match a command that requires something else.
     |
-    |Kamaji will only review output files that have been given a failing grade.
+    |The review-tailpipe configuration variable can be used to define a command into
+    |which the review-command output is piped. For example, if you set the
+    |review-command to "diff" then you might want to set the review-tailpipe to "sed
+    |--expression='s,^, ,' | less" so that the diff output will be indented, you can
+    |view that output a page at a time, and that output will not clutter your
+    |display after your review.
     |
 22.5. Finalizations.
 22.6. Workspace Impact...
 22.6.1. The initial and final workspace contents are equivalent.
 
-23. Help_vimdiff.
+23. Help_bless.
 23.1. Requirements.
     |None.
 23.2. Initializations.
 23.3. Initial Workspace is empty.
 23.4. Target CLU Call.
-23.4.1.  kamaji help vimdiff
+23.4.1.  kamaji help bless
 23.4.1.1. Exit Status 1!
 23.4.1.2. STDERR [text]...
     |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
@@ -1168,6 +1200,7 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      verbose
     |
     |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1176,41 +1209,57 @@ CLUT Source File: kamaji.01.usage.clut (23 cases)
     |      set    <name> <value>
     |      show   [ makefile [ explicit | layered ] ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |[38;5;15m[1mBaseline|Bless...[0m
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
-    |
-    |CLUT cases and unit test exercises are used and evaluated in similar ways:
-    |compile it (if not already executable), invoke it to produce output, mask that
-    |output, compare the masked output to its baseline, and then grade it based on
-    |that comparison.
-    |
-    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
-    |written in compilable code or a scripting language. Compilable code must be
-    |compiled and linked into executable files using a make framework. Scripts need
-    |not be compiled.
-    |
-    |CLUT cases and unit test exercises produce demonstrative output that need not
-    |be valid or invalid on its face. Users must evaluate the initial output from
-    |these tests to determine whether it is valid; valid output must be blessed by
-    |the user and copied to a safe location as baseline output. Future changes to
-    |the tested code will result in output that differs from the baseline; these
-    |differences should also be blessed to update the baseline. Users will benefit
-    |from retesting frequently between minor and controlled functional changes to
-    |the code being tested.
-    |
-    |Passing grades are only granted when current output matches baseline output,
-    |but this matching is only attempted after the current and baseline output are
-    |masked. Masking is performed using a user-defined sed script.
+    |The 'bless' request allows you to baseline current output files after you have
+    |reviewed them. A 'bless' request will not generate any test data; it can only
+    |be applied to output files that have already been generated and reviewed. it is
+    |a convenient shorthand, but it will cost you if you baseline output that is not
+    |valid.
     |
 23.5. Finalizations.
 23.6. Workspace Impact...
 23.6.1. The initial and final workspace contents are equivalent.
 
-CLUT Source File: kamaji.01.usage.clut (23 cases)
+24. Help_baseline.
+24.1. Requirements.
+    |None.
+24.2. Initializations.
+24.3. Initial Workspace is empty.
+24.4. Target CLU Call.
+24.4.1.  kamaji help baseline
+24.4.1.1. Exit Status 1!
+24.4.1.2. STDERR [text]...
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile [ explicit | layered ] ]
+    |
+    |[38;5;15m[1mBaseline|Bless...[0m
+    |
+    |The 'bless' request allows you to baseline current output files after you have
+    |reviewed them. A 'bless' request will not generate any test data; it can only
+    |be applied to output files that have already been generated and reviewed. it is
+    |a convenient shorthand, but it will cost you if you baseline output that is not
+    |valid.
+    |
+24.5. Finalizations.
+24.6. Workspace Impact...
+24.6.1. The initial and final workspace contents are equivalent.
+
+CLUT Source File: kamaji.01.usage.clut (24 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.

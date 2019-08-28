@@ -46,6 +46,7 @@
 #
 #	KamajiModifierFast
 #	KamajiModifierSilent
+#	KamajiModifierUsage_bless
 #	KamajiModifierUsage_configure
 #	KamajiModifierUsage_grades
 #	KamajiModifierUsage_export
@@ -66,6 +67,7 @@
 #	KamajiBuildRulesLoadXtraDependents
 #	KamajiBuildRules
 #
+#	KamajiRequestBless
 #	KamajiRequestConfigure
 #	KamajiRequestExport_ruleset
 #	KamajiRequestExport
@@ -153,6 +155,8 @@ declare    __KamajiDataFileNameList="TBD"
 declare    __KamajiLastMakeTargetFSpec="TBD"
 
 declare    __KamajiReviewCommand="TBD"
+
+declare    __KamajiReviewTailpipe="TBD"
 
 declare    __KamajiScriptExtensionList="TBD"
 
@@ -612,7 +616,8 @@ function KamajiEchoListOfDecendantFName() {
      #
      echo "${SourceFName}"
      #
-  else
+  elif [ "${__KamajiMyChildrenList[${SourceFName}]+IS_SET}" = "IS_SET" ]
+  then
      #
      for ChildsFName in ${__KamajiMyChildrenList[${SourceFName}]}
      do
@@ -851,6 +856,10 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiReviewCommand=$(KamajiConfigurationEchoValue review-command "vimdiff")
   #
+  __KamajiReviewTailpipe=$(KamajiConfigurationEchoValue review-tailpipe)
+  #
+  [ ${#__KamajiReviewTailpipe} -gt 0 ] && __KamajiReviewTailpipe="| ${__KamajiReviewTailpipe}"
+  #
   __KamajiScriptExtensionList=$(KamajiConfigurationEchoValue script-type-list "bash sh py rb")
   #
   __KamajiScriptExtensionList=":${__KamajiScriptExtensionList// /:}:"
@@ -872,6 +881,21 @@ function KamajiConfigurationLoadValues() {
 # #
 # __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFRoot}.$$.${LastMakeTargetFType}
 # #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiModifierUsage_bless() {
+  #
+  local -r Request="${1}"
+  #
+  EchoPara80	"$(echoInColorWhiteBold "Baseline|Bless...")"
+  #
+  EchoPara80	"The 'bless' request allows you to baseline current output files after you have reviewed them."	\
+		"A 'bless' request will not generate any test data;"						\
+		"it can only be applied to output files that have already been generated and reviewed."		\
+		"it is a convenient shorthand, but it will cost you if you baseline output that is not valid."
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -1061,13 +1085,18 @@ function KamajiModifierUsage_review() {
   #
   EchoPara80	"A 'review' request can be used to inspect the masked output differences that led to a"		\
 		"failed grade."											\
-		"The vimdiff command is used to present differences between the baseline and new output, "	\
+		"The 'review' request is very similar to the 'grade' request:"					\
+		"Reviews are based on grades, and they are always performed for failing grades."		\
+		"After you review a failing grade, then kamaji will make it easy to baseline the new output."
+  #
+  EchoPara80	"The default command used to perform is vimdiff;"						\
+		"it is used to present differences between the baseline and new output,"			\
 		"with the masked baseline output in the left pane and the new output in the right pane."
   #
-  EchoPara80	"Users not familiar with editor may want to try the following vim commands:"			\
+  EchoPara80	"Users not familiar with the editor may want to make note of the following vim commands:"	\
 		"the :help command to request help; the :qa command to exit the editor;"			\
-		"the h, j, k, l, and the arrow keys to move around in a pane;"					\
-		"and [ctrl]-h, [ctrl]-l, and [ctrl]-w combinations to switch panes."
+		"the h, j, k, l, and arrow keys to move around in a pane;"					\
+		"and the [ctrl]-h, [ctrl]-l, and [ctrl]-w combinations to switch panes."
   #
   EchoPara80	"The review-command configuration variable can be used to change the command used to perform a"	\
 		"review; the comand may be decorated with any number of options."				\
@@ -1076,7 +1105,12 @@ function KamajiModifierUsage_review() {
 		"A script can be used as a facade to make the simple, two-parameter interface"			\
 		"match a command that requires something else."
   #
-  EchoPara80	"Kamaji will only review output files that have been given a failing grade."
+  EchoPara80	"The review-tailpipe configuration variable can be used to define a command into which the"	\
+		"review-command output is piped."								\
+		"For example, if you set the review-command to \"diff\" then you might want to"			\
+		"set the review-tailpipe to \"sed --expression='s,^,    ,' | less\" so that the diff"		\
+		"output will be indented, you can view that output a page at a time, and that output will not"	\
+		"clutter your display after your review."
   #
 }
 
@@ -1212,6 +1246,7 @@ function KamajiModifierUsage() {
   echo "      verbose"
   echo ""
   echo "Where <request> is one of the following:"
+  echo "      bless  [ <filename> | last ]..."
   echo "      export [ ruleset ]"
   echo "      grade  [ <filename> | last ]..."
   echo "      invoke [ <filename> | last ]..."
@@ -1223,6 +1258,8 @@ function KamajiModifierUsage() {
   #
   declare -A UsageModifierSubjectList
   #
+  UsageModifierSubjectList[baseline]=bless
+  UsageModifierSubjectList[bless]=bless
   UsageModifierSubjectList[configure]=configure
   UsageModifierSubjectList[export]=export
   UsageModifierSubjectList[execute]=invoke
@@ -1769,6 +1806,89 @@ function KamajiBuildRules() {
   #  Mark the ruleset ready.
   #
   __KamajiRulesetIsReady="true"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiRequestBless() {
+  #
+  local -r Request=${1}
+  shift 1
+  local -r SourceFList="${*}"
+  #
+  local    SourceFName TargetFName GoldenDSpec GoldenFName
+  #
+  local    TargetFList=
+  #
+  if [ ${#SourceFList} -eq 0 ]
+  then
+     #
+     TargetFList=${__KamajiClassifiedList[Review]}
+     #
+  else
+     #
+     for SourceFSpec in ${SourceFList}
+     do
+       #
+       SourceFName=$(basename ${SourceFSpec})
+       #
+       #  Support a request for a ${Request} based on the last target.
+       #  Otherwise, check to see that the target is one that we know.
+       #
+       if [ "${SourceFName}" = "last" ]
+       then
+          #
+          #  Use the last target as the target here.
+          #
+          [ -e ${__KamajiLastMakeTargetFSpec} ] || continue
+          #
+          SourceFName=$(cat ${__KamajiLastMakeTargetFSpec})
+          #
+       elif [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
+       then
+          #  
+          EchoErrorAndExit 1 "The '${SourceFName}' file cannot be ${Request}ed; it is not a known derivative."  
+          #  
+       fi
+       #
+       #  Find the Review decendants of the target.
+       #
+       TargetFList+=" $(KamajiEchoListOfDecendantFName ${SourceFName} Review)"
+       #  
+     done
+     #
+  fi
+  #
+  for TargetFName in ${TargetFList}
+  do
+    #
+    if [ -e ${__KamajiWorkinDSpec}/${TargetFName}ed ]
+    then
+       #
+       #  Save the target name to support the next "make last" request.
+       #
+       DiagnosticLight "${__KamajiScriptName} ${Request} ${TargetFName}"
+       #
+       echo "${TargetFName}" > ${__KamajiLastMakeTargetFSpec}
+       #
+       #  Determine the golden output file associated with this output.
+       #
+       GoldenFName=${TargetFName%.output.review}.golden
+       #
+       GoldenDSpec=$(dirname ${__KamajiRepresentative[${GoldenFName}]})
+       #
+       #  Replace the golden output file with the current one.
+       #
+       EchoAndExecuteInWorking "cp ${TargetFName%.review} ${GoldenDSpec}"
+       #
+       #  Remove the reviewed file so that it cannot be used again.
+       #
+       EchoAndExecuteInWorking "rm ${TargetFName}ed"
+       #
+    fi
+    #
+  done
   #
 }
 
@@ -2528,10 +2648,10 @@ function KamajiMake_Review_from_Delta_Grade() {
      #
      local -r OutputFName=${DeltaSourceFName%.delta}
      #
-     local -r OutputMaskedFName=${OutputFName}.masked
-     local -r GoldenMaskedFName=${OutputFName%.output}.golden.masked
+     local -r OutputMskdFName=${OutputFName}.masked
+     local -r GoldenMskdFName=${OutputFName%.output}.golden.masked
      #
-     EchoAndExecuteInWorking ${__KamajiReviewCommand} ${GoldenMaskedFName} ${OutputMaskedFName}
+     EchoAndExecuteInWorking "${__KamajiReviewCommand} ${GoldenMskdFName} ${OutputMskdFName} ${__KamajiReviewTailpipe}"
      #
      EchoAndExecuteInWorking touch ${TargetFName}ed
      #
@@ -2725,6 +2845,8 @@ function KamajiMain() {
      #
      local -A RequestFunctionFor
      #
+     RequestFunctionFor[baseline]=KamajiRequestBless
+     RequestFunctionFor[bless]=KamajiRequestBless
      RequestFunctionFor[configure]=KamajiRequestConfigure
      RequestFunctionFor[execute]=KamajiRequestInvoke
      RequestFunctionFor[export]=KamajiRequestExport
