@@ -144,6 +144,8 @@ declare -r __KamajiXtraDependentFName=.${__KamajiScriptName%%.*}.deps
 
 declare -r __KamajiIfsOriginal="${IFS}"
 
+declare -r __KamajiWhereWeWere=${PWD}
+
 #----------------------------------------------------------------------------------------------------------------------
 
 declare -A __KamajiConfigurationValue
@@ -151,6 +153,8 @@ declare -A __KamajiConfigurationValue
 declare    __KamajiGoldenDSpec="TBD"
 
 declare    __KamajiDataFileNameList="TBD"
+
+declare -i __kamajiFailureCount=0
 
 declare    __KamajiLastMakeTargetFSpec="TBD"
 
@@ -161,8 +165,6 @@ declare    __KamajiReviewTailpipe="TBD"
 declare    __KamajiScriptExtensionList="TBD"
 
 declare    __KamajiVerbosityRequested="TBD"
-
-declare -r __KamajiWhereWeWere=${PWD}
 
 declare    __KamajiWorkinDSpec="TBD"
 
@@ -473,8 +475,6 @@ function EchoImportantMessage() {
   local -r    Message=${*}
   #
   echo "${Tag} $(echoInColorWhiteBold ${Message})" 1>&2
-  #
-  return 1
   #
 }
 
@@ -875,7 +875,7 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiDataFileNameList=":${__KamajiDataFileNameList// /:}:"
   #
-  __KamajiReviewCommand=$(KamajiConfigurationEchoValue review-command "vimdiff")
+  __KamajiReviewCommand=$(KamajiConfigurationEchoValue review-command "vimdiff -R")
   #
   __KamajiReviewTailpipe=$(KamajiConfigurationEchoValue review-tailpipe)
   #
@@ -2282,6 +2282,10 @@ function KamajiRequestShow_makefile_explicit() {
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
   spite ${MakefileFSpec} "\t@kamaji fast grade"
   spit  ${MakefileFSpec} ""
+  spit  ${MakefileFSpec} "kamaji-ruleset :"
+  spite ${MakefileFSpec} "\t@echo \"make \$@\""
+  spite ${MakefileFSpec} "\t@kamaji export ruleset"
+  spit  ${MakefileFSpec} ""
   #
   #  Generate makefile dependency rules for each of the targets leading up to the grades.
   #
@@ -2304,7 +2308,7 @@ function KamajiRequestShow_makefile_explicit() {
     for ItemOfParentFName in ${ListOfParentFName}
     do
       #
-      OutputLine="${__KamajiWorkinDSpec}/${ItemOfParentFName}:"
+      OutputLine=
       #
       if [ ${#__KamajiMyParentalList[${ItemOfParentFName}]} -eq 0 ]
       then
@@ -2326,18 +2330,11 @@ function KamajiRequestShow_makefile_explicit() {
          #
       fi
       #
-      CheckIndex=0
+      OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : kamaji-ruleset"
       #
-      while [ ${CheckIndex} -lt ${OutputIndx} ]
-      do
-	#
-	[ "${OutputLine}" = "${OutputList[${CheckIndex}]}" ] && break
-	#
-	CheckIndex+=1
-	#
-      done
+      OutputList[${OutputIndx}]+="$(echo "${OutputLine}" | tr ' ' '\n' | sort --unique | tr '\n' ' ')"
       #
-      [ ${CheckIndex} -eq ${OutputIndx} ] && OutputList[${OutputIndx}]="${OutputLine}" && OutputIndx+=1
+      OutputIndx+=1
       #
     done
     #
@@ -2345,7 +2342,12 @@ function KamajiRequestShow_makefile_explicit() {
     #
   done
   #
-  printf "%s\n\t@echo \"make \$@\"\n\t@kamaji fast \$@\n\n" "${OutputList[@]}" >> ${MakefileFSpec}
+  while read OutputLine
+  do
+    #
+    printf "%s\n\t@echo \"make \$@\"\n\t@kamaji fast make \$@\n\n" "${OutputLine}" >> ${MakefileFSpec}
+    #
+  done <<< $(printf "%s\n" "${OutputList[@]}" | sort --unique)
   #
   spit ${MakefileFSpec} "#"
   spit ${MakefileFSpec} "#  (eof}"
@@ -2624,6 +2626,8 @@ function KamajiMake_Grade_from_Delta() {
      #
      EchoImportantMessage "${__KamajiFailTag}" "${TargetFName}"
      #
+     __kamajiFailureCount+=1
+     #
   else
      #
      EchoImportantMessage "${__KamajiPassTag}" "${TargetFName}"
@@ -2639,7 +2643,7 @@ function KamajiMake_Naked_from_Elf() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  EchoAndExecuteInWorking "make ${TargetFName}"
+  EchoAndExecuteInWorking "make --no-print-directory ${TargetFName}"
   #
   Status=${?}
   #
@@ -2944,5 +2948,9 @@ function KamajiMain() {
 KamajiConfigurationLoadValues
 
 KamajiMain ${*}
+
+__kamajiFailureCount+=${?}
+
+exit ${__kamajiFailureCount}
 
 #----------------------------------------------------------------------------------------------------------------------

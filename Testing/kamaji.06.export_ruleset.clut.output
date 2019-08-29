@@ -604,7 +604,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
-    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
 5.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 5.5. Finalizations.
@@ -923,7 +923,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |[38;5;12msource Working/.kamaji.ruleset.bash[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
-    |[38;5;12mmake GAMMA_exercise[0m
+    |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
 6.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 6.5. Finalizations.
