@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------
 #
-#  kamaji.06.export_ruleset.clut
+#  kamaji.07.show_makefile.clut
 #
 #  Copyright 2019 Brian G. Holmes
 #
@@ -19,7 +19,7 @@
 #
 #  See the COPYING.text file for further information.
 #
-#  20190821 BGH; created.
+#  20190831 BGH; created.
 #
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -37,20 +37,20 @@ function testCaseDefinitions() {
   clut_global_initialize	spit .kamaji.conf "baseline-folder Testing"
   clut_global_initialize	spit .kamaji.conf "verbosity-level heavy"
   #
-  clut_case_name		ExportRuleset_Clut
+  clut_case_name		ShowMakefile_Clut
   clut_case_initialize		create_production_script_alpha ALPHA.bash
   clut_case_initialize		create_production_script_alpha_clut Testing/ALPHA.clut
-  clut_case_parameter		export ruleset
+  clut_case_parameter		export makefile
   clut_case_end
   #
-  clut_case_name		ExportRuleset_ScriptExercise
+  clut_case_name		ShowMakefile_ScriptExercise
   clut_case_initialize		create_exercise_script_alpha Testing/BETA_exercise.bash
-  clut_case_parameter		expo ruleset
+  clut_case_parameter		export mak
   clut_case_end
   #
-  clut_case_name		ExportRuleset_CompiledExercise
+  clut_case_name		ShowMakefile_CompiledExercise
   clut_case_initialize		create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-  clut_case_parameter		ex ruleset
+  clut_case_parameter		expo makefile
   clut_case_end
   #
   clut_shared_initialize	create_production_script_alpha ALPHA.bash
@@ -58,17 +58,8 @@ function testCaseDefinitions() {
   clut_shared_initialize	create_exercise_script_alpha Testing/BETA_exercise.bash
   clut_shared_initialize	create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
   #
-  clut_case_name		ExportRuleset_ThreeKinds_Export
-  clut_case_parameter		export ru
-  clut_case_end
-  #
-  clut_case_name		ExportRuleset_ThreeKinds_FastToExport
-  clut_case_parameter		fast make GAMMA_exercise
-  clut_case_end
-  #
-  clut_case_name		ExportRuleset_ThreeKinds_FastToUseExport
-  clut_case_initialize		kamaji export ruleset
-  clut_case_parameter		fast make GAMMA_exercise
+  clut_case_name		ShowMakefile_ThreeKinds
+  clut_case_parameter		ex makefile
   clut_case_end
   #
 }

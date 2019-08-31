@@ -156,7 +156,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |echo "TC2: I miss Morbo."
     |#
 2.4. Target CLU Call.
-2.4.1.  kamaji expo
+2.4.1.  kamaji expo ruleset
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
@@ -188,7 +188,6 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
     |#
     |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
     |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
@@ -256,7 +255,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |
     |//
 3.4. Target CLU Call.
-3.4.1.  kamaji ex
+3.4.1.  kamaji ex ruleset
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
@@ -399,7 +398,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |
     |//
 4.4. Target CLU Call.
-4.4.1.  kamaji export ruleset
+4.4.1.  kamaji export ru
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
@@ -442,7 +441,6 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
@@ -643,7 +641,6 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
@@ -842,7 +839,6 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
     |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"

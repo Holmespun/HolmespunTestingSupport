@@ -38,7 +38,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -101,7 +101,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -164,7 +164,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -228,7 +228,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -320,7 +320,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mConfigure|Set...[0m
     |
@@ -341,9 +341,12 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    CLUT or unit test exercises or their output. Data files are represented in
     |    the working-folder.
     |    
-    |    [38;5;15m[1mlast-target-file-name[0m <filename> - The name of the file
-    |    in which the filename of the last make target is stored; the file is stored
-    |    in the working-folder.
+    |    [38;5;15m[1mlast-target-filename[0m <filename> - The name of the file in
+    |    which the filename of the last make target is stored; the file is stored in
+    |    the working-folder.
+    |    
+    |    [38;5;15m[1mmakefile-filename[0m <filename> - The name of the file into
+    |    which a makefile is exported.
     |    
     |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for
     |    the user-defined sed script that is used to mask output files. The default
@@ -363,7 +366,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    indented, you can view it a page at a time, and it will not clutter your
     |    display after your review.
     |    
-    |    [38;5;15m[1mruleset-file-name[0m <filename> - The name of the file in
+    |    [38;5;15m[1mruleset-filename[0m <filename> - The name of the file in
     |    which the ruleset is stored. The ruleset is stored and used by the 'export
     |    ruleset' request and 'fast' modifier. the file is stored in the
     |    working-folder.
@@ -392,11 +395,12 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    baseline-folder         Testing
     |    data-extension-list     sql text
     |    data-filename-list      common_testing_functions.bash
-    |    last-target-file-name   .kamaji.last
+    |    last-target-filename    .kamaji.last
+    |    makefile-filename       .kamaji.makefile
     |    mask-sed-script         .kamaji.sed-script
     |    review-command          diff
     |    review-tailpipe         sed --expression='s,^,    ,' | less
-    |    ruleset-file-name       .kamaki.fast-ruleset
+    |    ruleset-filename        .kamaki.fast-ruleset
     |    script-type-list        sh py rb
     |    verbosity-level         light
     |    working-folder          Workspace
@@ -442,9 +446,22 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mExport...[0m
+    |
+    |The kamaji script allows the user to export data in two forms: makefile and
+    |ruleset.
+    |
+    |[38;5;15m[1mExport Makefile...[0m
+    |
+    |The 'export makefile' request is used to produce a makefile that can be used to
+    |integrate kamaji into a makefile system. An exported makefile contains a rule
+    |for every derived file known to kamaji. Use of the make command --jobs switch
+    |with the exported makefile can produce results even faster than invoking
+    |parallel kamaji grade requests.
+    |
+    |[38;5;15m[1mExport Ruleset...[0m
     |
     |The kamaji script defines a ruleset that it uses to guide creation of every
     |file in the working-folder; to determine what files need to be made or re-made,
@@ -457,7 +474,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |in this way.
     |
     |Users can request that kamaji export its current ruleset for future use using
-    |the 'export' request. The ruleset-file-name configuration variable can be used
+    |the 'export' request. The ruleset-filename configuration variable can be used
     |to name the file in which the ruleset is stored.
     |
     |The 'fast' modifier can be used to ask kamaji to load an exported ruleset
@@ -493,7 +510,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mGrade...[0m
     |
@@ -554,7 +571,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mMake...[0m
     |
@@ -606,7 +623,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mConfigure|Set...[0m
     |
@@ -627,9 +644,12 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    CLUT or unit test exercises or their output. Data files are represented in
     |    the working-folder.
     |    
-    |    [38;5;15m[1mlast-target-file-name[0m <filename> - The name of the file
-    |    in which the filename of the last make target is stored; the file is stored
-    |    in the working-folder.
+    |    [38;5;15m[1mlast-target-filename[0m <filename> - The name of the file in
+    |    which the filename of the last make target is stored; the file is stored in
+    |    the working-folder.
+    |    
+    |    [38;5;15m[1mmakefile-filename[0m <filename> - The name of the file into
+    |    which a makefile is exported.
     |    
     |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for
     |    the user-defined sed script that is used to mask output files. The default
@@ -649,7 +669,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    indented, you can view it a page at a time, and it will not clutter your
     |    display after your review.
     |    
-    |    [38;5;15m[1mruleset-file-name[0m <filename> - The name of the file in
+    |    [38;5;15m[1mruleset-filename[0m <filename> - The name of the file in
     |    which the ruleset is stored. The ruleset is stored and used by the 'export
     |    ruleset' request and 'fast' modifier. the file is stored in the
     |    working-folder.
@@ -678,11 +698,12 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    baseline-folder         Testing
     |    data-extension-list     sql text
     |    data-filename-list      common_testing_functions.bash
-    |    last-target-file-name   .kamaji.last
+    |    last-target-filename    .kamaji.last
+    |    makefile-filename       .kamaji.makefile
     |    mask-sed-script         .kamaji.sed-script
     |    review-command          diff
     |    review-tailpipe         sed --expression='s,^,    ,' | less
-    |    ruleset-file-name       .kamaki.fast-ruleset
+    |    ruleset-filename        .kamaki.fast-ruleset
     |    script-type-list        sh py rb
     |    verbosity-level         light
     |    working-folder          Workspace
@@ -728,17 +749,11 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mShow...[0m
     |
-    |The 'show' request is used to produce makefiles that can be used to integrate
-    |kamaji into a makefile system. Two forms of makefile may be produced: explicit
-    |and layered. An explicit makefile contains a rule for every target that can be
-    |used in kamaji make requests. A layered makefile only contains rules for the
-    |most computing-intensive targets, so that the load-balancing aspects of a
-    |makefile can be used without translating every relationship into a makefle
-    |rule.
+    |The 'show' request is not useful at this time.
     |
 10.5. Finalizations.
 10.6. Workspace Impact...
@@ -769,7 +784,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mFast...[0m
     |
@@ -807,7 +822,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mUsage|Help...[0m
     |
@@ -844,7 +859,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -906,7 +921,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -944,7 +959,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -982,7 +997,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -1020,7 +1035,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mUsage|Help...[0m
     |
@@ -1057,7 +1072,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
     |
@@ -1095,7 +1110,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mExecute|Invoke|Run...[0m
     |
@@ -1141,7 +1156,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mExecute|Invoke|Run...[0m
     |
@@ -1187,7 +1202,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mExecute|Invoke|Run...[0m
     |
@@ -1233,7 +1248,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mReview...[0m
     |
@@ -1295,7 +1310,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mBaseline|Bless...[0m
     |
@@ -1334,7 +1349,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ makefile [ explicit | layered ] ]
+    |      show   [ makefile ]
     |
     |[38;5;15m[1mBaseline|Bless...[0m
     |

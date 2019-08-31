@@ -1,0 +1,537 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. ShowMakefile_Clut.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.2.1. mkdir Testing
+1.2.2. spit .kamaji.conf baseline-folder Testing
+1.2.3. spit .kamaji.conf verbosity-level heavy
+1.2.4. create_production_script_alpha ALPHA.bash
+1.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+1.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+1.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+1.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+1.3.3. Testing contains one file.
+1.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+1.4. Target CLU Call.
+1.4.1.  kamaji export makefile
+1.4.1.1. Exit Status 0!
+1.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |kamaji export makefile
+1.5. Finalizations.
+1.6. Workspace Impact...
+    |Only in 01.Omega: .kamaji.sed
+    |Only in 01.Omega: Working
+1.6.1. .kamaji.sed (created) is empty.
+1.6.2. Working (created) contains 4 files.
+1.6.2.1. .kamaji.make...
+    |#
+    |#  kamaji export makefile
+    |#
+    |#  This makefile will allow the user to request creation of specific files using the
+    |#  system make command in the same way that 'kamaji make' request does.
+    |#
+    |#  Let the make command determine what needs to be re-made,
+    |#  but have it then call kamaji to make sure it is done right.
+    |#
+    |#  One phony target 'kamaji-grade' is defined for user convenience.
+    |#
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
+    |
+    |.PHONY: kamaji-grade
+    |
+    |kamaji-grade : $(KamajiGradeTargetList)
+    |	@echo "make $@"
+    |	@kamaji fast grade
+    |
+    |kamaji-ruleset :
+    |	@echo "make $@"
+    |	@kamaji export ruleset
+    |
+    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.bash : kamaji-ruleset../ALPHA.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut : kamaji-ruleset../Testing/ALPHA.clut
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.bash : kamaji-ruleset Working/ALPHA.bash Working/ALPHA.clut
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output : kamaji-ruleset Working/ALPHA.clut.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.delta : kamaji-ruleset Working/ALPHA.clut.output.masked
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.grade : kamaji-ruleset Working/ALPHA.clut.output.delta
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.masked : kamaji-ruleset Working/.kamaji.sed Working/ALPHA.clut.output
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |#
+    |#  (eof}
+1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+1.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+1.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+
+2. ShowMakefile_ScriptExercise.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.2.1. mkdir Testing
+2.2.2. spit .kamaji.conf baseline-folder Testing
+2.2.3. spit .kamaji.conf verbosity-level heavy
+2.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+2.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/BETA_exercise.bash
+2.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+2.3.2. Testing contains one file.
+2.3.2.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+2.4. Target CLU Call.
+2.4.1.  kamaji export mak
+2.4.1.1. Exit Status 0!
+2.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |kamaji export makefile
+2.5. Finalizations.
+2.6. Workspace Impact...
+    |Only in 02.Omega: .kamaji.sed
+    |Only in 02.Omega: Working
+2.6.1. .kamaji.sed (created) is empty.
+2.6.2. Working (created) contains 3 files.
+2.6.2.1. .kamaji.make...
+    |#
+    |#  kamaji export makefile
+    |#
+    |#  This makefile will allow the user to request creation of specific files using the
+    |#  system make command in the same way that 'kamaji make' request does.
+    |#
+    |#  Let the make command determine what needs to be re-made,
+    |#  but have it then call kamaji to make sure it is done right.
+    |#
+    |#  One phony target 'kamaji-grade' is defined for user convenience.
+    |#
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
+    |
+    |.PHONY: kamaji-grade
+    |
+    |kamaji-grade : $(KamajiGradeTargetList)
+    |	@echo "make $@"
+    |	@kamaji fast grade
+    |
+    |kamaji-ruleset :
+    |	@echo "make $@"
+    |	@kamaji export ruleset
+    |
+    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.bash : kamaji-ruleset../Testing/BETA_exercise.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output : kamaji-ruleset Working/BETA_exercise.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.delta : kamaji-ruleset Working/BETA_exercise.output.masked
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.grade : kamaji-ruleset Working/BETA_exercise.output.delta
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/BETA_exercise.output
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |#
+    |#  (eof}
+2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+
+3. ShowMakefile_CompiledExercise.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.2.1. mkdir Testing
+3.2.2. spit .kamaji.conf baseline-folder Testing
+3.2.3. spit .kamaji.conf verbosity-level heavy
+3.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+3.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/GAMMA_exercise.cpp
+3.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+3.3.2. Testing contains one file.
+3.3.2.1. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+3.4. Target CLU Call.
+3.4.1.  kamaji expo makefile
+3.4.1.1. Exit Status 0!
+3.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |kamaji export makefile
+3.5. Finalizations.
+3.6. Workspace Impact...
+    |Only in 03.Omega: .kamaji.sed
+    |Only in 03.Omega: Working
+3.6.1. .kamaji.sed (created) is empty.
+3.6.2. Working (created) contains 3 files.
+3.6.2.1. .kamaji.make...
+    |#
+    |#  kamaji export makefile
+    |#
+    |#  This makefile will allow the user to request creation of specific files using the
+    |#  system make command in the same way that 'kamaji make' request does.
+    |#
+    |#  Let the make command determine what needs to be re-made,
+    |#  but have it then call kamaji to make sure it is done right.
+    |#
+    |#  One phony target 'kamaji-grade' is defined for user convenience.
+    |#
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
+    |
+    |.PHONY: kamaji-grade
+    |
+    |kamaji-grade : $(KamajiGradeTargetList)
+    |	@echo "make $@"
+    |	@kamaji fast grade
+    |
+    |kamaji-ruleset :
+    |	@echo "make $@"
+    |	@kamaji export ruleset
+    |
+    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise : kamaji-ruleset Working/GAMMA_exercise.cpp
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.cpp : kamaji-ruleset../Testing/GAMMA_exercise.cpp
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output : kamaji-ruleset Working/GAMMA_exercise
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.delta : kamaji-ruleset Working/GAMMA_exercise.output.masked
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.grade : kamaji-ruleset Working/GAMMA_exercise.output.delta
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/GAMMA_exercise.output
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |#
+    |#  (eof}
+3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+3.6.2.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+4. ShowMakefile_ThreeKinds.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.2.1. mkdir Testing
+4.2.2. spit .kamaji.conf baseline-folder Testing
+4.2.3. spit .kamaji.conf verbosity-level heavy
+4.2.4. create_production_script_alpha ALPHA.bash
+4.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+4.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
+4.2.7. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+4.3. Initial Workspace contains 6 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+    |Testing/BETA_exercise.bash
+    |Testing/GAMMA_exercise.cpp
+4.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+4.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+4.3.3. Testing contains 3 files.
+4.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+4.3.3.2. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+4.3.3.3. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+4.4. Target CLU Call.
+4.4.1.  kamaji ex makefile
+4.4.1.1. Exit Status 0!
+4.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |kamaji export makefile
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: .kamaji.sed
+    |Only in 04.Omega: Working
+4.6.1. .kamaji.sed (created) is empty.
+4.6.2. Working (created) contains 6 files.
+4.6.2.1. .kamaji.make...
+    |#
+    |#  kamaji export makefile
+    |#
+    |#  This makefile will allow the user to request creation of specific files using the
+    |#  system make command in the same way that 'kamaji make' request does.
+    |#
+    |#  Let the make command determine what needs to be re-made,
+    |#  but have it then call kamaji to make sure it is done right.
+    |#
+    |#  One phony target 'kamaji-grade' is defined for user convenience.
+    |#
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
+    |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
+    |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
+    |
+    |.PHONY: kamaji-grade
+    |
+    |kamaji-grade : $(KamajiGradeTargetList)
+    |	@echo "make $@"
+    |	@kamaji fast grade
+    |
+    |kamaji-ruleset :
+    |	@echo "make $@"
+    |	@kamaji export ruleset
+    |
+    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.bash : kamaji-ruleset../ALPHA.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut : kamaji-ruleset../Testing/ALPHA.clut
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.bash : kamaji-ruleset Working/ALPHA.bash Working/ALPHA.clut
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output : kamaji-ruleset Working/ALPHA.clut.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.delta : kamaji-ruleset Working/ALPHA.clut.output.masked
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.grade : kamaji-ruleset Working/ALPHA.clut.output.delta
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.masked : kamaji-ruleset Working/.kamaji.sed Working/ALPHA.clut.output
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.bash : kamaji-ruleset../Testing/BETA_exercise.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output : kamaji-ruleset Working/BETA_exercise.bash
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.delta : kamaji-ruleset Working/BETA_exercise.output.masked
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.grade : kamaji-ruleset Working/BETA_exercise.output.delta
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/BETA_exercise.output
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise : kamaji-ruleset Working/GAMMA_exercise.cpp
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.cpp : kamaji-ruleset../Testing/GAMMA_exercise.cpp
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output : kamaji-ruleset Working/GAMMA_exercise
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.delta : kamaji-ruleset Working/GAMMA_exercise.output.masked
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.grade : kamaji-ruleset Working/GAMMA_exercise.output.delta
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/GAMMA_exercise.output
+    |	@echo "make $@"
+    |	@kamaji fast make $@
+    |
+    |#
+    |#  (eof}
+4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+4.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+4.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+4.6.2.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+4.6.2.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+
+CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.
