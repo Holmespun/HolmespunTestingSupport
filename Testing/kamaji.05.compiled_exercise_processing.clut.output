@@ -53,6 +53,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mecho "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
     |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
@@ -150,6 +151,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden[0m
+    |[38;5;12mecho "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise.golden.masked does not exist[0m
     |kamaji make GAMMA_exercise.golden.masked
     |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial[0m
@@ -257,6 +259,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden[0m
+    |[38;5;12mecho "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise.golden.masked does not exist[0m
     |kamaji make GAMMA_exercise.golden.masked
     |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial[0m
@@ -398,6 +401,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 5.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mecho "GAMMA_exercise.output" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
     |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
@@ -466,6 +470,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 6.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mecho "GAMMA_exercise.output.masked" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
     |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
@@ -541,6 +546,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mecho "GAMMA_exercise.output.delta" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
     |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
@@ -624,6 +630,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.4.1.2. STDERR [text]...
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mecho "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
     |kamaji make GAMMA_exercise
     |[38;5;12mmake --no-print-directory GAMMA_exercise[0m

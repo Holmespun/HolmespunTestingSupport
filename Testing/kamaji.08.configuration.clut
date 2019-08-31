@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------
 #
-#  kamaji.08.set_configuration.clut
+#  kamaji.08.configuration.clut
 #
 #  Copyright 2019 Brian G. Holmes
 #
@@ -79,6 +79,18 @@ function testCaseDefinitions() {
   #
   clut_case_name		SetConfiguration_Error_NoSuchVariable
   clut_case_parameter		"set verbose-level quiet"
+  clut_case_end
+  #
+  clut_case_name		ShowVersion
+  clut_case_parameter		"show version"
+  clut_case_end
+  #
+  clut_case_name		ShowCopyright
+  clut_case_parameter		"show copy"
+  clut_case_end
+  #
+  clut_case_name		ShowConfiguration
+  clut_case_parameter		"show configuration"
   clut_case_end
   #
 }

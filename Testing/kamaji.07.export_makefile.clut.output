@@ -83,7 +83,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList :=
     |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
     |
-    |.PHONY: kamaji-grade
+    |.PHONY: kamaji-grade kamaji-ruleset
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -93,35 +93,35 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	@kamaji export ruleset
     |
-    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |Working/.kamaji.sed : kamaji-ruleset .kamaji.sed
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.bash : kamaji-ruleset../ALPHA.bash
+    |Working/ALPHA.bash : kamaji-ruleset ALPHA.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut : kamaji-ruleset../Testing/ALPHA.clut
+    |Working/ALPHA.clut : kamaji-ruleset Testing/ALPHA.clut
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.bash : kamaji-ruleset Working/ALPHA.bash Working/ALPHA.clut
+    |Working/ALPHA.clut.bash : kamaji-ruleset  Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output : kamaji-ruleset Working/ALPHA.clut.bash
+    |Working/ALPHA.clut.output : kamaji-ruleset  Working/ALPHA.clut.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.delta : kamaji-ruleset Working/ALPHA.clut.output.masked
+    |Working/ALPHA.clut.output.delta : kamaji-ruleset  Working/ALPHA.clut.output.masked
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.grade : kamaji-ruleset Working/ALPHA.clut.output.delta
+    |Working/ALPHA.clut.output.grade : kamaji-ruleset  Working/ALPHA.clut.output.delta
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.masked : kamaji-ruleset Working/.kamaji.sed Working/ALPHA.clut.output
+    |Working/ALPHA.clut.output.masked : kamaji-ruleset  Working/.kamaji.sed Working/ALPHA.clut.output
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
@@ -185,7 +185,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList :=
     |KamajiGradeTargetList += Working/BETA_exercise.output.grade
     |
-    |.PHONY: kamaji-grade
+    |.PHONY: kamaji-grade kamaji-ruleset
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -195,27 +195,27 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	@kamaji export ruleset
     |
-    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |Working/.kamaji.sed : kamaji-ruleset .kamaji.sed
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.bash : kamaji-ruleset../Testing/BETA_exercise.bash
+    |Working/BETA_exercise.bash : kamaji-ruleset Testing/BETA_exercise.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output : kamaji-ruleset Working/BETA_exercise.bash
+    |Working/BETA_exercise.output : kamaji-ruleset  Working/BETA_exercise.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output.delta : kamaji-ruleset Working/BETA_exercise.output.masked
+    |Working/BETA_exercise.output.delta : kamaji-ruleset  Working/BETA_exercise.output.masked
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output.grade : kamaji-ruleset Working/BETA_exercise.output.delta
+    |Working/BETA_exercise.output.grade : kamaji-ruleset  Working/BETA_exercise.output.delta
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/BETA_exercise.output
+    |Working/BETA_exercise.output.masked : kamaji-ruleset  Working/.kamaji.sed Working/BETA_exercise.output
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
@@ -287,7 +287,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList :=
     |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
     |
-    |.PHONY: kamaji-grade
+    |.PHONY: kamaji-grade kamaji-ruleset
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -297,31 +297,31 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	@kamaji export ruleset
     |
-    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |Working/.kamaji.sed : kamaji-ruleset .kamaji.sed
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise : kamaji-ruleset Working/GAMMA_exercise.cpp
+    |Working/GAMMA_exercise : kamaji-ruleset  Working/GAMMA_exercise.cpp
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.cpp : kamaji-ruleset../Testing/GAMMA_exercise.cpp
+    |Working/GAMMA_exercise.cpp : kamaji-ruleset Testing/GAMMA_exercise.cpp
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output : kamaji-ruleset Working/GAMMA_exercise
+    |Working/GAMMA_exercise.output : kamaji-ruleset  Working/GAMMA_exercise
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.delta : kamaji-ruleset Working/GAMMA_exercise.output.masked
+    |Working/GAMMA_exercise.output.delta : kamaji-ruleset  Working/GAMMA_exercise.output.masked
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.grade : kamaji-ruleset Working/GAMMA_exercise.output.delta
+    |Working/GAMMA_exercise.output.grade : kamaji-ruleset  Working/GAMMA_exercise.output.delta
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/GAMMA_exercise.output
+    |Working/GAMMA_exercise.output.masked : kamaji-ruleset  Working/.kamaji.sed Working/GAMMA_exercise.output
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
@@ -438,7 +438,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
     |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
     |
-    |.PHONY: kamaji-grade
+    |.PHONY: kamaji-grade kamaji-ruleset
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -448,79 +448,79 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	@kamaji export ruleset
     |
-    |Working/.kamaji.sed : kamaji-ruleset../.kamaji.sed
+    |Working/.kamaji.sed : kamaji-ruleset .kamaji.sed
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.bash : kamaji-ruleset../ALPHA.bash
+    |Working/ALPHA.bash : kamaji-ruleset ALPHA.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut : kamaji-ruleset../Testing/ALPHA.clut
+    |Working/ALPHA.clut : kamaji-ruleset Testing/ALPHA.clut
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.bash : kamaji-ruleset Working/ALPHA.bash Working/ALPHA.clut
+    |Working/ALPHA.clut.bash : kamaji-ruleset  Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output : kamaji-ruleset Working/ALPHA.clut.bash
+    |Working/ALPHA.clut.output : kamaji-ruleset  Working/ALPHA.clut.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.delta : kamaji-ruleset Working/ALPHA.clut.output.masked
+    |Working/ALPHA.clut.output.delta : kamaji-ruleset  Working/ALPHA.clut.output.masked
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.grade : kamaji-ruleset Working/ALPHA.clut.output.delta
+    |Working/ALPHA.clut.output.grade : kamaji-ruleset  Working/ALPHA.clut.output.delta
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.masked : kamaji-ruleset Working/.kamaji.sed Working/ALPHA.clut.output
+    |Working/ALPHA.clut.output.masked : kamaji-ruleset  Working/.kamaji.sed Working/ALPHA.clut.output
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.bash : kamaji-ruleset../Testing/BETA_exercise.bash
+    |Working/BETA_exercise.bash : kamaji-ruleset Testing/BETA_exercise.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output : kamaji-ruleset Working/BETA_exercise.bash
+    |Working/BETA_exercise.output : kamaji-ruleset  Working/BETA_exercise.bash
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output.delta : kamaji-ruleset Working/BETA_exercise.output.masked
+    |Working/BETA_exercise.output.delta : kamaji-ruleset  Working/BETA_exercise.output.masked
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output.grade : kamaji-ruleset Working/BETA_exercise.output.delta
+    |Working/BETA_exercise.output.grade : kamaji-ruleset  Working/BETA_exercise.output.delta
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/BETA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/BETA_exercise.output
+    |Working/BETA_exercise.output.masked : kamaji-ruleset  Working/.kamaji.sed Working/BETA_exercise.output
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise : kamaji-ruleset Working/GAMMA_exercise.cpp
+    |Working/GAMMA_exercise : kamaji-ruleset  Working/GAMMA_exercise.cpp
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.cpp : kamaji-ruleset../Testing/GAMMA_exercise.cpp
+    |Working/GAMMA_exercise.cpp : kamaji-ruleset Testing/GAMMA_exercise.cpp
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output : kamaji-ruleset Working/GAMMA_exercise
+    |Working/GAMMA_exercise.output : kamaji-ruleset  Working/GAMMA_exercise
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.delta : kamaji-ruleset Working/GAMMA_exercise.output.masked
+    |Working/GAMMA_exercise.output.delta : kamaji-ruleset  Working/GAMMA_exercise.output.masked
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.grade : kamaji-ruleset Working/GAMMA_exercise.output.delta
+    |Working/GAMMA_exercise.output.grade : kamaji-ruleset  Working/GAMMA_exercise.output.delta
     |	@echo "make $@"
     |	@kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.masked : kamaji-ruleset Working/.kamaji.sed Working/GAMMA_exercise.output
+    |Working/GAMMA_exercise.output.masked : kamaji-ruleset  Working/.kamaji.sed Working/GAMMA_exercise.output
     |	@echo "make $@"
     |	@kamaji fast make $@
     |

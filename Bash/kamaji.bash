@@ -78,6 +78,9 @@
 #	KamajiRequestInvoke
 #	KamajiRequestMake
 #	KamajiRequestReview
+#	KamajiRequestShow_configuration
+#	KamajiRequestShow_copyright
+#	KamajiRequestShow_version
 #	KamajiRequestShow
 #
 #	KamajiMake_Delta_from_GoldenMasked_OutputMasked
@@ -103,8 +106,8 @@
 #----------------------------------------------------------------------------------------------------------------------
 #
 #  20190704 BGH; created.
-#  20190720 BGH; version 2.
-#  20190817 BGH; version 3, kamaji knows the source files, calculates all output files, functions based on both.
+#  20190720 BGH; version 0.2.
+#  20190817 BGH; version 0.3, kamaji knows the source files, calculates all output files, functions based on both.
 #
 #  TODO: New requests rework, workout, vimdiff=review (grade and vimdiff), and bless=baseline (cp if fresh, or grade)
 #  TODO: Save the rules to a bash file that can be reused if all Golden and SedScript files represented there.
@@ -1272,7 +1275,7 @@ function KamajiModifierUsage_show() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Show...")"
   #
-  EchoPara80	"The 'show' request is not useful at this time."
+  EchoPara80	"The 'show' request can be used to display the configuration, the copyright, or the software version."
   #
 }
 
@@ -1347,7 +1350,7 @@ function KamajiModifierUsage() {
   echo "      make   [ <filename> | last | grades | outputs ]..."
   echo "      review [ <filename> | last ]..."
   echo "      set    <name> <value>"
-  echo "      show   [ makefile ]"
+  echo "      show   [ configuration | copyright | version ]"
   echo ""
   #
   declare -A UsageModifierSubjectList
@@ -1422,6 +1425,9 @@ function KamajiModifierUsage() {
      [ ${#FunctionToCall} -gt 0 ] && ${FunctionToCall} ${Modifier} ${ModifiedCorrected}
      #
   fi
+  #
+  KamajiRequestShow_copyright show copyright
+  KamajiRequestShow_version   show version
   #
   false
   #
@@ -2062,7 +2068,7 @@ function KamajiRequestExport_makefile() {
     #
   done
   #
-  spit  ${MakefileFSpec} ".PHONY: kamaji-grade"
+  spit  ${MakefileFSpec} ".PHONY: kamaji-grade kamaji-ruleset"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "kamaji-grade : \$(KamajiGradeTargetList)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
@@ -2099,7 +2105,7 @@ function KamajiRequestExport_makefile() {
       if [ "${__KamajiRepresentative[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
       then
          #
-         OutputLine+="${__KamajiRepresentative[${ItemOfParentFName}]}"
+         OutputLine+="${__KamajiRepresentative[${ItemOfParentFName}]#../}"
          #
       elif [ ${#__KamajiMyParentalList[${ItemOfParentFName}]} -eq 0 ]
       then
@@ -2121,7 +2127,7 @@ function KamajiRequestExport_makefile() {
          #
       fi
       #
-      OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : kamaji-ruleset"
+      OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : kamaji-ruleset "
       #
       OutputList[${OutputIndx}]+="$(echo "${OutputLine}" | tr ' ' '\n' | sort --unique | tr '\n' ' ')"
       #
@@ -2211,7 +2217,7 @@ function KamajiRequestExport() {
   shift 2
   local -r ArgumentList="${*}"
   #
-  local -r Target=$(EchoMeaningOf ${Object} "N/A" makefile ruleset)
+  local -r Target=$(EchoMeaningOf ${Object} "" makefile ruleset)
   #
   local -r FunctionWeWant=${FUNCNAME}_${Target}
   #
@@ -2406,18 +2412,72 @@ function KamajiRequestReview() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiRequestShow_configuration() {
+  #
+  local -r Request=${1}
+  local -r Object=${2}
+  #
+  local    Key
+  #
+  DiagnosticLight "${__KamajiScriptName} ${Request} ${Object}"
+  #
+  for Key in ${!__KamajiConfigurationValue[*]}
+  do
+    #
+    printf "%-21s %s\n" ${Key} "$(echo ${__KamajiConfigurationValue[${Key}]})"
+    #
+  done | sort
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiRequestShow_copyright() {
+  #
+  local -r    Request=${1}
+  local -r    Object=${2}
+  #
+  local -r -i YearCreated=2019
+  #
+  local -r -i YearCurrent=$(date '+%Y')
+  #
+  local       YearDisplay=${YearCreated}
+  #
+  [ ${YearCurrent} -ne ${YearCreated} ] && YearDisplay+="-${YearCurrent}"
+  #
+  echo "Copyright (c) ${YearDisplay} Brian G. Holmes."
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiRequestShow_version() {
+  #
+  local -r    Request=${1}
+  local -r    Object=${2}
+  #
+  echo "kamaji version 0.3"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiRequestShow() {
   #
   local -r Request=${1}
-  local -r Object=${2-makefile}
+  local -r Object=${2}
+  shift 2
+  local -r ArgumentList="${*}"
   #
-  local FunctionWeWant=${FUNCNAME}_${Object}
+  local -r Target=$(EchoMeaningOf ${Object} "" configuration copyright version)
   #
-  local FunctionToCall=$(declare -F ${FunctionWeWant})
+  local -r FunctionWeWant=${FUNCNAME}_${Target}
+  #
+  local -r FunctionToCall=$(declare -F ${FunctionWeWant})
   #
   [ ${#FunctionToCall} -eq 0 ] && KamajiExitAfterUsage "Unable to '${Request} ${Object}' objects."
   #
-  ${FunctionToCall} ${Request} ${Object}
+  ${FunctionToCall} ${Request} ${Target} ${ArgumentList}
   #
 }
 
