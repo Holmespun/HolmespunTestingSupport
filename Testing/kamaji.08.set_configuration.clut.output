@@ -1,0 +1,375 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.08.set_configuration.clut (4 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. SetConfiguration_ReplaceValue.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.2.1. create_complete_configuration_file .kamaji.conf
+1.2.2. mkdir --parents ALFA
+1.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+1.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+1.3.2. ALFA is empty.
+1.4. Target CLU Call.
+1.4.1.  kamaji set makefile-filename OSCAR
+1.4.1.1. Exit Status 0!
+1.4.1.2. STDERR [text]...
+    |kamaji set makefile-filename OSCAR
+1.5. Finalizations.
+1.6. Workspace Impact...
+    |diff --recursive --no-dereference 01.Alpha/.kamaji.conf 01.Omega/.kamaji.conf
+    |22a23
+    |> makefile-filename OSCAR
+    |Only in 01.Omega: FOXTROT
+    |Only in 01.Omega: MIKE
+1.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+1.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |makefile-filename OSCAR
+1.6.1.2. ALFA is empty.
+1.6.1.3. FOXTROT is empty.
+1.6.1.4. MIKE contains one file.
+1.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+1.6.2. FOXTROT (created) is empty.
+1.6.3. MIKE (created) contains one file.
+1.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+2. SetConfiguration_AddToList.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.2.1. create_complete_configuration_file .kamaji.conf
+2.2.2. mkdir --parents ALFA
+2.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+2.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+2.3.2. ALFA is empty.
+2.4. Target CLU Call.
+2.4.1.  kamaji set script-type-list PAPA
+2.4.1.1. Exit Status 0!
+2.4.1.2. STDERR [text]...
+    |kamaji set script-type-list PAPA
+2.5. Finalizations.
+2.6. Workspace Impact...
+    |diff --recursive --no-dereference 02.Alpha/.kamaji.conf 02.Omega/.kamaji.conf
+    |22a23
+    |> script-type-list PAPA
+    |Only in 02.Omega: FOXTROT
+    |Only in 02.Omega: MIKE
+2.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+2.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |script-type-list PAPA
+2.6.1.2. ALFA is empty.
+2.6.1.3. FOXTROT is empty.
+2.6.1.4. MIKE contains one file.
+2.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+2.6.2. FOXTROT (created) is empty.
+2.6.3. MIKE (created) contains one file.
+2.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+3. SetConfiguration_Error_NoValue.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.2.1. create_complete_configuration_file .kamaji.conf
+3.2.2. mkdir --parents ALFA
+3.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+3.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+3.3.2. ALFA is empty.
+3.4. Target CLU Call.
+3.4.1.  kamaji set review-command
+3.4.1.1. Exit Status 1!
+3.4.1.2. STDERR [text]...
+    |kamaji set review-command 
+    |[38;5;9m[1mERROR:[0m [38;5;15m[1mEmpty values are not useful in a configuration file.[0m
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile ]
+    |
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+3.5. Finalizations.
+3.6. Workspace Impact...
+    |Only in 03.Omega: FOXTROT
+    |Only in 03.Omega: MIKE
+3.6.1. FOXTROT (created) is empty.
+3.6.2. MIKE (created) contains one file.
+3.6.2.1. FOXTROT is a symbolic link to ../FOXTROT
+
+4. SetConfiguration_Error_NoSuchVariable.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.2.1. create_complete_configuration_file .kamaji.conf
+4.2.2. mkdir --parents ALFA
+4.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+4.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+4.3.2. ALFA is empty.
+4.4. Target CLU Call.
+4.4.1.  kamaji set verbose-level quiet
+4.4.1.1. Exit Status 1!
+4.4.1.2. STDERR [text]...
+    |kamaji set verbose-level quiet
+    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'verbose-level' configuration variable is not supported.[0m
+    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ makefile ]
+    |
+    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
+    |supported. Modifier and request abbreviations are also supported; ambiguity is
+    |resolved using alphabetical order. No other modifiers or requests are applied
+    |after a usage request is fulfilled.
+    |
+    |Further help may be displayed by following the usage request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |
+    |CLUT cases and unit test exercises are used and evaluated in similar ways:
+    |compile it (if not already executable), invoke it to produce output, mask that
+    |output, compare the masked output to its baseline, and then grade it based on
+    |that comparison.
+    |
+    |CLUT definitions are compiled into Bash scripts. Unit test exercises may be
+    |written in compilable code or a scripting language. Compilable code must be
+    |compiled and linked into executable files using a make framework. Scripts need
+    |not be compiled.
+    |
+    |CLUT cases and unit test exercises produce demonstrative output that need not
+    |be valid or invalid on its face. Users must evaluate the initial output from
+    |these tests to determine whether it is valid; valid output must be blessed by
+    |the user and copied to a safe location as baseline output. Future changes to
+    |the tested code will result in output that differs from the baseline; these
+    |differences should also be blessed to update the baseline. Users will benefit
+    |from retesting frequently between minor and controlled functional changes to
+    |the code being tested.
+    |
+    |Passing grades are only granted when current output matches baseline output,
+    |but this matching is only attempted after the current and baseline output are
+    |masked. Masking is performed using a user-defined sed script.
+    |
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: FOXTROT
+    |Only in 04.Omega: MIKE
+4.6.1. FOXTROT (created) is empty.
+4.6.2. MIKE (created) contains one file.
+4.6.2.1. FOXTROT is a symbolic link to ../FOXTROT
+
+CLUT Source File: kamaji.08.set_configuration.clut (4 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.

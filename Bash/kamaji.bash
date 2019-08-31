@@ -22,6 +22,7 @@
 #	EchoAgeRelation
 #	EchoAndExecuteOutputSwap
 #	EchoAndExecuteInWorking
+#	EchoAndExecute
 #	EchoErrorAndExit
 #	EchoExecutableFilesMatching
 #	EchoFailureAndExit
@@ -353,6 +354,7 @@ function EchoAndExecuteOutputSwap() {
   return ${Status}
   #
 }
+
 #----------------------------------------------------------------------------------------------------------------------
 
 function EchoAndExecuteInWorking() {
@@ -374,6 +376,28 @@ function EchoAndExecuteInWorking() {
      IFS="${__KamajiIfsOriginal}"
      #
   cd ..
+  #
+  return ${Status}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoAndExecute() {
+  #
+  local -r SystemRequest="${*}"
+  #
+  local -i Status
+  #
+  DiagnosticHeavy "${SystemRequest}" 1>&2
+  #
+  IFS=
+     #
+     EchoAndExecuteOutputSwap ${SystemRequest} 2>&1 1>&2
+     #
+     Status=${?}
+     #
+  IFS="${__KamajiIfsOriginal}"
   #
   return ${Status}
   #
@@ -1940,7 +1964,7 @@ function KamajiRequestBless() {
        #
        DiagnosticLight "${__KamajiScriptName} ${Request} ${TargetFName%.review}"
        #
-       echo "${TargetFName}" > ${__KamajiLastMakeTargetFSpec}
+       EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastMakeTargetFSpec}"
        #
        #  Determine the golden output file associated with this output.
        #
@@ -1973,7 +1997,13 @@ function KamajiRequestConfigure() {
   #
   DiagnosticLight "${__KamajiScriptName} ${Request} ${Name} ${Value}"
   #
-  echo "${Name} ${Value}" >> ./${__KamajiConfigurationFName}
+  [ ${#Value} -eq 0 ] && KamajiExitAfterUsage "Empty values are not useful in a configuration file."
+  #
+  local -r VariableName=$(EchoMeaningOf ${Name} "" ${!__KamajiConfigurationValue[*]})
+  #
+  [ ${#VariableName} -eq 0 ] && KamajiExitAfterUsage "The '${Name}' configuration variable is not supported."
+  #
+  EchoAndExecute "echo \"${VariableName} ${Value}\" >> ./${__KamajiConfigurationFName}"
   #
 }
 
@@ -2255,7 +2285,7 @@ function KamajiRequestGradeOrOutputOrReview() {
     #
     #  Save the target name to support the next "make last" request.
     #
-    echo "${TargetFName}" > ${__KamajiLastMakeTargetFSpec}
+    EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastMakeTargetFSpec}"
     #
     #  Call for the target to be made.
     #
@@ -2350,7 +2380,7 @@ function KamajiRequestMake() {
        #
        GivnSourceFLast=${Target}
        #
-       echo "${GivnSourceFLast}" > ${__KamajiLastMakeTargetFSpec}
+       EchoAndExecute "echo \"${GivnSourceFLast}\" > ${__KamajiLastMakeTargetFSpec}"
        #
     fi
     #

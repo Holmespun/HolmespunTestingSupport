@@ -1,0 +1,90 @@
+#----------------------------------------------------------------------------------------------------------------------
+#
+#  kamaji.08.set_configuration.clut
+#
+#  Copyright 2019 Brian G. Holmes
+#
+#	This program is part of the Holmespun Makefile Method.
+#
+#	The Holmespun Makefile Method is free software: you can redistribute it and/or modify it under the terms of the
+#	GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	The Holmespun Makefile Method is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+#	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+#	Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License along with this program.  If not, see
+#	<https://www.gnu.org/licenses/>.
+#
+#  See the COPYING.text file for further information.
+#
+#  20190831 BGH; created.
+#
+#----------------------------------------------------------------------------------------------------------------------
+
+set -u
+
+source $(dirname ${BASH_SOURCE[0]})/kamaji.00.common_functions.bash
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function create_complete_configuration_file() {
+  #
+  local -r FSpec=${1}
+  #
+  spit ${FSpec} "#"
+  spit ${FSpec} "#  ${FSpec} created by ${FUNCNAME}"
+  spit ${FSpec} "#"
+  spit ${FSpec} ""
+  spit ${FSpec} "baseline-folder         ALFA"
+  spit ${FSpec} "data-extension-list     BRAVO"
+  spit ${FSpec} "data-filename-list      CHARLIE"
+  spit ${FSpec} "last-target-filename    DELTA"
+  spit ${FSpec} "makefile-filename       ECHO"
+  spit ${FSpec} "mask-sed-script         FOXTROT"
+  spit ${FSpec} "review-command          GOLF"
+  spit ${FSpec} "review-tailpipe         HOTEL"
+  spit ${FSpec} "ruleset-filename        INDIA"
+  spit ${FSpec} "script-type-list        JULIETT"
+  spit ${FSpec} "verbosity-level         KILO"
+  spit ${FSpec} "working-folder          LIMA"
+  spit ${FSpec} ""
+  spit ${FSpec} "working-folder          MIKE"
+  spit ${FSpec} "script-type-list        NOVEMBER"
+  spit ${FSpec} ""
+  spit ${FSpec} "#"
+  spit ${FSpec} "#  (eof}"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function testCaseDefinitions() {
+  #
+  clut_global_initialize	create_complete_configuration_file .kamaji.conf
+  clut_global_initialize	mkdir --parents ALFA
+  #
+  clut_case_name		SetConfiguration_ReplaceValue
+  clut_case_parameter		"set makefile-filename OSCAR"
+  clut_case_end
+  #
+  clut_case_name		SetConfiguration_AddToList
+  clut_case_parameter		"set script-type-list PAPA"
+  clut_case_end
+  #
+  clut_case_name		SetConfiguration_Error_NoValue
+  clut_case_parameter		"set review-command"
+  clut_case_end
+  #
+  clut_case_name		SetConfiguration_Error_NoSuchVariable
+  clut_case_parameter		"set verbose-level quiet"
+  clut_case_end
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+clut_definition_set		testCaseDefinitions
+
+#----------------------------------------------------------------------------------------------------------------------
