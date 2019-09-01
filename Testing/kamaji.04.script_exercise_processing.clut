@@ -33,6 +33,7 @@ function testCaseDefinitions() {
   #
   clut_global_initialize	mkdir Testing
   clut_global_initialize	spit .kamaji.conf "baseline-folder Testing"
+  clut_global_initialize	spit .kamaji.conf "time-output-format %C %x"
   clut_global_initialize	spit .kamaji.conf "verbosity-level heavy"
   clut_global_initialize	create_exercise_script_alpha Testing/BETA_exercise.bash
   #

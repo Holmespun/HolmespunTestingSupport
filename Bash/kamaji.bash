@@ -156,8 +156,6 @@ declare    __KamajiGoldenDSpec="TBD"
 
 declare    __KamajiDataFileNameList="TBD"
 
-declare -i __kamajiFailureCount=0
-
 declare    __KamajiLastMakeTargetFSpec="TBD"
 
 declare    __KamajiReviewCommand="TBD"
@@ -166,12 +164,18 @@ declare    __KamajiReviewTailpipe="TBD"
 
 declare    __KamajiScriptExtensionList="TBD"
 
+declare    __KamajiTimeOutputFormat="TBD"
+
 declare    __KamajiVerbosityRequested="TBD"
 
 declare    __KamajiWorkinDSpec="TBD"
 
 declare    __KamajiSedScriptFSpec="TBD"
 declare    __KamajiSedScriptFName="TBD"
+
+#----------------------------------------------------------------------------------------------------------------------
+
+declare -i __kamajiFailureCount=0
 
 declare    __KamajiRulesetIsReady="false"
 
@@ -537,7 +541,7 @@ function EchoPara() {
   #
   local -r -i CharWide=${1}
   shift 1
-  local -r    WordList="${*}"
+  local -r    WordList=${*}
   #
   local    ParagraphText=
   local -i ParagraphWide=0
@@ -576,7 +580,17 @@ function EchoPara80() { EchoPara 80 ${*}; }
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function EchoPara80-4() { EchoPara 76 ${*} | sed --expression='s,^,    ,'; }
+function EchoPara80-4() {
+  #
+  local -r WordList=${*}
+  #
+  local -r WordHead=${WordList%% *}
+  #
+  local -r HighHead=$(echoInColorWhiteBold "${WordHead}")
+  #
+  EchoPara 76 ${WordList} | sed --expression="1s,${WordHead},${HighHead}," --expression='s,^,    ,'
+  #
+}
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -821,7 +835,8 @@ function KamajiConfigurationCheckValues() {
 function KamajiConfigurationEchoValue() {
   #
   local -r Name=${1}
-  local -r Default="${2-}"
+  shift 1
+  local -r Default="${*}"
   #
   local    Result="${Default}"
   #
@@ -850,6 +865,7 @@ function KamajiConfigurationLoadValues() {
   __KamajiConfigurationValue["review-tailpipe"]=
   __KamajiConfigurationValue["ruleset-filename"]=
   __KamajiConfigurationValue["script-type-list"]=
+  __KamajiConfigurationValue["time-output-format"]=
   __KamajiConfigurationValue["verbosity-level"]=
   __KamajiConfigurationValue["working-folder"]=
   #
@@ -915,11 +931,15 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiSedScriptFName=$(basename ${__KamajiSedScriptFSpec})
   #
+  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
+  #
+  __KamajiTimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format ${DefaultTimeFormat})
+  #
   __KamajiVerbosityRequested=$(KamajiConfigurationEchoValue verbosity-level quiet)
   #
   __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder Working)
   #
-  local LastMakeTargetFName=$(KamajiConfigurationEchoValue last-target-filename .kamaji.last_target.text)
+  local -r LastMakeTargetFName=$(KamajiConfigurationEchoValue last-target-filename .kamaji.last_target.text)
   #
   __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFName}
   #
@@ -1000,33 +1020,33 @@ function KamajiModifierUsage_configure() {
   EchoPara80	"Configuration values are stored in the ./${__KamajiConfigurationFName} file,"			\
 		"a text file that contains comments, blank lines, and named value pairs:"
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "baseline-folder") <directory-specification> -"				\
+  EchoPara80-4	"baseline-folder <directory-specification> -"							\
 		"Specification for the directory where baseline output files are stored."			\
 		"The default baseline-folder is the current directory."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "data-extension-list") <extension>... -"				\
+  EchoPara80-4	"data-extension-list <extension>... -"								\
 		"A list of name extensions for \"data\" files that are stored in the baseline-folder,"		\
 		"but do not represent CLUT or unit test exercises or their output."				\
 		"Data files are represented in the working-folder."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "data-filename-list") <filename>... -"					\
+  EchoPara80-4	"data-filename-list <filename>... -"								\
 		"A list of names for \"data\" files that are stored in the baseline-folder,"			\
 		"but do not represent CLUT or unit test exercises or their output."				\
 		"Data files are represented in the working-folder."
   #
-  EchoPara80-4  "$(echoInColorWhiteBold "last-target-filename") <filename> -"					\
+  EchoPara80-4  "last-target-filename <filename> -"								\
 		"The name of the file in which the filename of the last make target is stored;"			\
 		"the file is stored in the working-folder."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "makefile-filename") <filename> -"					\
+  EchoPara80-4	"makefile-filename <filename> -"								\
 		"The name of the file into which a makefile is exported."					\
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "mask-sed-script") <file-specification> -"				\
+  EchoPara80-4	"mask-sed-script <file-specification> -"							\
 		"Specification for the user-defined sed script that is used to mask output files."		\
 		"The default mask-sed-script is the ${__KamajiConfigurationFName%.*}.sed file in the current"	\
 		"directory."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "review-command") <command> -"						\
+  EchoPara80-4	"review-command <command> -"									\
   		"The command used to perform a review; the comand may be decorated with any number of options."	\
 		"The command is called from within the working-folder, and is passed the"			\
 		"masked baseline output and masked current output files in that order."				\
@@ -1034,22 +1054,29 @@ function KamajiModifierUsage_configure() {
 		"match a command that requires something else."							\
 		"The default review-command is vimdiff."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "review-tailpipe") <command> [ | <command> ]...-"			\
+  EchoPara80-4	"review-tailpipe <command> [ | <command> ]... -"						\
 		"A command into which the review-command output is piped."					\
 		"For example, if you set the review-command to \"diff\" then you might want to"			\
 		"set the review-tailpipe to \"sed --expression='s,^,    ,' | less\" so that the diff"		\
 		"output will be indented, you can view it a page at a time, and it will not"			\
 		"clutter your display after your review."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "ruleset-filename") <filename> -"					\
+  EchoPara80-4	"ruleset-filename <filename> -"									\
 		"The name of the file in which the ruleset is stored."						\
 		"The ruleset is stored and used by the 'export ruleset' request and 'fast' modifier."		\
 		"the file is stored in the working-folder."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "script-type-list") [<extension>]... -"					\
+  EchoPara80-4	"time-output-format <time-format> -"								\
+		"The output format used by the /usr/bin/time program to provide run-time statistics about"	\
+		"CLUT scripts and unit test scripts and programs; please see the GNU VERSION section of the"	\
+		"description produced by the man time command."							\
+		"The default format uses every control sequence in the order that they are presented by the"	\
+		"man time command."
+  #
+  EchoPara80-4	"script-type-list [<extension>]... -"								\
 		"A list of file name extensions that are used to store executable scripts."			\
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "verbosity-level") <adjective> -"					\
+  EchoPara80-4	"verbosity-level <adjective> -"									\
 		"The level of disgnostic output produced."							\
 		"The default level is called 'quiet' and results in no disgnostic output at all."		\
 		"The 'light' level will describe the 'make' requests used to fulfill the user's request."	\
@@ -1057,7 +1084,7 @@ function KamajiModifierUsage_configure() {
 		"in the working-folder and comments that describe data that it uses to decide what commands"	\
 		"should be applied."
   #
-  EchoPara80-4	"$(echoInColorWhiteBold "working-folder") <directory-specification> -"				\
+  EchoPara80-4	"working-folder <directory-specification> -"							\
 		"The specification for the directory where intermediate and unverified output files are"	\
 		"created."											\
 		"If the working-folder does not already exist then it will be silently created."		\
@@ -1078,6 +1105,7 @@ function KamajiModifierUsage_configure() {
   echo		"    review-tailpipe         sed --expression='s,^,    ,' | less"
   echo		"    ruleset-filename        .kamaki.fast-ruleset"
   echo		"    script-type-list        sh py rb"
+  echo		"    time-output-format      %C exit status %x ran in %e seconds"
   echo		"    verbosity-level         light"
   echo		"    working-folder          Workspace"
   echo		"    #"
@@ -1093,6 +1121,9 @@ function KamajiModifierUsage_configure() {
 		"In the above example, the working-folder name is associated with the \"Working\" value."	\
 		"The \"-list\" name values always add additional value associations to the name."		\
 		"In the above example, the script-type-list is associated with the \"sh py rb bash\" value."
+  #
+  EchoPara80	"A list of the configuration variable names can be displayed using a"				\
+		"'show configuration variables' request."
   #
 }
 
@@ -1350,7 +1381,7 @@ function KamajiModifierUsage() {
   echo "      make   [ <filename> | last | grades | outputs ]..."
   echo "      review [ <filename> | last ]..."
   echo "      set    <name> <value>"
-  echo "      show   [ configuration | copyright | version ]"
+  echo "      show   [ configuration [ names | variables ] | copyright | version ]"
   echo ""
   #
   declare -A UsageModifierSubjectList
@@ -2044,12 +2075,15 @@ function KamajiRequestExport_makefile() {
   spit  ${MakefileFSpec} "#  Let the make command determine what needs to be re-made,"
   spit  ${MakefileFSpec} "#  but have it then call kamaji to make sure it is done right."
   spit  ${MakefileFSpec} "#"
-  spit  ${MakefileFSpec} "#  One phony target 'kamaji-grade' is defined for user convenience."
+  spit  ${MakefileFSpec} "#  The phony target 'kamaji-grade' is defined for user convenience."
   spit  ${MakefileFSpec} "#"
+  spit  ${MakefileFSpec} ""
+  spit  ${MakefileFSpec} "QUIET ?= @"
   #
   for TargetClass in Grade
   do
     #
+    spit ${MakefileFSpec} ""
     spit ${MakefileFSpec} "Kamaji${TargetClass}TargetList :="
     #
     if [ "${__KamajiClassifiedList[${TargetClass}]+IS_SET}" = "IS_SET" ]
@@ -2064,19 +2098,18 @@ function KamajiRequestExport_makefile() {
        #
     fi
     #
-    spit ${MakefileFSpec} ""
-    #
   done
   #
+  spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} ".PHONY: kamaji-grade kamaji-ruleset"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "kamaji-grade : \$(KamajiGradeTargetList)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
-  spite ${MakefileFSpec} "\t@kamaji fast grade"
+  spite ${MakefileFSpec} "\t\$(QUIET) kamaji fast grade"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "kamaji-ruleset :"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
-  spite ${MakefileFSpec} "\t@kamaji export ruleset"
+  spite ${MakefileFSpec} "\t\$(QUIET) kamaji export ruleset"
   spit  ${MakefileFSpec} ""
   #
   #  Generate makefile dependency rules for each of the targets leading up to the grades.
@@ -2142,7 +2175,7 @@ function KamajiRequestExport_makefile() {
   while read OutputLine
   do
     #
-    printf "%s\n\t@echo \"make \$@\"\n\t@kamaji fast make \$@\n\n" "${OutputLine}" >> ${MakefileFSpec}
+    printf "%s\n\t@echo \"make \$@\"\n\t\$(QUIET) kamaji fast make \$@\n\n" "${OutputLine}" >> ${MakefileFSpec}
     #
   done <<< $(printf "%s\n" "${OutputList[@]}" | sort --unique)
   #
@@ -2416,17 +2449,34 @@ function KamajiRequestShow_configuration() {
   #
   local -r Request=${1}
   local -r Object=${2}
+  local -r Target=${3-}
   #
   local    Key
   #
-  DiagnosticLight "${__KamajiScriptName} ${Request} ${Object}"
+  local -r Addition=$(EchoMeaningOf ${Target} "" names variables)
   #
-  for Key in ${!__KamajiConfigurationValue[*]}
-  do
-    #
-    printf "%-21s %s\n" ${Key} "$(echo ${__KamajiConfigurationValue[${Key}]})"
-    #
-  done | sort
+  DiagnosticLight "${__KamajiScriptName} ${Request} ${Object} ${Addition}"
+  #
+  if [ ${#Addition} -eq 0 ]
+  then
+     #
+     for Key in ${!__KamajiConfigurationValue[*]}
+     do
+       #
+       if [ ${#__KamajiConfigurationValue[${Key}]} -gt 0 ]
+       then
+          #
+          printf "%-21s %s\n" ${Key} "$(echo ${__KamajiConfigurationValue[${Key}]})"
+          #
+       fi
+       #
+     done | sort
+     #
+  else
+     #
+     printf "%s\n" ${!__KamajiConfigurationValue[*]} | sort
+     #
+  fi
   #
 }
 
@@ -2465,7 +2515,7 @@ function KamajiRequestShow_version() {
 function KamajiRequestShow() {
   #
   local -r Request=${1}
-  local -r Object=${2}
+  local -r Object=${2-configuration}
   shift 2
   local -r ArgumentList="${*}"
   #
@@ -2627,7 +2677,9 @@ function KamajiMake_Output_from_Naked() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  EchoAndExecuteInWorking "./${SourceFName} > ${TargetFName}.partial 2>&1"
+  local -r Timer="/usr/bin/time --format='${__KamajiTimeOutputFormat}' --append --output=${TargetFName}.time.text"
+
+  EchoAndExecuteInWorking "${Timer} ./${SourceFName} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #
@@ -2644,7 +2696,9 @@ function KamajiMake_Output_from_Script() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  EchoAndExecuteInWorking "./${SourceFName} > ${TargetFName}.partial 2>&1"
+  local -r Timer="/usr/bin/time --format='${__KamajiTimeOutputFormat}' --append --output=${TargetFName}.time.text"
+
+  EchoAndExecuteInWorking "${Timer} ./${SourceFName} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #

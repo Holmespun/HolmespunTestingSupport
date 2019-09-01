@@ -93,6 +93,19 @@ function testCaseDefinitions() {
   clut_case_parameter		"show configuration"
   clut_case_end
   #
+  local -r VariableNameList=$(kamaji show configuration variable names)
+  #
+  local    VariableNameItem
+  #
+  for VariableNameItem in ${VariableNameList}
+  do
+    #
+    clut_case_name		SetConfiguration_${VariableNameItem}
+    clut_case_parameter		"set ${VariableNameItem} value-4-${VariableNameItem}"
+    clut_case_end
+    #
+  done
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------

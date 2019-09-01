@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.08.configuration.clut (7 cases)
+CLUT Source File: kamaji.08.configuration.clut (20 cases)
 
 0. Global Information
 0.1. Notations
@@ -233,7 +233,7 @@ CLUT Source File: kamaji.08.configuration.clut (7 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ configuration | copyright | version ]
+    |      show   [ configuration [ names | variables ] | copyright | version ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -331,7 +331,7 @@ CLUT Source File: kamaji.08.configuration.clut (7 cases)
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ configuration | copyright | version ]
+    |      show   [ configuration [ names | variables ] | copyright | version ]
     |
     |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
     |supported. Modifier and request abbreviations are also supported; ambiguity is
@@ -501,20 +501,21 @@ CLUT Source File: kamaji.08.configuration.clut (7 cases)
 7.4.1.  kamaji show configuration
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |kamaji show configuration
+    |kamaji show configuration variables
 7.4.1.3. STDOUT [text]...
-    |baseline-folder       ALFA
-    |data-extension-list   BRAVO
-    |data-filename-list    CHARLIE
-    |last-target-filename  DELTA
-    |makefile-filename     ECHO
-    |mask-sed-script       FOXTROT
-    |review-command        GOLF
-    |review-tailpipe       HOTEL
-    |ruleset-filename      INDIA
-    |script-type-list      JULIETT NOVEMBER
-    |verbosity-level       KILO
-    |working-folder        MIKE
+    |baseline-folder
+    |data-extension-list
+    |data-filename-list
+    |last-target-filename
+    |makefile-filename
+    |mask-sed-script
+    |review-command
+    |review-tailpipe
+    |ruleset-filename
+    |script-type-list
+    |time-output-format
+    |verbosity-level
+    |working-folder
 7.5. Finalizations.
 7.6. Workspace Impact...
     |Only in 07.Omega: FOXTROT
@@ -523,6 +524,1085 @@ CLUT Source File: kamaji.08.configuration.clut (7 cases)
 7.6.2. MIKE (created) contains one file.
 7.6.2.1. FOXTROT is a symbolic link to ../FOXTROT
 
-CLUT Source File: kamaji.08.configuration.clut (7 cases)
+8. SetConfiguration_baseline-folder.
+8.1. Requirements.
+    |None.
+8.2. Initializations.
+8.2.1. create_complete_configuration_file .kamaji.conf
+8.2.2. mkdir --parents ALFA
+8.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+8.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+8.3.2. ALFA is empty.
+8.4. Target CLU Call.
+8.4.1.  kamaji set baseline-folder value-4-baseline-folder
+8.4.1.1. Exit Status 0!
+8.4.1.2. STDERR [text]...
+    |kamaji set baseline-folder value-4-baseline-folder
+8.5. Finalizations.
+8.6. Workspace Impact...
+    |diff --recursive --no-dereference 08.Alpha/.kamaji.conf 08.Omega/.kamaji.conf
+    |22a23
+    |> baseline-folder value-4-baseline-folder
+    |Only in 08.Omega: FOXTROT
+    |Only in 08.Omega: MIKE
+8.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+8.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |baseline-folder value-4-baseline-folder
+8.6.1.2. ALFA is empty.
+8.6.1.3. FOXTROT is empty.
+8.6.1.4. MIKE contains one file.
+8.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+8.6.2. FOXTROT (created) is empty.
+8.6.3. MIKE (created) contains one file.
+8.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+9. SetConfiguration_data-extension-list.
+9.1. Requirements.
+    |None.
+9.2. Initializations.
+9.2.1. create_complete_configuration_file .kamaji.conf
+9.2.2. mkdir --parents ALFA
+9.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+9.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+9.3.2. ALFA is empty.
+9.4. Target CLU Call.
+9.4.1.  kamaji set data-extension-list value-4-data-extension-list
+9.4.1.1. Exit Status 0!
+9.4.1.2. STDERR [text]...
+    |kamaji set data-extension-list value-4-data-extension-list
+9.5. Finalizations.
+9.6. Workspace Impact...
+    |diff --recursive --no-dereference 09.Alpha/.kamaji.conf 09.Omega/.kamaji.conf
+    |22a23
+    |> data-extension-list value-4-data-extension-list
+    |Only in 09.Omega: FOXTROT
+    |Only in 09.Omega: MIKE
+9.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+9.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |data-extension-list value-4-data-extension-list
+9.6.1.2. ALFA is empty.
+9.6.1.3. FOXTROT is empty.
+9.6.1.4. MIKE contains one file.
+9.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+9.6.2. FOXTROT (created) is empty.
+9.6.3. MIKE (created) contains one file.
+9.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+10. SetConfiguration_data-filename-list.
+10.1. Requirements.
+    |None.
+10.2. Initializations.
+10.2.1. create_complete_configuration_file .kamaji.conf
+10.2.2. mkdir --parents ALFA
+10.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+10.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+10.3.2. ALFA is empty.
+10.4. Target CLU Call.
+10.4.1.  kamaji set data-filename-list value-4-data-filename-list
+10.4.1.1. Exit Status 0!
+10.4.1.2. STDERR [text]...
+    |kamaji set data-filename-list value-4-data-filename-list
+10.5. Finalizations.
+10.6. Workspace Impact...
+    |diff --recursive --no-dereference 10.Alpha/.kamaji.conf 10.Omega/.kamaji.conf
+    |22a23
+    |> data-filename-list value-4-data-filename-list
+    |Only in 10.Omega: FOXTROT
+    |Only in 10.Omega: MIKE
+10.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+10.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |data-filename-list value-4-data-filename-list
+10.6.1.2. ALFA is empty.
+10.6.1.3. FOXTROT is empty.
+10.6.1.4. MIKE contains one file.
+10.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+10.6.2. FOXTROT (created) is empty.
+10.6.3. MIKE (created) contains one file.
+10.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+11. SetConfiguration_last-target-filename.
+11.1. Requirements.
+    |None.
+11.2. Initializations.
+11.2.1. create_complete_configuration_file .kamaji.conf
+11.2.2. mkdir --parents ALFA
+11.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+11.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+11.3.2. ALFA is empty.
+11.4. Target CLU Call.
+11.4.1.  kamaji set last-target-filename value-4-last-target-filename
+11.4.1.1. Exit Status 0!
+11.4.1.2. STDERR [text]...
+    |kamaji set last-target-filename value-4-last-target-filename
+11.5. Finalizations.
+11.6. Workspace Impact...
+    |diff --recursive --no-dereference 11.Alpha/.kamaji.conf 11.Omega/.kamaji.conf
+    |22a23
+    |> last-target-filename value-4-last-target-filename
+    |Only in 11.Omega: FOXTROT
+    |Only in 11.Omega: MIKE
+11.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+11.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |last-target-filename value-4-last-target-filename
+11.6.1.2. ALFA is empty.
+11.6.1.3. FOXTROT is empty.
+11.6.1.4. MIKE contains one file.
+11.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+11.6.2. FOXTROT (created) is empty.
+11.6.3. MIKE (created) contains one file.
+11.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+12. SetConfiguration_makefile-filename.
+12.1. Requirements.
+    |None.
+12.2. Initializations.
+12.2.1. create_complete_configuration_file .kamaji.conf
+12.2.2. mkdir --parents ALFA
+12.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+12.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+12.3.2. ALFA is empty.
+12.4. Target CLU Call.
+12.4.1.  kamaji set makefile-filename value-4-makefile-filename
+12.4.1.1. Exit Status 0!
+12.4.1.2. STDERR [text]...
+    |kamaji set makefile-filename value-4-makefile-filename
+12.5. Finalizations.
+12.6. Workspace Impact...
+    |diff --recursive --no-dereference 12.Alpha/.kamaji.conf 12.Omega/.kamaji.conf
+    |22a23
+    |> makefile-filename value-4-makefile-filename
+    |Only in 12.Omega: FOXTROT
+    |Only in 12.Omega: MIKE
+12.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+12.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |makefile-filename value-4-makefile-filename
+12.6.1.2. ALFA is empty.
+12.6.1.3. FOXTROT is empty.
+12.6.1.4. MIKE contains one file.
+12.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+12.6.2. FOXTROT (created) is empty.
+12.6.3. MIKE (created) contains one file.
+12.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+13. SetConfiguration_mask-sed-script.
+13.1. Requirements.
+    |None.
+13.2. Initializations.
+13.2.1. create_complete_configuration_file .kamaji.conf
+13.2.2. mkdir --parents ALFA
+13.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+13.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+13.3.2. ALFA is empty.
+13.4. Target CLU Call.
+13.4.1.  kamaji set mask-sed-script value-4-mask-sed-script
+13.4.1.1. Exit Status 0!
+13.4.1.2. STDERR [text]...
+    |kamaji set mask-sed-script value-4-mask-sed-script
+13.5. Finalizations.
+13.6. Workspace Impact...
+    |diff --recursive --no-dereference 13.Alpha/.kamaji.conf 13.Omega/.kamaji.conf
+    |22a23
+    |> mask-sed-script value-4-mask-sed-script
+    |Only in 13.Omega: FOXTROT
+    |Only in 13.Omega: MIKE
+13.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+13.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |mask-sed-script value-4-mask-sed-script
+13.6.1.2. ALFA is empty.
+13.6.1.3. FOXTROT is empty.
+13.6.1.4. MIKE contains one file.
+13.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+13.6.2. FOXTROT (created) is empty.
+13.6.3. MIKE (created) contains one file.
+13.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+14. SetConfiguration_review-command.
+14.1. Requirements.
+    |None.
+14.2. Initializations.
+14.2.1. create_complete_configuration_file .kamaji.conf
+14.2.2. mkdir --parents ALFA
+14.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+14.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+14.3.2. ALFA is empty.
+14.4. Target CLU Call.
+14.4.1.  kamaji set review-command value-4-review-command
+14.4.1.1. Exit Status 0!
+14.4.1.2. STDERR [text]...
+    |kamaji set review-command value-4-review-command
+14.5. Finalizations.
+14.6. Workspace Impact...
+    |diff --recursive --no-dereference 14.Alpha/.kamaji.conf 14.Omega/.kamaji.conf
+    |22a23
+    |> review-command value-4-review-command
+    |Only in 14.Omega: FOXTROT
+    |Only in 14.Omega: MIKE
+14.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+14.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |review-command value-4-review-command
+14.6.1.2. ALFA is empty.
+14.6.1.3. FOXTROT is empty.
+14.6.1.4. MIKE contains one file.
+14.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+14.6.2. FOXTROT (created) is empty.
+14.6.3. MIKE (created) contains one file.
+14.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+15. SetConfiguration_review-tailpipe.
+15.1. Requirements.
+    |None.
+15.2. Initializations.
+15.2.1. create_complete_configuration_file .kamaji.conf
+15.2.2. mkdir --parents ALFA
+15.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+15.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+15.3.2. ALFA is empty.
+15.4. Target CLU Call.
+15.4.1.  kamaji set review-tailpipe value-4-review-tailpipe
+15.4.1.1. Exit Status 0!
+15.4.1.2. STDERR [text]...
+    |kamaji set review-tailpipe value-4-review-tailpipe
+15.5. Finalizations.
+15.6. Workspace Impact...
+    |diff --recursive --no-dereference 15.Alpha/.kamaji.conf 15.Omega/.kamaji.conf
+    |22a23
+    |> review-tailpipe value-4-review-tailpipe
+    |Only in 15.Omega: FOXTROT
+    |Only in 15.Omega: MIKE
+15.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+15.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |review-tailpipe value-4-review-tailpipe
+15.6.1.2. ALFA is empty.
+15.6.1.3. FOXTROT is empty.
+15.6.1.4. MIKE contains one file.
+15.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+15.6.2. FOXTROT (created) is empty.
+15.6.3. MIKE (created) contains one file.
+15.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+16. SetConfiguration_ruleset-filename.
+16.1. Requirements.
+    |None.
+16.2. Initializations.
+16.2.1. create_complete_configuration_file .kamaji.conf
+16.2.2. mkdir --parents ALFA
+16.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+16.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+16.3.2. ALFA is empty.
+16.4. Target CLU Call.
+16.4.1.  kamaji set ruleset-filename value-4-ruleset-filename
+16.4.1.1. Exit Status 0!
+16.4.1.2. STDERR [text]...
+    |kamaji set ruleset-filename value-4-ruleset-filename
+16.5. Finalizations.
+16.6. Workspace Impact...
+    |diff --recursive --no-dereference 16.Alpha/.kamaji.conf 16.Omega/.kamaji.conf
+    |22a23
+    |> ruleset-filename value-4-ruleset-filename
+    |Only in 16.Omega: FOXTROT
+    |Only in 16.Omega: MIKE
+16.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+16.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |ruleset-filename value-4-ruleset-filename
+16.6.1.2. ALFA is empty.
+16.6.1.3. FOXTROT is empty.
+16.6.1.4. MIKE contains one file.
+16.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+16.6.2. FOXTROT (created) is empty.
+16.6.3. MIKE (created) contains one file.
+16.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+17. SetConfiguration_script-type-list.
+17.1. Requirements.
+    |None.
+17.2. Initializations.
+17.2.1. create_complete_configuration_file .kamaji.conf
+17.2.2. mkdir --parents ALFA
+17.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+17.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+17.3.2. ALFA is empty.
+17.4. Target CLU Call.
+17.4.1.  kamaji set script-type-list value-4-script-type-list
+17.4.1.1. Exit Status 0!
+17.4.1.2. STDERR [text]...
+    |kamaji set script-type-list value-4-script-type-list
+17.5. Finalizations.
+17.6. Workspace Impact...
+    |diff --recursive --no-dereference 17.Alpha/.kamaji.conf 17.Omega/.kamaji.conf
+    |22a23
+    |> script-type-list value-4-script-type-list
+    |Only in 17.Omega: FOXTROT
+    |Only in 17.Omega: MIKE
+17.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+17.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |script-type-list value-4-script-type-list
+17.6.1.2. ALFA is empty.
+17.6.1.3. FOXTROT is empty.
+17.6.1.4. MIKE contains one file.
+17.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+17.6.2. FOXTROT (created) is empty.
+17.6.3. MIKE (created) contains one file.
+17.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+18. SetConfiguration_time-output-format.
+18.1. Requirements.
+    |None.
+18.2. Initializations.
+18.2.1. create_complete_configuration_file .kamaji.conf
+18.2.2. mkdir --parents ALFA
+18.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+18.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+18.3.2. ALFA is empty.
+18.4. Target CLU Call.
+18.4.1.  kamaji set time-output-format value-4-time-output-format
+18.4.1.1. Exit Status 0!
+18.4.1.2. STDERR [text]...
+    |kamaji set time-output-format value-4-time-output-format
+18.5. Finalizations.
+18.6. Workspace Impact...
+    |diff --recursive --no-dereference 18.Alpha/.kamaji.conf 18.Omega/.kamaji.conf
+    |22a23
+    |> time-output-format value-4-time-output-format
+    |Only in 18.Omega: FOXTROT
+    |Only in 18.Omega: MIKE
+18.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+18.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |time-output-format value-4-time-output-format
+18.6.1.2. ALFA is empty.
+18.6.1.3. FOXTROT is empty.
+18.6.1.4. MIKE contains one file.
+18.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+18.6.2. FOXTROT (created) is empty.
+18.6.3. MIKE (created) contains one file.
+18.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+19. SetConfiguration_verbosity-level.
+19.1. Requirements.
+    |None.
+19.2. Initializations.
+19.2.1. create_complete_configuration_file .kamaji.conf
+19.2.2. mkdir --parents ALFA
+19.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+19.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+19.3.2. ALFA is empty.
+19.4. Target CLU Call.
+19.4.1.  kamaji set verbosity-level value-4-verbosity-level
+19.4.1.1. Exit Status 0!
+19.4.1.2. STDERR [text]...
+    |kamaji set verbosity-level value-4-verbosity-level
+19.5. Finalizations.
+19.6. Workspace Impact...
+    |diff --recursive --no-dereference 19.Alpha/.kamaji.conf 19.Omega/.kamaji.conf
+    |22a23
+    |> verbosity-level value-4-verbosity-level
+    |Only in 19.Omega: FOXTROT
+    |Only in 19.Omega: MIKE
+19.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+19.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |verbosity-level value-4-verbosity-level
+19.6.1.2. ALFA is empty.
+19.6.1.3. FOXTROT is empty.
+19.6.1.4. MIKE contains one file.
+19.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+19.6.2. FOXTROT (created) is empty.
+19.6.3. MIKE (created) contains one file.
+19.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+20. SetConfiguration_working-folder.
+20.1. Requirements.
+    |None.
+20.2. Initializations.
+20.2.1. create_complete_configuration_file .kamaji.conf
+20.2.2. mkdir --parents ALFA
+20.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+20.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+20.3.2. ALFA is empty.
+20.4. Target CLU Call.
+20.4.1.  kamaji set working-folder value-4-working-folder
+20.4.1.1. Exit Status 0!
+20.4.1.2. STDERR [text]...
+    |kamaji set working-folder value-4-working-folder
+20.5. Finalizations.
+20.6. Workspace Impact...
+    |diff --recursive --no-dereference 20.Alpha/.kamaji.conf 20.Omega/.kamaji.conf
+    |22a23
+    |> working-folder value-4-working-folder
+    |Only in 20.Omega: FOXTROT
+    |Only in 20.Omega: MIKE
+20.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+20.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |review-command          GOLF
+    |review-tailpipe         HOTEL
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |working-folder value-4-working-folder
+20.6.1.2. ALFA is empty.
+20.6.1.3. FOXTROT is empty.
+20.6.1.4. MIKE contains one file.
+20.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+20.6.2. FOXTROT (created) is empty.
+20.6.3. MIKE (created) contains one file.
+20.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+CLUT Source File: kamaji.08.configuration.clut (20 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.
