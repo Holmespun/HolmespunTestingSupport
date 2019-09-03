@@ -332,12 +332,29 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |[38;5;15m[1mConfigure|Set...[0m
     |
-    |Configuration values are stored in the ./.kamaji.conf file, a text file that
-    |contains comments, blank lines, and named value pairs:
+    |Named configuration variables and their values are stored in the
+    |$HOME/.kamaji.conf and ./.kamaji.conf files; settings in the latter will
+    |re-define or augment variables in the former. Both files can contain comments,
+    |blank lines, and variable settings. Variables cannot be set to an empty value.
+    |
+    |The following settings represent the non-empty defaults:
+    |
+    |    baseline-folder         .
+    |    last-target-filename    .kamaji.last_target.text
+    |    long-review-command     vimdiff -R
+    |    long-review-line-count  51
+    |    mask-sed-script         .kamaji.sed
+    |    new-review-command      cat --number
+    |    script-type-list        bash sh py rb
+    |    short-review-command    diff
+    |    time-output-format      Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x
+    |    verbosity-level         quiet
+    |    working-folder          Working
+    |
+    |The following variables are defined:
     |
     |    [38;5;15m[1mbaseline-folder[0m <directory-specification> - Specification for the directory
-    |    where baseline output files are stored. The default baseline-folder is the
-    |    current directory.
+    |    where baseline output files are stored.
     |    
     |    [38;5;15m[1mdata-extension-list[0m <extension>... - A list of name extensions for "data"
     |    files that are stored in the baseline-folder, but do not represent CLUT or
@@ -353,83 +370,70 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    filename of the last make target is stored; the file is stored in the
     |    working-folder.
     |    
+    |    [38;5;15m[1mlong-review-command[0m <command> - The command used to perform a long review.
+    |    A long review is defined by the configured long-review-line-count value.
+    |    The command is called from within the working-folder, and is passed the
+    |    masked baseline output and masked current output files in that order.
+    |    
+    |    [38;5;15m[1mlong-review-line-count[0m <integer> - The number of diff command output lines
+    |    that are too many to be considered the subject of a short review. This
+    |    number is used to define the difference between a short and long review.
+    |    
+    |    [38;5;15m[1mlong-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    the long-review-command output is piped. For example, if you set the
+    |    long-review-command to "diff" then you might want to set the
+    |    review-tailpipe to "sed --expression='s,^, ,' | less" so that the diff
+    |    output will be indented, you can view it a page at a time, and it will not
+    |    clutter your display after your review.
+    |    
     |    [38;5;15m[1mmakefile-filename[0m <filename> - The name of the file into which a makefile
     |    is exported.
     |    
     |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for the user-defined
-    |    sed script that is used to mask output files. The default mask-sed-script
-    |    is the .kamaji.sed file in the current directory.
+    |    sed script that is used to mask output files.
     |    
-    |    [38;5;15m[1mreview-command[0m <command> - The command used to perform a review; the comand
-    |    may be decorated with any number of options. The command is called from
-    |    within the working-folder, and is passed the masked baseline output and
-    |    masked current output files in that order. A script can be used as a facade
-    |    to make the simple, two-parameter interface match a command that requires
-    |    something else. The default review-command is vimdiff.
+    |    [38;5;15m[1mnew-review-command[0m <command> - The command used to perform a new review. A
+    |    new review is one for which there is no baseline output file to compare to.
+    |    The command is called from within the working-folder, and is passed the
+    |    masked current output file.
     |    
-    |    [38;5;15m[1mreview-tailpipe[0m <command> [ | <command> ]... - A command into which the
-    |    review-command output is piped. For example, if you set the review-command
-    |    to "diff" then you might want to set the review-tailpipe to "sed
-    |    --expression='s,^, ,' | less" so that the diff output will be indented, you
-    |    can view it a page at a time, and it will not clutter your display after
-    |    your review.
+    |    [38;5;15m[1mnew-review-tailpipe[0m <command> [ | <command> ]... - A command into which the
+    |    new-review-command output is piped.
     |    
     |    [38;5;15m[1mruleset-filename[0m <filename> - The name of the file in which the ruleset is
     |    stored. The ruleset is stored and used by the 'export ruleset' request and
     |    'fast' modifier. the file is stored in the working-folder.
     |    
-    |    [38;5;15m[1mtime-output-format[0m <time-format> - The output format used by the
-    |    /usr/bin/time program to provide run-time statistics about CLUT scripts and
-    |    unit test scripts and programs; please see the GNU VERSION section of the
-    |    description produced by the man time command. The default format uses every
-    |    control sequence in the order that they are presented by the man time
-    |    command.
-    |    
     |    [38;5;15m[1mscript-type-list[0m [<extension>]... - A list of file name extensions that are
     |    used to store executable scripts.
     |    
+    |    [38;5;15m[1mshort-review-command[0m <command> - The command used to perform a short
+    |    review. A short review is defined by the configured long-review-line-count
+    |    value. The command is called from within the working-folder, and is passed
+    |    the masked baseline output and masked current output files in that order.
+    |    
+    |    [38;5;15m[1mshort-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    the short-review-command output is piped.
+    |    
+    |    [38;5;15m[1mtime-output-format[0m <time-format> - The output format used by the
+    |    /usr/bin/time program to provide run-time statistics about CLUT scripts and
+    |    unit test scripts and programs; please see the GNU VERSION section of the
+    |    description produced by the man time command.
+    |    
     |    [38;5;15m[1mverbosity-level[0m <adjective> - The level of disgnostic output produced. The
-    |    default level is called 'quiet' and results in no disgnostic output at all.
-    |    The 'light' level will describe the 'make' requests used to fulfill the
-    |    user's request. The 'heavy' level will augment light output with a
-    |    description of commands applied to files in the working-folder and comments
-    |    that describe data that it uses to decide what commands should be applied.
+    |    'quiet' level suppresses diagnostic output. The 'light' level will describe
+    |    the 'make' requests used to fulfill the user's request. The 'heavy' level
+    |    will augment light output with a description of commands applied to files
+    |    in the working-folder and comments that describe data that it uses to
+    |    decide what commands should be applied.
     |    
     |    [38;5;15m[1mworking-folder[0m <directory-specification> - The specification for the
     |    directory where intermediate and unverified output files are created. If
     |    the working-folder does not already exist then it will be silently created.
-    |    The default working-folder is called Working.
     |    
-    |Here is an example configuration file:
-    |
-    |    #
-    |    #  My kamaji configuration file.
-    |    #
-    |    baseline-folder         Testing
-    |    data-extension-list     sql text
-    |    data-filename-list      common_testing_functions.bash
-    |    last-target-filename    .kamaji.last
-    |    makefile-filename       .kamaji.makefile
-    |    mask-sed-script         .kamaji.sed-script
-    |    review-command          diff
-    |    review-tailpipe         sed --expression='s,^,    ,' | less
-    |    ruleset-filename        .kamaki.fast-ruleset
-    |    script-type-list        sh py rb
-    |    time-output-format      %C exit status %x ran in %e seconds
-    |    verbosity-level         light
-    |    working-folder          Workspace
-    |    #
-    |    working-folder          Working
-    |    script-type-list        bash
-    |    #
-    |
-    |The $HOME/.kamaji.conf configuration file can be used to override values in the
-    |file with the same name in the current directory. For most named values,
-    |subsequent values will override any previous association that uses the same
-    |name. In the above example, the working-folder name is associated with the
-    |"Working" value. The "-list" name values always add additional value
-    |associations to the name. In the above example, the script-type-list is
-    |associated with the "sh py rb bash" value.
+    |Subsequent variable settings override previous values for the variable they
+    |name, unless that variable represents a list, in which case the value is
+    |augmented.
     |
     |A list of the configuration variable names can be displayed using a 'show
     |configuration variables' request.
@@ -652,12 +656,29 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |[38;5;15m[1mConfigure|Set...[0m
     |
-    |Configuration values are stored in the ./.kamaji.conf file, a text file that
-    |contains comments, blank lines, and named value pairs:
+    |Named configuration variables and their values are stored in the
+    |$HOME/.kamaji.conf and ./.kamaji.conf files; settings in the latter will
+    |re-define or augment variables in the former. Both files can contain comments,
+    |blank lines, and variable settings. Variables cannot be set to an empty value.
+    |
+    |The following settings represent the non-empty defaults:
+    |
+    |    baseline-folder         .
+    |    last-target-filename    .kamaji.last_target.text
+    |    long-review-command     vimdiff -R
+    |    long-review-line-count  51
+    |    mask-sed-script         .kamaji.sed
+    |    new-review-command      cat --number
+    |    script-type-list        bash sh py rb
+    |    short-review-command    diff
+    |    time-output-format      Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x
+    |    verbosity-level         quiet
+    |    working-folder          Working
+    |
+    |The following variables are defined:
     |
     |    [38;5;15m[1mbaseline-folder[0m <directory-specification> - Specification for the directory
-    |    where baseline output files are stored. The default baseline-folder is the
-    |    current directory.
+    |    where baseline output files are stored.
     |    
     |    [38;5;15m[1mdata-extension-list[0m <extension>... - A list of name extensions for "data"
     |    files that are stored in the baseline-folder, but do not represent CLUT or
@@ -673,83 +694,70 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    filename of the last make target is stored; the file is stored in the
     |    working-folder.
     |    
+    |    [38;5;15m[1mlong-review-command[0m <command> - The command used to perform a long review.
+    |    A long review is defined by the configured long-review-line-count value.
+    |    The command is called from within the working-folder, and is passed the
+    |    masked baseline output and masked current output files in that order.
+    |    
+    |    [38;5;15m[1mlong-review-line-count[0m <integer> - The number of diff command output lines
+    |    that are too many to be considered the subject of a short review. This
+    |    number is used to define the difference between a short and long review.
+    |    
+    |    [38;5;15m[1mlong-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    the long-review-command output is piped. For example, if you set the
+    |    long-review-command to "diff" then you might want to set the
+    |    review-tailpipe to "sed --expression='s,^, ,' | less" so that the diff
+    |    output will be indented, you can view it a page at a time, and it will not
+    |    clutter your display after your review.
+    |    
     |    [38;5;15m[1mmakefile-filename[0m <filename> - The name of the file into which a makefile
     |    is exported.
     |    
     |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for the user-defined
-    |    sed script that is used to mask output files. The default mask-sed-script
-    |    is the .kamaji.sed file in the current directory.
+    |    sed script that is used to mask output files.
     |    
-    |    [38;5;15m[1mreview-command[0m <command> - The command used to perform a review; the comand
-    |    may be decorated with any number of options. The command is called from
-    |    within the working-folder, and is passed the masked baseline output and
-    |    masked current output files in that order. A script can be used as a facade
-    |    to make the simple, two-parameter interface match a command that requires
-    |    something else. The default review-command is vimdiff.
+    |    [38;5;15m[1mnew-review-command[0m <command> - The command used to perform a new review. A
+    |    new review is one for which there is no baseline output file to compare to.
+    |    The command is called from within the working-folder, and is passed the
+    |    masked current output file.
     |    
-    |    [38;5;15m[1mreview-tailpipe[0m <command> [ | <command> ]... - A command into which the
-    |    review-command output is piped. For example, if you set the review-command
-    |    to "diff" then you might want to set the review-tailpipe to "sed
-    |    --expression='s,^, ,' | less" so that the diff output will be indented, you
-    |    can view it a page at a time, and it will not clutter your display after
-    |    your review.
+    |    [38;5;15m[1mnew-review-tailpipe[0m <command> [ | <command> ]... - A command into which the
+    |    new-review-command output is piped.
     |    
     |    [38;5;15m[1mruleset-filename[0m <filename> - The name of the file in which the ruleset is
     |    stored. The ruleset is stored and used by the 'export ruleset' request and
     |    'fast' modifier. the file is stored in the working-folder.
     |    
-    |    [38;5;15m[1mtime-output-format[0m <time-format> - The output format used by the
-    |    /usr/bin/time program to provide run-time statistics about CLUT scripts and
-    |    unit test scripts and programs; please see the GNU VERSION section of the
-    |    description produced by the man time command. The default format uses every
-    |    control sequence in the order that they are presented by the man time
-    |    command.
-    |    
     |    [38;5;15m[1mscript-type-list[0m [<extension>]... - A list of file name extensions that are
     |    used to store executable scripts.
     |    
+    |    [38;5;15m[1mshort-review-command[0m <command> - The command used to perform a short
+    |    review. A short review is defined by the configured long-review-line-count
+    |    value. The command is called from within the working-folder, and is passed
+    |    the masked baseline output and masked current output files in that order.
+    |    
+    |    [38;5;15m[1mshort-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    the short-review-command output is piped.
+    |    
+    |    [38;5;15m[1mtime-output-format[0m <time-format> - The output format used by the
+    |    /usr/bin/time program to provide run-time statistics about CLUT scripts and
+    |    unit test scripts and programs; please see the GNU VERSION section of the
+    |    description produced by the man time command.
+    |    
     |    [38;5;15m[1mverbosity-level[0m <adjective> - The level of disgnostic output produced. The
-    |    default level is called 'quiet' and results in no disgnostic output at all.
-    |    The 'light' level will describe the 'make' requests used to fulfill the
-    |    user's request. The 'heavy' level will augment light output with a
-    |    description of commands applied to files in the working-folder and comments
-    |    that describe data that it uses to decide what commands should be applied.
+    |    'quiet' level suppresses diagnostic output. The 'light' level will describe
+    |    the 'make' requests used to fulfill the user's request. The 'heavy' level
+    |    will augment light output with a description of commands applied to files
+    |    in the working-folder and comments that describe data that it uses to
+    |    decide what commands should be applied.
     |    
     |    [38;5;15m[1mworking-folder[0m <directory-specification> - The specification for the
     |    directory where intermediate and unverified output files are created. If
     |    the working-folder does not already exist then it will be silently created.
-    |    The default working-folder is called Working.
     |    
-    |Here is an example configuration file:
-    |
-    |    #
-    |    #  My kamaji configuration file.
-    |    #
-    |    baseline-folder         Testing
-    |    data-extension-list     sql text
-    |    data-filename-list      common_testing_functions.bash
-    |    last-target-filename    .kamaji.last
-    |    makefile-filename       .kamaji.makefile
-    |    mask-sed-script         .kamaji.sed-script
-    |    review-command          diff
-    |    review-tailpipe         sed --expression='s,^,    ,' | less
-    |    ruleset-filename        .kamaki.fast-ruleset
-    |    script-type-list        sh py rb
-    |    time-output-format      %C exit status %x ran in %e seconds
-    |    verbosity-level         light
-    |    working-folder          Workspace
-    |    #
-    |    working-folder          Working
-    |    script-type-list        bash
-    |    #
-    |
-    |The $HOME/.kamaji.conf configuration file can be used to override values in the
-    |file with the same name in the current directory. For most named values,
-    |subsequent values will override any previous association that uses the same
-    |name. In the above example, the working-folder name is associated with the
-    |"Working" value. The "-list" name values always add additional value
-    |associations to the name. In the above example, the script-type-list is
-    |associated with the "sh py rb bash" value.
+    |Subsequent variable settings override previous values for the variable they
+    |name, unless that variable represents a list, in which case the value is
+    |augmented.
     |
     |A list of the configuration variable names can be displayed using a 'show
     |configuration variables' request.
@@ -1314,33 +1322,28 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |[38;5;15m[1mReview...[0m
     |
     |A 'review' request can be used to inspect the masked output differences that
-    |led to a failed grade. The 'review' request is very similar to the 'grade'
-    |request: Reviews are based on grades, and they are always performed for failing
-    |grades. After you review a failing grade, then kamaji will make it easy to
-    |baseline the new output.
+    |led to a failed grade. Reviews are based on grades, and they are only performed
+    |for failing grades. After the user reviews a failing grade, then kamaji will
+    |allow the user to baseline the new output using a 'bless' request.
     |
-    |The default command used to perform is vimdiff; it is used to present
-    |differences between the baseline and new output, with the masked baseline
-    |output in the left pane and the new output in the right pane.
+    |There are three different kinds of review: new, short, and long. New reviews
+    |are performed on output for which there is no baseline to compare to. Short
+    |reviews are performed when the changes between the baseline and current output
+    |are so few that specialized tools are not necessary to perform a detailed
+    |review. Long reviews are performed for all other results.
     |
-    |Users not familiar with the editor may want to make note of the following vim
-    |commands: the :help command to request help; the :qa command to exit the
-    |editor; the h, j, k, l, and arrow keys to move around in a pane; and the
-    |[ctrl]-h, [ctrl]-l, and [ctrl]-w combinations to switch panes.
+    |The vimdiff command is a very useful tool for perfoming long reviews. Users not
+    |familiar with the editor may want to make note of the following vim commands:
+    |the :help command to request help; the :qa command to exit the editor; the h,
+    |j, k, l, and arrow keys to move around in a pane; and the [ctrl]-h, [ctrl]-l,
+    |and [ctrl]-w combinations to switch panes.
     |
-    |The review-command configuration variable can be used to change the command
-    |used to perform a review; the comand may be decorated with any number of
-    |options. The command is called from within the working-folder, and is passed
-    |the masked baseline output and masked current output files in that order. A
-    |script can be used as a facade to make the simple, two-parameter interface
-    |match a command that requires something else.
-    |
-    |The review-tailpipe configuration variable can be used to define a command into
-    |which the review-command output is piped. For example, if you set the
-    |review-command to "diff" then you might want to set the review-tailpipe to "sed
-    |--expression='s,^, ,' | less" so that the diff output will be indented, you can
-    |view that output a page at a time, and that output will not clutter your
-    |display after your review.
+    |The long-review-line-count configuration variables allow the user to define the
+    |boundary between a short and long review. The new-, short-, and
+    |long-review-command configuration variables can be used to change the command
+    |used to perform a review. The new-, short-, and long-review-tailpipe
+    |configuration variables allow the user to manipulate the output produced by the
+    |new-, short-, and long-review-command variables, respectively.
     |
     |Copyright (c) 2019 Brian G. Holmes.
     |kamaji version 0.3

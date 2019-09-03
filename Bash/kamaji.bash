@@ -150,6 +150,8 @@ declare -r __KamajiWhereWeWere=${PWD}
 
 #----------------------------------------------------------------------------------------------------------------------
 
+declare -A __KamajiConfigurationDefault
+
 declare -A __KamajiConfigurationValue
 
 declare    __KamajiGoldenDSpec="TBD"
@@ -157,10 +159,6 @@ declare    __KamajiGoldenDSpec="TBD"
 declare    __KamajiDataFileNameList="TBD"
 
 declare    __KamajiLastMakeTargetFSpec="TBD"
-
-declare    __KamajiReviewCommand="TBD"
-
-declare    __KamajiReviewTailpipe="TBD"
 
 declare    __KamajiScriptExtensionList="TBD"
 
@@ -665,7 +663,7 @@ function KamajiEchoListOfDecendantFName() {
        #
      done
      #
-     echo " ${ResultFList}"
+     printf "%s\n" ${ResultFList} | sort --unique
      #
   fi
   #
@@ -855,21 +853,37 @@ function KamajiConfigurationLoadValues() {
   #
   local Key Value Directory
   #
-  __KamajiConfigurationValue["baseline-folder"]=
-  __KamajiConfigurationValue["data-extension-list"]=
-  __KamajiConfigurationValue["data-filename-list"]=
-  __KamajiConfigurationValue["last-target-filename"]=
-  __KamajiConfigurationValue["makefile-filename"]=
-  __KamajiConfigurationValue["mask-sed-script"]=
-  __KamajiConfigurationValue["review-command"]=
-  __KamajiConfigurationValue["review-tailpipe"]=
-  __KamajiConfigurationValue["ruleset-filename"]=
-  __KamajiConfigurationValue["script-type-list"]=
-  __KamajiConfigurationValue["time-output-format"]=
-  __KamajiConfigurationValue["verbosity-level"]=
-  __KamajiConfigurationValue["working-folder"]=
+  #  Set default configuration values.
   #
-  for Directory in . ${HOME}
+  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
+  #
+  __KamajiConfigurationDefault["baseline-folder"]="."
+  __KamajiConfigurationDefault["data-extension-list"]=
+  __KamajiConfigurationDefault["data-filename-list"]=
+  __KamajiConfigurationDefault["last-target-filename"]="${__KamajiConfigurationFName%.*}.last_target.text"
+  __KamajiConfigurationDefault["long-review-command"]="vimdiff -R"
+  __KamajiConfigurationDefault["long-review-line-count"]=51
+  __KamajiConfigurationDefault["long-review-tailpipe"]=
+  __KamajiConfigurationDefault["makefile-filename"]=
+  __KamajiConfigurationDefault["mask-sed-script"]="${__KamajiConfigurationFName%.*}.sed"
+  __KamajiConfigurationDefault["new-review-command"]="cat --number"
+  __KamajiConfigurationDefault["new-review-tailpipe"]=
+  __KamajiConfigurationDefault["ruleset-filename"]=
+  __KamajiConfigurationDefault["script-type-list"]="bash sh py rb"
+  __KamajiConfigurationDefault["short-review-command"]="diff"
+  __KamajiConfigurationDefault["short-review-tailpipe"]=
+  __KamajiConfigurationDefault["time-output-format"]="${DefaultTimeFormat}"
+  __KamajiConfigurationDefault["verbosity-level"]="quiet"
+  __KamajiConfigurationDefault["working-folder"]="Working"
+  #
+  for Key in ${!__KamajiConfigurationDefault[*]}
+  do
+    __KamajiConfigurationValue[${Key}]=${__KamajiConfigurationDefault[${Key}]}
+  done
+  #
+  #  Load user-defined configuration.
+  #
+  for Directory in ${HOME} .
   do
     #
     if [ -s ${Directory}/${__KamajiConfigurationFName} ]
@@ -881,25 +895,34 @@ function KamajiConfigurationLoadValues() {
          if [ ${#Key} -gt 0 ] && [ "${Key:0:1}" != "#" ]
 	 then
             #
-            if [ "${__KamajiConfigurationValue[${Key}]+IS_SET}" = "IS_SET" ]
+            if [ ${#Value} -gt 0 ]
 	    then
                #
-               KeyIsNotListCheck=${Key%-list}
-               #
-               if [ ${#KeyIsNotListCheck} -eq ${#Key} ]
+               if [ "${__KamajiConfigurationValue[${Key}]+IS_SET}" = "IS_SET" ]
 	       then
                   #
-	          __KamajiConfigurationValue[${Key}]=${Value}
+                  KeyIsNotListCheck=${Key%-list}
+                  #
+                  if [ ${#KeyIsNotListCheck} -eq ${#Key} ]
+	          then
+                     #
+	             __KamajiConfigurationValue[${Key}]=${Value}
+                     #
+                  else
+                     #
+	             AppendArrayIndexValue __KamajiConfigurationValue "${Key}" "${Value}"
+                     #
+                  fi
                   #
                else
                   #
-	          AppendArrayIndexValue __KamajiConfigurationValue "${Key}" "${Value}"
+                  EchoErrorAndExit 1 "The '${Key}' is not a known configuration variable name."
                   #
                fi
                #
             else
                #
-               EchoErrorAndExit 1 "The '${Key}' is not a known configuration variable name."
+               EchoErrorAndExit 1 "Empty configuration values are not allowed (${key} variable)."
                #
             fi
             #
@@ -911,37 +934,29 @@ function KamajiConfigurationLoadValues() {
     #
   done
   #
-  __KamajiGoldenDSpec=$(KamajiConfigurationEchoValue baseline-folder .)
+  #  Define oft-used configuration variables.
+  #
+  __KamajiGoldenDSpec=$(KamajiConfigurationEchoValue baseline-folder)
   #
   __KamajiDataFileNameList=$(KamajiConfigurationEchoValue data-filename-list)
   #
   __KamajiDataFileNameList=":${__KamajiDataFileNameList// /:}:"
   #
-  __KamajiReviewCommand=$(KamajiConfigurationEchoValue review-command "vimdiff -R")
-  #
-  __KamajiReviewTailpipe=$(KamajiConfigurationEchoValue review-tailpipe)
-  #
-  [ ${#__KamajiReviewTailpipe} -gt 0 ] && __KamajiReviewTailpipe="| ${__KamajiReviewTailpipe}"
-  #
-  __KamajiScriptExtensionList=$(KamajiConfigurationEchoValue script-type-list "bash sh py rb")
+  __KamajiScriptExtensionList=$(KamajiConfigurationEchoValue script-type-list)
   #
   __KamajiScriptExtensionList=":${__KamajiScriptExtensionList// /:}:"
   #
-  __KamajiSedScriptFSpec=$(KamajiConfigurationEchoValue mask-sed-script ${__KamajiConfigurationFName%.*}.sed)
+  __KamajiSedScriptFSpec=$(KamajiConfigurationEchoValue mask-sed-script)
   #
   __KamajiSedScriptFName=$(basename ${__KamajiSedScriptFSpec})
   #
-  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
+  __KamajiTimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format)
   #
-  __KamajiTimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format ${DefaultTimeFormat})
+  __KamajiVerbosityRequested=$(KamajiConfigurationEchoValue verbosity-level)
   #
-  __KamajiVerbosityRequested=$(KamajiConfigurationEchoValue verbosity-level quiet)
+  __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder)
   #
-  __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder Working)
-  #
-  local -r LastMakeTargetFName=$(KamajiConfigurationEchoValue last-target-filename .kamaji.last_target.text)
-  #
-  __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/${LastMakeTargetFName}
+  __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/$(KamajiConfigurationEchoValue last-target-filename)
   #
 }
 
@@ -1017,12 +1032,32 @@ function KamajiModifierUsage_configure() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Configure|Set...")"
   #
-  EchoPara80	"Configuration values are stored in the ./${__KamajiConfigurationFName} file,"			\
-		"a text file that contains comments, blank lines, and named value pairs:"
+  EchoPara80	"Named configuration variables and their values are stored in the"				\
+		"\$HOME/${__KamajiConfigurationFName} and ./${__KamajiConfigurationFName} files;"		\
+		"settings in the latter will re-define or augment variables in the former."			\
+		"Both files can contain comments, blank lines, and variable settings."				\
+		"Variables cannot be set to an empty value."
+  #
+  EchoPara80	"The following settings represent the non-empty defaults:"
+  #
+  for Key in ${!__KamajiConfigurationValue[*]}
+  do
+    #
+    if [ ${#__KamajiConfigurationDefault[${Key}]} -gt 0 ]
+    then
+       #
+       printf "    %-23s %s\n" ${Key} "$(echo ${__KamajiConfigurationDefault[${Key}]})"
+       #
+    fi
+    #
+  done | sort
+  #
+  echo
+  #
+  EchoPara80	"The following variables are defined":
   #
   EchoPara80-4	"baseline-folder <directory-specification> -"							\
-		"Specification for the directory where baseline output files are stored."			\
-		"The default baseline-folder is the current directory."
+		"Specification for the directory where baseline output files are stored."
   #
   EchoPara80-4	"data-extension-list <extension>... -"								\
 		"A list of name extensions for \"data\" files that are stored in the baseline-folder,"		\
@@ -1038,47 +1073,64 @@ function KamajiModifierUsage_configure() {
 		"The name of the file in which the filename of the last make target is stored;"			\
 		"the file is stored in the working-folder."
   #
+  EchoPara80-4	"long-review-command <command> -"								\
+  		"The command used to perform a long review."							\
+		"A long review is defined by the configured long-review-line-count value."			\
+		"The command is called from within the working-folder, and is passed the"			\
+		"masked baseline output and masked current output files in that order."
+  #
+  EchoPara80-4	"long-review-line-count <integer> -"								\
+		"The number of diff command output lines that are too many to be considered"			\
+		"the subject of a short review."								\
+		"This number is used to define the difference between a short and long review."
+  #
+  EchoPara80-4	"long-review-tailpipe <command> [ | <command> ]... -"						\
+		"A command into which the long-review-command output is piped."					\
+		"For example, if you set the long-review-command to \"diff\" then you might want to"		\
+		"set the review-tailpipe to \"sed --expression='s,^,    ,' | less\" so that the diff"		\
+		"output will be indented, you can view it a page at a time, and it will not"			\
+		"clutter your display after your review."
+  #
   EchoPara80-4	"makefile-filename <filename> -"								\
 		"The name of the file into which a makefile is exported."					\
   #
   EchoPara80-4	"mask-sed-script <file-specification> -"							\
-		"Specification for the user-defined sed script that is used to mask output files."		\
-		"The default mask-sed-script is the ${__KamajiConfigurationFName%.*}.sed file in the current"	\
-		"directory."
+		"Specification for the user-defined sed script that is used to mask output files."
   #
-  EchoPara80-4	"review-command <command> -"									\
-  		"The command used to perform a review; the comand may be decorated with any number of options."	\
+  EchoPara80-4	"new-review-command <command> -"								\
+  		"The command used to perform a new review."							\
+		"A new review is one for which there is no baseline output file to compare to."			\
 		"The command is called from within the working-folder, and is passed the"			\
-		"masked baseline output and masked current output files in that order."				\
-		"A script can be used as a facade to make the simple, two-parameter interface"			\
-		"match a command that requires something else."							\
-		"The default review-command is vimdiff."
+		"masked current output file."
   #
-  EchoPara80-4	"review-tailpipe <command> [ | <command> ]... -"						\
-		"A command into which the review-command output is piped."					\
-		"For example, if you set the review-command to \"diff\" then you might want to"			\
-		"set the review-tailpipe to \"sed --expression='s,^,    ,' | less\" so that the diff"		\
-		"output will be indented, you can view it a page at a time, and it will not"			\
-		"clutter your display after your review."
+  EchoPara80-4	"new-review-tailpipe <command> [ | <command> ]... -"						\
+		"A command into which the new-review-command output is piped."					\
   #
   EchoPara80-4	"ruleset-filename <filename> -"									\
 		"The name of the file in which the ruleset is stored."						\
 		"The ruleset is stored and used by the 'export ruleset' request and 'fast' modifier."		\
 		"the file is stored in the working-folder."
   #
+  EchoPara80-4	"script-type-list [<extension>]... -"								\
+		"A list of file name extensions that are used to store executable scripts."			\
+  #
+  EchoPara80-4	"short-review-command <command> -"								\
+  		"The command used to perform a short review."							\
+		"A short review is defined by the configured long-review-line-count value."			\
+		"The command is called from within the working-folder, and is passed the"			\
+		"masked baseline output and masked current output files in that order."
+  #
+  EchoPara80-4	"short-review-tailpipe <command> [ | <command> ]... -"						\
+		"A command into which the short-review-command output is piped."				\
+  #
   EchoPara80-4	"time-output-format <time-format> -"								\
 		"The output format used by the /usr/bin/time program to provide run-time statistics about"	\
 		"CLUT scripts and unit test scripts and programs; please see the GNU VERSION section of the"	\
 		"description produced by the man time command."							\
-		"The default format uses every control sequence in the order that they are presented by the"	\
-		"man time command."
-  #
-  EchoPara80-4	"script-type-list [<extension>]... -"								\
-		"A list of file name extensions that are used to store executable scripts."			\
   #
   EchoPara80-4	"verbosity-level <adjective> -"									\
 		"The level of disgnostic output produced."							\
-		"The default level is called 'quiet' and results in no disgnostic output at all."		\
+		"The 'quiet' level suppresses diagnostic output."						\
 		"The 'light' level will describe the 'make' requests used to fulfill the user's request."	\
 		"The 'heavy' level will augment light output with a description of commands applied to files"	\
 		"in the working-folder and comments that describe data that it uses to decide what commands"	\
@@ -1088,39 +1140,9 @@ function KamajiModifierUsage_configure() {
 		"The specification for the directory where intermediate and unverified output files are"	\
 		"created."											\
 		"If the working-folder does not already exist then it will be silently created."		\
-		"The default working-folder is called Working."
   #
-  EchoPara80	"Here is an example configuration file:"
-  #
-  echo		"    #"
-  echo		"    #  My kamaji configuration file."
-  echo		"    #"
-  echo		"    baseline-folder         Testing"
-  echo		"    data-extension-list     sql text"
-  echo		"    data-filename-list      common_testing_functions.bash"
-  echo		"    last-target-filename    .kamaji.last"
-  echo		"    makefile-filename       .kamaji.makefile"
-  echo		"    mask-sed-script         .kamaji.sed-script"
-  echo		"    review-command          diff"
-  echo		"    review-tailpipe         sed --expression='s,^,    ,' | less"
-  echo		"    ruleset-filename        .kamaki.fast-ruleset"
-  echo		"    script-type-list        sh py rb"
-  echo		"    time-output-format      %C exit status %x ran in %e seconds"
-  echo		"    verbosity-level         light"
-  echo		"    working-folder          Workspace"
-  echo		"    #"
-  echo		"    working-folder          Working"
-  echo		"    script-type-list        bash"
-  echo		"    #"
-  echo		""
-  #
-  EchoPara80	"The \$HOME/${__KamajiConfigurationFName} configuration file can be used to"			\
-		"override values in the file with the same name in the current directory."			\
-		"For most named values,"									\
-		"subsequent values will override any previous association that uses the same name."		\
-		"In the above example, the working-folder name is associated with the \"Working\" value."	\
-		"The \"-list\" name values always add additional value associations to the name."		\
-		"In the above example, the script-type-list is associated with the \"sh py rb bash\" value."
+  EchoPara80	"Subsequent variable settings override previous values for the variable they name,"		\
+		"unless that variable represents a list, in which case the value is augmented."
   #
   EchoPara80	"A list of the configuration variable names can be displayed using a"				\
 		"'show configuration variables' request."
@@ -1269,32 +1291,29 @@ function KamajiModifierUsage_review() {
   #
   EchoPara80	"A 'review' request can be used to inspect the masked output differences that led to a"		\
 		"failed grade."											\
-		"The 'review' request is very similar to the 'grade' request:"					\
-		"Reviews are based on grades, and they are always performed for failing grades."		\
-		"After you review a failing grade, then kamaji will make it easy to baseline the new output."
+		"Reviews are based on grades, and they are only performed for failing grades."			\
+		"After the user reviews a failing grade,"							\
+		"then kamaji will allow the user to baseline the new output using a 'bless' request."
   #
-  EchoPara80	"The default command used to perform is vimdiff;"						\
-		"it is used to present differences between the baseline and new output,"			\
-		"with the masked baseline output in the left pane and the new output in the right pane."
+  EchoPara80	"There are three different kinds of review: new, short, and long."				\
+		"New reviews are performed on output for which there is no baseline to compare to."		\
+		"Short reviews are performed when the changes between the baseline and current output"		\
+		"are so few that specialized tools are not necessary to perform a detailed review."		\
+		"Long reviews are performed for all other results."
   #
-  EchoPara80	"Users not familiar with the editor may want to make note of the following vim commands:"	\
+  EchoPara80	"The vimdiff command is a very useful tool for perfoming long reviews."				\
+		"Users not familiar with the editor may want to make note of the following vim commands:"	\
 		"the :help command to request help; the :qa command to exit the editor;"			\
 		"the h, j, k, l, and arrow keys to move around in a pane;"					\
 		"and the [ctrl]-h, [ctrl]-l, and [ctrl]-w combinations to switch panes."
   #
-  EchoPara80	"The review-command configuration variable can be used to change the command used to perform a"	\
-		"review; the comand may be decorated with any number of options."				\
-		"The command is called from within the working-folder, and is passed the"			\
-		"masked baseline output and masked current output files in that order."				\
-		"A script can be used as a facade to make the simple, two-parameter interface"			\
-		"match a command that requires something else."
-  #
-  EchoPara80	"The review-tailpipe configuration variable can be used to define a command into which the"	\
-		"review-command output is piped."								\
-		"For example, if you set the review-command to \"diff\" then you might want to"			\
-		"set the review-tailpipe to \"sed --expression='s,^,    ,' | less\" so that the diff"		\
-		"output will be indented, you can view that output a page at a time, and that output will not"	\
-		"clutter your display after your review."
+  EchoPara80	"The long-review-line-count configuration variables allow the user to define"			\
+		"the boundary between a short and long review."							\
+  		"The new-, short-, and long-review-command"							\
+		"configuration variables can be used to change the command used to perform a review."		\
+		"The new-, short-, and long-review-tailpipe configuration variables allow the user to"		\
+		"manipulate the output produced by the new-, short-, and long-review-command variables,"	\
+		"respectively."
   #
 }
 
@@ -1826,7 +1845,7 @@ function KamajiBuildRulesLoadXtraDependents() {
   #
   local Directory ExternFSpec ExternFName TargetFSpec TargetFName
   #
-  for Directory in . ${HOME}
+  for Directory in ${HOME} .
   do
     #
     if [ -s ${Directory}/${__KamajiXtraDependentFName} ]
@@ -2307,14 +2326,14 @@ function KamajiRequestGradeOrOutputOrReview() {
        elif [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
        then
           #  
-          EchoErrorAndExit 1 "The '${SourceFName}' file cannot be ${Request}d; it is not a known derivative."  
+          EchoErrorAndExit 1 "Cannot {Request} the '${SourceFName}' file; it is not a known derivative."  
           #  
        fi
        #
        #  Find the ${TargetClass} decendants of the target.
        #
        TargetFList+=" $(KamajiEchoListOfDecendantFName ${SourceFName} ${TargetClass})"
-       #  
+       #
      done
      #
   fi
@@ -2466,7 +2485,7 @@ function KamajiRequestShow_configuration() {
        if [ ${#__KamajiConfigurationValue[${Key}]} -gt 0 ]
        then
           #
-          printf "%-21s %s\n" ${Key} "$(echo ${__KamajiConfigurationValue[${Key}]})"
+          printf "%-23s %s\n" ${Key} "$(echo ${__KamajiConfigurationValue[${Key}]})"
           #
        fi
        #
@@ -2546,25 +2565,8 @@ function KamajiMake_Delta_from_GoldenMasked_OutputMasked() {
   #
   Status=${?}
   #
-  if [ ${Status} -le 1 ]
+  if [ ${Status} -gt 1 ]
   then
-     #
-     if [ -s ${TargetFSpec} ]
-     then
-        #
-	if [ $(cat ${TargetFSpec} | wc --lines) -le 50 ]
-	then
-	   #
-           local -r GoldenDSpec=$(dirname $(readlink ${__KamajiWorkinDSpec}/${GoldenMaskedFName%.masked}))
-	   local -r OutputFSpec=${__KamajiWorkinDSpec}/${OutputMaskedFName%.masked}
-	   #
-	   spit ${TargetFSpec} "${__KamajiInfoTag} cp ${OutputFSpec} ${GoldenDSpec#../}/"
-	   #
-        fi
-        #
-     fi
-     #
-  else
      #
      EchoErrorAndExit ${Status} "The diff command failed; this most-often happens because masking failed."
      #
@@ -2580,12 +2582,6 @@ function KamajiMake_Delta_from_OutputMasked() {
   local -r OutputMaskedFName=${2}
   #
   EchoAndExecuteInWorking "cat ${OutputMaskedFName} > ${TargetFName} 2>&1"
-  #
-  local -r TargetFSpec=${__KamajiWorkinDSpec}/${TargetFName}
-  local -r OutputFSpec=${__KamajiWorkinDSpec}/${OutputMaskedFName%.masked}
-  #
-  spit ${TargetFSpec} "${__KamajiInfoTag} No baseline output file defined."
-  spit ${TargetFSpec} "${__KamajiInfoTag} cp ${OutputFSpec} ${__KamajiGoldenDSpec}/"
   #
 }
 
@@ -2640,8 +2636,6 @@ function KamajiMake_Grade_from_Delta() {
   #
   if [ -s ${__KamajiWorkinDSpec}/${SourceFName} ]
   then
-     #
-     [ "${__KamajiVerbosityRequested}" != "quiet" ] && EchoAndExecuteInWorking "cat ${SourceFName}"
      #
      EchoImportantMessage "${__KamajiFailTag}" "${TargetFName}"
      #
@@ -2732,6 +2726,8 @@ function KamajiMake_Review_from_Delta_Grade() {
   local -r DeltaSourceFName=${2}
   local -r GradeSourceFName=${3}
   #
+  local    ReviewCommand ReviewTailpipe
+  #
   if [ -s ${__KamajiWorkinDSpec}/${DeltaSourceFName} ]
   then
      #
@@ -2740,7 +2736,48 @@ function KamajiMake_Review_from_Delta_Grade() {
      local -r OutputMskdFName=${OutputFName}.masked
      local -r GoldenMskdFName=${OutputFName%.output}.golden.masked
      #
-     EchoAndExecuteInWorking "${__KamajiReviewCommand} ${GoldenMskdFName} ${OutputMskdFName} ${__KamajiReviewTailpipe}"
+     if [ -e ${__KamajiWorkinDSpec}/${GoldenMskdFName} ]
+     then
+        #
+        local -i DeltaLineCount=$(cat ${__KamajiWorkinDSpec}/${DeltaSourceFName} | wc --lines)
+        #
+        local -i DeltaLongStart=$(KamajiConfigurationEchoValue long-review-line-count)
+        #
+        if [ ${DeltaLineCount} -ge ${DeltaLongStart} ]
+	then
+	   #
+	   #  Reviewing "long" results.
+	   #
+	   ReviewCommand=$(KamajiConfigurationEchoValue long-review-command)
+	   ReviewTailpipe=$(KamajiConfigurationEchoValue long-review-tailpipe)
+	   #
+        else
+	   #
+	   #  Reviewing "short" results.
+	   #
+	   ReviewCommand=$(KamajiConfigurationEchoValue short-review-command)
+	   ReviewTailpipe=$(KamajiConfigurationEchoValue short-review-tailpipe)
+	   #
+        fi
+        #
+        ReviewCommand+=" ${GoldenMskdFName}"
+        #
+     else
+        #
+        #  Reviewing "new" results.
+        #
+        ReviewCommand=$(KamajiConfigurationEchoValue new-review-command)
+        ReviewTailpipe=$(KamajiConfigurationEchoValue new-review-tailpipe)
+        #
+     fi
+     #
+     #  Perform the review.
+     #
+     ReviewCommand+=" ${OutputMskdFName}"
+     #
+     [ ${#ReviewTailpipe} -gt 0 ] && ReviewCommand+=" | ${ReviewTailpipe}"
+     #
+     EchoAndExecuteInWorking "${ReviewCommand}"
      #
      EchoAndExecuteInWorking touch ${TargetFName}ed
      #

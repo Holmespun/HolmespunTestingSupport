@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.08.configuration.clut (20 cases)
+CLUT Source File: kamaji.08.configuration.clut (25 cases)
 
 0. Global Information
 0.1. Notations
@@ -32,12 +32,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -53,7 +58,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 1.5. Finalizations.
 1.6. Workspace Impact...
     |diff --recursive --no-dereference 01.Alpha/.kamaji.conf 01.Omega/.kamaji.conf
-    |22a23
+    |27a28
     |> makefile-filename OSCAR
     |Only in 01.Omega: FOXTROT
     |Only in 01.Omega: MIKE
@@ -74,12 +79,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -115,12 +125,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -136,7 +151,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 2.5. Finalizations.
 2.6. Workspace Impact...
     |diff --recursive --no-dereference 02.Alpha/.kamaji.conf 02.Omega/.kamaji.conf
-    |22a23
+    |27a28
     |> script-type-list PAPA
     |Only in 02.Omega: FOXTROT
     |Only in 02.Omega: MIKE
@@ -157,12 +172,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -198,12 +218,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -296,12 +321,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -394,12 +424,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -439,12 +474,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -484,12 +524,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -507,12 +552,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |data-extension-list
     |data-filename-list
     |last-target-filename
+    |long-review-command
+    |long-review-line-count
+    |long-review-tailpipe
     |makefile-filename
     |mask-sed-script
-    |review-command
-    |review-tailpipe
+    |new-review-command
+    |new-review-tailpipe
     |ruleset-filename
     |script-type-list
+    |short-review-command
+    |short-review-tailpipe
     |time-output-format
     |verbosity-level
     |working-folder
@@ -544,12 +594,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -565,7 +620,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 8.5. Finalizations.
 8.6. Workspace Impact...
     |diff --recursive --no-dereference 08.Alpha/.kamaji.conf 08.Omega/.kamaji.conf
-    |22a23
+    |27a28
     |> baseline-folder value-4-baseline-folder
     |Only in 08.Omega: FOXTROT
     |Only in 08.Omega: MIKE
@@ -586,12 +641,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -627,12 +687,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -648,7 +713,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 9.5. Finalizations.
 9.6. Workspace Impact...
     |diff --recursive --no-dereference 09.Alpha/.kamaji.conf 09.Omega/.kamaji.conf
-    |22a23
+    |27a28
     |> data-extension-list value-4-data-extension-list
     |Only in 09.Omega: FOXTROT
     |Only in 09.Omega: MIKE
@@ -669,12 +734,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -710,12 +780,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -731,7 +806,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 10.5. Finalizations.
 10.6. Workspace Impact...
     |diff --recursive --no-dereference 10.Alpha/.kamaji.conf 10.Omega/.kamaji.conf
-    |22a23
+    |27a28
     |> data-filename-list value-4-data-filename-list
     |Only in 10.Omega: FOXTROT
     |Only in 10.Omega: MIKE
@@ -752,12 +827,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -793,12 +873,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -814,7 +899,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 11.5. Finalizations.
 11.6. Workspace Impact...
     |diff --recursive --no-dereference 11.Alpha/.kamaji.conf 11.Omega/.kamaji.conf
-    |22a23
+    |27a28
     |> last-target-filename value-4-last-target-filename
     |Only in 11.Omega: FOXTROT
     |Only in 11.Omega: MIKE
@@ -835,12 +920,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -856,7 +946,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 11.6.3. MIKE (created) contains one file.
 11.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-12. SetConfiguration_makefile-filename.
+12. SetConfiguration_long-review-command.
 12.1. Requirements.
     |None.
 12.2. Initializations.
@@ -876,12 +966,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -890,15 +985,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 12.3.2. ALFA is empty.
 12.4. Target CLU Call.
-12.4.1.  kamaji set makefile-filename value-4-makefile-filename
+12.4.1.  kamaji set long-review-command value-4-long-review-command
 12.4.1.1. Exit Status 0!
 12.4.1.2. STDERR [text]...
-    |kamaji set makefile-filename value-4-makefile-filename
+    |kamaji set long-review-command value-4-long-review-command
 12.5. Finalizations.
 12.6. Workspace Impact...
     |diff --recursive --no-dereference 12.Alpha/.kamaji.conf 12.Omega/.kamaji.conf
-    |22a23
-    |> makefile-filename value-4-makefile-filename
+    |27a28
+    |> long-review-command value-4-long-review-command
     |Only in 12.Omega: FOXTROT
     |Only in 12.Omega: MIKE
 12.6.1.  (changed) contains 5 files...
@@ -918,19 +1013,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |makefile-filename value-4-makefile-filename
+    |long-review-command value-4-long-review-command
 12.6.1.2. ALFA is empty.
 12.6.1.3. FOXTROT is empty.
 12.6.1.4. MIKE contains one file.
@@ -939,7 +1039,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 12.6.3. MIKE (created) contains one file.
 12.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-13. SetConfiguration_mask-sed-script.
+13. SetConfiguration_long-review-line-count.
 13.1. Requirements.
     |None.
 13.2. Initializations.
@@ -959,12 +1059,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -973,15 +1078,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 13.3.2. ALFA is empty.
 13.4. Target CLU Call.
-13.4.1.  kamaji set mask-sed-script value-4-mask-sed-script
+13.4.1.  kamaji set long-review-line-count value-4-long-review-line-count
 13.4.1.1. Exit Status 0!
 13.4.1.2. STDERR [text]...
-    |kamaji set mask-sed-script value-4-mask-sed-script
+    |kamaji set long-review-line-count value-4-long-review-line-count
 13.5. Finalizations.
 13.6. Workspace Impact...
     |diff --recursive --no-dereference 13.Alpha/.kamaji.conf 13.Omega/.kamaji.conf
-    |22a23
-    |> mask-sed-script value-4-mask-sed-script
+    |27a28
+    |> long-review-line-count value-4-long-review-line-count
     |Only in 13.Omega: FOXTROT
     |Only in 13.Omega: MIKE
 13.6.1.  (changed) contains 5 files...
@@ -1001,19 +1106,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |mask-sed-script value-4-mask-sed-script
+    |long-review-line-count value-4-long-review-line-count
 13.6.1.2. ALFA is empty.
 13.6.1.3. FOXTROT is empty.
 13.6.1.4. MIKE contains one file.
@@ -1022,7 +1132,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 13.6.3. MIKE (created) contains one file.
 13.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-14. SetConfiguration_review-command.
+14. SetConfiguration_long-review-tailpipe.
 14.1. Requirements.
     |None.
 14.2. Initializations.
@@ -1042,12 +1152,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1056,15 +1171,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 14.3.2. ALFA is empty.
 14.4. Target CLU Call.
-14.4.1.  kamaji set review-command value-4-review-command
+14.4.1.  kamaji set long-review-tailpipe value-4-long-review-tailpipe
 14.4.1.1. Exit Status 0!
 14.4.1.2. STDERR [text]...
-    |kamaji set review-command value-4-review-command
+    |kamaji set long-review-tailpipe value-4-long-review-tailpipe
 14.5. Finalizations.
 14.6. Workspace Impact...
     |diff --recursive --no-dereference 14.Alpha/.kamaji.conf 14.Omega/.kamaji.conf
-    |22a23
-    |> review-command value-4-review-command
+    |27a28
+    |> long-review-tailpipe value-4-long-review-tailpipe
     |Only in 14.Omega: FOXTROT
     |Only in 14.Omega: MIKE
 14.6.1.  (changed) contains 5 files...
@@ -1084,19 +1199,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |review-command value-4-review-command
+    |long-review-tailpipe value-4-long-review-tailpipe
 14.6.1.2. ALFA is empty.
 14.6.1.3. FOXTROT is empty.
 14.6.1.4. MIKE contains one file.
@@ -1105,7 +1225,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 14.6.3. MIKE (created) contains one file.
 14.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-15. SetConfiguration_review-tailpipe.
+15. SetConfiguration_makefile-filename.
 15.1. Requirements.
     |None.
 15.2. Initializations.
@@ -1125,12 +1245,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1139,15 +1264,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 15.3.2. ALFA is empty.
 15.4. Target CLU Call.
-15.4.1.  kamaji set review-tailpipe value-4-review-tailpipe
+15.4.1.  kamaji set makefile-filename value-4-makefile-filename
 15.4.1.1. Exit Status 0!
 15.4.1.2. STDERR [text]...
-    |kamaji set review-tailpipe value-4-review-tailpipe
+    |kamaji set makefile-filename value-4-makefile-filename
 15.5. Finalizations.
 15.6. Workspace Impact...
     |diff --recursive --no-dereference 15.Alpha/.kamaji.conf 15.Omega/.kamaji.conf
-    |22a23
-    |> review-tailpipe value-4-review-tailpipe
+    |27a28
+    |> makefile-filename value-4-makefile-filename
     |Only in 15.Omega: FOXTROT
     |Only in 15.Omega: MIKE
 15.6.1.  (changed) contains 5 files...
@@ -1167,19 +1292,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |review-tailpipe value-4-review-tailpipe
+    |makefile-filename value-4-makefile-filename
 15.6.1.2. ALFA is empty.
 15.6.1.3. FOXTROT is empty.
 15.6.1.4. MIKE contains one file.
@@ -1188,7 +1318,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 15.6.3. MIKE (created) contains one file.
 15.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-16. SetConfiguration_ruleset-filename.
+16. SetConfiguration_mask-sed-script.
 16.1. Requirements.
     |None.
 16.2. Initializations.
@@ -1208,12 +1338,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1222,15 +1357,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 16.3.2. ALFA is empty.
 16.4. Target CLU Call.
-16.4.1.  kamaji set ruleset-filename value-4-ruleset-filename
+16.4.1.  kamaji set mask-sed-script value-4-mask-sed-script
 16.4.1.1. Exit Status 0!
 16.4.1.2. STDERR [text]...
-    |kamaji set ruleset-filename value-4-ruleset-filename
+    |kamaji set mask-sed-script value-4-mask-sed-script
 16.5. Finalizations.
 16.6. Workspace Impact...
     |diff --recursive --no-dereference 16.Alpha/.kamaji.conf 16.Omega/.kamaji.conf
-    |22a23
-    |> ruleset-filename value-4-ruleset-filename
+    |27a28
+    |> mask-sed-script value-4-mask-sed-script
     |Only in 16.Omega: FOXTROT
     |Only in 16.Omega: MIKE
 16.6.1.  (changed) contains 5 files...
@@ -1250,19 +1385,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |ruleset-filename value-4-ruleset-filename
+    |mask-sed-script value-4-mask-sed-script
 16.6.1.2. ALFA is empty.
 16.6.1.3. FOXTROT is empty.
 16.6.1.4. MIKE contains one file.
@@ -1271,7 +1411,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 16.6.3. MIKE (created) contains one file.
 16.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-17. SetConfiguration_script-type-list.
+17. SetConfiguration_new-review-command.
 17.1. Requirements.
     |None.
 17.2. Initializations.
@@ -1291,12 +1431,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1305,15 +1450,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 17.3.2. ALFA is empty.
 17.4. Target CLU Call.
-17.4.1.  kamaji set script-type-list value-4-script-type-list
+17.4.1.  kamaji set new-review-command value-4-new-review-command
 17.4.1.1. Exit Status 0!
 17.4.1.2. STDERR [text]...
-    |kamaji set script-type-list value-4-script-type-list
+    |kamaji set new-review-command value-4-new-review-command
 17.5. Finalizations.
 17.6. Workspace Impact...
     |diff --recursive --no-dereference 17.Alpha/.kamaji.conf 17.Omega/.kamaji.conf
-    |22a23
-    |> script-type-list value-4-script-type-list
+    |27a28
+    |> new-review-command value-4-new-review-command
     |Only in 17.Omega: FOXTROT
     |Only in 17.Omega: MIKE
 17.6.1.  (changed) contains 5 files...
@@ -1333,19 +1478,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |script-type-list value-4-script-type-list
+    |new-review-command value-4-new-review-command
 17.6.1.2. ALFA is empty.
 17.6.1.3. FOXTROT is empty.
 17.6.1.4. MIKE contains one file.
@@ -1354,7 +1504,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 17.6.3. MIKE (created) contains one file.
 17.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-18. SetConfiguration_time-output-format.
+18. SetConfiguration_new-review-tailpipe.
 18.1. Requirements.
     |None.
 18.2. Initializations.
@@ -1374,12 +1524,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1388,15 +1543,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 18.3.2. ALFA is empty.
 18.4. Target CLU Call.
-18.4.1.  kamaji set time-output-format value-4-time-output-format
+18.4.1.  kamaji set new-review-tailpipe value-4-new-review-tailpipe
 18.4.1.1. Exit Status 0!
 18.4.1.2. STDERR [text]...
-    |kamaji set time-output-format value-4-time-output-format
+    |kamaji set new-review-tailpipe value-4-new-review-tailpipe
 18.5. Finalizations.
 18.6. Workspace Impact...
     |diff --recursive --no-dereference 18.Alpha/.kamaji.conf 18.Omega/.kamaji.conf
-    |22a23
-    |> time-output-format value-4-time-output-format
+    |27a28
+    |> new-review-tailpipe value-4-new-review-tailpipe
     |Only in 18.Omega: FOXTROT
     |Only in 18.Omega: MIKE
 18.6.1.  (changed) contains 5 files...
@@ -1416,19 +1571,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |time-output-format value-4-time-output-format
+    |new-review-tailpipe value-4-new-review-tailpipe
 18.6.1.2. ALFA is empty.
 18.6.1.3. FOXTROT is empty.
 18.6.1.4. MIKE contains one file.
@@ -1437,7 +1597,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 18.6.3. MIKE (created) contains one file.
 18.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-19. SetConfiguration_verbosity-level.
+19. SetConfiguration_ruleset-filename.
 19.1. Requirements.
     |None.
 19.2. Initializations.
@@ -1457,12 +1617,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1471,15 +1636,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 19.3.2. ALFA is empty.
 19.4. Target CLU Call.
-19.4.1.  kamaji set verbosity-level value-4-verbosity-level
+19.4.1.  kamaji set ruleset-filename value-4-ruleset-filename
 19.4.1.1. Exit Status 0!
 19.4.1.2. STDERR [text]...
-    |kamaji set verbosity-level value-4-verbosity-level
+    |kamaji set ruleset-filename value-4-ruleset-filename
 19.5. Finalizations.
 19.6. Workspace Impact...
     |diff --recursive --no-dereference 19.Alpha/.kamaji.conf 19.Omega/.kamaji.conf
-    |22a23
-    |> verbosity-level value-4-verbosity-level
+    |27a28
+    |> ruleset-filename value-4-ruleset-filename
     |Only in 19.Omega: FOXTROT
     |Only in 19.Omega: MIKE
 19.6.1.  (changed) contains 5 files...
@@ -1499,19 +1664,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |verbosity-level value-4-verbosity-level
+    |ruleset-filename value-4-ruleset-filename
 19.6.1.2. ALFA is empty.
 19.6.1.3. FOXTROT is empty.
 19.6.1.4. MIKE contains one file.
@@ -1520,7 +1690,7 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 19.6.3. MIKE (created) contains one file.
 19.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-20. SetConfiguration_working-folder.
+20. SetConfiguration_script-type-list.
 20.1. Requirements.
     |None.
 20.2. Initializations.
@@ -1540,12 +1710,17 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
@@ -1554,15 +1729,15 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |#  (eof}
 20.3.2. ALFA is empty.
 20.4. Target CLU Call.
-20.4.1.  kamaji set working-folder value-4-working-folder
+20.4.1.  kamaji set script-type-list value-4-script-type-list
 20.4.1.1. Exit Status 0!
 20.4.1.2. STDERR [text]...
-    |kamaji set working-folder value-4-working-folder
+    |kamaji set script-type-list value-4-script-type-list
 20.5. Finalizations.
 20.6. Workspace Impact...
     |diff --recursive --no-dereference 20.Alpha/.kamaji.conf 20.Omega/.kamaji.conf
-    |22a23
-    |> working-folder value-4-working-folder
+    |27a28
+    |> script-type-list value-4-script-type-list
     |Only in 20.Omega: FOXTROT
     |Only in 20.Omega: MIKE
 20.6.1.  (changed) contains 5 files...
@@ -1582,19 +1757,24 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
-    |review-command          GOLF
-    |review-tailpipe         HOTEL
     |ruleset-filename        INDIA
     |script-type-list        JULIETT
     |verbosity-level         KILO
     |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
     |
     |working-folder          MIKE
     |script-type-list        NOVEMBER
     |
     |#
     |#  (eof}
-    |working-folder value-4-working-folder
+    |script-type-list value-4-script-type-list
 20.6.1.2. ALFA is empty.
 20.6.1.3. FOXTROT is empty.
 20.6.1.4. MIKE contains one file.
@@ -1603,6 +1783,471 @@ CLUT Source File: kamaji.08.configuration.clut (20 cases)
 20.6.3. MIKE (created) contains one file.
 20.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
 
-CLUT Source File: kamaji.08.configuration.clut (20 cases)
+21. SetConfiguration_short-review-command.
+21.1. Requirements.
+    |None.
+21.2. Initializations.
+21.2.1. create_complete_configuration_file .kamaji.conf
+21.2.2. mkdir --parents ALFA
+21.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+21.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+21.3.2. ALFA is empty.
+21.4. Target CLU Call.
+21.4.1.  kamaji set short-review-command value-4-short-review-command
+21.4.1.1. Exit Status 0!
+21.4.1.2. STDERR [text]...
+    |kamaji set short-review-command value-4-short-review-command
+21.5. Finalizations.
+21.6. Workspace Impact...
+    |diff --recursive --no-dereference 21.Alpha/.kamaji.conf 21.Omega/.kamaji.conf
+    |27a28
+    |> short-review-command value-4-short-review-command
+    |Only in 21.Omega: FOXTROT
+    |Only in 21.Omega: MIKE
+21.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+21.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |short-review-command value-4-short-review-command
+21.6.1.2. ALFA is empty.
+21.6.1.3. FOXTROT is empty.
+21.6.1.4. MIKE contains one file.
+21.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+21.6.2. FOXTROT (created) is empty.
+21.6.3. MIKE (created) contains one file.
+21.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+22. SetConfiguration_short-review-tailpipe.
+22.1. Requirements.
+    |None.
+22.2. Initializations.
+22.2.1. create_complete_configuration_file .kamaji.conf
+22.2.2. mkdir --parents ALFA
+22.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+22.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+22.3.2. ALFA is empty.
+22.4. Target CLU Call.
+22.4.1.  kamaji set short-review-tailpipe value-4-short-review-tailpipe
+22.4.1.1. Exit Status 0!
+22.4.1.2. STDERR [text]...
+    |kamaji set short-review-tailpipe value-4-short-review-tailpipe
+22.5. Finalizations.
+22.6. Workspace Impact...
+    |diff --recursive --no-dereference 22.Alpha/.kamaji.conf 22.Omega/.kamaji.conf
+    |27a28
+    |> short-review-tailpipe value-4-short-review-tailpipe
+    |Only in 22.Omega: FOXTROT
+    |Only in 22.Omega: MIKE
+22.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+22.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |short-review-tailpipe value-4-short-review-tailpipe
+22.6.1.2. ALFA is empty.
+22.6.1.3. FOXTROT is empty.
+22.6.1.4. MIKE contains one file.
+22.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+22.6.2. FOXTROT (created) is empty.
+22.6.3. MIKE (created) contains one file.
+22.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+23. SetConfiguration_time-output-format.
+23.1. Requirements.
+    |None.
+23.2. Initializations.
+23.2.1. create_complete_configuration_file .kamaji.conf
+23.2.2. mkdir --parents ALFA
+23.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+23.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+23.3.2. ALFA is empty.
+23.4. Target CLU Call.
+23.4.1.  kamaji set time-output-format value-4-time-output-format
+23.4.1.1. Exit Status 0!
+23.4.1.2. STDERR [text]...
+    |kamaji set time-output-format value-4-time-output-format
+23.5. Finalizations.
+23.6. Workspace Impact...
+    |diff --recursive --no-dereference 23.Alpha/.kamaji.conf 23.Omega/.kamaji.conf
+    |27a28
+    |> time-output-format value-4-time-output-format
+    |Only in 23.Omega: FOXTROT
+    |Only in 23.Omega: MIKE
+23.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+23.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |time-output-format value-4-time-output-format
+23.6.1.2. ALFA is empty.
+23.6.1.3. FOXTROT is empty.
+23.6.1.4. MIKE contains one file.
+23.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+23.6.2. FOXTROT (created) is empty.
+23.6.3. MIKE (created) contains one file.
+23.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+24. SetConfiguration_verbosity-level.
+24.1. Requirements.
+    |None.
+24.2. Initializations.
+24.2.1. create_complete_configuration_file .kamaji.conf
+24.2.2. mkdir --parents ALFA
+24.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+24.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+24.3.2. ALFA is empty.
+24.4. Target CLU Call.
+24.4.1.  kamaji set verbosity-level value-4-verbosity-level
+24.4.1.1. Exit Status 0!
+24.4.1.2. STDERR [text]...
+    |kamaji set verbosity-level value-4-verbosity-level
+24.5. Finalizations.
+24.6. Workspace Impact...
+    |diff --recursive --no-dereference 24.Alpha/.kamaji.conf 24.Omega/.kamaji.conf
+    |27a28
+    |> verbosity-level value-4-verbosity-level
+    |Only in 24.Omega: FOXTROT
+    |Only in 24.Omega: MIKE
+24.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+24.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |verbosity-level value-4-verbosity-level
+24.6.1.2. ALFA is empty.
+24.6.1.3. FOXTROT is empty.
+24.6.1.4. MIKE contains one file.
+24.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+24.6.2. FOXTROT (created) is empty.
+24.6.3. MIKE (created) contains one file.
+24.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+25. SetConfiguration_working-folder.
+25.1. Requirements.
+    |None.
+25.2. Initializations.
+25.2.1. create_complete_configuration_file .kamaji.conf
+25.2.2. mkdir --parents ALFA
+25.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+25.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+25.3.2. ALFA is empty.
+25.4. Target CLU Call.
+25.4.1.  kamaji set working-folder value-4-working-folder
+25.4.1.1. Exit Status 0!
+25.4.1.2. STDERR [text]...
+    |kamaji set working-folder value-4-working-folder
+25.5. Finalizations.
+25.6. Workspace Impact...
+    |diff --recursive --no-dereference 25.Alpha/.kamaji.conf 25.Omega/.kamaji.conf
+    |27a28
+    |> working-folder value-4-working-folder
+    |Only in 25.Omega: FOXTROT
+    |Only in 25.Omega: MIKE
+25.6.1.  (changed) contains 5 files...
+    |.kamaji.conf
+    |ALFA
+    |FOXTROT
+    |MIKE
+    |MIKE/FOXTROT
+25.6.1.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+    |working-folder value-4-working-folder
+25.6.1.2. ALFA is empty.
+25.6.1.3. FOXTROT is empty.
+25.6.1.4. MIKE contains one file.
+25.6.1.4.1. FOXTROT is a symbolic link to ../FOXTROT
+25.6.2. FOXTROT (created) is empty.
+25.6.3. MIKE (created) contains one file.
+25.6.3.1. FOXTROT is a symbolic link to ../FOXTROT
+
+CLUT Source File: kamaji.08.configuration.clut (25 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.

@@ -1,0 +1,1222 @@
+CLUT Output Begins...
+CLUT Output Format Version: 5.5
+CLUT Source File: kamaji.09.review.clut (5 cases)
+
+0. Global Information
+0.1. Notations
+    |No notations defined.
+0.2. Requirement Statements
+    |No requirements defined.
+0.3. Requirement Coverage
+    |No requirements defined.
+0.4. Comparable Masks
+    |No masks defined.
+
+1. Review_New.
+1.1. Requirements.
+    |None.
+1.2. Initializations.
+1.2.1. mkdir --parents Testing
+1.2.2. spit .kamaji.conf baseline-folder Testing
+1.2.3. spit .kamaji.conf time-output-format %C %x
+1.2.4. spit .kamaji.conf verbosity-level heavy
+1.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
+1.2.6. spit .kamaji.conf new-review-command cat --number --show-ends
+1.3. Initial Workspace contains 3 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/BETA_exercise.bash
+1.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |time-output-format %C %x
+    |verbosity-level heavy
+    |new-review-command cat --number --show-ends
+1.3.2. Testing contains one file.
+1.3.2.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+1.4. Target CLU Call.
+1.4.1.  kamaji review
+1.4.1.1. Exit Status 1!
+1.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mecho "BETA_exercise.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |kamaji make BETA_exercise.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |kamaji make BETA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |kamaji make BETA_exercise.output.delta
+    |[38;5;12mcat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |kamaji make BETA_exercise.output.grade
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |[38;5;12m# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# EQ Neither Working/BETA_exercise.output.grade nor Working/BETA_exercise.output.review exist[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.review does not exist[0m
+    |kamaji make BETA_exercise.output.review
+    |[38;5;12mcat --number --show-ends BETA_exercise.output.masked[0m
+    |[38;5;12mtouch BETA_exercise.output.reviewed[0m
+1.4.1.3. STDOUT [text]...
+    |     1	TC1: Good news, everyone!$
+    |     2	TC2: I miss Morbo.$
+1.5. Finalizations.
+1.6. Workspace Impact...
+    |Only in 01.Omega: .kamaji.sed
+    |Only in 01.Omega: Working
+1.6.1. .kamaji.sed (created) is empty.
+1.6.2. Working (created) contains 8 files.
+1.6.2.1. .kamaji.last_target.text...
+    |BETA_exercise.output.review
+1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+1.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+1.6.2.4. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+1.6.2.5. BETA_exercise.output.delta...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+1.6.2.6. BETA_exercise.output.masked...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+1.6.2.7. BETA_exercise.output.reviewed is empty.
+1.6.2.8. BETA_exercise.output.time.text...
+    |./BETA_exercise.bash 0
+
+2. Review_Match.
+2.1. Requirements.
+    |None.
+2.2. Initializations.
+2.2.1. mkdir --parents Testing
+2.2.2. spit .kamaji.conf baseline-folder Testing
+2.2.3. spit .kamaji.conf time-output-format %C %x
+2.2.4. spit .kamaji.conf verbosity-level heavy
+2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
+2.2.6. spit Testing/BETA_exercise.output TC1: Good news, everyone!
+2.2.7. spit Testing/BETA_exercise.output TC2: I miss Morbo.
+2.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.output
+2.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |time-output-format %C %x
+    |verbosity-level heavy
+2.3.2. Testing contains 2 files.
+2.3.2.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+2.3.2.2. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+2.4. Target CLU Call.
+2.4.1.  kamaji review
+2.4.1.1. Exit Status 0!
+2.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden[0m
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mecho "BETA_exercise.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |kamaji make BETA_exercise.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |kamaji make BETA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.golden.masked does not exist[0m
+    |kamaji make BETA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |kamaji make BETA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |kamaji make BETA_exercise.output.grade
+    |[38;5;10m[1mPASS:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |[38;5;12m# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# EQ Neither Working/BETA_exercise.output.grade nor Working/BETA_exercise.output.review exist[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.review does not exist[0m
+    |kamaji make BETA_exercise.output.review
+2.5. Finalizations.
+2.6. Workspace Impact...
+    |Only in 02.Omega: .kamaji.sed
+    |Only in 02.Omega: Working
+2.6.1. .kamaji.sed (created) is empty.
+2.6.2. Working (created) contains 9 files.
+2.6.2.1. .kamaji.last_target.text...
+    |BETA_exercise.output.review
+2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+2.6.2.4. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+2.6.2.5. BETA_exercise.golden.masked...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+2.6.2.6. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+2.6.2.7. BETA_exercise.output.delta is empty.
+2.6.2.8. BETA_exercise.output.masked...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+2.6.2.9. BETA_exercise.output.time.text...
+    |./BETA_exercise.bash 0
+
+3. Review_Short.
+3.1. Requirements.
+    |None.
+3.2. Initializations.
+3.2.1. mkdir --parents Testing
+3.2.2. spit .kamaji.conf baseline-folder Testing
+3.2.3. spit .kamaji.conf time-output-format %C %x
+3.2.4. spit .kamaji.conf verbosity-level heavy
+3.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
+3.2.6. spit .kamaji.conf short-review-command diff --side-by-side --width=74
+3.2.7. spit Testing/BETA_exercise.output TC1: Good news, everyone!
+3.2.8. spit Testing/BETA_exercise.output TC2: You miss Morbo.
+3.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.output
+3.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |time-output-format %C %x
+    |verbosity-level heavy
+    |short-review-command diff --side-by-side --width=74
+3.3.2. Testing contains 2 files.
+3.3.2.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+3.3.2.2. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: You miss Morbo.
+3.4. Target CLU Call.
+3.4.1.  kamaji review
+3.4.1.1. Exit Status 1!
+3.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden[0m
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mecho "BETA_exercise.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |kamaji make BETA_exercise.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |kamaji make BETA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.golden.masked does not exist[0m
+    |kamaji make BETA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |kamaji make BETA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |kamaji make BETA_exercise.output.grade
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |[38;5;12m# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# EQ Neither Working/BETA_exercise.output.grade nor Working/BETA_exercise.output.review exist[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.review does not exist[0m
+    |kamaji make BETA_exercise.output.review
+    |[38;5;12mdiff --side-by-side --width=74 BETA_exercise.golden.masked BETA_exercise.output.masked[0m
+    |[38;5;12mtouch BETA_exercise.output.reviewed[0m
+3.4.1.3. STDOUT [text]...
+    |TC1: Good news, everyone!		TC1: Good news, everyone!
+    |TC2: You miss Morbo.		    |	TC2: I miss Morbo.
+3.5. Finalizations.
+3.6. Workspace Impact...
+    |Only in 03.Omega: .kamaji.sed
+    |Only in 03.Omega: Working
+3.6.1. .kamaji.sed (created) is empty.
+3.6.2. Working (created) contains 10 files.
+3.6.2.1. .kamaji.last_target.text...
+    |BETA_exercise.output.review
+3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+3.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+3.6.2.4. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+3.6.2.5. BETA_exercise.golden.masked...
+    |TC1: Good news, everyone!
+    |TC2: You miss Morbo.
+3.6.2.6. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+3.6.2.7. BETA_exercise.output.delta...
+    |2c2
+    |< TC2: You miss Morbo.
+    |---
+    |> TC2: I miss Morbo.
+3.6.2.8. BETA_exercise.output.masked...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+3.6.2.9. BETA_exercise.output.reviewed is empty.
+3.6.2.10. BETA_exercise.output.time.text...
+    |./BETA_exercise.bash 0
+
+4. Review_Long.
+4.1. Requirements.
+    |None.
+4.2. Initializations.
+4.2.1. mkdir --parents Testing
+4.2.2. spit .kamaji.conf baseline-folder Testing
+4.2.3. spit .kamaji.conf time-output-format %C %x
+4.2.4. spit .kamaji.conf verbosity-level heavy
+4.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
+4.2.6. spit .kamaji.conf long-review-line-count 2
+4.2.7. spit .kamaji.conf long-review-command diff
+4.2.8. spit Testing/BETA_exercise.output TC1: Good news, everyone!
+4.2.9. spit Testing/BETA_exercise.output TC2: You miss Morbo.
+4.3. Initial Workspace contains 4 files...
+    |.kamaji.conf
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.output
+4.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |time-output-format %C %x
+    |verbosity-level heavy
+    |long-review-line-count 2
+    |long-review-command diff
+4.3.2. Testing contains 2 files.
+4.3.2.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+4.3.2.2. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: You miss Morbo.
+4.4. Target CLU Call.
+4.4.1.  kamaji review
+4.4.1.1. Exit Status 1!
+4.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden[0m
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mecho "BETA_exercise.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |kamaji make BETA_exercise.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |kamaji make BETA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.golden.masked does not exist[0m
+    |kamaji make BETA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |kamaji make BETA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |kamaji make BETA_exercise.output.grade
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |[38;5;12m# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# EQ Neither Working/BETA_exercise.output.grade nor Working/BETA_exercise.output.review exist[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.review does not exist[0m
+    |kamaji make BETA_exercise.output.review
+    |[38;5;12mdiff BETA_exercise.golden.masked BETA_exercise.output.masked[0m
+    |[38;5;12mtouch BETA_exercise.output.reviewed[0m
+4.4.1.3. STDOUT [text]...
+    |2c2
+    |< TC2: You miss Morbo.
+    |---
+    |> TC2: I miss Morbo.
+4.5. Finalizations.
+4.6. Workspace Impact...
+    |Only in 04.Omega: .kamaji.sed
+    |Only in 04.Omega: Working
+4.6.1. .kamaji.sed (created) is empty.
+4.6.2. Working (created) contains 10 files.
+4.6.2.1. .kamaji.last_target.text...
+    |BETA_exercise.output.review
+4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+4.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+4.6.2.4. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+4.6.2.5. BETA_exercise.golden.masked...
+    |TC1: Good news, everyone!
+    |TC2: You miss Morbo.
+4.6.2.6. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+4.6.2.7. BETA_exercise.output.delta...
+    |2c2
+    |< TC2: You miss Morbo.
+    |---
+    |> TC2: I miss Morbo.
+4.6.2.8. BETA_exercise.output.masked...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+4.6.2.9. BETA_exercise.output.reviewed is empty.
+4.6.2.10. BETA_exercise.output.time.text...
+    |./BETA_exercise.bash 0
+
+5. Review_all_together_now.
+5.1. Requirements.
+    |None.
+5.2. Initializations.
+5.2.1. mkdir --parents Testing
+5.2.2. spit .kamaji.conf baseline-folder Testing
+5.2.3. spit .kamaji.conf time-output-format %C %x
+5.2.4. spit .kamaji.conf verbosity-level heavy
+5.2.5. create_production_script_alpha ALPHA.bash
+5.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
+5.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
+5.2.8. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+5.2.9. spit .kamaji.conf new-review-command wc
+5.2.10. spit .kamaji.conf short-review-command diff --side-by-side --width=74
+5.2.11. spit .kamaji.conf long-review-line-count 5
+5.2.12. spit .kamaji.conf long-review-command diff
+5.2.13. spit Testing/BETA_exercise.output TC1: Good news, everyone!
+5.2.14. spit Testing/BETA_exercise.output TC2: You miss Morbo.
+5.2.15. spit Testing/GAMMA_exercise.output TC1: Apple
+5.2.16. spit Testing/GAMMA_exercise.output TC2: Banana
+5.3. Initial Workspace contains 8 files...
+    |.kamaji.conf
+    |ALPHA.bash
+    |Testing
+    |Testing/ALPHA.clut
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.output
+    |Testing/GAMMA_exercise.cpp
+    |Testing/GAMMA_exercise.output
+5.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |time-output-format %C %x
+    |verbosity-level heavy
+    |new-review-command wc
+    |short-review-command diff --side-by-side --width=74
+    |long-review-line-count 5
+    |long-review-command diff
+5.3.2. ALPHA.bash...
+    |#!/bin/bash
+    |#
+    |#  ALPHA.bash created by create_production_script_alpha.
+    |#
+    |#  This is a production script to be tested using a CLUT.
+    |#
+    |echo "I am the greetest! Now I am leaving Earth for no raisin!"
+    |#
+5.3.3. Testing contains 5 files.
+5.3.3.1. ALPHA.clut...
+    |#!/bin/bash
+    |#
+    |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
+    |#
+    |function testCollection() {
+    |  #
+    |  clut_case_name		NoArguments
+    |  clut_case_comment	"This is the most trivial test case."
+    |  clut_case_end
+    |  #
+    |}
+    |#
+    |clut_definition_set	testCollection
+    |#
+5.3.3.2. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+5.3.3.3. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: You miss Morbo.
+5.3.3.4. GAMMA_exercise.cpp...
+    |//
+    |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
+    |//
+    |//  This is a unit test exercise program that represents a series of test cases.
+    |//
+    |
+    |# include <iostream> 	//  std::cout
+    |
+    |int main() {
+    |
+    |    std::cout << "TC1: I dunno. Fry?" << std::endl;
+    |    std::cout << "TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!" << std::endl;
+    |
+    |    return( 0 );
+    |
+    |}
+    |
+    |//
+5.3.3.5. GAMMA_exercise.output...
+    |TC1: Apple
+    |TC2: Banana
+5.4. Target CLU Call.
+5.4.1.  kamaji review
+5.4.1.1. Exit Status 3!
+5.4.1.2. STDERR [text]...
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden[0m
+    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
+    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden[0m
+    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |[38;5;12mecho "GAMMA_exercise.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.golden.masked does not exist[0m
+    |kamaji make GAMMA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise does not exist[0m
+    |kamaji make GAMMA_exercise
+    |[38;5;12mmake --no-print-directory GAMMA_exercise[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output does not exist[0m
+    |kamaji make GAMMA_exercise.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv GAMMA_exercise.output.partial GAMMA_exercise.output[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.masked does not exist[0m
+    |kamaji make GAMMA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial[0m
+    |[38;5;12mmv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.delta does not exist[0m
+    |kamaji make GAMMA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/GAMMA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/GAMMA_exercise.golden is older-than Working/GAMMA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/GAMMA_exercise.cpp is older-than Working/GAMMA_exercise[0m
+    |[38;5;12m# LT Working/GAMMA_exercise is older-than Working/GAMMA_exercise.output[0m
+    |[38;5;12m# LT Working/GAMMA_exercise.output is older-than Working/GAMMA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/GAMMA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/GAMMA_exercise.golden.masked is older-than Working/GAMMA_exercise.output.delta[0m
+    |[38;5;12m# LT Working/GAMMA_exercise.output.masked is older-than Working/GAMMA_exercise.output.delta[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
+    |kamaji make GAMMA_exercise.output.grade
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
+    |[38;5;12m# GT Working/GAMMA_exercise.output.review does not exist[0m
+    |kamaji make GAMMA_exercise.output.review
+    |[38;5;12mdiff GAMMA_exercise.golden.masked GAMMA_exercise.output.masked[0m
+    |[38;5;12mtouch GAMMA_exercise.output.reviewed[0m
+    |[38;5;12mecho "BETA_exercise.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |kamaji make BETA_exercise.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |kamaji make BETA_exercise.output.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.golden.masked does not exist[0m
+    |kamaji make BETA_exercise.golden.masked
+    |[38;5;12msed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial[0m
+    |[38;5;12mmv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |kamaji make BETA_exercise.output.delta
+    |[38;5;12mdiff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |kamaji make BETA_exercise.output.grade
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |[38;5;12m# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked[0m
+    |[38;5;12m# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta[0m
+    |[38;5;12m# EQ Neither Working/BETA_exercise.output.grade nor Working/BETA_exercise.output.review exist[0m
+    |[38;5;12m# GT Working/BETA_exercise.output.review does not exist[0m
+    |kamaji make BETA_exercise.output.review
+    |[38;5;12mdiff --side-by-side --width=74 BETA_exercise.golden.masked BETA_exercise.output.masked[0m
+    |[38;5;12mtouch BETA_exercise.output.reviewed[0m
+    |[38;5;12mecho "ALPHA.clut.output.review" > Working/.kamaji.last_target.text[0m
+    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |kamaji make ALPHA.clut.bash
+    |[38;5;12mclutc ALPHA.clut ALPHA.bash ALPHA.clut.bash[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |kamaji make ALPHA.clut.output
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1[0m
+    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |kamaji make ALPHA.clut.output.masked
+    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial[0m
+    |[38;5;12mmv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |kamaji make ALPHA.clut.output.delta
+    |[38;5;12mcat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |kamaji make ALPHA.clut.output.grade
+    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mALPHA.clut.output.grade[0m
+    |[38;5;12m# LT Working/ALPHA.bash is older-than Working/ALPHA.clut.bash[0m
+    |[38;5;12m# LT Working/ALPHA.clut is older-than Working/ALPHA.clut.bash[0m
+    |[38;5;12m# LT Working/ALPHA.clut.bash is older-than Working/ALPHA.clut.output[0m
+    |[38;5;12m# LT Working/.kamaji.sed is older-than Working/ALPHA.clut.output.masked[0m
+    |[38;5;12m# LT Working/ALPHA.clut.output is older-than Working/ALPHA.clut.output.masked[0m
+    |[38;5;12m# LT Working/ALPHA.clut.output.masked is older-than Working/ALPHA.clut.output.delta[0m
+    |[38;5;12m# EQ Neither Working/ALPHA.clut.output.grade nor Working/ALPHA.clut.output.review exist[0m
+    |[38;5;12m# GT Working/ALPHA.clut.output.review does not exist[0m
+    |kamaji make ALPHA.clut.output.review
+    |[38;5;12mwc ALPHA.clut.output.masked[0m
+    |[38;5;12mtouch ALPHA.clut.output.reviewed[0m
+5.4.1.3. STDOUT [text]...
+    |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
+    |1,2c1,2
+    |< TC1: Apple
+    |< TC2: Banana
+    |---
+    |> TC1: I dunno. Fry?
+    |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+    |TC1: Good news, everyone!		TC1: Good news, everyone!
+    |TC2: You miss Morbo.		    |	TC2: I miss Morbo.
+    | 31 108 792 ALPHA.clut.output.masked
+5.5. Finalizations.
+5.6. Workspace Impact...
+    |Only in 05.Omega: .kamaji.sed
+    |Only in 05.Omega: Working
+5.6.1. .kamaji.sed (created) is empty.
+5.6.2. Working (created) contains 35 files.
+5.6.2.1. .kamaji.last_target.text...
+    |ALPHA.clut.output.review
+5.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+5.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+5.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+5.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20190902_093331.13262/00.compiled.bash
+5.6.2.6. ALPHA.clut.output...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+5.6.2.7. ALPHA.clut.output.delta...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+5.6.2.8. ALPHA.clut.output.masked...
+    |CLUT Output Begins...
+    |CLUT Output Format Version: 5.5
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |
+    |0. Global Information
+    |0.1. Notations
+    |    |No notations defined.
+    |0.2. Requirement Statements
+    |    |No requirements defined.
+    |0.3. Requirement Coverage
+    |    |No requirements defined.
+    |0.4. Comparable Masks
+    |    |No masks defined.
+    |
+    |1. NoArguments.
+    |    |This is the most trivial test case.
+    |1.1. Requirements.
+    |    |None.
+    |1.2. Initializations.
+    |1.3. Initial Workspace is empty.
+    |1.4. Target CLU Call.
+    |1.4.1.  ALPHA.bash
+    |1.4.1.1. STDOUT [text]...
+    |    |I am the greetest! Now I am leaving Earth for no raisin!
+    |1.5. Finalizations.
+    |1.6. Workspace Impact...
+    |1.6.1. The initial and final workspace contents are equivalent.
+    |
+    |CLUT Source File: ALPHA.clut (1 cases)
+    |CLUT Output Format Version: 5.5
+    |CLUT Output Complete.
+5.6.2.9. ALPHA.clut.output.reviewed is empty.
+5.6.2.10. ALPHA.clut.output.time.text...
+    |./ALPHA.clut.bash 0
+5.6.2.11. ALPHA.clutc.20190902_093331.13262 contains 3 files.
+5.6.2.11.1. 00.compiled.bash...
+    |#!/bin/bash
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  ./ALPHA.clutc.20190902_093331.13262/00.compiled.bash...
+    |#
+    |#  Created by clutc on 2019-09-02 at 09:33:31.
+    |#
+    |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |set -u
+    |
+    |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+    |
+    |declare -r __ScriptFName=$(basename ${0})
+    |
+    |declare -r __ScriptArgumentList="${*}"
+    |
+    |declare -r __WhereWeWereDSpec="${PWD}"
+    |
+    |declare    __ClutWorkingDSpec
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Set the PATH variable to make sure it can find the CLU we want to test.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |export PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.09.review.clutr.20190902_093326.10518/05.Working/Working:${PATH}"
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Define the clut_definition_set function as a no-op during run-time.
+    |#
+    |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+    |#  definitions because they must only be called within functions that are defined for use
+    |#  by the clut_definition_set function.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clut_definition_set() { : ; }
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  Load the CLUT framework run-time support functions.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |source $(whereHolmespunTestingSupport)/Bash/Library/clutr.bash
+    |
+    |#----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalInitializations...
+    |#
+    |#  Execute each of the global initializations at run-time.
+    |#
+    |#----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalInitializations() {
+    |  #
+    |  : No global initializations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeGlobalFinalizations...
+    |#
+    |#  Execute each of the global finalizations at run-time.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeGlobalFinalizations() {
+    |  #
+    |  : No global finalizations.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeNotations...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeNotations() {
+    |  #
+    |  clutCaseRunTimeReport 1 Notations
+    |  #
+    |  clutCaseRunTimeParagraph No notations defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementStatements...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementStatements() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Statements
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeRequirementCoverage...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeRequirementCoverage() {
+    |  #
+    |  clutCaseRunTimeReport 1 Requirement Coverage
+    |  #
+    |  clutCaseRunTimeParagraph No requirements defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeDescribeGlobalInformation...
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeDescribeGlobalInformation() {
+    |  #
+    |  echo ""
+    |  #
+    |  clutCaseRunTimeReport 0 Global Information
+    |  #
+    |  clutFileRunTimeNotations
+    |  #
+    |  clutFileRunTimeRequirementStatements
+    |  #
+    |  clutFileRunTimeRequirementCoverage
+    |  #
+    |  clutCaseRunTimeReport 1 Comparable Masks
+    |  #
+    |  clutCaseRunTimeParagraph No masks defined.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMask...
+    |#
+    |#  Apply the global compare masks.  Two arguments may take either of these forms:
+    |#
+    |#	File <file-specification>
+    |#	Text <message>
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMask() {
+    |  #
+    |  local -r Format=${1}
+    |  local -r Target="${2}"
+    |  #
+    |  [ "${Format}" = Text ] && echo "${Target}"
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskDataInFile...
+    |#
+    |#  Apply the global compare masks to the contents of one file.
+    |#
+    |#  The man page for the 'test' command states that, "Except for -h and -L, all
+    |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+    |#  symbolic link type before we do for directory type.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskDataInFile() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMaskFilesInDirectory...
+    |#
+    |#  Apply the global compare masks to the files in the given workspace.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMaskFilesInDirectory() {
+    |  #
+    |  : No global comparison masks to apply.
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  Load the user's run-time support functions.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |source /home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.09.review.clutr.20190902_093326.10518/05.Working/Working/ALPHA.clut
+    |
+    |#---------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutCaseRunTimeForTestCaseAll() {
+    |  #
+    |  local -r Instrumentation=${*}
+    |  #
+    |  #
+    |  #  testCollection
+    |  #
+    |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |#
+    |#  clutFileRunTimeMain...
+    |#
+    |#  Run a single test case if the user has requested it; run all of the otherwise.
+    |#
+    |#  Instrumentation only applies to the CLU.
+    |#
+    |#-----------------------------------------------------------------------------------------
+    |
+    |function clutFileRunTimeMain() {
+    |  #
+    |  local -r ArgumentList=${*}
+    |  #
+    |  local -r IntegerRegex="^[0-9]+$"
+    |  #
+    |  local    Instrumentation=
+    |  local    TestCaseIndex=
+    |  local    WorkinLName=
+    |  #
+    |  local    ArgumentItem
+    |  #
+    |  for ArgumentItem in ${ArgumentList}
+    |  do
+    |    #
+    |    #  If we are still checking the lead arguments...
+    |    #
+    |    if [ ${#Instrumentation} -eq 0 ]
+    |    then
+    |       #
+    |       #  If the lead argument...
+    |       #     Is an integer then the user only wants to run one test case.
+    |       #  Else if the lead argument...
+    |       #     Begins with the option name '--working=' then it names the working directory.
+    |       #  Else...
+    |       #     It marks the beginning of the instrumentation command.
+    |       #  Endif
+    |       #
+    |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+    |       then
+    |          #
+    |          TestCaseIndex=${ArgumentItem}
+    |          #
+    |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+    |       then
+    |          #
+    |          WorkinLName="${ArgumentItem:10}"
+    |          #
+    |       else
+    |          #
+    |          Instrumentation="${ArgumentItem}"
+    |          #
+    |       fi
+    |       #
+    |    else
+    |       #
+    |       Instrumentation+=" ${ArgumentItem}"
+    |       #
+    |    fi
+    |    #
+    |  done
+    |  #
+    |  #  Register dump format functions.
+    |  #
+    |  clutFileRunTimeDumpFormatRegistrationStandard
+    |  #
+    |  #  Create a run-time working directory, and remember its specification.
+    |  #
+    |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="ALPHA.clutr"
+    |  #
+    |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.).$$
+    |  #
+    |  mkdir ${WorkinDName}
+    |  #
+    |  cd ${WorkinDName}
+    |     #
+    |     __ClutWorkingDSpec=${PWD}
+    |     #
+    |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+    |     then
+    |        #
+    |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+    |        #
+    |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+    |        #
+    |     else
+    |        #
+    |        clutFileRunTimeDescribeStart ALPHA.clut 3 1
+    |        #
+    |        clutFileRunTimeDescribeGlobalInformation
+    |        #
+    |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+    |        #
+    |        clutFileRunTimeDescribeEnded ALPHA.clut 3 1
+    |        #
+    |     fi
+    |     #
+    |  cd ..
+    |  #
+    |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+    |  #
+    |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+    |  #
+    |  ln --symbolic ${WorkinDName} ${WorkinLName}
+    |  #
+    |}
+    |
+    |#-----------------------------------------------------------------------------------------
+    |
+    |clutFileRunTimeMain ${__ScriptArgumentList}
+    |
+    |exit 0
+    |
+    |#-----------------------------------------------------------------------------------------
+5.6.2.11.2. 00.namelist.text...
+    |NoArguments
+5.6.2.11.3. 01.bash...
+    |function clutCaseRunTimeForTestCase01() {
+    |  #
+    |  local -r CluInstrumentation="${*} "
+    |  #
+    |  clutCaseRunTimeDescribeStart 1 "NoArguments"
+    |  #
+    |  clutCaseRunTimeParagraph "This is the most trivial test case."
+    |  #
+    |  clutCaseRunTimeReport 1 Requirements.
+    |  #
+    |  clutCaseRunTimeParagraph None.
+    |  #
+    |  mkdir 01.Working
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Initializations.
+    |     #
+    |     clutFileRunTimeGlobalInitializations
+    |     #
+    |  cd ..
+    |  #
+    |  cp --archive 01.Working 01.Alpha
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+    |  #
+    |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+    |  #
+    |  cd 01.Working
+    |     #
+    |     clutCaseRunTimeReport 1 Target CLU Call.
+    |     #
+    |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}ALPHA.bash"
+    |     #
+    |     clutCaseRunTimeReport 1 Finalizations.
+    |     #
+    |     clutFileRunTimeGlobalFinalizations
+    |     #
+    |  cd ..
+    |  #
+    |  mv 01.Working 01.Omega
+    |  #
+    |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+    |  #
+    |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+    |  #
+    |  clutCaseRunTimeDescribeEnd 
+    |  #
+    |}
+5.6.2.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20190902_093331.13362
+5.6.2.13. ALPHA.clutr.20190902_093331.13362 contains 2 files.
+5.6.2.13.1. 01.Alpha is empty.
+5.6.2.13.2. 01.Omega is empty.
+5.6.2.14. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+5.6.2.15. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+5.6.2.16. BETA_exercise.golden.masked...
+    |TC1: Good news, everyone!
+    |TC2: You miss Morbo.
+5.6.2.17. BETA_exercise.output...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+5.6.2.18. BETA_exercise.output.delta...
+    |2c2
+    |< TC2: You miss Morbo.
+    |---
+    |> TC2: I miss Morbo.
+5.6.2.19. BETA_exercise.output.masked...
+    |TC1: Good news, everyone!
+    |TC2: I miss Morbo.
+5.6.2.20. BETA_exercise.output.reviewed is empty.
+5.6.2.21. BETA_exercise.output.time.text...
+    |./BETA_exercise.bash 0
+5.6.2.22. GAMMA_exercise...
+    |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
+5.6.2.23. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+5.6.2.24. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
+5.6.2.25. GAMMA_exercise.golden.masked...
+    |TC1: Apple
+    |TC2: Banana
+5.6.2.26. GAMMA_exercise.output...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+5.6.2.27. GAMMA_exercise.output.delta...
+    |1,2c1,2
+    |< TC1: Apple
+    |< TC2: Banana
+    |---
+    |> TC1: I dunno. Fry?
+    |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+5.6.2.28. GAMMA_exercise.output.masked...
+    |TC1: I dunno. Fry?
+    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
+5.6.2.29. GAMMA_exercise.output.reviewed is empty.
+5.6.2.30. GAMMA_exercise.output.time.text...
+    |./GAMMA_exercise 0
+
+CLUT Source File: kamaji.09.review.clut (5 cases)
+CLUT Output Format Version: 5.5
+CLUT Output Complete.

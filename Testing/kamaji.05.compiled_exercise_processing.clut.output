@@ -72,14 +72,9 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |[38;5;12mcat GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
     |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
     |kamaji make GAMMA_exercise.output.grade
-    |[38;5;12mcat GAMMA_exercise.output.delta[0m
     |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
 1.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
-    |TC1: I dunno. Fry?
-    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m No baseline output file defined.
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 1.5. Finalizations.
 1.6. Workspace Impact...
     |Only in 01.Omega: .kamaji.sed
@@ -100,8 +95,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.6.2.6. GAMMA_exercise.output.delta...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m No baseline output file defined.
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 1.6.2.7. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
@@ -178,15 +171,9 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |[38;5;12mdiff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
     |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
     |kamaji make GAMMA_exercise.output.grade
-    |[38;5;12mcat GAMMA_exercise.output.delta[0m
     |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
 2.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
-    |2c2
-    |< TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
-    |---
-    |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 2.5. Finalizations.
 2.6. Workspace Impact...
     |Only in 02.Omega: .kamaji.sed
@@ -213,7 +200,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |< TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
     |---
     |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 2.6.2.9. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
@@ -607,8 +593,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.6.2.6. GAMMA_exercise.output.delta...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m No baseline output file defined.
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 7.6.2.7. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
@@ -675,14 +659,9 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |[38;5;12mcat GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1[0m
     |[38;5;12m# GT Working/GAMMA_exercise.output.grade does not exist[0m
     |kamaji make GAMMA_exercise.output.grade
-    |[38;5;12mcat GAMMA_exercise.output.delta[0m
     |[38;5;9m[1mFAIL:[0m [38;5;15m[1mGAMMA_exercise.output.grade[0m
 8.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
-    |TC1: I dunno. Fry?
-    |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m No baseline output file defined.
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 8.5. Finalizations.
 8.6. Workspace Impact...
     |Only in 08.Omega: .kamaji.sed
@@ -703,8 +682,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.6.2.6. GAMMA_exercise.output.delta...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-    |[38;5;11mINFO:[0m No baseline output file defined.
-    |[38;5;11mINFO:[0m cp Working/GAMMA_exercise.output Testing/
 8.6.2.7. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
