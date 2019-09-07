@@ -1518,7 +1518,7 @@ function KamajiBuildRulesForTestingSource_Clut() {
   #
   #  Determine the CLU specification.
   #
-  local -r RunnerDList="$(find ${__KamajiGoldenDSpec} -type d) ${PATH//:/ }"
+  local -r RunnerDList="$(find ${__KamajiGoldenDSpec} -type d) ${PATH//:/ } ."
   #
   local    RunnerFSpec=
   #
