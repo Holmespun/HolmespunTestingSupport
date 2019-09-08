@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------
 ###
-###		Bash/Library/clutr.bash
+###		HolmespunTestingSupport/Library/clutr.bash
 ###
 ###  @file
 ###  @author	Brian G. Holmes
@@ -58,7 +58,7 @@ export LC_COLLATE=C
 ###
 #----------------------------------------------------------------------------------------------------------------------
 
-declare -r    __BashLibraryDSpec=$(whereHolmespunTestingSupport)/Bash/Library
+declare -r    __BashLibraryDSpec=$(whereHolmespunTestingSupport)/Library
 
 #----------------------------------------------------------------------------------------------------------------------
 ###
@@ -100,7 +100,7 @@ declare -r -i __ClutOutputFormatVersionMinor=2
 ###		extension of a file, and then passing the file specification into a call to that function. If no dump
 ###		file for the extension is defined then the dump function for UNKNOWN content is used.
 ###
-###		The Bash/Library/clutr_content_dump_functions.bash file defined the standard HMM dump functions and
+###		The Library/clutr_content_dump_functions.bash file defined the standard HMM dump functions and
 ###		associates them with many content types. The user can define and register dump functions using the
 ###		clut_global_dump_format function.
 ###

@@ -2020,7 +2020,7 @@ function __clutCompileTimeMain() {
   spit  ${ClutRunTimeFSpec} "#"
   spit  ${ClutRunTimeFSpec} "#----------------------------------------------------------------------------------------"
   spit  ${ClutRunTimeFSpec} ""
-  spit  ${ClutRunTimeFSpec} "source \$(whereHolmespunTestingSupport)/Bash/Library/clutr.bash"
+  spit  ${ClutRunTimeFSpec} "source \$(whereHolmespunTestingSupport)/Library/clutr.bash"
   spit  ${ClutRunTimeFSpec} ""
   spit  ${ClutRunTimeFSpec} "#----------------------------------------------------------------------------------------"
   spit  ${ClutRunTimeFSpec} "#"

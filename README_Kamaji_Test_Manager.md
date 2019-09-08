@@ -5,6 +5,7 @@ Its primary purposes are to assign a pass-fail grade to each test,
 and to revise that grade when new information is avalable.
 Its secondary purpose is fulfill its primary purpose in a way that makes generating test results easy.
 
+
 ## Overview
 
 Kamaji is designed for users who believe in automated regression testing, test-driven development, and
@@ -45,35 +46,77 @@ Grades are reported explictly every time they are requested.
 
 In addition, Kamaji allows the user to:
 1. Export and import a rule-set for faster execution;
-1. Export a makefile that can be used to incorporate Kamaji into an existing work-flow;
+1. Export a makefile that can be used to incorporate Kamaji into an existing development work-flow;
 1. Define the commands used to perform output reviews (e.g. diff, vimdiff).
+
 
 ### Related Articles
 
 TBD
 
+
 ### Modification History
 
 * 2019-09-02 BGH; Initial version.
+
 
 ### Demonstrative Output Paradigm
 
 Test code should not be trusted to determine its own pass-fail status.
 Test programs are notoriously buggy because they are written in relative haste.
-Software engineers test their software because they know that mistakes will be made during development,
+Software engineers test their software because they know that mistakes will be made during development
 and they want to catch those mistakes as soon as possible.
 
-Test programs are much more likely to contain errors than well-developed code,
-and those errors are less likely to be caught because tests of test programs are rare.
-As such, test programs should produce output that describes the data as it flows through them,
+Test programs are not as well developed as the code they exercise; test programs are more likely to contain errors.
+Test program errors are also less likely to be caught because tests for test programs are rare.
+As such, test programs should produce output that describes data as it flows through them,
 including inputs and intermdiate data, so that the developer (and subsequent developers) can see what assumptions were 
 made, what data conversions occurred, and all of the impacts that the tested program had on that data.
 
-The output should be is evaluated and approved by a human.
-If the report is determined to be correct then it should become the definitive result;
+The resulting output should be is evaluated and approved by a human.
+If the output is determined to be correct then it should become the definitive result;
 it should be declared the baseline output.
 Outputs produced by the same test in the future will only be
 automatically judged to be a success if and when they do **not** differ from the baseline.
+
+
+### Testing Resources and Derived Works
+
+Kamaji needs to know about source code, baseline test output, and some forms of data,
+but only if they are *testing resources* that represent CLUT and unit test exercises.
+Kamaji does not concern itself with source code that represents the program or programs being tested.
+Kamaji uses a *testing folder* configuration variable to
+represent the directory in which it can find testing resources.
+As such, you can most easily configure Kamaji if your testing resources are separate from the programatic ones;
+if they are not separate then you will have to tell Kamaji which files to ignore.
+
+Source code, baseline test output, and some forms of data are golden;
+they are worthly of keeping safe in a source repository.
+Files that are derived from these things can be derived from them again.
+Derived files are only important for a brief time; they represent a snapshot of the current development.
+Even derived files that are bundled into a release are only important until the code that they represent is improved.
+
+Kamaji creates derived files in a separate directory called a *working folder*.
+Source code and baseline output files are represented in the working folder using symbolic links;
+in this way, the working folder represents a flattened version of the testing folder.
+
+Use of a separate working folder has several advantages to a developer:
+1. Derived files will not clutter the source code hierarchy;
+1. There will be fewer files to add to your .gitignore list;
+1. There is only one place you need to look for Kamaji output.
+1. There is only one file to move to force Kamaji to generate test data from a clean slate.
+
+The testing folder may be in a remote location.
+The working folder will always be created locally.
+
+
+### Installation
+
+
+
+
+## Quick Start Guide
+
 
 
 ## Copyright 2019 Brian G. Holmes
