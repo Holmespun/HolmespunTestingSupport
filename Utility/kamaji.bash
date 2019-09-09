@@ -162,6 +162,8 @@ declare    __KamajiLastMakeTargetFSpec="TBD"
 
 declare    __KamajiScriptExtensionList="TBD"
 
+declare    __KamajiSystemMasking="TBD"
+
 declare    __KamajiTimeOutputFormat="TBD"
 
 declare    __KamajiVerbosityRequested="TBD"
@@ -432,7 +434,7 @@ function EchoExecutableFilesMatching() {
   #
   local    ResultsFList= 
   #
-  local    ProgramFSpec
+  local    ProgramFSpec ProgramFName
   #
   for TargetDSpec in ${ListOfTargetDSpec}
   do
@@ -441,6 +443,10 @@ function EchoExecutableFilesMatching() {
     do
       #
       [ -d ${ProgramFSpec} ] && continue
+      #
+      ProgramFName=$(basename ${ProgramFSpec})
+      #
+      [ ${#ProgramFName} -gt ${#TargetFRoot} ] && [ "${ProgramFName:${#TargetFRoot}:1}" != "." ] && continue
       #
       [ -x ${ProgramFSpec} ] && ResultsFList+=" ${ProgramFSpec}"
       #
@@ -957,6 +963,13 @@ function KamajiConfigurationLoadValues() {
   __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder)
   #
   __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/$(KamajiConfigurationEchoValue last-target-filename)
+  #
+  __KamajiSystemMasking=
+  __KamajiSystemMasking+=" --expression='s,${HOME},HOME,g'"
+  __KamajiSystemMasking+=" --expression='s,${USER},USER,g'"
+  __KamajiSystemMasking+=" --expression='s,${LOGNAME},LOGNAME,g'"
+  __KamajiSystemMasking+=" --expression='s,$(uname -n),HOSTNAME,g'"
+  __KamajiSystemMasking+=" --expression='s,$(date '+%Z'),TIMEZONE,g'"
   #
 }
 
@@ -1518,7 +1531,9 @@ function KamajiBuildRulesForTestingSource_Clut() {
   #
   #  Determine the CLU specification.
   #
-  local -r RunnerDList="$(find ${__KamajiGoldenDSpec} -type d) ${PATH//:/ } ."
+  local -r ListOfLocalDSpec=$(find . -type d | grep --invert-match ${__KamajiWorkinDSpec})
+  #
+  local -r RunnerDList="${ListOfLocalDSpec} ${PATH//:/ } ."
   #
   local    RunnerFSpec=
   #
@@ -1891,7 +1906,7 @@ function KamajiBuildRules() {
      KamajiExitAfterUsage "The baseline directory '${__KamajiGoldenDSpec}' does not exist."
   fi
   #
-  local -r ListOfSourceFSpec=$(find ${__KamajiGoldenDSpec} -type f)
+  local -r ListOfSourceFSpec=$(find -L ${__KamajiGoldenDSpec} -type f)
   #
   local    ItemOfSourceFSpec SourceFName SourceFSpec SourceClass
   #
@@ -1918,6 +1933,8 @@ function KamajiBuildRules() {
   #  Build the list of parents.
   #
   #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+  #
+  local ParentFName ChildsFName
   #
   for ParentFName in ${!__KamajiMyChildrenList[*]}
   do
@@ -2679,6 +2696,12 @@ function KamajiMake_Output_from_Naked() {
   #
   [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed."
   #
+  EchoAndExecuteInWorking "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
+  #
+  Status=${?}
+  #
+  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The account and system masking sed command failed."
+  #
   EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
   #
 }
@@ -2697,6 +2720,12 @@ function KamajiMake_Output_from_Script() {
   Status=${?}
   #
   [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed."
+  #
+  EchoAndExecuteInWorking "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
+  #
+  Status=${?}
+  #
+  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The account and system masking sed command failed."
   #
   EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
   #
@@ -2839,17 +2868,32 @@ function KamajiMake() {
   #
   local -r TargetFName=${1}
   #
+  local -r TargetClass=$(KamajiFileClassification ${TargetFName} $(Xtension ${TargetFName}))
+  #
   #  Representatives must only exist; the files they represent are updated by the user.
   #
   local    ListOfMyParentalFName=${__KamajiMyParentalList[${TargetFName}]}
   local    ListOfXtraParentFName=
   #
-  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -L ${__KamajiWorkinDSpec}/${TargetFName} ]
+  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -e ${__KamajiWorkinDSpec}/${TargetFName} ]
   then
      #
      local -r GoldenFSpec=${__KamajiRepresentative[${TargetFName}]}
      #
-     EchoAndExecuteInWorking "ln --symbolic ${GoldenFSpec} ${TargetFName}"
+     if [ "${TargetClass}" = "Script" ]
+     then
+        #
+        spit ${__KamajiWorkinDSpec}/${TargetFName} "#!/bin/bash"
+        spit ${__KamajiWorkinDSpec}/${TargetFName}			\
+		"$(cd ${__KamajiWorkinDSpec}/$(dirname ${GoldenFSpec}); pwd)/$(basename ${GoldenFSpec}) \${*}"
+        #
+        chmod 755 ${__KamajiWorkinDSpec}/${TargetFName}
+        #
+     else
+        #
+        EchoAndExecuteInWorking "ln --symbolic ${GoldenFSpec} ${TargetFName}"
+        #
+     fi
      #
      return
      #
@@ -2898,8 +2942,6 @@ function KamajiMake() {
   then
      #
      DiagnosticLight "${__KamajiScriptName} make ${TargetFName}"
-     #
-     local TargetClass=$(KamajiFileClassification ${TargetFName} $(Xtension ${TargetFName}))
      #
      local SourceClass=$(echo ${ListOfParentClass} | xargs printf "_%s")
      #

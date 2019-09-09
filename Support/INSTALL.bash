@@ -1,3 +1,4 @@
+#!/bin/bash
 #----------------------------------------------------------------------------------------------------------------------
 #
 #  HolmespunTestingSupport/Support/INSTALL.bash
@@ -27,7 +28,6 @@
 
 set -u
 set -e
-
 
 source $(whereHolmespunLibraryBashing)/Library/installHolmespunSoftware.bash
 
