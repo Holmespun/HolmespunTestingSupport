@@ -108,9 +108,17 @@
 #  20190704 BGH; created.
 #  20190720 BGH; version 0.2.
 #  20190817 BGH; version 0.3, kamaji knows the source files, calculates all output files, functions based on both.
+#  20190910 BGH; readlink representative invoke (see below).
+#
+#  Problems detected when the representative of a script is called: The files it sources are  not in the same relative
+#  hierarchy as the symbolic link. Created a Bash script representative tha worked very well, but a Bash script
+#  representative does not carry the same modification date as the file it is supposed to represent. As such, we invoke
+#  the readlink version of each representative. 20190910 BGH.
 #
 #  TODO: New requests rework, workout, vimdiff=review (grade and vimdiff), and bless=baseline (cp if fresh, or grade)
 #  TODO: Save the rules to a bash file that can be reused if all Golden and SedScript files represented there.
+#
+#----------------------------------------------------------------------------------------------------------------------
 #
 #  Copyright (c) 2019 Brian G. Holmes
 #
@@ -708,10 +716,6 @@ function KamajiFileClassification() {
   elif [ ${#SourceFTest} -ne ${#__KamajiScriptExtensionList} ]
   then
      #
-#    [ ! -e ${SourceFSpec} ] && Result="Script"
-     #
-#    [   -x ${SourceFSpec} ] && Result="Script"
-     #
      Result="Script"
      #
   elif [ "${SourceFType}" = "clut" ]
@@ -831,6 +835,14 @@ function KamajiConfigurationCheckValues() {
 			  "these cannot be the same."
      #
   fi
+  #
+  __KamajiSystemMasking=
+  __KamajiSystemMasking+=" --expression='s,${WorkinDSpec},_WORKING_,g'"
+  __KamajiSystemMasking+=" --expression='s,${HOME},_HOME_,g'"
+  __KamajiSystemMasking+=" --expression='s,${USER},_USER_,g'"
+  __KamajiSystemMasking+=" --expression='s,${LOGNAME},_LOGNAME_,g'"
+  __KamajiSystemMasking+=" --expression='s,$(uname -n),_HOSTNAME_,g'"
+  __KamajiSystemMasking+=" --expression='s,$(date '+%Z'),_TIMEZONE_,g'"
   #
 }
 
@@ -963,13 +975,6 @@ function KamajiConfigurationLoadValues() {
   __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder)
   #
   __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/$(KamajiConfigurationEchoValue last-target-filename)
-  #
-  __KamajiSystemMasking=
-  __KamajiSystemMasking+=" --expression='s,${HOME},HOME,g'"
-  __KamajiSystemMasking+=" --expression='s,${USER},USER,g'"
-  __KamajiSystemMasking+=" --expression='s,${LOGNAME},LOGNAME,g'"
-  __KamajiSystemMasking+=" --expression='s,$(uname -n),HOSTNAME,g'"
-  __KamajiSystemMasking+=" --expression='s,$(date '+%Z'),TIMEZONE,g'"
   #
 }
 
@@ -2689,8 +2694,12 @@ function KamajiMake_Output_from_Naked() {
   local -r SourceFName=${2}
   #
   local -r Timer="/usr/bin/time --format='${__KamajiTimeOutputFormat}' --append --output=${TargetFName}.time.text"
-
-  EchoAndExecuteInWorking "${Timer} ./${SourceFName} > ${TargetFName}.partial 2>&1"
+  #
+  local    ActualFSpec=./${SourceFName}
+  #
+  [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
+  #
+  EchoAndExecuteInWorking "${Timer} ${ActualFSpec} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #
@@ -2714,8 +2723,12 @@ function KamajiMake_Output_from_Script() {
   local -r SourceFName=${2}
   #
   local -r Timer="/usr/bin/time --format='${__KamajiTimeOutputFormat}' --append --output=${TargetFName}.time.text"
-
-  EchoAndExecuteInWorking "${Timer} ./${SourceFName} > ${TargetFName}.partial 2>&1"
+  #
+  local    ActualFSpec=./${SourceFName}
+  #
+  [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
+  #
+  EchoAndExecuteInWorking "${Timer} ${ActualFSpec} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #
@@ -2834,7 +2847,14 @@ function KamajiMake_Script_from_Clut_Naked() {
   local -r ClutSourceFName=${2}
   local -r ExecSourceFName=${3}
   #
-  EchoAndExecuteInWorking "clutc ${ClutSourceFName} ${ExecSourceFName} ${TargetFName}"
+  local    ExecActualFSpec=${ExecSourceFName}
+  #
+  if [ -L ${__KamajiWorkinDSpec}/${ExecSourceFName} ]
+  then
+     ExecActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${ExecSourceFName})
+  fi
+  #
+  EchoAndExecuteInWorking "clutc ${ClutSourceFName} ${ExecActualFSpec} ${TargetFName}"
   #
   Status=${?}
   #
@@ -2880,20 +2900,7 @@ function KamajiMake() {
      #
      local -r GoldenFSpec=${__KamajiRepresentative[${TargetFName}]}
      #
-     if [ "${TargetClass}" = "Script" ]
-     then
-        #
-        spit ${__KamajiWorkinDSpec}/${TargetFName} "#!/bin/bash"
-        spit ${__KamajiWorkinDSpec}/${TargetFName}			\
-		"$(cd ${__KamajiWorkinDSpec}/$(dirname ${GoldenFSpec}); pwd)/$(basename ${GoldenFSpec}) \${*}"
-        #
-        chmod 755 ${__KamajiWorkinDSpec}/${TargetFName}
-        #
-     else
-        #
-        EchoAndExecuteInWorking "ln --symbolic ${GoldenFSpec} ${TargetFName}"
-        #
-     fi
+     EchoAndExecuteInWorking "ln --symbolic ${GoldenFSpec} ${TargetFName}"
      #
      return
      #
