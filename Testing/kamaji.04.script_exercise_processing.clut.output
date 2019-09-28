@@ -49,7 +49,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
     |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
     |kamaji make BETA_exercise.output.masked
@@ -81,7 +82,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 1.6.2.7. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 2. ScriptExercise_Grade_Fail.
 2.1. Requirements.
@@ -127,7 +128,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
     |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
     |kamaji make BETA_exercise.output.masked
@@ -169,7 +171,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 2.6.2.9. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 3. ScriptExercise_Grade_Pass.
 3.1. Requirements.
@@ -215,7 +217,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
     |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
     |kamaji make BETA_exercise.output.masked
@@ -253,7 +256,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 3.6.2.9. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 4. ScriptExercise_Make_bash.
 4.1. Requirements.
@@ -336,7 +339,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
 5.5. Finalizations.
 5.6. Workspace Impact...
@@ -352,7 +356,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 5.6.2.5. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 6. ScriptExercise_Make_output_masked.
 6.1. Requirements.
@@ -391,7 +395,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output.masked" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
     |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
     |kamaji make BETA_exercise.output.masked
@@ -414,7 +419,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 6.6.2.6. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 7. ScriptExercise_Make_output_delta.
 7.1. Requirements.
@@ -453,7 +458,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output.delta" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
     |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
     |kamaji make BETA_exercise.output.masked
@@ -482,7 +488,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 7.6.2.7. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 8. ScriptExercise_Make_output_grade.
 8.1. Requirements.
@@ -521,7 +527,8 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
     |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
+    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20190928_113358.26938/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
     |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
     |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
     |kamaji make BETA_exercise.output.masked
@@ -553,7 +560,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 8.6.2.7. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
+    |../Testing/BETA_exercise.bash 0
 
 9. ScriptExercise_Make_nonsense.
 9.1. Requirements.

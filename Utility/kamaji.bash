@@ -24,7 +24,8 @@
 #	EchoAndExecuteInWorking
 #	EchoAndExecute
 #	EchoErrorAndExit
-#	EchoExecutableFilesMatching
+#	EchoExecutableFilesMatchingWide
+#	EchoExecutableFilesMatchingRefined
 #	EchoFailureAndExit
 #	EchoFileSpec
 #	EchoImportantMessage
@@ -109,6 +110,8 @@
 #  20190720 BGH; version 0.2.
 #  20190817 BGH; version 0.3, kamaji knows the source files, calculates all output files, functions based on both.
 #  20190910 BGH; readlink representative invoke (see below).
+#  20190928 BGH; exporting both makefile and ruleset when neither is specified.
+#  20190928 BGH; refined the search for a CLUT CLU by introducing EchoExecutableFilesMatchingRefined function.
 #
 #  Problems detected when the representative of a script is called: The files it sources are  not in the same relative
 #  hierarchy as the symbolic link. Created a Bash script representative tha worked very well, but a Bash script
@@ -434,13 +437,14 @@ function EchoErrorAndExit() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function EchoExecutableFilesMatching() {
+function EchoExecutableFilesMatchingWide() {
   #
   local -r TargetFRoot=${1}
   shift
   local -r ListOfTargetDSpec=${*}
   #
   local    ResultsFList= 
+  local    SecondsFList= 
   #
   local    ProgramFSpec ProgramFName
   #
@@ -450,30 +454,80 @@ function EchoExecutableFilesMatching() {
     for ProgramFSpec in ${TargetDSpec}/${TargetFRoot}*
     do
       #
+      [ ! -e ${ProgramFSpec} ] && continue
+      #
       [ -d ${ProgramFSpec} ] && continue
       #
       ProgramFName=$(basename ${ProgramFSpec})
       #
-      [ ${#ProgramFName} -gt ${#TargetFRoot} ] && [ "${ProgramFName:${#TargetFRoot}:1}" != "." ] && continue
-      #
-      [ -x ${ProgramFSpec} ] && ResultsFList+=" ${ProgramFSpec}"
+      if [ ${#ProgramFName} -eq ${#TargetFRoot} ]
+      then
+	 #
+	 [ -x ${ProgramFSpec} ] && ResultsFList+=" ${ProgramFSpec}"
+	 #
+      elif [ "${ProgramFName:${#TargetFRoot}:1}" = "." ]
+      then
+	 #
+	 [ -x ${ProgramFSpec} ] && SecondsFList+=" ${ProgramFSpec}"
+	 #
+      fi
       #
     done
     #
   done
   #
-  if [ ${#ResultsFList} -eq 0 ]
+  if [ ${#ResultsFList} -gt 0 ]
   then
-     #
-     ProgramFSpec=${TargetFRoot%.*}
-     #
-     [ ${#ProgramFSpec} -lt ${#TargetFRoot} ] && EchoExecutableFilesMatching ${ProgramFSpec} ${ListOfTargetDSpec}
-     #
-  else
      #
      echo ${ResultsFList}
      #
+  elif [ ${#SecondsFList} -gt 0 ]
+  then
+     #
+     echo ${SecondsFList}
+     #
+  else
+     #
+     ProgramFSpec=${TargetFRoot%.*}
+     #
+     [ ${#ProgramFSpec} -lt ${#TargetFRoot} ] && EchoExecutableFilesMatchingWide ${ProgramFSpec} ${ListOfTargetDSpec}
+     #
   fi
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoExecutableFilesMatchingRefined() {
+  #
+  local -r TargetFRoot=${1}
+  shift
+  local -r ListOfTargetDSpec=${*}
+  #
+  local    Result=
+  #
+  local    RunnerFSpec
+  #
+  for RunnerFSpec in $(EchoExecutableFilesMatchingWide ${TargetFRoot} ${ListOfTargetDSpec})
+  do
+    #
+    [ "${RunnerFSpec//clut.bash/}" != "${RunnerFSpec}" ] && continue
+    #
+    if [ "${RunnerFSpec:0:1}" != "/" ]
+    then
+       if [ "${RunnerFSpec:0:2}" = "./" ]
+       then
+	  Result=".${RunnerFSpec}"
+       else
+          Result="../${RunnerFSpec}"
+       fi
+    fi
+    #
+    break
+    #
+  done
+  #
+  echo "${Result}"
   #
 }
 
@@ -1214,7 +1268,8 @@ function KamajiModifierUsage_export() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Export...")"
   #
-  EchoPara80	"The kamaji script allows the user to export data in two forms: makefile and ruleset."
+  EchoPara80	"The kamaji script allows the user to export data in two forms: makefile and ruleset."		\
+		"If neither form is specified then they are both exported."
   #
   EchoPara80	"$(echoInColorWhiteBold "Export Makefile...")"
   #
@@ -1412,7 +1467,7 @@ function KamajiModifierUsage() {
   echo ""
   echo "Where <request> is one of the following:"
   echo "      bless  [ <filename> | last ]..."
-  echo "      export [ ruleset ]"
+  echo "      export [ makefile | ruleset ]"
   echo "      grade  [ <filename> | last ]..."
   echo "      invoke [ <filename> | last ]..."
   echo "      make   [ <filename> | last | grades | outputs ]..."
@@ -1534,32 +1589,15 @@ function KamajiBuildRulesForTestingSource_Clut() {
   #
   local -r SourceFName=$(basename ${SourceFSpec})
   #
+  local -r SourceFRoot=${SourceFName%.${SourceFType}}
+  #
   #  Determine the CLU specification.
   #
-  local -r ListOfLocalDSpec=$(find . -type d | grep --invert-match ${__KamajiWorkinDSpec})
+  local -r ListOfLocalDSpec=$(find . -type d | grep --invert-match --extended-regexp "${__KamajiWorkinDSpec}|/\..")
   #
-  local -r RunnerDList="${ListOfLocalDSpec} ${PATH//:/ } ."
+  local    RunnerFSpec=$(EchoExecutableFilesMatchingRefined ${SourceFRoot} ${ListOfLocalDSpec})
   #
-  local    RunnerFSpec=
-  #
-  for RunnerFSpec in $(EchoExecutableFilesMatching ${SourceFName%.${SourceFType}} ${RunnerDList})
-  do
-    #
-    [ "${RunnerFSpec//clut.bash/}" != "${RunnerFSpec}" ] && continue
-    #
-    if [ "${RunnerFSpec:0:1}" != "/" ]
-    then
-       if [ "${RunnerFSpec:0:2}" = "./" ]
-       then
-	  RunnerFSpec=".${RunnerFSpec}"
-       else
-          RunnerFSpec="../${RunnerFSpec}"
-       fi
-    fi
-    #
-    break
-    #
-  done
+  [ ${#RunnerFSpec} -eq 0 ] && RunnerFSpec=$(EchoExecutableFilesMatchingRefined ${SourceFRoot} ${PATH//:/ })
   #
   [ ${#RunnerFSpec} -eq 0 ] && EchoErrorAndExit 1 "Unable to find the executable file exercised by ${SourceFSpec}."
   #
@@ -2087,6 +2125,15 @@ function KamajiRequestConfigure() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiRequestExport_all() {
+  #
+  KamajiRequestExport_makefile ${*}
+  KamajiRequestExport_ruleset ${*}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiRequestExport_makefile() {
   #
   local -r Request=${1}
@@ -2291,7 +2338,7 @@ function KamajiRequestExport() {
   shift 2
   local -r ArgumentList="${*}"
   #
-  local -r Target=$(EchoMeaningOf ${Object} "" makefile ruleset)
+  local -r Target=$(EchoMeaningOf ${Object} "all" makefile ruleset)
   #
   local -r FunctionWeWant=${FUNCNAME}_${Target}
   #
