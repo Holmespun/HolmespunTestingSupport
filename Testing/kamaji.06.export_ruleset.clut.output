@@ -58,6 +58,8 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 1.4.1.  kamaji export ruleset
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
+    |[38;5;12m# Building rules based on baseline files...[0m
+    |[38;5;12m#	Testing/ALPHA.clut[0m
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
     |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
@@ -159,6 +161,8 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 2.4.1.  kamaji expo ruleset
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
+    |[38;5;12m# Building rules based on baseline files...[0m
+    |[38;5;12m#	Testing/BETA_exercise.bash[0m
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
     |kamaji export ruleset
@@ -258,6 +262,8 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 3.4.1.  kamaji ex ruleset
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
+    |[38;5;12m# Building rules based on baseline files...[0m
+    |[38;5;12m#	Testing/GAMMA_exercise.cpp[0m
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
     |kamaji export ruleset
@@ -401,6 +407,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 4.4.1.  kamaji export ru
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
+    |[38;5;12m# Building rules based on baseline files...[0m
+    |[38;5;12m#	Testing/ALPHA.clut[0m
+    |[38;5;12m#	Testing/GAMMA_exercise.cpp[0m
+    |[38;5;12m#	Testing/BETA_exercise.bash[0m
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
@@ -594,6 +604,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 5.4.1.  kamaji fast make GAMMA_exercise
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
+    |[38;5;12m# Building rules based on baseline files...[0m
+    |[38;5;12m#	Testing/ALPHA.clut[0m
+    |[38;5;12m#	Testing/GAMMA_exercise.cpp[0m
+    |[38;5;12m#	Testing/BETA_exercise.bash[0m
     |kamaji export ruleset
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
@@ -732,6 +746,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 6.2.8. kamaji export ruleset
 6.2.8.1. Exit Status 0!
 6.2.8.2. STDERR [text]...
+    |[38;5;12m# Building rules based on baseline files...[0m
+    |[38;5;12m#	Testing/ALPHA.clut[0m
+    |[38;5;12m#	Testing/GAMMA_exercise.cpp[0m
+    |[38;5;12m#	Testing/BETA_exercise.bash[0m
     |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
     |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
     |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m

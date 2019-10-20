@@ -36,7 +36,8 @@ QUIET		?= @
 
 test :
 	@echo "make $@"
-	$(QUIET) PATH+=":${PWD}/bin" kamaji grade
+	$(QUIET) PATH+=":${PWD}/bin" kamaji fast export makefile
+	$(QUIET) PATH+=":${PWD}/bin" $(MAKE) --file=Working/.kamaji.make kamaji-grade
 
 #----------------------------------------------------------------------------------------------------------------------
 

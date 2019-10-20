@@ -1848,7 +1848,7 @@ declare -r __ClutWorkinDRoot=$(dirname ${__ClutResultFSpec})/${__ClutSourceFName
 ###
 #----------------------------------------------------------------------------------------------------------------------
 
-declare -r __ClutWorkinDName=$(echoDatStampedFSpec ${__ClutWorkinDRoot}).$$
+declare -r __ClutWorkinDName=$(echoDatStampedFSpec ${__ClutWorkinDRoot})_$$
 
 #----------------------------------------------------------------------------------------------------------------------
 #
@@ -2543,7 +2543,7 @@ function __clutCompileTimeMain() {
   spit ${ClutRunTimeFSpec} "  #"
   spit ${ClutRunTimeFSpec} "  [ \${#WorkinLName} -eq 0 ] && WorkinLName=\"${__ClutSourceFName%.clut}.clutr\""
   spit ${ClutRunTimeFSpec} "  #"
-  spit ${ClutRunTimeFSpec} "  local -r WorkinDName=\$(echoDatStampedFSpec \${WorkinLName}.).\$\$"
+  spit ${ClutRunTimeFSpec} "  local -r WorkinDName=\$(echoDatStampedFSpec \${WorkinLName}.)_\$\$"
   spit ${ClutRunTimeFSpec} "  #"
   spit ${ClutRunTimeFSpec} "  mkdir \${WorkinDName}"
   spit ${ClutRunTimeFSpec} "  #"

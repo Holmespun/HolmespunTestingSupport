@@ -15,6 +15,7 @@
 #  20180315 BGH; added __clutCaseRunTimeDumpObjectFile function.
 #  20190411 BGH; added SQLite database file handling functions.
 #  20190707 BGH; moved to the HolmespunTestingSupport repository.
+#  20191017 BGH; using improved SQLite database dump.
 #
 #  Copyright (c) 2012-2019 Brian G. Holmes
 #
@@ -184,6 +185,73 @@ function __clutCaseRunTimeDumpPrecompiledHeader() {
 #----------------------------------------------------------------------------------------------------------------------
 
 function __clutCaseRunTimeDumpSqliteDatabaseExpose() {
+  #
+  local -r DatabaseFSpec="${1}"
+  #
+  local -r TableNameList=$(sqlite3 ${DatabaseFSpec} ".tables" | xargs printf '%s\n' | sort)
+  #
+  local    TableNameItem
+  #
+  local -A TableRowCount
+  local -i TotalRowCount=0
+  #
+  local -i SizeWidth=1
+  local    TextCount
+  #
+  for TableNameItem in ${TableNameList}
+  do
+    #
+    TextCount=$(sqlite3 ${DatabaseFSpec} "SELECT COUNT(rowid) FROM ${TableNameItem};")
+    #
+    [ ${#TextCount} -gt ${SizeWidth} ] && SizeWidth=${#TextCount}
+    #
+    TableRowCount[${TableNameItem}]=${TextCount}
+    #
+    TotalRowCount+=${TextCount}
+    #
+  done
+  #
+  if [ ${TotalRowCount} -eq 0 ]
+  then
+     #
+     echo "Empty"
+     #
+     return
+     #
+  fi
+  #
+  echo "Table sizes..."
+  #
+  for TableNameItem in ${TableNameList}
+  do
+    #
+    printf "    %${SizeWidth}u %s\n" ${TableRowCount[${TableNameItem}]} ${TableNameItem}
+    #
+  done
+  #
+  echo
+  #
+  for TableNameItem in ${TableNameList}
+  do
+    #
+    if [ ${TableRowCount[${TableNameItem}]} -gt 0 ]
+    then
+       #
+       sqlite3 ${DatabaseFSpec} ".schema ${TableNameItem}" | sed --expression='s,[ ][ ][ ]*,\n       ,g'
+       #
+       echo
+       #
+       sqlite3 ${DatabaseFSpec} "select * from ${TableNameItem};"
+       #
+       echo
+       #
+    fi
+    #
+  done
+  #
+}
+
+function __clutCaseRunTimeDumpSqliteDatabaseExposeOriginal() {
   #
   local -r DatabaseFSpec="${1}"
   #
