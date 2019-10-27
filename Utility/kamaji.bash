@@ -444,17 +444,17 @@ function EchoExecutableFilesMatching() {
   #
   local    ProgramFSpec ProgramFName
   #
+  #  Check for an ELF name.
+  #
   for TargetDSpec in ${ListOfTargetDSpec}
   do
     #
-    for ProgramFSpec in ${TargetDSpec}/${TargetFRoot}*
+    for ProgramFSpec in ${TargetDSpec}/${TargetFRoot}
     do
       #
       [ -d ${ProgramFSpec} ] && continue
       #
       ProgramFName=$(basename ${ProgramFSpec})
-      #
-      [ ${#ProgramFName} -gt ${#TargetFRoot} ] && [ "${ProgramFName:${#TargetFRoot}:1}" != "." ] && continue
       #
       [ -x ${ProgramFSpec} ] && ResultsFList+=" ${ProgramFSpec}"
       #
@@ -464,6 +464,31 @@ function EchoExecutableFilesMatching() {
   #
   if [ ${#ResultsFList} -eq 0 ]
   then
+     #
+     #  Check for a script name.
+     #
+     for TargetDSpec in ${ListOfTargetDSpec}
+     do
+       #
+       for ProgramFSpec in ${TargetDSpec}/${TargetFRoot}.*
+       do
+         #
+         [ -d ${ProgramFSpec} ] && continue
+         #
+         ProgramFName=$(basename ${ProgramFSpec})
+         #
+         [ -x ${ProgramFSpec} ] && ResultsFList+=" ${ProgramFSpec}"
+         #
+       done
+       #
+     done
+     #
+  fi
+  #
+  if [ ${#ResultsFList} -eq 0 ]
+  then
+     #
+     #  Check for the root of a scrpt name.
      #
      ProgramFSpec=${TargetFRoot%.*}
      #
@@ -1544,7 +1569,8 @@ function KamajiBuildRulesForTestingSource_Clut() {
   #
   RunnerDIndx+=1
   #
-  RunnerDList[${RunnerDIndx}]=$(find . -type d | sed --expression='1d' | grep --invert-match ${__KamajiWorkinDSpec})
+  RunnerDList[${RunnerDIndx}]=$(find . -type d | sed --expression='1d'	\
+			      | grep --invert-match ${__KamajiWorkinDSpec} | grep --invert-match "^\./\.")
   #
   RunnerDIndx+=1
   #
