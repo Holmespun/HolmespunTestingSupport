@@ -206,7 +206,7 @@ function __evaluateScriptArguments() {
      #
      Result="${Result}; echoErrorAndExit 2 \"The '${ClutSourceFSpec}' CLUT definition file is empty or nonexistent.\""
      #
-  elif [ ! -x ${ClutTargetFSpec} ]
+  elif [ ${#ClutTargetFSpec} -eq 0 ] || [ ! -x ${ClutTargetFSpec} ]
   then
      #
      local -r WhatItIs="nonexistent or not executable"

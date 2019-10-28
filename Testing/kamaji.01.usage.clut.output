@@ -72,7 +72,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 1.5. Finalizations.
 1.6. Workspace Impact...
 1.6.1. The initial and final workspace contents are equivalent.
@@ -137,7 +137,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 2.5. Finalizations.
 2.6. Workspace Impact...
 2.6.1. The initial and final workspace contents are equivalent.
@@ -202,7 +202,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 3.5. Finalizations.
 3.6. Workspace Impact...
 3.6.1. The initial and final workspace contents are equivalent.
@@ -212,7 +212,10 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 4.1. Requirements.
     |None.
 4.2. Initializations.
-4.3. Initial Workspace is empty.
+4.2.1. mkdir Testing
+4.3. Initial Workspace contains one file...
+    |Testing
+4.3.1. Testing is empty.
 4.4. Target CLU Call.
 4.4.1.  kamaji fast bobo
 4.4.1.1. Exit Status 1!
@@ -268,7 +271,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: .kamaji.sed
@@ -339,7 +342,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |The following settings represent the non-empty defaults:
     |
-    |    baseline-folder         .
+    |    baseline-folder         Testing
     |    last-target-filename    .kamaji.last_target.text
     |    long-review-command     vimdiff -R
     |    long-review-line-count  51
@@ -347,7 +350,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    new-review-command      cat --number
     |    script-type-list        bash sh py rb
     |    short-review-command    diff
-    |    time-output-format      Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x
+    |    time-output-format      NONE
     |    verbosity-level         quiet
     |    working-folder          Working
     |
@@ -415,10 +418,13 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    [38;5;15m[1mshort-review-tailpipe[0m <command> [ | <command> ]... - A command into which
     |    the short-review-command output is piped.
     |    
-    |    [38;5;15m[1mtime-output-format[0m <time-format> - The output format used by the
-    |    /usr/bin/time program to provide run-time statistics about CLUT scripts and
-    |    unit test scripts and programs; please see the GNU VERSION section of the
-    |    description produced by the man time command.
+    |    [38;5;15m[1mtime-output-format[0m { <time-format> | FULL | NONE } - The output format used
+    |    by the /usr/bin/time program to provide run-time statistics about CLUT
+    |    scripts and unit test scripts and programs; please see the GNU VERSION
+    |    section of the description produced by the man time command. A pre-defined,
+    |    verbose format can be applied by using the FULL value. The time program is
+    |    not used if this variable is set to NONE or if the /usr/bin/time program is
+    |    not available.
     |    
     |    [38;5;15m[1mverbosity-level[0m <adjective> - The level of disgnostic output produced. The
     |    'quiet' level suppresses diagnostic output. The 'light' level will describe
@@ -439,7 +445,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 5.5. Finalizations.
 5.6. Workspace Impact...
 5.6.1. The initial and final workspace contents are equivalent.
@@ -505,7 +511,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |a ruleset when it does not find one to load.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 6.5. Finalizations.
 6.6. Workspace Impact...
 6.6.1. The initial and final workspace contents are equivalent.
@@ -568,7 +574,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |every time it is requested.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 7.5. Finalizations.
 7.6. Workspace Impact...
 7.6.1. The initial and final workspace contents are equivalent.
@@ -622,7 +628,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |when kamaji is used for test-driven development.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 8.5. Finalizations.
 8.6. Workspace Impact...
 8.6.1. The initial and final workspace contents are equivalent.
@@ -663,7 +669,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |The following settings represent the non-empty defaults:
     |
-    |    baseline-folder         .
+    |    baseline-folder         Testing
     |    last-target-filename    .kamaji.last_target.text
     |    long-review-command     vimdiff -R
     |    long-review-line-count  51
@@ -671,7 +677,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    new-review-command      cat --number
     |    script-type-list        bash sh py rb
     |    short-review-command    diff
-    |    time-output-format      Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x
+    |    time-output-format      NONE
     |    verbosity-level         quiet
     |    working-folder          Working
     |
@@ -739,10 +745,13 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    [38;5;15m[1mshort-review-tailpipe[0m <command> [ | <command> ]... - A command into which
     |    the short-review-command output is piped.
     |    
-    |    [38;5;15m[1mtime-output-format[0m <time-format> - The output format used by the
-    |    /usr/bin/time program to provide run-time statistics about CLUT scripts and
-    |    unit test scripts and programs; please see the GNU VERSION section of the
-    |    description produced by the man time command.
+    |    [38;5;15m[1mtime-output-format[0m { <time-format> | FULL | NONE } - The output format used
+    |    by the /usr/bin/time program to provide run-time statistics about CLUT
+    |    scripts and unit test scripts and programs; please see the GNU VERSION
+    |    section of the description produced by the man time command. A pre-defined,
+    |    verbose format can be applied by using the FULL value. The time program is
+    |    not used if this variable is set to NONE or if the /usr/bin/time program is
+    |    not available.
     |    
     |    [38;5;15m[1mverbosity-level[0m <adjective> - The level of disgnostic output produced. The
     |    'quiet' level suppresses diagnostic output. The 'light' level will describe
@@ -763,7 +772,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 9.5. Finalizations.
 9.6. Workspace Impact...
 9.6.1. The initial and final workspace contents are equivalent.
@@ -801,7 +810,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |the software version.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 10.5. Finalizations.
 10.6. Workspace Impact...
 10.6.1. The initial and final workspace contents are equivalent.
@@ -841,7 +850,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |one. An 'export ruleset' request can be used to store the current ruleset.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 11.5. Finalizations.
 11.6. Workspace Impact...
 11.6.1. The initial and final workspace contents are equivalent.
@@ -880,7 +889,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 12.5. Finalizations.
 12.6. Workspace Impact...
 12.6.1. The initial and final workspace contents are equivalent.
@@ -944,7 +953,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 13.5. Finalizations.
 13.6. Workspace Impact...
 13.6.1. The initial and final workspace contents are equivalent.
@@ -984,7 +993,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 14.5. Finalizations.
 14.6. Workspace Impact...
 14.6.1. The initial and final workspace contents are equivalent.
@@ -1024,7 +1033,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 15.5. Finalizations.
 15.6. Workspace Impact...
 15.6.1. The initial and final workspace contents are equivalent.
@@ -1064,7 +1073,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 16.5. Finalizations.
 16.6. Workspace Impact...
 16.6.1. The initial and final workspace contents are equivalent.
@@ -1103,7 +1112,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 17.5. Finalizations.
 17.6. Workspace Impact...
 17.6.1. The initial and final workspace contents are equivalent.
@@ -1143,7 +1152,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 18.5. Finalizations.
 18.6. Workspace Impact...
 18.6.1. The initial and final workspace contents are equivalent.
@@ -1191,7 +1200,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 19.5. Finalizations.
 19.6. Workspace Impact...
 19.6.1. The initial and final workspace contents are equivalent.
@@ -1239,7 +1248,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 20.5. Finalizations.
 20.6. Workspace Impact...
 20.6.1. The initial and final workspace contents are equivalent.
@@ -1287,7 +1296,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 21.5. Finalizations.
 21.6. Workspace Impact...
 21.6.1. The initial and final workspace contents are equivalent.
@@ -1346,7 +1355,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |new-, short-, and long-review-command variables, respectively.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 22.5. Finalizations.
 22.6. Workspace Impact...
 22.6.1. The initial and final workspace contents are equivalent.
@@ -1387,7 +1396,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 23.5. Finalizations.
 23.6. Workspace Impact...
 23.6.1. The initial and final workspace contents are equivalent.
@@ -1428,7 +1437,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.3
+    |kamaji version 0.4
 24.5. Finalizations.
 24.6. Workspace Impact...
 24.6.1. The initial and final workspace contents are equivalent.

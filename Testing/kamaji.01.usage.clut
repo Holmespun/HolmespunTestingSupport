@@ -46,6 +46,7 @@ function testCaseDefinitions() {
   clut_case_end
   #
   clut_case_name		Bobo
+  clut_case_initialize		mkdir Testing
   clut_case_comment		"General usage should be displayed."
   clut_case_comment		"The working directory will also be created because a command was issued."
   clut_case_parameter		fast bobo

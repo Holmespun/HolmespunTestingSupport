@@ -98,7 +98,26 @@ function testCaseDefinitions() {
   clut_case_parameter		"show configuration"
   clut_case_end
   #
-  local -r VariableNameList=$(kamaji show configuration variable names)
+  local    VariableNameList=
+  #
+  VariableNameList+=" baseline-folder"
+  VariableNameList+=" data-extension-list"
+  VariableNameList+=" data-filename-list"
+  VariableNameList+=" last-target-filename"
+  VariableNameList+=" long-review-command"
+  VariableNameList+=" long-review-line-count"
+  VariableNameList+=" long-review-tailpipe"
+  VariableNameList+=" makefile-filename"
+  VariableNameList+=" mask-sed-script"
+  VariableNameList+=" new-review-command"
+  VariableNameList+=" new-review-tailpipe"
+  VariableNameList+=" ruleset-filename"
+  VariableNameList+=" script-type-list"
+  VariableNameList+=" short-review-command"
+  VariableNameList+=" short-review-tailpipe"
+  VariableNameList+=" time-output-format"
+  VariableNameList+=" verbosity-level"
+  VariableNameList+=" working-folder"
   #
   local    VariableNameItem
   #

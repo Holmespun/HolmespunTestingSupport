@@ -61,6 +61,7 @@
 #
 #	KamajiBuildRulesForTestingSource_Clut
 #	KamajiBuildRulesForTestingSource_Elf
+#	KamajiBuildRulesForTestingSource_Naked
 #	KamajiBuildRulesForTestingSource_Output
 #	KamajiBuildRulesForTestingSource_Script
 #	KamajiBuildRulesForTestingSource_Unknown
@@ -172,7 +173,7 @@ declare    __KamajiScriptExtensionList="TBD"
 
 declare    __KamajiSystemMasking="TBD"
 
-declare    __KamajiTimeOutputFormat="TBD"
+declare    __KamajiTimeCommand="TBD"
 
 declare    __KamajiVerbosityRequested="TBD"
 
@@ -869,6 +870,23 @@ function KamajiConfigurationCheckValues() {
   __KamajiSystemMasking+=" --expression='s,$(uname -n),_HOSTNAME_,g'"
   __KamajiSystemMasking+=" --expression='s,$(date '+%Z'),_TIMEZONE_,g'"
   #
+  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
+  #
+  local -r TimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format)
+  #
+  if [ "${TimeOutputFormat}" = "NONE" ] || [ ! -x /usr/bin/time ]
+  then
+     #
+     __KamajiTimeCommand=
+     #
+  else
+     #
+     [ "${TimeOutputFormat}" = "FULL" ] && TimeOutputFormat="${DefaultTimeFormat}"
+     #
+     __KamajiTimeCommand="/usr/bin/time --format='${TimeOutputFormat}' --append "
+     #
+  fi
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -898,9 +916,7 @@ function KamajiConfigurationLoadValues() {
   #
   #  Set default configuration values.
   #
-  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
-  #
-  __KamajiConfigurationDefault["baseline-folder"]="."
+  __KamajiConfigurationDefault["baseline-folder"]="Testing"
   __KamajiConfigurationDefault["data-extension-list"]=
   __KamajiConfigurationDefault["data-filename-list"]=
   __KamajiConfigurationDefault["last-target-filename"]="${__KamajiConfigurationFName%.*}.last_target.text"
@@ -915,7 +931,7 @@ function KamajiConfigurationLoadValues() {
   __KamajiConfigurationDefault["script-type-list"]="bash sh py rb"
   __KamajiConfigurationDefault["short-review-command"]="diff"
   __KamajiConfigurationDefault["short-review-tailpipe"]=
-  __KamajiConfigurationDefault["time-output-format"]="${DefaultTimeFormat}"
+  __KamajiConfigurationDefault["time-output-format"]="NONE"
   __KamajiConfigurationDefault["verbosity-level"]="quiet"
   __KamajiConfigurationDefault["working-folder"]="Working"
   #
@@ -992,8 +1008,6 @@ function KamajiConfigurationLoadValues() {
   __KamajiSedScriptFSpec=$(KamajiConfigurationEchoValue mask-sed-script)
   #
   __KamajiSedScriptFName=$(basename ${__KamajiSedScriptFSpec})
-  #
-  __KamajiTimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format)
   #
   __KamajiVerbosityRequested=$(KamajiConfigurationEchoValue verbosity-level)
   #
@@ -1166,10 +1180,13 @@ function KamajiModifierUsage_configure() {
   EchoPara80-4	"short-review-tailpipe <command> [ | <command> ]... -"						\
 		"A command into which the short-review-command output is piped."				\
   #
-  EchoPara80-4	"time-output-format <time-format> -"								\
+  EchoPara80-4	"time-output-format { <time-format> | FULL | NONE } -"						\
 		"The output format used by the /usr/bin/time program to provide run-time statistics about"	\
 		"CLUT scripts and unit test scripts and programs; please see the GNU VERSION section of the"	\
 		"description produced by the man time command."							\
+		"A pre-defined, verbose format can be applied by using the FULL value."				\
+		"The time program is not used if this variable is set to NONE"					\
+		"or if the /usr/bin/time program is not available."
   #
   EchoPara80-4	"verbosity-level <adjective> -"									\
 		"The level of disgnostic output produced."							\
@@ -1731,6 +1748,14 @@ function KamajiBuildRulesForTestingSource_Elf() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiBuildRulesForTestingSource_Naked() {
+  #
+  : Nothing needs to be done.
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiBuildRulesForTestingSource_Output() {
   #
   local -r SourceFSpec=${1}
@@ -2120,7 +2145,12 @@ function KamajiRequestBless() {
        #
        GoldenFName=${TargetFName%.output.review}.golden
        #
-       GoldenDSpec=$(dirname ${__KamajiRepresentative[${GoldenFName}]})
+       if [ "${__KamajiRepresentative[${GoldenFName}]+IS_SET}" = "IS_SET" ]
+       then
+          GoldenDSpec=$(dirname ${__KamajiRepresentative[${GoldenFName}]})
+       else
+	  GoldenDSpec=../${__KamajiGoldenDSpec}/${TargetFName%.review}
+       fi
        #
        #  Replace the golden output file with the current one.
        #
@@ -2398,7 +2428,7 @@ function KamajiRequestGradeOrOutputOrReview() {
   shift 2
   local -r SourceFList="${*}"
   #
-  local    SourceFName TargetFName
+  local    SourceFName TargetFName TargetCheck
   #
   local    TargetFList=
   #
@@ -2431,16 +2461,20 @@ function KamajiRequestGradeOrOutputOrReview() {
 	  #
           SourceFName=$(cat ${__KamajiLastMakeTargetFSpec})
           #
-       elif [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
-       then
-          #  
-          EchoErrorAndExit 1 "Cannot ${Request} the '${SourceFName}' file; it is not a known derivative."
-          #  
        fi
        #
        #  Find the ${TargetClass} decendants of the target.
        #
-       TargetFList+=" $(KamajiEchoListOfDecendantFName ${SourceFName} ${TargetClass})"
+       TargetCheck=$(KamajiEchoListOfDecendantFName ${SourceFName} ${TargetClass})
+       #
+       if [ ${#TargetCheck} -eq 0 ]
+       then
+          #  
+          EchoErrorAndExit 1 "Cannot ${Request} the '${SourceFName}' file; it has no known derivatives."
+          #  
+       fi
+       #
+       TargetFList+=" ${TargetCheck}"
        #
      done
      #
@@ -2633,7 +2667,7 @@ function KamajiRequestShow_version() {
   local -r    Request=${1}
   local -r    Object=${2}
   #
-  echo "kamaji version 0.3"
+  echo "kamaji version 0.4"
   #
 }
 
@@ -2779,13 +2813,15 @@ function KamajiMake_Output_from_Naked() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  local -r Timer="/usr/bin/time --format='${__KamajiTimeOutputFormat}' --append --output=${TargetFName}.time.text"
-  #
   local    ActualFSpec=./${SourceFName}
   #
   [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
   #
-  EchoAndExecuteInWorking "${Timer} ${ActualFSpec} > ${TargetFName}.partial 2>&1"
+  local    ActualTimeCommand=${__KamajiTimeCommand}
+  #
+  [ ${#__KamajiTimeCommand} -gt 0 ] && ActualTimeCommand+="--output=${TargetFName}.time.text "
+  #
+  EchoAndExecuteInWorking "${ActualTimeCommand}${ActualFSpec} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #
@@ -2808,13 +2844,15 @@ function KamajiMake_Output_from_Script() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  local -r Timer="/usr/bin/time --format='${__KamajiTimeOutputFormat}' --append --output=${TargetFName}.time.text"
-  #
   local    ActualFSpec=./${SourceFName}
   #
   [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
   #
-  EchoAndExecuteInWorking "${Timer} ${ActualFSpec} > ${TargetFName}.partial 2>&1"
+  local    ActualTimeCommand=${__KamajiTimeCommand}
+  #
+  [ ${#__KamajiTimeCommand} -gt 0 ] && ActualTimeCommand+="--output=${TargetFName}.time.text "
+  #
+  EchoAndExecuteInWorking "${ActualTimeCommand}${ActualFSpec} > ${TargetFName}.partial 2>&1"
   #
   Status=${?}
   #

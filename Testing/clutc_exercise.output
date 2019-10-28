@@ -1,0 +1,1243 @@
+clutc_exercise.bash...
+======================
+Call without parameters.
+USAGE: clutc <clut-definition> <clu> [<clut-output>]
+======================
+Call with nonexistent file.
+ERROR: The 'bobo' CLUT definition file is empty or nonexistent.
+======================
+Call with empty file.
+ERROR: The 'myAwesomeProgram.clut' CLUT definition file is empty or nonexistent.
+======================
+Call with basic CLUT file, but without an executable file.
+----------------------
+myAwesomeProgram.clut...
+   |#
+   |#  createClutBasic myAwesomeProgram.clut
+   |#
+   |
+   |function echoFinalMessage() {
+   |  #
+   |  echo 'This is after the CLU call.'
+   |  echo 'So   is               this.'
+   |  #
+   |}
+   |
+   |function createTextFile() {
+   |  #
+   |  local -r File=${1}
+   |  shift 1
+   |  local -r Data=${*}
+   |  #
+   |  echo $(date '+%H:%M:%S') ${Data} > ${File}
+   |  #
+   |}
+   |
+   |declare -i __CallCount=0
+   |
+   |function noisyEveryFifthCall() {
+   |  #
+   |  __CallCount+=1
+   |  #
+   |  [ $((${__CallCount} % 5)) -eq 0 ] && echo "The user's counter value is ${__CallCount}." 1>&2
+   |  #
+   |  true
+   |  #
+   |}
+   |
+   |function dumpForFuzzy2() {
+   |  #
+   |  local -r TargetFSpec="${1}"
+   |  #
+   |  cat "${TargetFSpec}" | sed --expression='s,^,<fuzzy2> ,'
+   |  #
+   |}
+   |
+   |function testCaseRequirementStatements() {
+   |  #
+   |  clut_global_requirement    ABCD-0010							  \
+   |                               "When the program is invoked,"				  \
+   |                             "\nThen it will allow the user to specify an output file;"   \
+   |                             "\nSo that the user can dictate where the result is stored."
+   |  #
+   |  clut_global_requirement    ABCD-0020							  \
+   |                               "When the program attempts to calculate a median value,"	  \
+   |                             "\nThen it will ignore all NA values within the sample set;" \
+   |                             "\nSo that invalid data will not impact the calculation."
+   |  #
+   |  clut_global_requirement    ABCD-0030							  \
+   |                               "When the program is invoked,"				  \
+   |                             "\nThen it will draw seven red lines,"			  \
+   |                             "\nAnd all of them will be strictly perpendicular,"	  \
+   |                             "\nAnd some of them will be drawn with green ink,"		  \
+   |                             "\nAnd some of them will be drawn with transparent ink."
+   |  #
+   |}
+   |
+   |function testCasesFirst() {
+   |  #
+   |  clut_shared_initialize      echo 'Shared initializer!'
+   |  #
+   |  clut_case_name              NoParameters
+   |  clut_case_end
+   |  #
+   |  clut_shared_finalize        echo 'Shared finalizer!'
+   |  #
+   |  clut_case_start             Nominal
+   |  clut_case_initialize        echo 'This is before the CLU call.'
+   |  clut_case_initialize        echo "So   is                this."
+   |  clut_case_parameter         --parameter=123
+   |  clut_case_finalize          echoFinalMessage
+   |  clut_case_ended
+   |  #
+   |}
+   |
+   |function testCasesMore() {
+   |  #
+   |  clut_global_initialize      noisyEveryFifthCall
+   |  #
+   |  clut_case_begin             Ping
+   |  clut_case_purpose           'This test case has a name... and it's a boy's name.'
+   |  clut_case_requirement       ABCD-0010 Rainy-Day
+   |  clut_case_initialize        createTextFile INPUT.text Some input text
+   |  clut_case_stdin_source      input.text
+   |  clut_case_end
+   |  #
+   |  clut_case_begin             CreateOutputFile
+   |  clut_case_comment           'These comments should wrap in the CLUT output report.'
+   |  clut_case_requirement       ABCD-0010 Sunny-Day
+   |  clut_case_purpose           'All work and no play makes Jack a dull boy once.'
+   |  clut_case_comment           'All work and no play makes Jack a dull boy twice.'
+   |  clut_case_comment           'All work and no play makes Jack a dull boy thrice.'
+   |  clut_case_comment           'All work and no play makes Jack a dull boy a fourth time.'
+   |  clut_case_parameter         Create output.text
+   |  clut_case_end
+   |  #
+   |  clut_case_begin             ModifyInputFile
+   |  clut_case_requirement       ABCD-0010 Sunny-Day
+   |  clut_case_requirement       ABCD-0020 Sunny-Day
+   |  clut_case_initialize        mkdir empty data
+   |  clut_case_initialize        createTextFile data/configuration.text TMPDIR=/remote/tmp
+   |  clut_case_initialize        createTextFile data/delta.text The only constant is change.
+   |  clut_case_parameter         Augment
+   |  clut_case_parameter         data/delta.text
+   |  clut_case_end
+   |  #
+   |  clut_global_dump_format     fuzzy2 dumpForFuzzy2
+   |  #
+   |  clut_case_begin             CreateOutputFileOfUnknownType
+   |  clut_case_parameter         Create output.fuzzy1
+   |  clut_case_end
+   |  #
+   |  clut_global_comparison_mask 's,[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\},DATE,g'
+   |  clut_global_comparison_mask 's,[0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\},TIME,g'
+   |  #
+   |  clut_case_begin             CreateOutputFileWithSpecialDumpHandler
+   |  clut_case_parameter         Create $(date '+%Y-%m-%d')_output.fuzzy2
+   |  clut_case_end
+   |  #
+   |  clut_global_finalize        noisyEveryFifthCall
+   |  #
+   |}
+   |
+   |clut_definition_set testCaseRequirementStatements
+   |
+   |clut_definition_set testCasesFirst
+   |clut_definition_set testCasesMore
+   |
+   |#  (eof)
+ERROR: The '' Command-Line Utility is nonexistent or not executable.
+======================
+Create a program.
+----------------------
+myAwesomeProgram...
+   |#!/bin/bash
+   |#----------------------------------------------------------------------------------------------------
+   |#
+   |#  myAwesomeProgram
+   |#
+   |#----------------------------------------------------------------------------------------------------
+   |
+   |set -u
+   |
+   |#----------------------------------------------------------------------------------------------------
+   |
+   |function programMain() {
+   |  #
+   |  local -r Instruction="${1-}"
+   |  local -r FileName="${2-}"
+   |  #
+   |  local    ExitStatus=0
+   |  #
+   |  case ${Instruction} in
+   |       ##
+   |       Create)    echo -e 'This is a line of data\nLine 2\nLine three\n\nLast line.' > ${FileName}
+   |       ;;
+   |       ##
+   |       Augment)   echo -e 'This is an extra data line.' >> ${FileName}
+   |       ;;
+   |       ##
+   |       *)         echo    "Error: Unknown instruction '${Instruction}' encountered." 1>&2
+   |                  ExitStatus=1
+   |       ;;
+   |       ##
+   |  esac
+   |  #
+   |  return ${ExitStatus}
+   |  #
+   |}
+   |
+   |#----------------------------------------------------------------------------------------------------
+   |
+   |programMain ${*}
+   |
+   |#----------------------------------------------------------------------------------------------------
+======================
+Call with basic CLUT file to exercise the program.
+----------------------
+myAwesomeProgram.clut.bash...
+   |#!/bin/bash
+   |#----------------------------------------------------------------------------------------
+   |#
+   |#  ./myAwesomeProgram.clutc.20191027_214513_1163/00.compiled.bash...
+   |#
+   |#  Created by clutc on 2019-10-27 at 21:45:13.
+   |#
+   |#  CLUT cases were defined in myAwesomeProgram.clut; there were 7 of them.
+   |#
+   |#----------------------------------------------------------------------------------------
+   |
+   |set -u
+   |
+   |source $(whereHolmespunLibraryBashing)/Library/echoDatStampedFSpec.bash
+   |
+   |declare -r __ScriptFName=$(basename ${0})
+   |
+   |declare -r __ScriptArgumentList="${*}"
+   |
+   |declare -r __WhereWeWereDSpec="${PWD}"
+   |
+   |declare    __ClutWorkingDSpec
+   |
+   |#----------------------------------------------------------------------------------------
+   |#
+   |#  Set the PATH variable to make sure it can find the CLU we want to test.
+   |#
+   |#----------------------------------------------------------------------------------------
+   |
+   |export PATH="_WORKING_:${PATH}"
+   |
+   |#----------------------------------------------------------------------------------------
+   |#
+   |#  Define the clut_definition_set function as a no-op during run-time.
+   |#
+   |#  None of the other clut_case_* functions will be called when sourcing the user's CLUT
+   |#  definitions because they must only be called within functions that are defined for use
+   |#  by the clut_definition_set function.
+   |#
+   |#----------------------------------------------------------------------------------------
+   |
+   |function clut_definition_set() { : ; }
+   |
+   |#----------------------------------------------------------------------------------------
+   |#
+   |#  Load the CLUT framework run-time support functions.
+   |#
+   |#----------------------------------------------------------------------------------------
+   |
+   |source $(whereHolmespunTestingSupport)/Library/clutr.bash
+   |
+   |#----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeGlobalInitializations...
+   |#
+   |#  Execute each of the global initializations at run-time.
+   |#
+   |#----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeGlobalInitializations() {
+   |     #
+   |     clutCaseRunTimeInitialization noisyEveryFifthCall
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeGlobalFinalizations...
+   |#
+   |#  Execute each of the global finalizations at run-time.
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeGlobalFinalizations() {
+   |     #
+   |     clutCaseRunTimeFinalization noisyEveryFifthCall
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeNotations...
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeNotations() {
+   |  #
+   |  clutCaseRunTimeReport 1 Notations
+   |  #
+   |  clutCaseRunTimeParagraph No notations defined.
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeRequirementStatements...
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeRequirementStatements() {
+   |  #
+   |  clutCaseRunTimeReport 1 Requirement Statements
+   |  #
+   |  clutCaseRunTimeReport 2 ABCD-0010
+   |  #
+   |  clutCaseRunTimeParagraph "When the program is invoked,"
+   |  clutCaseRunTimeParagraph "Then it will allow the user to specify an output file;"
+   |  clutCaseRunTimeParagraph "So that the user can dictate where the result is stored."
+   |  #
+   |  clutCaseRunTimeReport 2 ABCD-0020
+   |  #
+   |  clutCaseRunTimeParagraph "When the program attempts to calculate a median value,"
+   |  clutCaseRunTimeParagraph "Then it will ignore all NA values within the sample set;"
+   |  clutCaseRunTimeParagraph "So that invalid data will not impact the calculation."
+   |  #
+   |  clutCaseRunTimeReport 2 ABCD-0030
+   |  #
+   |  clutCaseRunTimeParagraph "When the program is invoked,"
+   |  clutCaseRunTimeParagraph "Then it will draw seven red lines,"
+   |  clutCaseRunTimeParagraph "And all of them will be strictly perpendicular,"
+   |  clutCaseRunTimeParagraph "And some of them will be drawn with green ink,"
+   |  clutCaseRunTimeParagraph "And some of them will be drawn with transparent ink."
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeRequirementCoverage...
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeRequirementCoverage() {
+   |  #
+   |  clutCaseRunTimeReport 1 Requirement Coverage
+   |  #
+   |  clutCaseRunTimeReport 2 ABCD-0010
+   |  #
+   |  clutCaseRunTimeReport 3 Ping: Rainy-Day
+   |  clutCaseRunTimeReport 3 CreateOutputFile: Sunny-Day
+   |  clutCaseRunTimeReport 3 ModifyInputFile: Sunny-Day
+   |  #
+   |  clutCaseRunTimeReport 2 ABCD-0020
+   |  #
+   |  clutCaseRunTimeReport 3 ModifyInputFile: Sunny-Day
+   |  #
+   |  clutCaseRunTimeReport 2 ABCD-0030
+   |  #
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeDescribeGlobalInformation...
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeDescribeGlobalInformation() {
+   |  #
+   |  echo ""
+   |  #
+   |  clutCaseRunTimeReport 0 Global Information
+   |  #
+   |  clutFileRunTimeNotations
+   |  #
+   |  clutFileRunTimeRequirementStatements
+   |  #
+   |  clutFileRunTimeRequirementCoverage
+   |  #
+   |  clutCaseRunTimeReport 1 Comparable Masks
+   |  #
+   |  clutCaseRunTimeReport 2 "s,[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\},DATE,g"
+   |  clutCaseRunTimeReport 2 "s,[0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\},TIME,g"
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeMask...
+   |#
+   |#  Apply the global compare masks.  Two arguments may take either of these forms:
+   |#
+   |#	File <file-specification>
+   |#	Text <message>
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeMask() {
+   |  #
+   |  local -r Format=${1}
+   |  local -r Target="${2}"
+   |  #
+   |  local    SedExpressionList=
+   |  #
+   |  SedExpressionList+=" --expression='s,[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\},DATE,g'"
+   |  SedExpressionList+=" --expression='s,[0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\},TIME,g'"
+   |  #
+   |  if [ "${Format}" = File ]
+   |  then
+   |     #
+   |     eval sed --in-place ${SedExpressionList} ${Target}
+   |     #
+   |  elif [ "${Format}" = Text ]
+   |  then
+   |     #
+   |     echo "${Target}" | eval sed ${SedExpressionList}
+   |     #
+   |  fi
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeMaskDataInFile...
+   |#
+   |#  Apply the global compare masks to the contents of one file.
+   |#
+   |#  The man page for the 'test' command states that, "Except for -h and -L, all
+   |#  FILE-related tests dereference symbolic links."  As such, we need to test for
+   |#  symbolic link type before we do for directory type.
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeMaskDataInFile() {
+   |  #
+   |  local -r TargetFSpec=${1}
+   |  #
+   |  if [ -L ${TargetFSpec} ]
+   |  then
+   |     #
+   |     local -r Maskage=$(clutFileRunTimeMask Text $(readlink ${TargetFSpec}))
+   |     #
+   |     rm ${TargetFSpec}
+   |     #
+   |     ln --symbolic ${Maskage} ${TargetFSpec}
+   |     #
+   |  elif [ ! -d ${TargetFSpec} ]
+   |  then
+   |     #
+   |     clutFileRunTimeMask File ${TargetFSpec}
+   |     #
+   |  fi
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeMaskFilesInDirectory...
+   |#
+   |#  Apply the global compare masks to the files in the given workspace.
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeMaskFilesInDirectory() {
+   |  #
+   |  local -r TargetDName=${1}
+   |  #
+   |  local FSpec OriginalFName ModifiedFName
+   |  #
+   |  cd ${TargetDName}
+   |     #
+   |     local -r ListOfFSpec=$(find . | sed --expression='1d' | sort --reverse)
+   |     #
+   |     if [ ${#ListOfFSpec} -gt 0 ]
+   |     then
+   |        #
+   |        clutCaseRunTimeReport 2 Applying comparable masks.
+   |        #
+   |        for FSpec in ${ListOfFSpec}
+   |        do
+   |          #
+   |          [ ! -d ${FSpec} ] && clutFileRunTimeMaskDataInFile ${FSpec}
+   |          #
+   |          OriginalFName=$(basename ${FSpec})
+   |          #
+   |          ModifiedFName=$(clutFileRunTimeMask Text ${OriginalFName})
+   |          #
+   |          if [ "${OriginalFName}" != "${ModifiedFName}" ]
+   |          then
+   |             #
+   |             if [ -e "${ModifiedFName}" ]
+   |             then
+   |                #
+   |                echo "WARNING: The '${ModifiedFName}' file already exists."
+   |                echo "WARNING: The '${OriginalFName}' file will not be renamed."
+   |                #
+   |             else
+   |                #
+   |                mv ${FSpec} $(dirname ${FSpec})/${ModifiedFName}
+   |                #
+   |             fi
+   |             #
+   |          fi
+   |          #
+   |        done
+   |        #
+   |     fi
+   |     #
+   |  cd ..
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  Load the user's run-time support functions.
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |source _WORKING_/myAwesomeProgram.clut
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase01() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 1 "NoParameters"
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph None.
+   |  #
+   |  mkdir 01.Working
+   |  #
+   |  cd 01.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |     clutCaseRunTimeInitialization echo Shared initializer!
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 01.Working 01.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 01.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 01.Alpha 'Initial Workspace'
+   |  #
+   |  cd 01.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 01.Working 01.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 01.Omega
+   |  #
+   |  clutCaseRunTimeCompare 01.Alpha 01.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase02() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 2 "Nominal"
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph None.
+   |  #
+   |  mkdir 02.Working
+   |  #
+   |  cd 02.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |     clutCaseRunTimeInitialization echo Shared initializer!
+   |     #
+   |     clutCaseRunTimeInitialization echo This is before the CLU call.
+   |     #
+   |     clutCaseRunTimeInitialization echo So   is                this.
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 02.Working 02.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 02.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 02.Alpha 'Initial Workspace'
+   |  #
+   |  cd 02.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram --parameter=123"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutCaseRunTimeFinalization echoFinalMessage
+   |     #
+   |     clutCaseRunTimeFinalization echo Shared finalizer!
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 02.Working 02.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 02.Omega
+   |  #
+   |  clutCaseRunTimeCompare 02.Alpha 02.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase03() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 3 "Ping"
+   |  #
+   |  clutCaseRunTimeParagraph "This test case has a name... and its a boys name."
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph "ABCD-0010 Rainy-Day"
+   |  #
+   |  mkdir 03.Working
+   |  #
+   |  cd 03.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |     clutCaseRunTimeInitialization createTextFile INPUT.text Some input text
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 03.Working 03.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 03.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 03.Alpha 'Initial Workspace'
+   |  #
+   |  cd 03.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "input.text" "${CluInstrumentation}myAwesomeProgram"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 03.Working 03.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 03.Omega
+   |  #
+   |  clutCaseRunTimeCompare 03.Alpha 03.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase04() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 4 "CreateOutputFile"
+   |  #
+   |  clutCaseRunTimeParagraph "These comments should wrap in the CLUT output report. All work and no play makes Jack a"  \
+   |                           "dull boy once. All work and no play makes Jack a dull boy twice. All work and no play"    \
+   |                           "makes Jack a dull boy thrice. All work and no play makes Jack a dull boy a fourth time."
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph "ABCD-0010 Sunny-Day"
+   |  #
+   |  mkdir 04.Working
+   |  #
+   |  cd 04.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 04.Working 04.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 04.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 04.Alpha 'Initial Workspace'
+   |  #
+   |  cd 04.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create output.text"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 04.Working 04.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 04.Omega
+   |  #
+   |  clutCaseRunTimeCompare 04.Alpha 04.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase05() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 5 "ModifyInputFile"
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph "ABCD-0010 Sunny-Day; ABCD-0020 Sunny-Day"
+   |  #
+   |  mkdir 05.Working
+   |  #
+   |  cd 05.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |     clutCaseRunTimeInitialization mkdir empty data
+   |     #
+   |     clutCaseRunTimeInitialization createTextFile data/configuration.text TMPDIR=/remote/tmp
+   |     #
+   |     clutCaseRunTimeInitialization createTextFile data/delta.text The only constant is change.
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 05.Working 05.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 05.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 05.Alpha 'Initial Workspace'
+   |  #
+   |  cd 05.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Augment data/delta.text"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 05.Working 05.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 05.Omega
+   |  #
+   |  clutCaseRunTimeCompare 05.Alpha 05.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase06() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 6 "CreateOutputFileOfUnknownType"
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph None.
+   |  #
+   |  mkdir 06.Working
+   |  #
+   |  cd 06.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 06.Working 06.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 06.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 06.Alpha 'Initial Workspace'
+   |  #
+   |  cd 06.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create output.fuzzy1"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 06.Working 06.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 06.Omega
+   |  #
+   |  clutCaseRunTimeCompare 06.Alpha 06.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#---------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCase07() {
+   |  #
+   |  local -r CluInstrumentation="${*} "
+   |  #
+   |  clutCaseRunTimeDescribeStart 7 "CreateOutputFileWithSpecialDumpHandler"
+   |  #
+   |  clutCaseRunTimeReport 1 Requirements.
+   |  #
+   |  clutCaseRunTimeParagraph None.
+   |  #
+   |  mkdir 07.Working
+   |  #
+   |  cd 07.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Initializations.
+   |     #
+   |     clutFileRunTimeGlobalInitializations
+   |     #
+   |  cd ..
+   |  #
+   |  cp --archive 07.Working 07.Alpha
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 07.Alpha
+   |  #
+   |  clutCaseRunTimeDump 1 07.Alpha 'Initial Workspace'
+   |  #
+   |  cd 07.Working
+   |     #
+   |     clutCaseRunTimeReport 1 Target CLU Call.
+   |     #
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2019-10-27_output.fuzzy2"
+   |     #
+   |     clutCaseRunTimeReport 1 Finalizations.
+   |     #
+   |     clutFileRunTimeGlobalFinalizations
+   |     #
+   |  cd ..
+   |  #
+   |  mv 07.Working 07.Omega
+   |  #
+   |  clutFileRunTimeMaskFilesInDirectory 07.Omega
+   |  #
+   |  clutCaseRunTimeCompare 07.Alpha 07.Omega
+   |  #
+   |  clutCaseRunTimeDescribeEnd 
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutCaseRunTimeForTestCaseAll() {
+   |  #
+   |  local -r Instrumentation=${*}
+   |  #
+   |  #
+   |  #  testCasesMore
+   |  #
+   |  clutCaseRunTimeForTestCase01 ${Instrumentation}
+   |  clutCaseRunTimeForTestCase02 ${Instrumentation}
+   |  clutCaseRunTimeForTestCase03 ${Instrumentation}
+   |  clutCaseRunTimeForTestCase04 ${Instrumentation}
+   |  clutCaseRunTimeForTestCase05 ${Instrumentation}
+   |  clutCaseRunTimeForTestCase06 ${Instrumentation}
+   |  clutCaseRunTimeForTestCase07 ${Instrumentation}
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |#
+   |#  clutFileRunTimeMain...
+   |#
+   |#  Run a single test case if the user has requested it; run all of the otherwise.
+   |#
+   |#  Instrumentation only applies to the CLU.
+   |#
+   |#-----------------------------------------------------------------------------------------
+   |
+   |function clutFileRunTimeMain() {
+   |  #
+   |  local -r ArgumentList=${*}
+   |  #
+   |  local -r IntegerRegex="^[0-9]+$"
+   |  #
+   |  local    Instrumentation=
+   |  local    TestCaseIndex=
+   |  local    WorkinLName=
+   |  #
+   |  local    ArgumentItem
+   |  #
+   |  for ArgumentItem in ${ArgumentList}
+   |  do
+   |    #
+   |    #  If we are still checking the lead arguments...
+   |    #
+   |    if [ ${#Instrumentation} -eq 0 ]
+   |    then
+   |       #
+   |       #  If the lead argument...
+   |       #     Is an integer then the user only wants to run one test case.
+   |       #  Else if the lead argument...
+   |       #     Begins with the option name '--working=' then it names the working directory.
+   |       #  Else...
+   |       #     It marks the beginning of the instrumentation command.
+   |       #  Endif
+   |       #
+   |       if [[ "${ArgumentItem}" =~ ${IntegerRegex} ]]
+   |       then
+   |          #
+   |          TestCaseIndex=${ArgumentItem}
+   |          #
+   |       elif [ "${ArgumentItem:0:10}" = "--working=" ]
+   |       then
+   |          #
+   |          WorkinLName="${ArgumentItem:10}"
+   |          #
+   |       else
+   |          #
+   |          Instrumentation="${ArgumentItem}"
+   |          #
+   |       fi
+   |       #
+   |    else
+   |       #
+   |       Instrumentation+=" ${ArgumentItem}"
+   |       #
+   |    fi
+   |    #
+   |  done
+   |  #
+   |  #  Register dump format functions.
+   |  #
+   |  clutFileRunTimeDumpFormatRegistrationStandard
+   |  #
+   |  clutFileRunTimeDumpFormatRegistration fuzzy2 dumpForFuzzy2
+   |  #
+   |  #  Create a run-time working directory, and remember its specification.
+   |  #
+   |  [ ${#WorkinLName} -eq 0 ] && WorkinLName="myAwesomeProgram.clutr"
+   |  #
+   |  local -r WorkinDName=$(echoDatStampedFSpec ${WorkinLName}.)_$$
+   |  #
+   |  mkdir ${WorkinDName}
+   |  #
+   |  cd ${WorkinDName}
+   |     #
+   |     __ClutWorkingDSpec=${PWD}
+   |     #
+   |     if [ ${#TestCaseIndex} -gt 0 ] && [[ ${TestCaseIndex} =~ ^[0-9]+$ ]]
+   |     then
+   |        #
+   |        local -r ClutCaseIndexFormal=$(printf %02d ${TestCaseIndex})
+   |        #
+   |        clutCaseRunTimeForTestCase${ClutCaseIndexFormal} ${Instrumentation}
+   |        #
+   |     else
+   |        #
+   |        clutFileRunTimeDescribeStart myAwesomeProgram.clut 3 7
+   |        #
+   |        clutFileRunTimeDescribeGlobalInformation
+   |        #
+   |        clutCaseRunTimeForTestCaseAll ${Instrumentation}
+   |        #
+   |        clutFileRunTimeDescribeEnded myAwesomeProgram.clut 3 7
+   |        #
+   |     fi
+   |     #
+   |  cd ..
+   |  #
+   |  [ -L ${WorkinLName} ] && rm ${WorkinLName}
+   |  #
+   |  [ -e ${WorkinLName} ] && mv ${WorkinLName} ${WorkinLName}.was
+   |  #
+   |  ln --symbolic ${WorkinDName} ${WorkinLName}
+   |  #
+   |}
+   |
+   |#-----------------------------------------------------------------------------------------
+   |
+   |clutFileRunTimeMain ${__ScriptArgumentList}
+   |
+   |exit 0
+   |
+   |#-----------------------------------------------------------------------------------------
+======================
+Run the CLUT...
+----------------------
+myAwesomeProgram.clut.output...
+   |CLUT Output Begins...
+   |CLUT Output Format Version: 5.5
+   |CLUT Source File: myAwesomeProgram.clut (7 cases)
+   |
+   |0. Global Information
+   |0.1. Notations
+   |    |No notations defined.
+   |0.2. Requirement Statements
+   |0.2.1. ABCD-0010
+   |    |When the program is invoked,
+   |    |Then it will allow the user to specify an output file;
+   |    |So that the user can dictate where the result is stored.
+   |0.2.2. ABCD-0020
+   |    |When the program attempts to calculate a median value,
+   |    |Then it will ignore all NA values within the sample set;
+   |    |So that invalid data will not impact the calculation.
+   |0.2.3. ABCD-0030
+   |    |When the program is invoked,
+   |    |Then it will draw seven red lines,
+   |    |And all of them will be strictly perpendicular,
+   |    |And some of them will be drawn with green ink,
+   |    |And some of them will be drawn with transparent ink.
+   |0.3. Requirement Coverage
+   |0.3.1. ABCD-0010
+   |0.3.1.1. Ping: Rainy-Day
+   |0.3.1.2. CreateOutputFile: Sunny-Day
+   |0.3.1.3. ModifyInputFile: Sunny-Day
+   |0.3.2. ABCD-0020
+   |0.3.2.1. ModifyInputFile: Sunny-Day
+   |0.3.3. ABCD-0030
+   |0.4. Comparable Masks
+   |0.4.1. s,[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\},DATE,g
+   |0.4.2. s,[0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\},TIME,g
+   |
+   |1. NoParameters.
+   |1.1. Requirements.
+   |    |None.
+   |1.2. Initializations.
+   |1.2.1. noisyEveryFifthCall
+   |1.2.2. echo Shared initializer!
+   |1.2.2.1. STDOUT [text]...
+   |    |Shared initializer!
+   |1.3. Initial Workspace is empty.
+   |1.4. Target CLU Call.
+   |1.4.1.  myAwesomeProgram
+   |1.4.1.1. Exit Status 1!
+   |1.4.1.2. STDERR [text]...
+   |    |Error: Unknown instruction '' encountered.
+   |1.5. Finalizations.
+   |1.5.1. noisyEveryFifthCall
+   |1.6. Workspace Impact...
+   |1.6.1. The initial and final workspace contents are equivalent.
+   |
+   |2. Nominal.
+   |2.1. Requirements.
+   |    |None.
+   |2.2. Initializations.
+   |2.2.1. noisyEveryFifthCall
+   |2.2.2. echo Shared initializer!
+   |2.2.2.1. STDOUT [text]...
+   |    |Shared initializer!
+   |2.2.3. echo This is before the CLU call.
+   |2.2.3.1. STDOUT [text]...
+   |    |This is before the CLU call.
+   |2.2.4. echo So is this.
+   |2.2.4.1. STDOUT [text]...
+   |    |So is this.
+   |2.3. Initial Workspace is empty.
+   |2.4. Target CLU Call.
+   |2.4.1.  myAwesomeProgram --parameter=123
+   |2.4.1.1. Exit Status 1!
+   |2.4.1.2. STDERR [text]...
+   |    |Error: Unknown instruction '--parameter=123' encountered.
+   |2.5. Finalizations.
+   |2.5.1. echoFinalMessage
+   |2.5.1.1. STDOUT [text]...
+   |    |This is after the CLU call.
+   |    |So   is               this.
+   |2.5.2. echo Shared finalizer!
+   |2.5.2.1. STDOUT [text]...
+   |    |Shared finalizer!
+   |2.5.3. noisyEveryFifthCall
+   |2.6. Workspace Impact...
+   |2.6.1. The initial and final workspace contents are equivalent.
+   |
+   |3. Ping.
+   |    |This test case has a name... and its a boys name.
+   |3.1. Requirements.
+   |    |ABCD-0010 Rainy-Day
+   |3.2. Initializations.
+   |3.2.1. noisyEveryFifthCall
+   |3.2.1.1. Exit Status 0!
+   |3.2.1.2. STDERR [text]...
+   |    |The user's counter value is 5.
+   |3.2.2. createTextFile INPUT.text Some input text
+   |3.2.3. Applying comparable masks.
+   |3.3. Initial Workspace contains one file...
+   |    |INPUT.text
+   |3.3.1. INPUT.text...
+   |    |TIME Some input text
+   |3.4. Target CLU Call.
+   |3.4.1.  myAwesomeProgram <<< input.text
+   |3.4.1.1. Exit Status 1!
+   |3.4.1.2. STDERR [text]...
+   |    |Error: Unknown instruction '' encountered.
+   |3.5. Finalizations.
+   |3.5.1. noisyEveryFifthCall
+   |3.5.2. Applying comparable masks.
+   |3.6. Workspace Impact...
+   |3.6.1. The initial and final workspace contents are equivalent.
+   |
+   |4. CreateOutputFile.
+   |    |These comments should wrap in the CLUT output report. All work and no play makes Jack a dull boy once. All work
+   |    |and no play makes Jack a dull boy twice. All work and no play makes Jack a dull boy thrice. All work and no play
+   |    |makes Jack a dull boy a fourth time.
+   |4.1. Requirements.
+   |    |ABCD-0010 Sunny-Day
+   |4.2. Initializations.
+   |4.2.1. noisyEveryFifthCall
+   |4.3. Initial Workspace is empty.
+   |4.4. Target CLU Call.
+   |4.4.1.  myAwesomeProgram Create output.text
+   |4.5. Finalizations.
+   |4.5.1. noisyEveryFifthCall
+   |4.5.2. Applying comparable masks.
+   |4.6. Workspace Impact...
+   |    |Only in 04.Omega: output.text
+   |4.6.1. output.text (created)...
+   |    |This is a line of data
+   |    |Line 2
+   |    |Line three
+   |    |
+   |    |Last line.
+   |
+   |5. ModifyInputFile.
+   |5.1. Requirements.
+   |    |ABCD-0010 Sunny-Day; ABCD-0020 Sunny-Day
+   |5.2. Initializations.
+   |5.2.1. noisyEveryFifthCall
+   |5.2.2. mkdir empty data
+   |5.2.3. createTextFile data/configuration.text TMPDIR=/remote/tmp
+   |5.2.4. createTextFile data/delta.text The only constant is change.
+   |5.2.5. Applying comparable masks.
+   |5.3. Initial Workspace contains 4 files...
+   |    |data
+   |    |data/configuration.text
+   |    |data/delta.text
+   |    |empty
+   |5.3.1. data contains 2 files.
+   |5.3.1.1. configuration.text...
+   |    |TIME TMPDIR=/remote/tmp
+   |5.3.1.2. delta.text...
+   |    |TIME The only constant is change.
+   |5.3.2. empty is empty.
+   |5.4. Target CLU Call.
+   |5.4.1.  myAwesomeProgram Augment data/delta.text
+   |5.5. Finalizations.
+   |5.5.1. noisyEveryFifthCall
+   |5.5.1.1. Exit Status 0!
+   |5.5.1.2. STDERR [text]...
+   |    |The user's counter value is 10.
+   |5.5.2. Applying comparable masks.
+   |5.6. Workspace Impact...
+   |    |diff --recursive --no-dereference 05.Alpha/data/delta.text 05.Omega/data/delta.text
+   |    |1a2
+   |    |> This is an extra data line.
+   |5.6.1.  (changed) contains 4 files...
+   |    |data
+   |    |data/configuration.text
+   |    |data/delta.text
+   |    |empty
+   |5.6.1.1. data contains 2 files.
+   |5.6.1.1.1. configuration.text...
+   |    |TIME TMPDIR=/remote/tmp
+   |5.6.1.1.2. delta.text...
+   |    |TIME The only constant is change.
+   |    |This is an extra data line.
+   |5.6.1.2. empty is empty.
+   |
+   |6. CreateOutputFileOfUnknownType.
+   |6.1. Requirements.
+   |    |None.
+   |6.2. Initializations.
+   |6.2.1. noisyEveryFifthCall
+   |6.3. Initial Workspace is empty.
+   |6.4. Target CLU Call.
+   |6.4.1.  myAwesomeProgram Create output.fuzzy1
+   |6.5. Finalizations.
+   |6.5.1. noisyEveryFifthCall
+   |6.5.2. Applying comparable masks.
+   |6.6. Workspace Impact...
+   |    |Only in 06.Omega: output.fuzzy1
+   |6.6.1. output.fuzzy1 (created) [UNKNOWN]...
+   |    |<meta> Data file type (FUZZY1) without well-defined dump handler.
+   |    |<meta> The file utility describes its MIME type as "text/plain; charset=us-ascii"
+   |    |<meta> The file has an md5sum of 7ca0568484022894894d01cfdc6e2228.
+   |
+   |7. CreateOutputFileWithSpecialDumpHandler.
+   |7.1. Requirements.
+   |    |None.
+   |7.2. Initializations.
+   |7.2.1. noisyEveryFifthCall
+   |7.3. Initial Workspace is empty.
+   |7.4. Target CLU Call.
+   |7.4.1.  myAwesomeProgram Create DATE_output.fuzzy2
+   |7.5. Finalizations.
+   |7.5.1. noisyEveryFifthCall
+   |7.5.2. Applying comparable masks.
+   |7.6. Workspace Impact...
+   |    |Only in 07.Omega: DATE_output.fuzzy2
+   |7.6.1. DATE_output.fuzzy2 (created)...
+   |    |<fuzzy2> This is a line of data
+   |    |<fuzzy2> Line 2
+   |    |<fuzzy2> Line three
+   |    |<fuzzy2> 
+   |    |<fuzzy2> Last line.
+   |
+   |CLUT Source File: myAwesomeProgram.clut (7 cases)
+   |CLUT Output Format Version: 5.5
+   |CLUT Output Complete.
+======================
