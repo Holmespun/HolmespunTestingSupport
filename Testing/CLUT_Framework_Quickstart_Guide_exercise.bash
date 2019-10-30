@@ -1,28 +1,33 @@
 #----------------------------------------------------------------------------------------------------------------------
 #
-#  Bash/Testing/CLUT_Framework_quickstart_guide_exercise.bash
+#  Testing/CLUT_Framework_quickstart_guide_exercise.bash
 #
-#	Generate an example for the Quick-Start section of the README file.
+#	Generate the CLUT Framework Quick-Start Guide in markdown format.
 #
-#  Copyright 2018 Brian G. Holmes
-#
-#	This program is part of the Holmespun Makefile Method.
-#
-#	The Holmespun Makefile Method is free software: you can redistribute it and/or modify it under the terms of the
-#	GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
-#	(at your option) any later version.
-#
-#	The Holmespun Makefile Method is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-#	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-#	Public License for more details.
-#
-#	You should have received a copy of the GNU General Public License along with this program.  If not, see
-#	<https://www.gnu.org/licenses/>.
-#
-#  See the COPYING.text file for further information.
+#----------------------------------------------------------------------------------------------------------------------
 #
 #  20180221 BGH; created.
 #  20180222 BGH; modified to output Quick Start Guide content.
+#  20191028 BGH; moved to Holmespun Testing Support repository, and modified to work using the kamaji script.
+#
+#----------------------------------------------------------------------------------------------------------------------
+#
+#  Copyright (c) 2018-2019 Brian G. Holmes
+#
+#	This program is part of the Holmespun Testing Support repository.
+#
+#	The Holmespun Testing Support repository only contains free software: you can redistribute it and/or modify it
+#	under the terms of the GNU General Public License as published by the Free Software Foundation, either version
+#	three (3) of the License, or (at your option) any later version.
+#
+#	The Holmespun Testing Support repository is distributed in the hope that it will be useful, but WITHOUT ANY
+#	WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#	General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License along with this file. If not, see
+#       <https://www.gnu.org/licenses/>.
+#
+#  See the COPYING.text file for further information.
 #
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -96,23 +101,19 @@ mkdir ${ProjectDSpec}
 cd    ${ProjectDSpec}
 
 echo "[](CLUT_Framework_quickstart_guide_exercise.bash...)"
-echo "[](=======================================================)"
+echo "[](================================================)"
 echo ""
 echo "# CLUT Framework Quick-Start Guide"
 echo ""
-echo "As the CLUT Framework is an integral part of the Holmespun Makefile Method (HMM),"
-echo "it is easiest to use in a working directory within a directory supported by an HMM makefile."
 echo "This markdown file was generated automatically using the"
-echo -n "[Bash/Testing/CLUT_Framework_Quickstart_Guide_exercise.bash]"
-echo "(Bash/Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)"
+echo -n "[Testing/CLUT_Framework_Quickstart_Guide_exercise.bash]"
+echo "(Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)"
 echo "unit test."
 echo ""
-echo "Here is how to get started with the HMM:"
-echo ""
-echo "1. Clone the Holmespun repository; it can go anywhere that is convenient to you."
+echo "1. Clone the Holmespun Testing Support repository; it can go anywhere that is convenient to you."
 echo "1. Add the fully-qualified path of the [bin](bin) directory to your PATH variable."
 echo ""
-echo "	If you cloned the Holmespun Testing Support repository into your home directory, then the"
+echo "	If you cloned the repository into your home directory, then the"
 echo "	\"export PATH=\${HOME}/Holmespun/HolmespunTestingSupport/bin:\${PATH}\" command will work for you."
 echo "	The modified PATH variable allows you to store the repository anywhere you like\;"
 echo "	it need not be collocated with your source code."
@@ -304,13 +305,13 @@ echo "including a list of best practices."
 echo ""
 echo "## Copyright 2018-2019 Brian G. Holmes"
 echo ""
-echo "This program is part of the Holmespun Library Bashing repository."
+echo "This program is part of the Holmespun Testing Support repository."
 echo ""
-echo "The Holmespun Library Bashing repository contains free software: you can redistribute it and/or modify it under"
+echo "The Holmespun Testing Support repository contains free software: you can redistribute it and/or modify it under"
 echo "the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of"
 echo "the License, or (at your option) any later version."
 echo ""
-echo "The Holmespun Library Bashing repository is distributed in the hope that it will be useful, but WITHOUT ANY"
+echo "The Holmespun Testing Support repository is distributed in the hope that it will be useful, but WITHOUT ANY"
 echo "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU"
 echo "General Public License for more details."
 echo ""
@@ -321,7 +322,7 @@ echo "See the [COPYING.text](COPYING.text) file for further licensing informatio
 echo ""
 echo "**(eof)**"
 echo ""
-echo "[](=======================================================)"
+echo "[](================================================)"
 
 #----------------------------------------------------------------------------------------------------------------------
 

@@ -60,30 +60,30 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 1.4.1.  kamaji grades
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
+    |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191020_114935_6775/00.compiled.bash > ALPHA.clut.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191029_083929_24446/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial
+    |mv ALPHA.clut.output.partial ALPHA.clut.output
+    |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial
+    |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
+    |# GT Working/ALPHA.clut.output.delta does not exist
     |kamaji make ALPHA.clut.output.delta
-    |[38;5;12mcat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1
+    |# GT Working/ALPHA.clut.output.grade does not exist
     |kamaji make ALPHA.clut.output.grade
-    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mALPHA.clut.output.grade[0m
+    |FAIL: ALPHA.clut.output.grade
 1.5. Finalizations.
 1.6. Workspace Impact...
     |Only in 01.Omega: .kamaji.sed
@@ -95,7 +95,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 1.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 1.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-1.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114935_6775/00.compiled.bash
+1.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083929_24446/00.compiled.bash
 1.6.2.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -193,15 +193,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
 1.6.2.9. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20191020_114935_6775/00.compiled.bash 0
-1.6.2.10. ALPHA.clutc.20191020_114935_6775 contains 3 files.
+    |ALPHA.clutc.20191029_083929_24446/00.compiled.bash 0
+1.6.2.10. ALPHA.clutc.20191029_083929_24446 contains 3 files.
 1.6.2.10.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114935_6775/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083929_24446/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:35.
+    |#  Created by clutc on 2019-10-29 at 08:39:29.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -225,7 +225,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/01.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/01.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -399,7 +399,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/01.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/01.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -632,8 +632,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-1.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191020_114935_6874
-1.6.2.12. ALPHA.clutr.20191020_114935_6874 contains 2 files.
+1.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191029_083929_24545
+1.6.2.12. ALPHA.clutr.20191029_083929_24545 contains 2 files.
 1.6.2.12.1. 01.Alpha is empty.
 1.6.2.12.2. 01.Omega is empty.
 
@@ -689,36 +689,36 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 2.4.1.  kamaji grades
 2.4.1.1. Exit Status 1!
 2.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12m#	Testing/ALPHA.clut.output[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut.output ALPHA.clut.golden[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |#	Testing/ALPHA.clut.output
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/ALPHA.clut.output ALPHA.clut.golden
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
+    |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191020_114936_7509/00.compiled.bash > ALPHA.clut.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191029_083930_25183/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial
+    |mv ALPHA.clut.output.partial ALPHA.clut.output
+    |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked[0m
-    |[38;5;12m# GT Working/ALPHA.clut.golden.masked does not exist[0m
+    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial
+    |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
+    |# GT Working/ALPHA.clut.golden.masked does not exist
     |kamaji make ALPHA.clut.golden.masked
-    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.golden > ALPHA.clut.golden.masked.partial[0m
-    |[38;5;12mmv ALPHA.clut.golden.masked.partial ALPHA.clut.golden.masked[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |sed --file=.kamaji.sed ALPHA.clut.golden > ALPHA.clut.golden.masked.partial
+    |mv ALPHA.clut.golden.masked.partial ALPHA.clut.golden.masked
+    |# GT Working/ALPHA.clut.output.delta does not exist
     |kamaji make ALPHA.clut.output.delta
-    |[38;5;12mdiff --text --ignore-space-change ALPHA.clut.golden.masked ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |diff --text --ignore-space-change ALPHA.clut.golden.masked ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1
+    |# GT Working/ALPHA.clut.output.grade does not exist
     |kamaji make ALPHA.clut.output.grade
-    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mALPHA.clut.output.grade[0m
+    |FAIL: ALPHA.clut.output.grade
 2.5. Finalizations.
 2.6. Workspace Impact...
     |Only in 02.Omega: .kamaji.sed
@@ -730,7 +730,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 2.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 2.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-2.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114936_7509/00.compiled.bash
+2.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083930_25183/00.compiled.bash
 2.6.2.6. ALPHA.clut.golden is a symbolic link to ../Testing/ALPHA.clut.output
 2.6.2.7. ALPHA.clut.golden.masked...
     |This is some bogus baseline output.
@@ -834,15 +834,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
 2.6.2.11. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20191020_114936_7509/00.compiled.bash 0
-2.6.2.12. ALPHA.clutc.20191020_114936_7509 contains 3 files.
+    |ALPHA.clutc.20191029_083930_25183/00.compiled.bash 0
+2.6.2.12. ALPHA.clutc.20191029_083930_25183 contains 3 files.
 2.6.2.12.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114936_7509/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083930_25183/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:36.
+    |#  Created by clutc on 2019-10-29 at 08:39:30.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -866,7 +866,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/02.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/02.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -1040,7 +1040,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/02.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/02.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1273,8 +1273,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-2.6.2.13. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191020_114936_7608
-2.6.2.14. ALPHA.clutr.20191020_114936_7608 contains 2 files.
+2.6.2.13. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191029_083930_25282
+2.6.2.14. ALPHA.clutr.20191029_083930_25282 contains 2 files.
 2.6.2.14.1. 01.Alpha is empty.
 2.6.2.14.2. 01.Omega is empty.
 
@@ -1326,12 +1326,12 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 3.4.1.  kamaji make ALPHA.clut
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut" > Working/.kamaji.last_target.text[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut" > Working/.kamaji.last_target.text
 3.5. Finalizations.
 3.6. Workspace Impact...
     |Only in 03.Omega: .kamaji.sed
@@ -1392,15 +1392,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 4.4.1.  kamaji make ALPHA.clut.bash
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.bash" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.bash" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: .kamaji.sed
@@ -1412,15 +1412,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 4.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 4.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-4.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114937_8538/00.compiled.bash
-4.6.2.6. ALPHA.clutc.20191020_114937_8538 contains 3 files.
+4.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083931_26207/00.compiled.bash
+4.6.2.6. ALPHA.clutc.20191029_083931_26207 contains 3 files.
 4.6.2.6.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114937_8538/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083931_26207/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:37.
+    |#  Created by clutc on 2019-10-29 at 08:39:31.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -1444,7 +1444,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/04.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/04.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -1618,7 +1618,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/04.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/04.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1900,20 +1900,20 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 5.4.1.  kamaji make ALPHA.clut.output
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.output" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.output" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
+    |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191020_114938_8993/00.compiled.bash > ALPHA.clut.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191029_083932_26664/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial
+    |mv ALPHA.clut.output.partial ALPHA.clut.output
 5.5. Finalizations.
 5.6. Workspace Impact...
     |Only in 05.Omega: .kamaji.sed
@@ -1925,7 +1925,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 5.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 5.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 5.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-5.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114938_8993/00.compiled.bash
+5.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083932_26664/00.compiled.bash
 5.6.2.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -1959,15 +1959,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
 5.6.2.7. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20191020_114938_8993/00.compiled.bash 0
-5.6.2.8. ALPHA.clutc.20191020_114938_8993 contains 3 files.
+    |ALPHA.clutc.20191029_083932_26664/00.compiled.bash 0
+5.6.2.8. ALPHA.clutc.20191029_083932_26664 contains 3 files.
 5.6.2.8.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114938_8993/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083932_26664/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:38.
+    |#  Created by clutc on 2019-10-29 at 08:39:32.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -1991,7 +1991,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/05.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/05.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -2165,7 +2165,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/05.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/05.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -2398,8 +2398,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-5.6.2.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191020_114938_9092
-5.6.2.10. ALPHA.clutr.20191020_114938_9092 contains 2 files.
+5.6.2.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191029_083932_26763
+5.6.2.10. ALPHA.clutr.20191029_083932_26763 contains 2 files.
 5.6.2.10.1. 01.Alpha is empty.
 5.6.2.10.2. 01.Omega is empty.
 
@@ -2451,24 +2451,24 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 6.4.1.  kamaji make ALPHA.clut.output.masked
 6.4.1.1. Exit Status 0!
 6.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.output.masked" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.output.masked" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
+    |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191020_114939_9633/00.compiled.bash > ALPHA.clut.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191029_083933_27306/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial
+    |mv ALPHA.clut.output.partial ALPHA.clut.output
+    |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked[0m
+    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial
+    |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
 6.5. Finalizations.
 6.6. Workspace Impact...
     |Only in 06.Omega: .kamaji.sed
@@ -2480,7 +2480,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 6.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 6.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 6.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-6.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114939_9633/00.compiled.bash
+6.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083933_27306/00.compiled.bash
 6.6.2.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -2546,15 +2546,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
 6.6.2.8. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20191020_114939_9633/00.compiled.bash 0
-6.6.2.9. ALPHA.clutc.20191020_114939_9633 contains 3 files.
+    |ALPHA.clutc.20191029_083933_27306/00.compiled.bash 0
+6.6.2.9. ALPHA.clutc.20191029_083933_27306 contains 3 files.
 6.6.2.9.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114939_9633/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083933_27306/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:39.
+    |#  Created by clutc on 2019-10-29 at 08:39:33.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -2578,7 +2578,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/06.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/06.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -2752,7 +2752,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/06.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/06.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -2985,8 +2985,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-6.6.2.10. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191020_114939_9732
-6.6.2.11. ALPHA.clutr.20191020_114939_9732 contains 2 files.
+6.6.2.10. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191029_083933_27405
+6.6.2.11. ALPHA.clutr.20191029_083933_27405 contains 2 files.
 6.6.2.11.1. 01.Alpha is empty.
 6.6.2.11.2. 01.Omega is empty.
 
@@ -3038,27 +3038,27 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 7.4.1.  kamaji make ALPHA.clut.output.delta
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.output.delta" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.output.delta" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
+    |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191020_114940_10293/00.compiled.bash > ALPHA.clut.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191029_083934_27970/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial
+    |mv ALPHA.clut.output.partial ALPHA.clut.output
+    |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial
+    |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
+    |# GT Working/ALPHA.clut.output.delta does not exist
     |kamaji make ALPHA.clut.output.delta
-    |[38;5;12mcat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1[0m
+    |cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1
 7.5. Finalizations.
 7.6. Workspace Impact...
     |Only in 07.Omega: .kamaji.sed
@@ -3070,7 +3070,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 7.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 7.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 7.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-7.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114940_10293/00.compiled.bash
+7.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083934_27970/00.compiled.bash
 7.6.2.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -3168,15 +3168,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
 7.6.2.9. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20191020_114940_10293/00.compiled.bash 0
-7.6.2.10. ALPHA.clutc.20191020_114940_10293 contains 3 files.
+    |ALPHA.clutc.20191029_083934_27970/00.compiled.bash 0
+7.6.2.10. ALPHA.clutc.20191029_083934_27970 contains 3 files.
 7.6.2.10.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114940_10293/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083934_27970/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:40.
+    |#  Created by clutc on 2019-10-29 at 08:39:34.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -3200,7 +3200,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/07.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/07.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -3374,7 +3374,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/07.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/07.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -3607,8 +3607,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-7.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191020_114940_10392
-7.6.2.12. ALPHA.clutr.20191020_114940_10392 contains 2 files.
+7.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191029_083934_28069
+7.6.2.12. ALPHA.clutr.20191029_083934_28069 contains 2 files.
 7.6.2.12.1. 01.Alpha is empty.
 7.6.2.12.2. 01.Omega is empty.
 
@@ -3660,30 +3660,30 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 8.4.1.  kamaji make ALPHA.clut.output.grade
 8.4.1.1. Exit Status 1!
 8.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;12mecho "ALPHA.clut.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/ALPHA.clut.bash does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |echo "ALPHA.clut.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
-    |[38;5;12mclutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output does not exist[0m
+    |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
+    |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191020_114941_10980/00.compiled.bash > ALPHA.clut.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.partial ALPHA.clut.output[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20191029_083935_28654/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' ALPHA.clut.output.partial
+    |mv ALPHA.clut.output.partial ALPHA.clut.output
+    |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |[38;5;12msed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial[0m
-    |[38;5;12mmv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.delta does not exist[0m
+    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial
+    |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
+    |# GT Working/ALPHA.clut.output.delta does not exist
     |kamaji make ALPHA.clut.output.delta
-    |[38;5;12mcat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/ALPHA.clut.output.grade does not exist[0m
+    |cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1
+    |# GT Working/ALPHA.clut.output.grade does not exist
     |kamaji make ALPHA.clut.output.grade
-    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mALPHA.clut.output.grade[0m
+    |FAIL: ALPHA.clut.output.grade
 8.5. Finalizations.
 8.6. Workspace Impact...
     |Only in 08.Omega: .kamaji.sed
@@ -3695,7 +3695,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 8.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 8.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 8.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-8.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191020_114941_10980/00.compiled.bash
+8.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20191029_083935_28654/00.compiled.bash
 8.6.2.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -3793,15 +3793,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
 8.6.2.9. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20191020_114941_10980/00.compiled.bash 0
-8.6.2.10. ALPHA.clutc.20191020_114941_10980 contains 3 files.
+    |ALPHA.clutc.20191029_083935_28654/00.compiled.bash 0
+8.6.2.10. ALPHA.clutc.20191029_083935_28654 contains 3 files.
 8.6.2.10.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20191020_114941_10980/00.compiled.bash...
+    |#  ./ALPHA.clutc.20191029_083935_28654/00.compiled.bash...
     |#
-    |#  Created by clutc on 2019-10-20 at 11:49:41.
+    |#  Created by clutc on 2019-10-29 at 08:39:35.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -3825,7 +3825,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/08.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/08.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -3999,7 +3999,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.03.clut_processing.clutr.20191020_114934_6438/08.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.03.clut_processing.clutr.20191029_083928_24106/08.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -4232,8 +4232,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-8.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191020_114941_11079
-8.6.2.12. ALPHA.clutr.20191020_114941_11079 contains 2 files.
+8.6.2.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20191029_083935_28753
+8.6.2.12. ALPHA.clutr.20191029_083935_28753 contains 2 files.
 8.6.2.12.1. 01.Alpha is empty.
 8.6.2.12.2. 01.Omega is empty.
 
@@ -4285,12 +4285,12 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 9.4.1.  kamaji make ALPHA.clut.nonsense
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
-    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'ALPHA.clut.nonsense' file cannot be made; it is not a known derivative.[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |ERROR: The 'ALPHA.clut.nonsense' file cannot be made; it is not a known derivative.
 9.5. Finalizations.
 9.6. Workspace Impact...
     |Only in 09.Omega: .kamaji.sed

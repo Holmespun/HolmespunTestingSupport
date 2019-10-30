@@ -1,0 +1,1 @@
+../Testing/CLUT_Framework_Quickstart_Guide_exercise.output

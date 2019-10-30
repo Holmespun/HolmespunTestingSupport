@@ -7,7 +7,7 @@
 ###	@author		Brian G. Holmes
 ###	@copyright	GNU General Public License
 ###	@brief		Holmespun Testing Manager (HTM) script.
-###	@todo		https://github.com/Holmespun/HolmespunMakefileMethod/issues
+###	@todo		https://github.com/Holmespun/HolmespunTestingSupport/issues
 ###	@remark		kamaji.bash [<modifier>]... [<request>] [<parameter>]..."
 ###
 ###	@details	Unit test exercise and CLUT program output and evaluation manager.
@@ -49,6 +49,7 @@
 #	KamajiModifierSilent
 #	KamajiModifierUsage_bless
 #	KamajiModifierUsage_configure
+#	KamajiModifierUsage_delta
 #	KamajiModifierUsage_grades
 #	KamajiModifierUsage_export
 #	KamajiModifierUsage_invoke
@@ -71,10 +72,11 @@
 #
 #	KamajiRequestBless
 #	KamajiRequestConfigure
+#	KamajiRequestDelta
 #	KamajiRequestExport_makefile
 #	KamajiRequestExport_ruleset
 #	KamajiRequestExport
-#	KamajiRequestGradeOrOutputOrReview
+#	KamajiRequestGradeOrOutputOrReviewOrDelta
 #	KamajiRequestGrade
 #	KamajiRequestInvoke
 #	KamajiRequestMake
@@ -110,6 +112,8 @@
 #  20190720 BGH; version 0.2.
 #  20190817 BGH; version 0.3, kamaji knows the source files, calculates all output files, functions based on both.
 #  20190910 BGH; readlink representative invoke (see below).
+#  20191027 BGH; version 0.4, testing the clutc utility.
+#  20191028 BGH; version 0.5, silent running for specific makefile targets, delta command.
 #
 #  Problems detected when the representative of a script is called: The files it sources are  not in the same relative
 #  hierarchy as the symbolic link. Created a Bash script representative tha worked very well, but a Bash script
@@ -123,18 +127,18 @@
 #
 #  Copyright (c) 2019 Brian G. Holmes
 #
-#	This program is part of the Holmespun Makefile Method.
+#	This program is part of the Holmespun Testing Support repository.
 #
-#	The Holmespun Makefile Method is free software: you can redistribute it and/or modify it under the terms of the
-#	GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
-#	(at your option) any later version.
+#	The Holmespun Testing Support repository only contains free software: you can redistribute it and/or modify it
+#	under the terms of the GNU General Public License as published by the Free Software Foundation, either version
+#	three (3) of the License, or (at your option) any later version.
 #
-#	The Holmespun Makefile Method is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-#	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-#	Public License for more details.
+#	The Holmespun Testing Support repository is distributed in the hope that it will be useful, but WITHOUT ANY
+#	WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#	General Public License for more details.
 #
-#	You should have received a copy of the GNU General Public License along with this program. If not, see
-#	<https://www.gnu.org/licenses/>.
+#	You should have received a copy of the GNU General Public License along with this file. If not, see
+#       <https://www.gnu.org/licenses/>.
 #
 #  See the COPYING.text file for further information.
 #
@@ -184,7 +188,7 @@ declare    __KamajiSedScriptFName="TBD"
 
 #----------------------------------------------------------------------------------------------------------------------
 
-declare -i __kamajiFailureCount=0
+declare -i __KamajiFailureCount=0
 
 declare    __KamajiRulesetIsReady="false"
 
@@ -1027,7 +1031,7 @@ function KamajiModifierFast() {
   #
   [ "${__KamajiRulesetIsReady}" = "true" ] && KamajiMain ${ModifiedRequest} && return
   #
-  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .kamaji.ruleset.bash)
+  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .${__KamajiScriptName}.ruleset.bash)
   #
   local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
   #
@@ -1211,6 +1215,33 @@ function KamajiModifierUsage_configure() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiModifierUsage_delta() {
+  #
+  local -r Request="${1}"
+  #
+  EchoPara80	"$(echoInColorWhiteBold "Compare|Delta|Pre-Grade...")"
+  #
+  EchoPara80	"A 'delta' request asks ${__KamajiScriptName} to compare the current output of each"		\
+		"CLUT or unit test exercise to its baseline."							\
+		"The main reason that the delta command exists is that output file comparesons may be"		\
+		"expensive, and thus they are a good candidate to apply apply parallel processing to."
+  #
+  EchoPara80	"A 'delta last' request will compare the current output of the last make target processed"	\
+		"by ${__KamajiScriptName} the last time it was invoked."					\
+		"The \"last\" target is the same no matter where it appears in the list of targets"		\
+		"passed to an 'delta' request."
+  #
+  EchoPara80	"A 'delta' request without any specific targets is the same as an 'delta' request for"		\
+		"all known targets."										\
+		"Furthermore, those targets will be processed based on when their base sources were"		\
+		"last modified."										\
+		"In this way, when the user modifies the source file for a specific CLUT or unit test,"		\
+		"${__KamajiScriptName} will make processing that test a higher priority than all others."
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiModifierUsage_grade() {
   #
   local -r Request="${1}"
@@ -1229,7 +1260,7 @@ function KamajiModifierUsage_grade() {
 		"the mask-sed-script configuration value can be used to specify the location of that script."
   #
   EchoPara80	"A 'grade last' request with grade the output associated with the last make target processed"	\
-		"by kamaji the last time it was invoked."							\
+		"by ${__KamajiScriptName} the last time it was invoked."					\
 		"The \"last\" target is the same no matter where it appears in the list of targets"		\
 		"passed to a 'grade' request."
   #
@@ -1238,11 +1269,11 @@ function KamajiModifierUsage_grade() {
 		"Furthermore, those targets will be evaluated based when their base sources were"		\
 		"last modified."										\
 		"In this way, when the user modifies the source file for a specific CLUT or unit test,"		\
-		"then kamaji will give evaluation of that test a higher priority than for all others."
+		"${__KamajiScriptName} will give evaluation of that test a higher priority than for all others."
   #
   EchoPara80	"Although grades are identified using the \"grade\" file name extension,"			\
 		"the actual grade is not stored."								\
-		"This practice will cause kamaji to evaluate a CLUT or unit test exercise,"			\
+		"This practice will cause ${__KamajiScriptName} to evaluate a CLUT or unit test exercise,"	\
 		"and display the assigned grade, every time the user requests it."				\
 		"As such, the user will get explicit grade feedback for every test every time it is requested."
   #
@@ -1256,34 +1287,34 @@ function KamajiModifierUsage_export() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Export...")"
   #
-  EchoPara80	"The kamaji script allows the user to export data in two forms: makefile and ruleset."
+  EchoPara80	"The ${__KamajiScriptName} script allows the user to export data in two forms: makefile and ruleset."
   #
   EchoPara80	"$(echoInColorWhiteBold "Export Makefile...")"
   #
   EchoPara80	"The 'export makefile' request is used to produce a makefile that can be used to integrate"	\
-		"kamaji into a makefile system."								\
-		"An exported makefile contains a rule for every derived file known to kamaji."			\
+		"${__KamajiScriptName} into a makefile system."							\
+		"An exported makefile contains a rule for every derived file known to ${__KamajiScriptName}."	\
 		"Use of the make command --jobs switch with the exported makefile can produce results even"	\
-		"faster than invoking parallel kamaji grade requests."
+		"faster than invoking parallel ${__KamajiScriptName} grade requests."
   #
   EchoPara80	"$(echoInColorWhiteBold "Export Ruleset...")"
   #
-  EchoPara80	"The kamaji script defines a ruleset that it uses to guide creation of every"			\
+  EchoPara80	"The ${__KamajiScriptName} script defines a ruleset that it uses to guide creation of every"	\
 		"file in the working-folder;"									\
 		"to determine what files need to be made or re-made, and the"					\
 		"proper order in which that should happen."
   #
-  EchoPara80	"By default, kamaji generates its ruleset every time it is called"				\
+  EchoPara80	"By default, ${__KamajiScriptName} generates its ruleset every time it is called"		\
 		"so that it can properly react to dramatic changes in the baseline-folder."			\
   		"As the ruleset only changes when files are added or removed from the baseline-folder, it is"	\
 		"inefficient to regenerate the ruleset when the baseline-folder has not changed in this way."
   #
-  EchoPara80	"Users can request that kamaji export its current ruleset for future use"			\
+  EchoPara80	"Users can request that ${__KamajiScriptName} export its current ruleset for future use"	\
 		"using the 'export' request."									\
 		"The ruleset-filename configuration variable can be used to"					\
 		"name the file in which the ruleset is stored."
   #
-  EchoPara80	"The 'fast' modifier can be used to ask kamaji to"						\
+  EchoPara80	"The 'fast' modifier can be used to ask ${__KamajiScriptName} to"				\
 		"load an exported ruleset instead of generating one itself."					\
 		"The 'fast' modifier will generate and export a ruleset when it does not find one to load."
   #
@@ -1301,7 +1332,7 @@ function KamajiModifierUsage_invoke() {
 		"Output from each CLUT or unit test exercise is captured in an output file."
   #
   EchoPara80	"An 'invoke last' request will invoke the last make target processed"				\
-		"by kamaji the last time it was itself invoked."						\
+		"by ${__KamajiScriptName} the last time it was itself invoked."					\
 		"The \"last\" target is the same no matter where it appears in the list of targets"		\
 		"passed to an 'invoke' request."
   #
@@ -1310,7 +1341,8 @@ function KamajiModifierUsage_invoke() {
 		"Furthermore, those targets will be invoked based when their base sources were"			\
 		"last modified."										\
 		"In this way, when the user modifies the source file for a specific CLUT or unit test,"		\
-		"then kamaji will give output generation for that test a higher priority than for all others."
+		"then ${__KamajiScriptName} will give output generation for that test a higher priority"	\
+		"than for all others."
   #
 }
 
@@ -1322,10 +1354,11 @@ function KamajiModifierUsage_make() {
   #
   EchoPara80	"$(echoInColorWhiteBold "Make...")"
   #
-  EchoPara80	"Users can request that kamaji generate one or more specific files by naming them in"		\
-		"a 'make' request."										\
-		"When the user asks kamaji to make a file that is already the most up-to-date version of"	\
-		"itself, then kamaji ignores the request; it is not an error."					\
+  EchoPara80	"Users can request that ${__KamajiScriptName} generate one or more specific files by"		\
+		"naming them in a 'make' request."								\
+		"When the user asks ${__KamajiScriptName} to make a file that is already the most"		\
+		"up-to-date version of itself, then ${__KamajiScriptName} ignores the request;"			\
+		"it is not an error."										\
 		"Files are only remade after the files that thay are created from are remade, if necessary."	\
 		"Files are only remade when files that thay are created from have changed;"			\
 		"either because the user changed them or because they themselves were remade."
@@ -1337,7 +1370,8 @@ function KamajiModifierUsage_make() {
   #
   EchoPara80	"A 'make last' request will attempt to remake the last specific target of"			\
 		"a 'grade' or 'invoke' or 'make' request."							\
-		"This is an especially useful shorthand when kamaji is used for test-driven development."
+		"This is an especially useful shorthand when ${__KamajiScriptName} is used for"			\
+		"test-driven development."
   #
 }
 
@@ -1353,7 +1387,7 @@ function KamajiModifierUsage_review() {
 		"failed grade."											\
 		"Reviews are based on grades, and they are only performed for failing grades."			\
 		"After the user reviews a failing grade,"							\
-		"then kamaji will allow the user to baseline the new output using a 'bless' request."
+		"then ${__KamajiScriptName} will allow the user to baseline the new output using a 'bless' request."
   #
   EchoPara80	"There are three different kinds of review: new, short, and long."				\
 		"New reviews are performed on output for which there is no baseline to compare to."		\
@@ -1398,9 +1432,9 @@ function KamajiModifierUsage_fast() {
   EchoPara80	"$(echoInColorWhiteBold "Fast...")"
   #
   EchoPara80	"When the number of files in the baseline-folder does not change,"				\
-		"the 'fast' modifier can be used to improve the efficiency of kamaji."				\
+		"the 'fast' modifier can be used to improve the efficiency of ${__KamajiScriptName}."		\
 		"When the 'fast' modifier is used,"								\
-		"kamaji loads a stored ruleset instead of generating a new one."				\
+		"${__KamajiScriptName} loads a stored ruleset instead of generating a new one."			\
 		"An 'export ruleset' request can be used to store the current ruleset."
   #
 }
@@ -1454,6 +1488,7 @@ function KamajiModifierUsage() {
   echo ""
   echo "Where <request> is one of the following:"
   echo "      bless  [ <filename> | last ]..."
+  echo "      delta  [ <filename> | last ]..."
   echo "      export [ ruleset ]"
   echo "      grade  [ <filename> | last ]..."
   echo "      invoke [ <filename> | last ]..."
@@ -1467,7 +1502,9 @@ function KamajiModifierUsage() {
   #
   UsageModifierSubjectList[baseline]=bless
   UsageModifierSubjectList[bless]=bless
+  UsageModifierSubjectList[compare]=delta
   UsageModifierSubjectList[configure]=configure
+  UsageModifierSubjectList[delta]=delta
   UsageModifierSubjectList[export]=export
   UsageModifierSubjectList[execute]=invoke
   UsageModifierSubjectList[fast]=fast
@@ -1476,6 +1513,7 @@ function KamajiModifierUsage() {
   UsageModifierSubjectList[help]=usage
   UsageModifierSubjectList[make]=make
   UsageModifierSubjectList[noisy]=verbose_and_silent
+  UsageModifierSubjectList[pre-grade]=delta
   UsageModifierSubjectList[quiet]=verbose_and_silent
   UsageModifierSubjectList[review]=review
   UsageModifierSubjectList[run]=invoke
@@ -1495,14 +1533,14 @@ function KamajiModifierUsage() {
   if [ "${ModifiedCorrected}" = "NA" ]
   then
      #
-     EchoPara80	"Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help)"			\
-		"are supported."										\
+     EchoPara80	"Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),"		\
+		"quiet (silent), and usage (help) are supported."						\
 		"Modifier and request abbreviations are also supported;"					\
 		"ambiguity is resolved using alphabetical order."						\
-		"No other modifiers or requests are applied after a usage request is fulfilled."
+		"No other modifiers or requests are applied after a help request is fulfilled."
      #
-     EchoPara80	"Further help may be displayed by following the usage request by the subject of interest;"	\
-		"for example, \"${__KamajiScriptName} help fast\" or \"${__KamajiScriptName} usage grade\""
+     EchoPara80	"Specific usage may be displayed by following a help request by the subject of interest;"	\
+		"for example, \"${__KamajiScriptName} help fast\" or \"${__KamajiScriptName} help grade\""
      #
      EchoPara80	"CLUT cases and unit test exercises are used and evaluated in similar ways:"			\
 		"compile it (if not already executable), invoke it to produce output, mask that output,"	\
@@ -1925,7 +1963,10 @@ function KamajiBuildRulesForTestingSource() {
      #
      SourceClass=$(KamajiFileClassification ${SourceFSpec} ${SourceFType})
      #
-     [ "${SourceClass}" = "Script" ] && [ ! -x ${SourceFSpec} ] && DataFileNameFlag=1
+     if [ "${SourceClass}" = "Script" ] && [ ! -x ${SourceFSpec} ]
+     then
+        EchoErrorAndExit 1 "The ${SourceFSpec} is neither executable nor declared data."
+     fi
      #
   fi
   #
@@ -2189,6 +2230,18 @@ function KamajiRequestConfigure() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function KamajiRequestDelta() {
+  #
+  local -r Request=${1}
+  shift 1
+  local -r SourceFList="${*}"
+  #
+  KamajiRequestGradeOrOutputOrReviewOrDelta ${Request} Delta ${SourceFList}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function KamajiRequestExport_makefile() {
   #
   local -r Request=${1}
@@ -2196,7 +2249,7 @@ function KamajiRequestExport_makefile() {
   #
   DiagnosticLight "${__KamajiScriptName} ${Request} ${Object}"
   #
-  local -r MakefileFName=$(KamajiConfigurationEchoValue makefile-filename .kamaji.make)
+  local -r MakefileFName=$(KamajiConfigurationEchoValue makefile-filename .${__KamajiScriptName}.make)
   #
   local -r MakefileFSpec=${__KamajiWorkinDSpec}/${MakefileFName}.partial
   #
@@ -2213,17 +2266,26 @@ function KamajiRequestExport_makefile() {
   spit  ${MakefileFSpec} "#  ${__KamajiScriptName} ${Request} ${Object}"
   spit  ${MakefileFSpec} "#"
   spit  ${MakefileFSpec} "#  This makefile will allow the user to request creation of specific files using the"
-  spit  ${MakefileFSpec} "#  system make command in the same way that 'kamaji make' request does."
+  spit  ${MakefileFSpec} "#  system make command in the same way that '${__KamajiScriptName} make' request does."
   spit  ${MakefileFSpec} "#"
   spit  ${MakefileFSpec} "#  Let the make command determine what needs to be re-made,"
-  spit  ${MakefileFSpec} "#  but have it then call kamaji to make sure it is done right."
+  spit  ${MakefileFSpec} "#  but have it then call ${__KamajiScriptName} to make sure it is done right."
   spit  ${MakefileFSpec} "#"
-  spit  ${MakefileFSpec} "#  The phony targets 'kamaji-output' and 'kamaji-grade' are defined for user convenience."
+  spit  ${MakefileFSpec} "#  The phony targets ${__KamajiScriptName}-output, ${__KamajiScriptName}-delta, and"
+  spit  ${MakefileFSpec} "#  ${__KamajiScriptName}-grade are defined for user convenience."
+  spit  ${MakefileFSpec} "#  Output targets are likely to be the most time-expensive targets. Preparing"
+  spit  ${MakefileFSpec} "#  delta files for grading gets more expensive as output files grow."
+  spit  ${MakefileFSpec} "#  The user is advised to use parallel-processing make calls for the"
+  spit  ${MakefileFSpec} "#  ${__KamajiScriptName}-output and/or ${__KamajiScriptName}-delta targets;"
+  spit  ${MakefileFSpec} "#  the ${__KamajiScriptName}-grade can then be used for presentation only."
+  spit  ${MakefileFSpec} "#"
+  spit  ${MakefileFSpec} "#  When the makefile specifies the target, ${__KamajiScriptName} is asked to perform its"
+  spit  ${MakefileFSpec} "#  work in silent mode."
   spit  ${MakefileFSpec} "#"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "QUIET ?= @"
   #
-  for TargetClass in Grade
+  for TargetClass in Grade Delta
   do
     #
     spit ${MakefileFSpec} ""
@@ -2243,32 +2305,35 @@ function KamajiRequestExport_makefile() {
     #
   done
   #
-  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .kamaji.ruleset.bash)
+  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .${__KamajiScriptName}.ruleset.bash)
   #
   local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
   #
   spit  ${MakefileFSpec} ""
-  spit  ${MakefileFSpec} ".PHONY: kamaji-grade kamaji-output"
+  spit  ${MakefileFSpec} ".PHONY: ${__KamajiScriptName}-grade ${__KamajiScriptName}-delta ${__KamajiScriptName}-output"
   spit  ${MakefileFSpec} ""
-  spit  ${MakefileFSpec} "kamaji-grade : \$(KamajiGradeTargetList)"
+  spit  ${MakefileFSpec} "${__KamajiScriptName}-grade : \$(KamajiGradeTargetList)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
-  spite ${MakefileFSpec} "\t\$(QUIET) kamaji fast grade"
+  spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast grade"
   spit  ${MakefileFSpec} ""
-  spit  ${MakefileFSpec} "kamaji-output : \$(KamajiGradeTargetList:.grade=)"
+  spit  ${MakefileFSpec} "${__KamajiScriptName}-delta : \$(KamajiDeltaTargetList)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
-  spite ${MakefileFSpec} "\t\$(QUIET) kamaji fast invoke"
+  spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast delta"
+  spit  ${MakefileFSpec} ""
+  spit  ${MakefileFSpec} "${__KamajiScriptName}-output : \$(KamajiGradeTargetList:.grade=)"
+  spite ${MakefileFSpec} "\t@echo \"make \$@\""
+  spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast invoke"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "${RulesetFSpec} :"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
-  spite ${MakefileFSpec} "\t\$(QUIET) kamaji fast show version"
+  spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast silent show version"
   spit  ${MakefileFSpec} ""
   #
   #  Generate makefile dependency rules for each of the targets leading up to the grades.
   #
-  local    NextOfParentFName
-  #
-  local    ListOfParentFName=${__KamajiClassifiedList[Grade]}
   local    ItemOfParentFName
+  local    ListOfParentFName
+  local    NextOfParentFName
   #
   local -a OutputList
   local    OutputLine
@@ -2276,65 +2341,73 @@ function KamajiRequestExport_makefile() {
   local -i OutputIndx=0
   local -i CheckIndex
   #
-  until [ ${#ListOfParentFName} -eq 0 ]
+  for TargetClass in Grade
   do
     #
-    NextOfParentFName=
+    ListOfParentFName=${__KamajiClassifiedList[${TargetClass}]}
     #
-    for ItemOfParentFName in ${ListOfParentFName}
+    until [ ${#ListOfParentFName} -eq 0 ]
     do
       #
-      [ "${__KamajiRepresentative[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ] && continue
+      NextOfParentFName=
       #
-      OutputLine=
+      for ItemOfParentFName in ${ListOfParentFName}
+      do
+        #
+        [ "${__KamajiRepresentative[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ] && continue
+        #
+        OutputLine=
+        #
+        if [ "${__KamajiRepresentative[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
+        then
+           #
+           OutputLine+="${__KamajiRepresentative[${ItemOfParentFName}]#../}"
+           #
+        elif [ ${#__KamajiMyParentalList[${ItemOfParentFName}]} -eq 0 ]
+        then
+           #
+           OutputLine+="${__KamajiBaseSourceList[${ItemOfParentFName}]}"
+           #
+        else
+	   #
+	   OutputLine+="${__KamajiMyParentalList[${ItemOfParentFName}]// / ${__KamajiWorkinDSpec}/}"
+	   #
+	   NextOfParentFName+="${__KamajiMyParentalList[${ItemOfParentFName}]}"
+	   #
+        fi
+        #
+        if [ "${__KamajiXtraParentList[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
+        then
+           #
+           OutputLine+="${__KamajiXtraParentList[${ItemOfParentFName}]}"
+           #
+        fi
+        #
+        OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : ${RulesetFSpec}"
+        #
+        OutputList[${OutputIndx}]+="$(echo "${OutputLine}" | tr ' ' '\n' | sort --unique | tr '\n' ' ')"
+        #
+        OutputIndx+=1
+        #
+      done
       #
-      if [ "${__KamajiRepresentative[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
-      then
-         #
-         OutputLine+="${__KamajiRepresentative[${ItemOfParentFName}]#../}"
-         #
-      elif [ ${#__KamajiMyParentalList[${ItemOfParentFName}]} -eq 0 ]
-      then
-         #
-         OutputLine+="${__KamajiBaseSourceList[${ItemOfParentFName}]}"
-         #
-      else
-	 #
-	 OutputLine+="${__KamajiMyParentalList[${ItemOfParentFName}]// / ${__KamajiWorkinDSpec}/}"
-	 #
-	 NextOfParentFName+="${__KamajiMyParentalList[${ItemOfParentFName}]}"
-	 #
-      fi
-      #
-      if [ "${__KamajiXtraParentList[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
-      then
-         #
-         OutputLine+="${__KamajiXtraParentList[${ItemOfParentFName}]}"
-         #
-      fi
-      #
-      OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : ${RulesetFSpec}"
-      #
-      OutputList[${OutputIndx}]+="$(echo "${OutputLine}" | tr ' ' '\n' | sort --unique | tr '\n' ' ')"
-      #
-      OutputIndx+=1
+      ListOfParentFName="${NextOfParentFName}"
       #
     done
     #
-    ListOfParentFName="${NextOfParentFName}"
+    printf "%s\n" "${OutputList[@]}" | sort --unique > ${MakefileFSpec}.data
+    #
+    while read OutputLine
+    do
+      #
+      printf "%s\n\t@echo \"make \$@\"\n\t\$(QUIET) ${__KamajiScriptName} fast silent make \$@\n\n"	\
+	     "${OutputLine}">> ${MakefileFSpec}
+      #
+    done < ${MakefileFSpec}.data
+    #
+    rm     ${MakefileFSpec}.data
     #
   done
-  #
-  printf "%s\n" "${OutputList[@]}" | sort --unique > ${MakefileFSpec}.data
-  #
-  while read OutputLine
-  do
-    #
-    printf "%s\n\t@echo \"make \$@\"\n\t\$(QUIET) kamaji fast make \$@\n\n" "${OutputLine}" >> ${MakefileFSpec}
-    #
-  done < ${MakefileFSpec}.data
-  #
-  rm     ${MakefileFSpec}.data
   #
   spit ${MakefileFSpec} "#"
   spit ${MakefileFSpec} "#  (eof}"
@@ -2350,7 +2423,7 @@ function KamajiRequestExport_ruleset() {
   local -r Request=${1}
   local -r Object=${2}
   #
-  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .kamaji.ruleset.bash)
+  local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .${__KamajiScriptName}.ruleset.bash)
   #
   local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
   #
@@ -2421,7 +2494,7 @@ function KamajiRequestExport() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function KamajiRequestGradeOrOutputOrReview() {
+function KamajiRequestGradeOrOutputOrReviewOrDelta() {
   #
   local -r Request=${1}
   local -r TargetClass=${2}
@@ -2503,7 +2576,7 @@ function KamajiRequestGrade() {
   shift 1
   local -r SourceFList="${*}"
   #
-  KamajiRequestGradeOrOutputOrReview ${Request} Grade ${SourceFList}
+  KamajiRequestGradeOrOutputOrReviewOrDelta ${Request} Grade ${SourceFList}
   #
 }
 
@@ -2515,7 +2588,7 @@ function KamajiRequestInvoke() {
   shift 1
   local -r SourceFList="${*}"
   #
-  KamajiRequestGradeOrOutputOrReview ${Request} Output ${SourceFList}
+  KamajiRequestGradeOrOutputOrReviewOrDelta ${Request} Output ${SourceFList}
   #
 }
 
@@ -2600,7 +2673,7 @@ function KamajiRequestReview() {
   shift 1
   local -r SourceFList="${*}"
   #
-  KamajiRequestGradeOrOutputOrReview ${Request} Review ${SourceFList}
+  KamajiRequestGradeOrOutputOrReviewOrDelta ${Request} Review ${SourceFList}
   #
 }
 
@@ -2667,7 +2740,7 @@ function KamajiRequestShow_version() {
   local -r    Request=${1}
   local -r    Object=${2}
   #
-  echo "kamaji version 0.4"
+  echo "${__KamajiScriptName} version 0.5"
   #
 }
 
@@ -2781,7 +2854,7 @@ function KamajiMake_Grade_from_Delta() {
      #
      EchoImportantMessage "${__KamajiFailTag}" "${TargetFName}"
      #
-     __kamajiFailureCount+=1
+     __KamajiFailureCount+=1
      #
   else
      #
@@ -3147,6 +3220,7 @@ function KamajiMain() {
      RequestFunctionFor[baseline]=KamajiRequestBless
      RequestFunctionFor[bless]=KamajiRequestBless
      RequestFunctionFor[configure]=KamajiRequestConfigure
+     RequestFunctionFor[delta]=KamajiRequestDelta
      RequestFunctionFor[execute]=KamajiRequestInvoke
      RequestFunctionFor[export]=KamajiRequestExport
      RequestFunctionFor[grades]=KamajiRequestGrade
@@ -3182,8 +3256,8 @@ KamajiConfigurationLoadValues
 
 KamajiMain ${*}
 
-__kamajiFailureCount+=${?}
+__KamajiFailureCount+=${?}
 
-exit ${__kamajiFailureCount}
+exit ${__KamajiFailureCount}
 
 #----------------------------------------------------------------------------------------------------------------------

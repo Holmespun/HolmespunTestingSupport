@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.01.usage.clut (24 cases)
+CLUT Source File: kamaji.01.usage.clut (25 cases)
 
 0. Global Information
 0.1. Notations
@@ -22,7 +22,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 1.4.1.  kamaji
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -32,6 +32,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -40,13 +41,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -72,7 +74,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 1.5. Finalizations.
 1.6. Workspace Impact...
 1.6.1. The initial and final workspace contents are equivalent.
@@ -87,7 +89,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 2.4.1.  kamaji usage
 2.4.1.1. Exit Status 1!
 2.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -97,6 +99,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -105,13 +108,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -137,7 +141,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 2.5. Finalizations.
 2.6. Workspace Impact...
 2.6.1. The initial and final workspace contents are equivalent.
@@ -152,7 +156,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 3.4.1.  kamaji help
 3.4.1.1. Exit Status 1!
 3.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -162,6 +166,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -170,13 +175,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -202,7 +208,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 3.5. Finalizations.
 3.6. Workspace Impact...
 3.6.1. The initial and final workspace contents are equivalent.
@@ -220,8 +226,8 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 4.4.1.  kamaji fast bobo
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
-    |[38;5;9m[1mERROR:[0m [38;5;15m[1mUnable to fulfill a 'bobo' request.[0m
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |ERROR: Unable to fulfill a 'bobo' request.
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -231,6 +237,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -239,13 +246,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -271,7 +279,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: .kamaji.sed
@@ -315,7 +323,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 5.4.1.  kamaji help configure
 5.4.1.1. Exit Status 1!
 5.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -325,6 +333,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -333,7 +342,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mConfigure|Set...[0m
+    |Configure|Set...
     |
     |Named configuration variables and their values are stored in the
     |$HOME/.kamaji.conf and ./.kamaji.conf files; settings in the latter will
@@ -356,69 +365,69 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |The following variables are defined:
     |
-    |    [38;5;15m[1mbaseline-folder[0m <directory-specification> - Specification for the directory
+    |    baseline-folder <directory-specification> - Specification for the directory
     |    where baseline output files are stored.
     |    
-    |    [38;5;15m[1mdata-extension-list[0m <extension>... - A list of name extensions for "data"
+    |    data-extension-list <extension>... - A list of name extensions for "data"
     |    files that are stored in the baseline-folder, but do not represent CLUT or
     |    unit test exercises or their output. Data files are represented in the
     |    working-folder.
     |    
-    |    [38;5;15m[1mdata-filename-list[0m <filename>... - A list of names for "data" files that
+    |    data-filename-list <filename>... - A list of names for "data" files that
     |    are stored in the baseline-folder, but do not represent CLUT or unit test
     |    exercises or their output. Data files are represented in the
     |    working-folder.
     |    
-    |    [38;5;15m[1mlast-target-filename[0m <filename> - The name of the file in which the
+    |    last-target-filename <filename> - The name of the file in which the
     |    filename of the last make target is stored; the file is stored in the
     |    working-folder.
     |    
-    |    [38;5;15m[1mlong-review-command[0m <command> - The command used to perform a long review.
+    |    long-review-command <command> - The command used to perform a long review.
     |    A long review is defined by the configured long-review-line-count value.
     |    The command is called from within the working-folder, and is passed the
     |    masked baseline output and masked current output files in that order.
     |    
-    |    [38;5;15m[1mlong-review-line-count[0m <integer> - The number of diff command output lines
+    |    long-review-line-count <integer> - The number of diff command output lines
     |    that are too many to be considered the subject of a short review. This
     |    number is used to define the difference between a short and long review.
     |    
-    |    [38;5;15m[1mlong-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    long-review-tailpipe <command> [ | <command> ]... - A command into which
     |    the long-review-command output is piped. For example, if you set the
     |    long-review-command to "diff" then you might want to set the
     |    review-tailpipe to "sed --expression='s,^, ,' | less" so that the diff
     |    output will be indented, you can view it a page at a time, and it will not
     |    clutter your display after your review.
     |    
-    |    [38;5;15m[1mmakefile-filename[0m <filename> - The name of the file into which a makefile
+    |    makefile-filename <filename> - The name of the file into which a makefile
     |    is exported.
     |    
-    |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for the user-defined
+    |    mask-sed-script <file-specification> - Specification for the user-defined
     |    sed script that is used to mask output files.
     |    
-    |    [38;5;15m[1mnew-review-command[0m <command> - The command used to perform a new review. A
+    |    new-review-command <command> - The command used to perform a new review. A
     |    new review is one for which there is no baseline output file to compare to.
     |    The command is called from within the working-folder, and is passed the
     |    masked current output file.
     |    
-    |    [38;5;15m[1mnew-review-tailpipe[0m <command> [ | <command> ]... - A command into which the
+    |    new-review-tailpipe <command> [ | <command> ]... - A command into which the
     |    new-review-command output is piped.
     |    
-    |    [38;5;15m[1mruleset-filename[0m <filename> - The name of the file in which the ruleset is
+    |    ruleset-filename <filename> - The name of the file in which the ruleset is
     |    stored. The ruleset is stored and used by the 'export ruleset' request and
     |    'fast' modifier. the file is stored in the working-folder.
     |    
-    |    [38;5;15m[1mscript-type-list[0m [<extension>]... - A list of file name extensions that are
+    |    script-type-list [<extension>]... - A list of file name extensions that are
     |    used to store executable scripts.
     |    
-    |    [38;5;15m[1mshort-review-command[0m <command> - The command used to perform a short
+    |    short-review-command <command> - The command used to perform a short
     |    review. A short review is defined by the configured long-review-line-count
     |    value. The command is called from within the working-folder, and is passed
     |    the masked baseline output and masked current output files in that order.
     |    
-    |    [38;5;15m[1mshort-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    short-review-tailpipe <command> [ | <command> ]... - A command into which
     |    the short-review-command output is piped.
     |    
-    |    [38;5;15m[1mtime-output-format[0m { <time-format> | FULL | NONE } - The output format used
+    |    time-output-format { <time-format> | FULL | NONE } - The output format used
     |    by the /usr/bin/time program to provide run-time statistics about CLUT
     |    scripts and unit test scripts and programs; please see the GNU VERSION
     |    section of the description produced by the man time command. A pre-defined,
@@ -426,14 +435,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    not used if this variable is set to NONE or if the /usr/bin/time program is
     |    not available.
     |    
-    |    [38;5;15m[1mverbosity-level[0m <adjective> - The level of disgnostic output produced. The
+    |    verbosity-level <adjective> - The level of disgnostic output produced. The
     |    'quiet' level suppresses diagnostic output. The 'light' level will describe
     |    the 'make' requests used to fulfill the user's request. The 'heavy' level
     |    will augment light output with a description of commands applied to files
     |    in the working-folder and comments that describe data that it uses to
     |    decide what commands should be applied.
     |    
-    |    [38;5;15m[1mworking-folder[0m <directory-specification> - The specification for the
+    |    working-folder <directory-specification> - The specification for the
     |    directory where intermediate and unverified output files are created. If
     |    the working-folder does not already exist then it will be silently created.
     |    
@@ -445,7 +454,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 5.5. Finalizations.
 5.6. Workspace Impact...
 5.6.1. The initial and final workspace contents are equivalent.
@@ -459,7 +468,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 6.4.1.  kamaji help export
 6.4.1.1. Exit Status 1!
 6.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -469,6 +478,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -477,12 +487,12 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mExport...[0m
+    |Export...
     |
     |The kamaji script allows the user to export data in two forms: makefile and
     |ruleset.
     |
-    |[38;5;15m[1mExport Makefile...[0m
+    |Export Makefile...
     |
     |The 'export makefile' request is used to produce a makefile that can be used to
     |integrate kamaji into a makefile system. An exported makefile contains a rule
@@ -490,7 +500,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |with the exported makefile can produce results even faster than invoking
     |parallel kamaji grade requests.
     |
-    |[38;5;15m[1mExport Ruleset...[0m
+    |Export Ruleset...
     |
     |The kamaji script defines a ruleset that it uses to guide creation of every
     |file in the working-folder; to determine what files need to be made or re-made,
@@ -511,7 +521,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |a ruleset when it does not find one to load.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 6.5. Finalizations.
 6.6. Workspace Impact...
 6.6.1. The initial and final workspace contents are equivalent.
@@ -525,7 +535,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 7.4.1.  kamaji help grade
 7.4.1.1. Exit Status 1!
 7.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -535,6 +545,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -543,7 +554,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mGrade...[0m
+    |Grade...
     |
     |A 'grade' request will determine the pass or fail status of a one or more CLUT
     |or unit test exercise.
@@ -564,8 +575,8 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |A 'grade' request without any specific targets is the same as a 'grade' request
     |for all known targets. Furthermore, those targets will be evaluated based when
     |their base sources were last modified. In this way, when the user modifies the
-    |source file for a specific CLUT or unit test, then kamaji will give evaluation
-    |of that test a higher priority than for all others.
+    |source file for a specific CLUT or unit test, kamaji will give evaluation of
+    |that test a higher priority than for all others.
     |
     |Although grades are identified using the "grade" file name extension, the
     |actual grade is not stored. This practice will cause kamaji to evaluate a CLUT
@@ -574,7 +585,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |every time it is requested.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 7.5. Finalizations.
 7.6. Workspace Impact...
 7.6.1. The initial and final workspace contents are equivalent.
@@ -588,7 +599,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 8.4.1.  kamaji help make
 8.4.1.1. Exit Status 1!
 8.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -598,6 +609,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -606,7 +618,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mMake...[0m
+    |Make...
     |
     |Users can request that kamaji generate one or more specific files by naming
     |them in a 'make' request. When the user asks kamaji to make a file that is
@@ -628,7 +640,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |when kamaji is used for test-driven development.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 8.5. Finalizations.
 8.6. Workspace Impact...
 8.6.1. The initial and final workspace contents are equivalent.
@@ -642,7 +654,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 9.4.1.  kamaji help set
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -652,6 +664,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -660,7 +673,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mConfigure|Set...[0m
+    |Configure|Set...
     |
     |Named configuration variables and their values are stored in the
     |$HOME/.kamaji.conf and ./.kamaji.conf files; settings in the latter will
@@ -683,69 +696,69 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |The following variables are defined:
     |
-    |    [38;5;15m[1mbaseline-folder[0m <directory-specification> - Specification for the directory
+    |    baseline-folder <directory-specification> - Specification for the directory
     |    where baseline output files are stored.
     |    
-    |    [38;5;15m[1mdata-extension-list[0m <extension>... - A list of name extensions for "data"
+    |    data-extension-list <extension>... - A list of name extensions for "data"
     |    files that are stored in the baseline-folder, but do not represent CLUT or
     |    unit test exercises or their output. Data files are represented in the
     |    working-folder.
     |    
-    |    [38;5;15m[1mdata-filename-list[0m <filename>... - A list of names for "data" files that
+    |    data-filename-list <filename>... - A list of names for "data" files that
     |    are stored in the baseline-folder, but do not represent CLUT or unit test
     |    exercises or their output. Data files are represented in the
     |    working-folder.
     |    
-    |    [38;5;15m[1mlast-target-filename[0m <filename> - The name of the file in which the
+    |    last-target-filename <filename> - The name of the file in which the
     |    filename of the last make target is stored; the file is stored in the
     |    working-folder.
     |    
-    |    [38;5;15m[1mlong-review-command[0m <command> - The command used to perform a long review.
+    |    long-review-command <command> - The command used to perform a long review.
     |    A long review is defined by the configured long-review-line-count value.
     |    The command is called from within the working-folder, and is passed the
     |    masked baseline output and masked current output files in that order.
     |    
-    |    [38;5;15m[1mlong-review-line-count[0m <integer> - The number of diff command output lines
+    |    long-review-line-count <integer> - The number of diff command output lines
     |    that are too many to be considered the subject of a short review. This
     |    number is used to define the difference between a short and long review.
     |    
-    |    [38;5;15m[1mlong-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    long-review-tailpipe <command> [ | <command> ]... - A command into which
     |    the long-review-command output is piped. For example, if you set the
     |    long-review-command to "diff" then you might want to set the
     |    review-tailpipe to "sed --expression='s,^, ,' | less" so that the diff
     |    output will be indented, you can view it a page at a time, and it will not
     |    clutter your display after your review.
     |    
-    |    [38;5;15m[1mmakefile-filename[0m <filename> - The name of the file into which a makefile
+    |    makefile-filename <filename> - The name of the file into which a makefile
     |    is exported.
     |    
-    |    [38;5;15m[1mmask-sed-script[0m <file-specification> - Specification for the user-defined
+    |    mask-sed-script <file-specification> - Specification for the user-defined
     |    sed script that is used to mask output files.
     |    
-    |    [38;5;15m[1mnew-review-command[0m <command> - The command used to perform a new review. A
+    |    new-review-command <command> - The command used to perform a new review. A
     |    new review is one for which there is no baseline output file to compare to.
     |    The command is called from within the working-folder, and is passed the
     |    masked current output file.
     |    
-    |    [38;5;15m[1mnew-review-tailpipe[0m <command> [ | <command> ]... - A command into which the
+    |    new-review-tailpipe <command> [ | <command> ]... - A command into which the
     |    new-review-command output is piped.
     |    
-    |    [38;5;15m[1mruleset-filename[0m <filename> - The name of the file in which the ruleset is
+    |    ruleset-filename <filename> - The name of the file in which the ruleset is
     |    stored. The ruleset is stored and used by the 'export ruleset' request and
     |    'fast' modifier. the file is stored in the working-folder.
     |    
-    |    [38;5;15m[1mscript-type-list[0m [<extension>]... - A list of file name extensions that are
+    |    script-type-list [<extension>]... - A list of file name extensions that are
     |    used to store executable scripts.
     |    
-    |    [38;5;15m[1mshort-review-command[0m <command> - The command used to perform a short
+    |    short-review-command <command> - The command used to perform a short
     |    review. A short review is defined by the configured long-review-line-count
     |    value. The command is called from within the working-folder, and is passed
     |    the masked baseline output and masked current output files in that order.
     |    
-    |    [38;5;15m[1mshort-review-tailpipe[0m <command> [ | <command> ]... - A command into which
+    |    short-review-tailpipe <command> [ | <command> ]... - A command into which
     |    the short-review-command output is piped.
     |    
-    |    [38;5;15m[1mtime-output-format[0m { <time-format> | FULL | NONE } - The output format used
+    |    time-output-format { <time-format> | FULL | NONE } - The output format used
     |    by the /usr/bin/time program to provide run-time statistics about CLUT
     |    scripts and unit test scripts and programs; please see the GNU VERSION
     |    section of the description produced by the man time command. A pre-defined,
@@ -753,14 +766,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |    not used if this variable is set to NONE or if the /usr/bin/time program is
     |    not available.
     |    
-    |    [38;5;15m[1mverbosity-level[0m <adjective> - The level of disgnostic output produced. The
+    |    verbosity-level <adjective> - The level of disgnostic output produced. The
     |    'quiet' level suppresses diagnostic output. The 'light' level will describe
     |    the 'make' requests used to fulfill the user's request. The 'heavy' level
     |    will augment light output with a description of commands applied to files
     |    in the working-folder and comments that describe data that it uses to
     |    decide what commands should be applied.
     |    
-    |    [38;5;15m[1mworking-folder[0m <directory-specification> - The specification for the
+    |    working-folder <directory-specification> - The specification for the
     |    directory where intermediate and unverified output files are created. If
     |    the working-folder does not already exist then it will be silently created.
     |    
@@ -772,7 +785,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 9.5. Finalizations.
 9.6. Workspace Impact...
 9.6.1. The initial and final workspace contents are equivalent.
@@ -786,7 +799,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 10.4.1.  kamaji help show
 10.4.1.1. Exit Status 1!
 10.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -796,6 +809,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -804,13 +818,13 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mShow...[0m
+    |Show...
     |
     |The 'show' request can be used to display the configuration, the copyright, or
     |the software version.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 10.5. Finalizations.
 10.6. Workspace Impact...
 10.6.1. The initial and final workspace contents are equivalent.
@@ -824,7 +838,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 11.4.1.  kamaji usage fast
 11.4.1.1. Exit Status 1!
 11.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -834,6 +848,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -842,7 +857,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mFast...[0m
+    |Fast...
     |
     |When the number of files in the baseline-folder does not change, the 'fast'
     |modifier can be used to improve the efficiency of kamaji. When the 'fast'
@@ -850,7 +865,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |one. An 'export ruleset' request can be used to store the current ruleset.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 11.5. Finalizations.
 11.6. Workspace Impact...
 11.6.1. The initial and final workspace contents are equivalent.
@@ -864,7 +879,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 12.4.1.  kamaji usage help
 12.4.1.1. Exit Status 1!
 12.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -874,6 +889,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -882,14 +898,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mUsage|Help...[0m
+    |Usage|Help...
     |
     |You can get addition help by specifying the modifier or request you are
     |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 12.5. Finalizations.
 12.6. Workspace Impact...
 12.6.1. The initial and final workspace contents are equivalent.
@@ -903,7 +919,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 13.4.1.  kamaji usage meticulous
 13.4.1.1. Exit Status 1!
 13.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -913,6 +929,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -921,13 +938,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -953,7 +971,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 13.5. Finalizations.
 13.6. Workspace Impact...
 13.6.1. The initial and final workspace contents are equivalent.
@@ -967,7 +985,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 14.4.1.  kamaji usage noisy
 14.4.1.1. Exit Status 1!
 14.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -977,6 +995,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -985,7 +1004,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |Verbose|Noisy and Silent|Quiet...
     |
     |Three levels of diagnostic output are controlled by the verbose and silent
     |modifiers: A single verbose modifier is a request for light diagnostic output.
@@ -993,7 +1012,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 14.5. Finalizations.
 14.6. Workspace Impact...
 14.6.1. The initial and final workspace contents are equivalent.
@@ -1007,7 +1026,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 15.4.1.  kamaji usage quiet
 15.4.1.1. Exit Status 1!
 15.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1017,6 +1036,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1025,7 +1045,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |Verbose|Noisy and Silent|Quiet...
     |
     |Three levels of diagnostic output are controlled by the verbose and silent
     |modifiers: A single verbose modifier is a request for light diagnostic output.
@@ -1033,7 +1053,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 15.5. Finalizations.
 15.6. Workspace Impact...
 15.6.1. The initial and final workspace contents are equivalent.
@@ -1047,7 +1067,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 16.4.1.  kamaji usage silent
 16.4.1.1. Exit Status 1!
 16.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1057,6 +1077,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1065,7 +1086,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |Verbose|Noisy and Silent|Quiet...
     |
     |Three levels of diagnostic output are controlled by the verbose and silent
     |modifiers: A single verbose modifier is a request for light diagnostic output.
@@ -1073,7 +1094,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 16.5. Finalizations.
 16.6. Workspace Impact...
 16.6.1. The initial and final workspace contents are equivalent.
@@ -1087,7 +1108,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 17.4.1.  kamaji usage usage
 17.4.1.1. Exit Status 1!
 17.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1097,6 +1118,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1105,14 +1127,14 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mUsage|Help...[0m
+    |Usage|Help...
     |
     |You can get addition help by specifying the modifier or request you are
     |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 17.5. Finalizations.
 17.6. Workspace Impact...
 17.6.1. The initial and final workspace contents are equivalent.
@@ -1126,7 +1148,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 18.4.1.  kamaji usage verbose
 18.4.1.1. Exit Status 1!
 18.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1136,6 +1158,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1144,7 +1167,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mVerbose|Noisy and Silent|Quiet...[0m
+    |Verbose|Noisy and Silent|Quiet...
     |
     |Three levels of diagnostic output are controlled by the verbose and silent
     |modifiers: A single verbose modifier is a request for light diagnostic output.
@@ -1152,7 +1175,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 18.5. Finalizations.
 18.6. Workspace Impact...
 18.6.1. The initial and final workspace contents are equivalent.
@@ -1166,7 +1189,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 19.4.1.  kamaji help execute
 19.4.1.1. Exit Status 1!
 19.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1176,6 +1199,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1184,7 +1208,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mExecute|Invoke|Run...[0m
+    |Execute|Invoke|Run...
     |
     |An 'invoke' request causes each CLUT or unit test exercise to be executed.
     |Output from each CLUT or unit test exercise is captured in an output file.
@@ -1200,7 +1224,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 19.5. Finalizations.
 19.6. Workspace Impact...
 19.6.1. The initial and final workspace contents are equivalent.
@@ -1214,7 +1238,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 20.4.1.  kamaji help invoke
 20.4.1.1. Exit Status 1!
 20.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1224,6 +1248,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1232,7 +1257,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mExecute|Invoke|Run...[0m
+    |Execute|Invoke|Run...
     |
     |An 'invoke' request causes each CLUT or unit test exercise to be executed.
     |Output from each CLUT or unit test exercise is captured in an output file.
@@ -1248,7 +1273,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 20.5. Finalizations.
 20.6. Workspace Impact...
 20.6.1. The initial and final workspace contents are equivalent.
@@ -1262,7 +1287,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 21.4.1.  kamaji help run
 21.4.1.1. Exit Status 1!
 21.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1272,6 +1297,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1280,7 +1306,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mExecute|Invoke|Run...[0m
+    |Execute|Invoke|Run...
     |
     |An 'invoke' request causes each CLUT or unit test exercise to be executed.
     |Output from each CLUT or unit test exercise is captured in an output file.
@@ -1296,7 +1322,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 21.5. Finalizations.
 21.6. Workspace Impact...
 21.6.1. The initial and final workspace contents are equivalent.
@@ -1310,7 +1336,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 22.4.1.  kamaji help review
 22.4.1.1. Exit Status 1!
 22.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1320,6 +1346,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1328,7 +1355,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mReview...[0m
+    |Review...
     |
     |A 'review' request can be used to inspect the masked output differences that
     |led to a failed grade. Reviews are based on grades, and they are only performed
@@ -1355,7 +1382,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |new-, short-, and long-review-command variables, respectively.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 22.5. Finalizations.
 22.6. Workspace Impact...
 22.6.1. The initial and final workspace contents are equivalent.
@@ -1369,7 +1396,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 23.4.1.  kamaji help bless
 23.4.1.1. Exit Status 1!
 23.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1379,6 +1406,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1387,7 +1415,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mBaseline|Bless...[0m
+    |Baseline|Bless...
     |
     |The 'bless' request allows you to baseline current output files after you have
     |reviewed them. A 'bless' request will not generate any test data; it can only
@@ -1396,7 +1424,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 23.5. Finalizations.
 23.6. Workspace Impact...
 23.6.1. The initial and final workspace contents are equivalent.
@@ -1410,7 +1438,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
 24.4.1.  kamaji help baseline
 24.4.1.1. Exit Status 1!
 24.4.1.2. STDERR [text]...
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -1420,6 +1448,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -1428,7 +1457,7 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |[38;5;15m[1mBaseline|Bless...[0m
+    |Baseline|Bless...
     |
     |The 'bless' request allows you to baseline current output files after you have
     |reviewed them. A 'bless' request will not generate any test data; it can only
@@ -1437,11 +1466,62 @@ CLUT Source File: kamaji.01.usage.clut (24 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 24.5. Finalizations.
 24.6. Workspace Impact...
 24.6.1. The initial and final workspace contents are equivalent.
 
-CLUT Source File: kamaji.01.usage.clut (24 cases)
+25. Help_delta.
+25.1. Requirements.
+    |None.
+25.2. Initializations.
+25.3. Initial Workspace is empty.
+25.4. Target CLU Call.
+25.4.1.  kamaji help delta
+25.4.1.1. Exit Status 1!
+25.4.1.2. STDERR [text]...
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
+    |
+    |Where <modifier> is one of the following:
+    |      fast
+    |      help
+    |      silent
+    |      verbose
+    |
+    |Where <request> is one of the following:
+    |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
+    |      export [ ruleset ]
+    |      grade  [ <filename> | last ]...
+    |      invoke [ <filename> | last ]...
+    |      make   [ <filename> | last | grades | outputs ]...
+    |      review [ <filename> | last ]...
+    |      set    <name> <value>
+    |      show   [ configuration [ names | variables ] | copyright | version ]
+    |
+    |Compare|Delta|Pre-Grade...
+    |
+    |A 'delta' request asks kamaji to compare the current output of each CLUT or
+    |unit test exercise to its baseline. The main reason that the delta command
+    |exists is that output file comparesons may be expensive, and thus they are a
+    |good candidate to apply apply parallel processing to.
+    |
+    |A 'delta last' request will compare the current output of the last make target
+    |processed by kamaji the last time it was invoked. The "last" target is the same
+    |no matter where it appears in the list of targets passed to an 'delta' request.
+    |
+    |A 'delta' request without any specific targets is the same as an 'delta'
+    |request for all known targets. Furthermore, those targets will be processed
+    |based on when their base sources were last modified. In this way, when the user
+    |modifies the source file for a specific CLUT or unit test, kamaji will make
+    |processing that test a higher priority than all others.
+    |
+    |Copyright (c) 2019 Brian G. Holmes.
+    |kamaji version 0.5
+25.5. Finalizations.
+25.6. Workspace Impact...
+25.6.1. The initial and final workspace contents are equivalent.
+
+CLUT Source File: kamaji.01.usage.clut (25 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.

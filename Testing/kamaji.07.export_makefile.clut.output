@@ -58,11 +58,11 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.4.1.  kamaji export makefile
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |kamaji export makefile
 1.5. Finalizations.
 1.6. Workspace Impact...
@@ -80,7 +80,16 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#  Let the make command determine what needs to be re-made,
     |#  but have it then call kamaji to make sure it is done right.
     |#
-    |#  The phony targets 'kamaji-output' and 'kamaji-grade' are defined for user convenience.
+    |#  The phony targets kamaji-output, kamaji-delta, and
+    |#  kamaji-grade are defined for user convenience.
+    |#  Output targets are likely to be the most time-expensive targets. Preparing
+    |#  delta files for grading gets more expensive as output files grow.
+    |#  The user is advised to use parallel-processing make calls for the
+    |#  kamaji-output and/or kamaji-delta targets;
+    |#  the kamaji-grade can then be used for presentation only.
+    |#
+    |#  When the makefile specifies the target, kamaji is asked to perform its
+    |#  work in silent mode.
     |#
     |
     |QUIET ?= @
@@ -88,11 +97,18 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList :=
     |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
     |
-    |.PHONY: kamaji-grade kamaji-output
+    |KamajiDeltaTargetList :=
+    |KamajiDeltaTargetList += Working/ALPHA.clut.output.delta
+    |
+    |.PHONY: kamaji-grade kamaji-delta kamaji-output
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast grade
+    |
+    |kamaji-delta : $(KamajiDeltaTargetList)
+    |	@echo "make $@"
+    |	$(QUIET) kamaji fast delta
     |
     |kamaji-output : $(KamajiGradeTargetList:.grade=)
     |	@echo "make $@"
@@ -100,27 +116,27 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |Working/.kamaji.ruleset.bash :
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast show version
+    |	$(QUIET) kamaji fast silent show version
     |
     |Working/ALPHA.clut.bash : Working/.kamaji.ruleset.bash Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output : Working/.kamaji.ruleset.bash Working/ALPHA.clut.bash
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output.delta : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.masked
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output.grade : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.delta
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/ALPHA.clut.output
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |#
     |#  (eof}
@@ -158,10 +174,10 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.4.1.  kamaji export mak
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |kamaji export makefile
 2.5. Finalizations.
 2.6. Workspace Impact...
@@ -179,7 +195,16 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#  Let the make command determine what needs to be re-made,
     |#  but have it then call kamaji to make sure it is done right.
     |#
-    |#  The phony targets 'kamaji-output' and 'kamaji-grade' are defined for user convenience.
+    |#  The phony targets kamaji-output, kamaji-delta, and
+    |#  kamaji-grade are defined for user convenience.
+    |#  Output targets are likely to be the most time-expensive targets. Preparing
+    |#  delta files for grading gets more expensive as output files grow.
+    |#  The user is advised to use parallel-processing make calls for the
+    |#  kamaji-output and/or kamaji-delta targets;
+    |#  the kamaji-grade can then be used for presentation only.
+    |#
+    |#  When the makefile specifies the target, kamaji is asked to perform its
+    |#  work in silent mode.
     |#
     |
     |QUIET ?= @
@@ -187,11 +212,18 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList :=
     |KamajiGradeTargetList += Working/BETA_exercise.output.grade
     |
-    |.PHONY: kamaji-grade kamaji-output
+    |KamajiDeltaTargetList :=
+    |KamajiDeltaTargetList += Working/BETA_exercise.output.delta
+    |
+    |.PHONY: kamaji-grade kamaji-delta kamaji-output
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast grade
+    |
+    |kamaji-delta : $(KamajiDeltaTargetList)
+    |	@echo "make $@"
+    |	$(QUIET) kamaji fast delta
     |
     |kamaji-output : $(KamajiGradeTargetList:.grade=)
     |	@echo "make $@"
@@ -199,23 +231,23 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |Working/.kamaji.ruleset.bash :
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast show version
+    |	$(QUIET) kamaji fast silent show version
     |
     |Working/BETA_exercise.output : Working/.kamaji.ruleset.bash Working/BETA_exercise.bash
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.masked
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.delta
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/BETA_exercise.output
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |#
     |#  (eof}
@@ -261,10 +293,10 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 3.4.1.  kamaji expo makefile
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/GAMMA_exercise.cpp[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
+    |# Building rules based on baseline files...
+    |#	Testing/GAMMA_exercise.cpp
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export makefile
 3.5. Finalizations.
 3.6. Workspace Impact...
@@ -282,7 +314,16 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#  Let the make command determine what needs to be re-made,
     |#  but have it then call kamaji to make sure it is done right.
     |#
-    |#  The phony targets 'kamaji-output' and 'kamaji-grade' are defined for user convenience.
+    |#  The phony targets kamaji-output, kamaji-delta, and
+    |#  kamaji-grade are defined for user convenience.
+    |#  Output targets are likely to be the most time-expensive targets. Preparing
+    |#  delta files for grading gets more expensive as output files grow.
+    |#  The user is advised to use parallel-processing make calls for the
+    |#  kamaji-output and/or kamaji-delta targets;
+    |#  the kamaji-grade can then be used for presentation only.
+    |#
+    |#  When the makefile specifies the target, kamaji is asked to perform its
+    |#  work in silent mode.
     |#
     |
     |QUIET ?= @
@@ -290,11 +331,18 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList :=
     |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
     |
-    |.PHONY: kamaji-grade kamaji-output
+    |KamajiDeltaTargetList :=
+    |KamajiDeltaTargetList += Working/GAMMA_exercise.output.delta
+    |
+    |.PHONY: kamaji-grade kamaji-delta kamaji-output
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast grade
+    |
+    |kamaji-delta : $(KamajiDeltaTargetList)
+    |	@echo "make $@"
+    |	$(QUIET) kamaji fast delta
     |
     |kamaji-output : $(KamajiGradeTargetList:.grade=)
     |	@echo "make $@"
@@ -302,27 +350,27 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |Working/.kamaji.ruleset.bash :
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast show version
+    |	$(QUIET) kamaji fast silent show version
     |
     |Working/GAMMA_exercise : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.cpp
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output : Working/.kamaji.ruleset.bash Working/GAMMA_exercise
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.masked
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.delta
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |#
     |#  (eof}
@@ -408,15 +456,15 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.4.1.  kamaji ex makefile
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/ALPHA.clut[0m
-    |[38;5;12m#	Testing/GAMMA_exercise.cpp[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../ALPHA.bash ALPHA.bash[0m
-    |[38;5;12mln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../Testing/ALPHA.clut ALPHA.clut[0m
+    |# Building rules based on baseline files...
+    |#	Testing/ALPHA.clut
+    |#	Testing/GAMMA_exercise.cpp
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../ALPHA.bash ALPHA.bash
+    |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |kamaji export makefile
 4.5. Finalizations.
 4.6. Workspace Impact...
@@ -434,7 +482,16 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#  Let the make command determine what needs to be re-made,
     |#  but have it then call kamaji to make sure it is done right.
     |#
-    |#  The phony targets 'kamaji-output' and 'kamaji-grade' are defined for user convenience.
+    |#  The phony targets kamaji-output, kamaji-delta, and
+    |#  kamaji-grade are defined for user convenience.
+    |#  Output targets are likely to be the most time-expensive targets. Preparing
+    |#  delta files for grading gets more expensive as output files grow.
+    |#  The user is advised to use parallel-processing make calls for the
+    |#  kamaji-output and/or kamaji-delta targets;
+    |#  the kamaji-grade can then be used for presentation only.
+    |#
+    |#  When the makefile specifies the target, kamaji is asked to perform its
+    |#  work in silent mode.
     |#
     |
     |QUIET ?= @
@@ -444,11 +501,20 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
     |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
     |
-    |.PHONY: kamaji-grade kamaji-output
+    |KamajiDeltaTargetList :=
+    |KamajiDeltaTargetList += Working/GAMMA_exercise.output.delta
+    |KamajiDeltaTargetList += Working/BETA_exercise.output.delta
+    |KamajiDeltaTargetList += Working/ALPHA.clut.output.delta
+    |
+    |.PHONY: kamaji-grade kamaji-delta kamaji-output
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast grade
+    |
+    |kamaji-delta : $(KamajiDeltaTargetList)
+    |	@echo "make $@"
+    |	$(QUIET) kamaji fast delta
     |
     |kamaji-output : $(KamajiGradeTargetList:.grade=)
     |	@echo "make $@"
@@ -456,63 +522,63 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |Working/.kamaji.ruleset.bash :
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast show version
+    |	$(QUIET) kamaji fast silent show version
     |
     |Working/ALPHA.clut.bash : Working/.kamaji.ruleset.bash Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output : Working/.kamaji.ruleset.bash Working/ALPHA.clut.bash
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output.delta : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.masked
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output.grade : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.delta
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/ALPHA.clut.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/ALPHA.clut.output
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output : Working/.kamaji.ruleset.bash Working/BETA_exercise.bash
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.masked
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.delta
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/BETA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/BETA_exercise.output
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.cpp
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output : Working/.kamaji.ruleset.bash Working/GAMMA_exercise
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.masked
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.delta
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output
     |	@echo "make $@"
-    |	$(QUIET) kamaji fast make $@
+    |	$(QUIET) kamaji fast silent make $@
     |
     |#
     |#  (eof}

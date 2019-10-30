@@ -1,11 +1,5 @@
 #----------------------------------------------------------------------------------------------------------------------
 #
-#  kamaji.00.common_requirements.bash
-#
-#  20190902 BGH; created.
-#
-#----------------------------------------------------------------------------------------------------------------------
-#
 #  Copyright (c) 2019 Brian G. Holmes
 #
 #	This program is part of the Holmespun Testing Support repository.
@@ -23,13 +17,4 @@
 #
 #  See the COPYING.text file for further information.
 #
-#----------------------------------------------------------------------------------------------------------------------
-
-function defineRequirements() {
-  #
-  : clut_global_requirement	Kamaji-Purpose-0010								\
-				"The program will orchestrate a testing work-flow that ..."
-  #
-}
-
 #----------------------------------------------------------------------------------------------------------------------

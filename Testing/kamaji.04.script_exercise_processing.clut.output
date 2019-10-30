@@ -44,26 +44,26 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 1.4.1.  kamaji grades
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
+    |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |[38;5;12mcat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |# GT Working/BETA_exercise.output.grade does not exist
     |kamaji make BETA_exercise.output.grade
-    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |FAIL: BETA_exercise.output.grade
 1.5. Finalizations.
 1.6. Workspace Impact...
     |Only in 01.Omega: .kamaji.sed
@@ -124,32 +124,32 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 2.4.1.  kamaji grades
 2.4.1.1. Exit Status 1!
 2.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.output[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.output
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
+    |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.golden.masked does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
+    |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |[38;5;12mdiff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |# GT Working/BETA_exercise.output.grade does not exist
     |kamaji make BETA_exercise.output.grade
-    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |FAIL: BETA_exercise.output.grade
 2.5. Finalizations.
 2.6. Workspace Impact...
     |Only in 02.Omega: .kamaji.sed
@@ -216,32 +216,32 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 3.4.1.  kamaji grades
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.output[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.output
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
+    |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.golden.masked does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
+    |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |[38;5;12mdiff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |# GT Working/BETA_exercise.output.grade does not exist
     |kamaji make BETA_exercise.output.grade
-    |[38;5;10m[1mPASS:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |PASS: BETA_exercise.output.grade
 3.5. Finalizations.
 3.6. Workspace Impact...
     |Only in 03.Omega: .kamaji.sed
@@ -298,11 +298,11 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 4.4.1.  kamaji make BETA_exercise.bash
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'BETA_exercise.bash' file cannot be made; it is not a known derivative.[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |ERROR: The 'BETA_exercise.bash' file cannot be made; it is not a known derivative.
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: .kamaji.sed
@@ -344,16 +344,16 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 5.4.1.  kamaji make BETA_exercise.output
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
 5.5. Finalizations.
 5.6. Workspace Impact...
     |Only in 05.Omega: .kamaji.sed
@@ -402,20 +402,20 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 6.4.1.  kamaji make BETA_exercise.output.masked
 6.4.1.1. Exit Status 0!
 6.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output.masked" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output.masked" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
+    |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
 6.5. Finalizations.
 6.6. Workspace Impact...
     |Only in 06.Omega: .kamaji.sed
@@ -467,23 +467,23 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 7.4.1.  kamaji make BETA_exercise.output.delta
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output.delta" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output.delta" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
+    |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |[38;5;12mcat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
+    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
 7.5. Finalizations.
 7.6. Workspace Impact...
     |Only in 07.Omega: .kamaji.sed
@@ -538,26 +538,26 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 8.4.1.  kamaji make BETA_exercise.output.grade
 8.4.1.1. Exit Status 1!
 8.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;12mecho "BETA_exercise.output.grade" > Working/.kamaji.last_target.text[0m
-    |[38;5;12m# GT Working/BETA_exercise.output does not exist[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |[38;5;12m/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1[0m
-    |[38;5;12msed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191020_114929_3027/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial[0m
-    |[38;5;12mmv BETA_exercise.output.partial BETA_exercise.output[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.masked does not exist[0m
+    |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20191029_084349_16514/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' BETA_exercise.output.partial
+    |mv BETA_exercise.output.partial BETA_exercise.output
+    |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |[38;5;12msed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial[0m
-    |[38;5;12mmv BETA_exercise.output.masked.partial BETA_exercise.output.masked[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.delta does not exist[0m
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |[38;5;12mcat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1[0m
-    |[38;5;12m# GT Working/BETA_exercise.output.grade does not exist[0m
+    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |# GT Working/BETA_exercise.output.grade does not exist
     |kamaji make BETA_exercise.output.grade
-    |[38;5;9m[1mFAIL:[0m [38;5;15m[1mBETA_exercise.output.grade[0m
+    |FAIL: BETA_exercise.output.grade
 8.5. Finalizations.
 8.6. Workspace Impact...
     |Only in 08.Omega: .kamaji.sed
@@ -612,11 +612,11 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 9.4.1.  kamaji make BETA_exercise.nonsense
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
-    |[38;5;12m# Building rules based on baseline files...[0m
-    |[38;5;12m#	Testing/BETA_exercise.bash[0m
-    |[38;5;12mln --symbolic ../.kamaji.sed .kamaji.sed[0m
-    |[38;5;12mln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash[0m
-    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'BETA_exercise.nonsense' file cannot be made; it is not a known derivative.[0m
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |ERROR: The 'BETA_exercise.nonsense' file cannot be made; it is not a known derivative.
 9.5. Finalizations.
 9.6. Workspace Impact...
     |Only in 09.Omega: .kamaji.sed

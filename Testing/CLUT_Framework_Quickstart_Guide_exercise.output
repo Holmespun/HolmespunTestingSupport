@@ -1,20 +1,16 @@
 [](CLUT_Framework_quickstart_guide_exercise.bash...)
-[](=======================================================)
+[](================================================)
 
 # CLUT Framework Quick-Start Guide
 
-As the CLUT Framework is an integral part of the Holmespun Makefile Method (HMM),
-it is easiest to use in a working directory within a directory supported by an HMM makefile.
 This markdown file was generated automatically using the
-[Bash/Testing/CLUT_Framework_Quickstart_Guide_exercise.bash](Bash/Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)
+[Testing/CLUT_Framework_Quickstart_Guide_exercise.bash](Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)
 unit test.
 
-Here is how to get started with the HMM:
-
-1. Clone the Holmespun repository; it can go anywhere that is convenient to you.
+1. Clone the Holmespun Testing Support repository; it can go anywhere that is convenient to you.
 1. Add the fully-qualified path of the [bin](bin) directory to your PATH variable.
 
-	If you cloned the Holmespun Testing Support repository into your home directory, then the
+	If you cloned the repository into your home directory, then the
 	"export PATH=${HOME}/Holmespun/HolmespunTestingSupport/bin:${PATH}" command will work for you.
 	The modified PATH variable allows you to store the repository anywhere you like\;
 	it need not be collocated with your source code.
@@ -43,6 +39,7 @@ Here is how to get started with the HMM:
 	
 	Where <request> is one of the following:
 	      bless  [ <filename> | last ]...
+	      delta  [ <filename> | last ]...
 	      export [ ruleset ]
 	      grade  [ <filename> | last ]...
 	      invoke [ <filename> | last ]...
@@ -51,13 +48,14 @@ Here is how to get started with the HMM:
 	      set    <name> <value>
 	      show   [ configuration [ names | variables ] | copyright | version ]
 	
-	Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-	supported. Modifier and request abbreviations are also supported; ambiguity is
-	resolved using alphabetical order. No other modifiers or requests are applied
-	after a usage request is fulfilled.
+	Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+	quiet (silent), and usage (help) are supported. Modifier and request
+	abbreviations are also supported; ambiguity is resolved using alphabetical
+	order. No other modifiers or requests are applied after a help request is
+	fulfilled.
 	
-	Further help may be displayed by following the usage request by the subject of
-	interest; for example, "kamaji help fast" or "kamaji usage grade"
+	Specific usage may be displayed by following a help request by the subject of
+	interest; for example, "kamaji help fast" or "kamaji help grade"
 	
 	CLUT cases and unit test exercises are used and evaluated in similar ways:
 	compile it (if not already executable), invoke it to produce output, mask that
@@ -83,7 +81,7 @@ Here is how to get started with the HMM:
 	masked. Masking is performed using a user-defined sed script.
 	
 	Copyright (c) 2019 Brian G. Holmes.
-	kamaji version 0.4
+	kamaji version 0.5
 	$
 	~~~~
 
@@ -101,6 +99,7 @@ Here is how to get started with the HMM:
 	
 	Where <request> is one of the following:
 	      bless  [ <filename> | last ]...
+	      delta  [ <filename> | last ]...
 	      export [ ruleset ]
 	      grade  [ <filename> | last ]...
 	      invoke [ <filename> | last ]...
@@ -130,8 +129,8 @@ Here is how to get started with the HMM:
 	A 'grade' request without any specific targets is the same as a 'grade' request
 	for all known targets. Furthermore, those targets will be evaluated based when
 	their base sources were last modified. In this way, when the user modifies the
-	source file for a specific CLUT or unit test, then kamaji will give evaluation
-	of that test a higher priority than for all others.
+	source file for a specific CLUT or unit test, kamaji will give evaluation of
+	that test a higher priority than for all others.
 	
 	Although grades are identified using the "grade" file name extension, the
 	actual grade is not stored. This practice will cause kamaji to evaluate a CLUT
@@ -140,7 +139,7 @@ Here is how to get started with the HMM:
 	every time it is requested.
 	
 	Copyright (c) 2019 Brian G. Holmes.
-	kamaji version 0.4
+	kamaji version 0.5
 	$
 	~~~~
 
@@ -186,8 +185,8 @@ Here is how to get started with the HMM:
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	printf.clutc.20191028_084059_13674/00.compiled.bash > printf.clut.output.partial 2>&1
-	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191028_084059_13386/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' printf.clut.output.partial
+	printf.clutc.20191030_105639_17649/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191030_105637_14740/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' printf.clut.output.partial
 	mv printf.clut.output.partial printf.clut.output
 	$
 	~~~~
@@ -269,14 +268,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20191028_084059_13674
-	./Working/printf.clutc.20191028_084059_13674/00.compiled.bash
-	./Working/printf.clutc.20191028_084059_13674/00.namelist.text
-	./Working/printf.clutc.20191028_084059_13674/01.bash
+	./Working/printf.clutc.20191030_105639_17649
+	./Working/printf.clutc.20191030_105639_17649/00.compiled.bash
+	./Working/printf.clutc.20191030_105639_17649/00.namelist.text
+	./Working/printf.clutc.20191030_105639_17649/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20191028_084059_13773
-	./Working/printf.clutr.20191028_084059_13773/01.Alpha
-	./Working/printf.clutr.20191028_084059_13773/01.Omega
+	./Working/printf.clutr.20191030_105639_18769
+	./Working/printf.clutr.20191030_105639_18769/01.Alpha
+	./Working/printf.clutr.20191030_105639_18769/01.Omega
 	$
 	~~~~
 
@@ -385,8 +384,8 @@ make the current output file the new baseline.
 	> 3.4.1.  printf "%03d %04X %04s %04f\n" 18.19 18.19 18.19 18.19
 	> 3.4.1.1. Exit Status 1!
 	> 3.4.1.2. STDERR [text]...
-	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 655: printf: 18.19: invalid number
-	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 655: printf: 18.19: invalid number
+	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
+	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
 	> 3.4.1.3. STDOUT [text]...
 	>     |018 0000 18.19 18.190000
 	> 3.5. Finalizations.
@@ -404,13 +403,13 @@ including a list of best practices.
 
 ## Copyright 2018-2019 Brian G. Holmes
 
-This program is part of the Holmespun Library Bashing repository.
+This program is part of the Holmespun Testing Support repository.
 
-The Holmespun Library Bashing repository contains free software: you can redistribute it and/or modify it under
+The Holmespun Testing Support repository contains free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of
 the License, or (at your option) any later version.
 
-The Holmespun Library Bashing repository is distributed in the hope that it will be useful, but WITHOUT ANY
+The Holmespun Testing Support repository is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 
@@ -421,4 +420,4 @@ See the [COPYING.text](COPYING.text) file for further licensing information.
 
 **(eof)**
 
-[](=======================================================)
+[](================================================)

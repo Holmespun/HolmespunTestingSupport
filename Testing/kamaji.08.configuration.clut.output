@@ -241,8 +241,8 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 3.4.1.1. Exit Status 1!
 3.4.1.2. STDERR [text]...
     |kamaji set review-command 
-    |[38;5;9m[1mERROR:[0m [38;5;15m[1mEmpty values are not useful in a configuration file.[0m
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |ERROR: Empty values are not useful in a configuration file.
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -252,6 +252,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -260,13 +261,14 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -292,7 +294,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 3.5. Finalizations.
 3.6. Workspace Impact...
     |Only in 03.Omega: FOXTROT
@@ -344,8 +346,8 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
     |kamaji set verbose-level quiet
-    |[38;5;9m[1mERROR:[0m [38;5;15m[1mThe 'verbose-level' configuration variable is not supported.[0m
-    |[38;5;11mUSAGE:[0m kamaji [<modifier>]... [<request>] [<parameter>]...
+    |ERROR: The 'verbose-level' configuration variable is not supported.
+    |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
     |      fast
@@ -355,6 +357,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
+    |      delta  [ <filename> | last ]...
     |      export [ ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
@@ -363,13 +366,14 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |      set    <name> <value>
     |      show   [ configuration [ names | variables ] | copyright | version ]
     |
-    |Synonyms configure (set), noisy (verbose), quiet (silent), and usage (help) are
-    |supported. Modifier and request abbreviations are also supported; ambiguity is
-    |resolved using alphabetical order. No other modifiers or requests are applied
-    |after a usage request is fulfilled.
+    |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
+    |quiet (silent), and usage (help) are supported. Modifier and request
+    |abbreviations are also supported; ambiguity is resolved using alphabetical
+    |order. No other modifiers or requests are applied after a help request is
+    |fulfilled.
     |
-    |Further help may be displayed by following the usage request by the subject of
-    |interest; for example, "kamaji help fast" or "kamaji usage grade"
+    |Specific usage may be displayed by following a help request by the subject of
+    |interest; for example, "kamaji help fast" or "kamaji help grade"
     |
     |CLUT cases and unit test exercises are used and evaluated in similar ways:
     |compile it (if not already executable), invoke it to produce output, mask that
@@ -395,7 +399,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.4
+    |kamaji version 0.5
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: FOXTROT
@@ -445,7 +449,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 5.4. Target CLU Call.
 5.4.1.  kamaji show version
 5.4.1.1. STDOUT [text]...
-    |kamaji version 0.4
+    |kamaji version 0.5
 5.5. Finalizations.
 5.6. Workspace Impact...
     |Only in 05.Omega: FOXTROT

@@ -7,7 +7,7 @@
 ###	@author		Brian G. Holmes
 ###	@copyright	GNU General Public License
 ###	@brief		Command-Line Utility Test (CLUT) compilation script.
-###	@todo		https://github.com/Holmespun/HolmespunMakefileMethod/issues
+###	@todo		https://github.com/Holmespun/HolmespunTestingSupport/issues
 ###	@remark		Usage: clutc.bash <clut-specification> [ <clut-compiled-specification> ]
 ###
 ###	@details
@@ -60,20 +60,22 @@
 #  20181008 BGH; added clut_global_notation and output of notations in the global information section.
 #  20190707 BGH; moved to the HolmespunTestingSupport repository.
 #
+#----------------------------------------------------------------------------------------------------------------------
+#
 #  Copyright (c) 2012-2019 Brian G. Holmes
 #
-#	This program is part of the Holmespun Makefile Method.
+#	This program is part of the Holmespun Testing Support repository.
 #
-#	The Holmespun Makefile Method is free software: you can redistribute it and/or modify it under the terms of the
-#	GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
-#	(at your option) any later version.
+#	The Holmespun Testing Support repository only contains free software: you can redistribute it and/or modify it
+#	under the terms of the GNU General Public License as published by the Free Software Foundation, either version
+#	three (3) of the License, or (at your option) any later version.
 #
-#	The Holmespun Makefile Method is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-#	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-#	Public License for more details.
+#	The Holmespun Testing Support repository is distributed in the hope that it will be useful, but WITHOUT ANY
+#	WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#	General Public License for more details.
 #
-#	You should have received a copy of the GNU General Public License along with this program. If not, see
-#	<https://www.gnu.org/licenses/>.
+#	You should have received a copy of the GNU General Public License along with this file. If not, see
+#       <https://www.gnu.org/licenses/>.
 #
 #  See the COPYING.text file for further information.
 #
