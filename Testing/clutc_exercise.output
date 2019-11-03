@@ -199,9 +199,9 @@ myAwesomeProgram.clut.bash...
    |#!/bin/bash
    |#----------------------------------------------------------------------------------------
    |#
-   |#  ./myAwesomeProgram.clutc.20191027_214513_1163/00.compiled.bash...
+   |#  ./myAwesomeProgram.clutc.20191103_092015_15463/00.compiled.bash...
    |#
-   |#  Created by clutc on 2019-10-27 at 21:45:13.
+   |#  Created by clutc on 2019-11-03 at 09:20:16.
    |#
    |#  CLUT cases were defined in myAwesomeProgram.clut; there were 7 of them.
    |#
@@ -863,7 +863,7 @@ myAwesomeProgram.clut.bash...
    |     #
    |     clutCaseRunTimeReport 1 Target CLU Call.
    |     #
-   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2019-10-27_output.fuzzy2"
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2019-11-03_output.fuzzy2"
    |     #
    |     clutCaseRunTimeReport 1 Finalizations.
    |     #
@@ -1215,7 +1215,6 @@ myAwesomeProgram.clut.output...
    |6.6.1. output.fuzzy1 (created) [UNKNOWN]...
    |    |<meta> Data file type (FUZZY1) without well-defined dump handler.
    |    |<meta> The file utility describes its MIME type as "text/plain; charset=us-ascii"
-   |    |<meta> The file has an md5sum of 7ca0568484022894894d01cfdc6e2228.
    |
    |7. CreateOutputFileWithSpecialDumpHandler.
    |7.1. Requirements.

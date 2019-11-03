@@ -36,7 +36,7 @@
 #	SortArray
 #
 #	KamajiEchoArrayAssignments
-#	KamajiEchoListOfDecendantFName
+#	KamajiEchoListOfDescendantFName
 #	KamajiExitAfterUsage
 #	KamajiFileClassification
 #	KamajiOrderByLatestBaseSource
@@ -116,7 +116,7 @@
 #  20191028 BGH; version 0.5, silent running for specific makefile targets, delta command.
 #
 #  Problems detected when the representative of a script is called: The files it sources are  not in the same relative
-#  hierarchy as the symbolic link. Created a Bash script representative tha worked very well, but a Bash script
+#  hierarchy as the symbolic link. Created a Bash script representative that worked very well, but a Bash script
 #  representative does not carry the same modification date as the file it is supposed to represent. As such, we invoke
 #  the readlink version of each representative. 20190910 BGH.
 #
@@ -493,7 +493,7 @@ function EchoExecutableFilesMatching() {
   if [ ${#ResultsFList} -eq 0 ]
   then
      #
-     #  Check for the root of a scrpt name.
+     #  Check for the root of a script name.
      #
      ProgramFSpec=${TargetFRoot%.*}
      #
@@ -679,7 +679,7 @@ function KamajiEchoArrayAssignments() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function KamajiEchoListOfDecendantFName() {
+function KamajiEchoListOfDescendantFName() {
   #
   local -r SourceFName=${1}
   local -r TargetClass=${2}
@@ -703,7 +703,7 @@ function KamajiEchoListOfDecendantFName() {
      for ChildsFName in ${__KamajiMyChildrenList[${SourceFName}]}
      do
        #
-       ResultFList+=" $(KamajiEchoListOfDecendantFName ${ChildsFName} ${TargetClass})"
+       ResultFList+=" $(KamajiEchoListOfDescendantFName ${ChildsFName} ${TargetClass})"
        #
      done
      #
@@ -1193,7 +1193,7 @@ function KamajiModifierUsage_configure() {
 		"or if the /usr/bin/time program is not available."
   #
   EchoPara80-4	"verbosity-level <adjective> -"									\
-		"The level of disgnostic output produced."							\
+		"The level of diagnostic output produced."							\
 		"The 'quiet' level suppresses diagnostic output."						\
 		"The 'light' level will describe the 'make' requests used to fulfill the user's request."	\
 		"The 'heavy' level will augment light output with a description of commands applied to files"	\
@@ -1223,7 +1223,7 @@ function KamajiModifierUsage_delta() {
   #
   EchoPara80	"A 'delta' request asks ${__KamajiScriptName} to compare the current output of each"		\
 		"CLUT or unit test exercise to its baseline."							\
-		"The main reason that the delta command exists is that output file comparesons may be"		\
+		"The main reason that the delta command exists is that output file comparisons may be"		\
 		"expensive, and thus they are a good candidate to apply apply parallel processing to."
   #
   EchoPara80	"A 'delta last' request will compare the current output of the last make target processed"	\
@@ -1359,12 +1359,12 @@ function KamajiModifierUsage_make() {
 		"When the user asks ${__KamajiScriptName} to make a file that is already the most"		\
 		"up-to-date version of itself, then ${__KamajiScriptName} ignores the request;"			\
 		"it is not an error."										\
-		"Files are only remade after the files that thay are created from are remade, if necessary."	\
-		"Files are only remade when files that thay are created from have changed;"			\
+		"Files are only remade after the files that they are created from are remade, if necessary."	\
+		"Files are only remade when files that they are created from have changed;"			\
 		"either because the user changed them or because they themselves were remade."
   #
   EchoPara80	"A 'make grades' request is the same as a 'grade' request: Every output file is generated,"	\
-		"compared to its associated baseline, and then graded based on that comparision."
+		"compared to its associated baseline, and then graded based on that comparison."
   #
   EchoPara80	"A 'make outputs' request is the same as an 'invoke' request: Every output file is generated."
   #
@@ -1395,7 +1395,7 @@ function KamajiModifierUsage_review() {
 		"are so few that specialized tools are not necessary to perform a detailed review."		\
 		"Long reviews are performed for all other results."
   #
-  EchoPara80	"The vimdiff command is a very useful tool for perfoming long reviews."				\
+  EchoPara80	"The vimdiff command is a useful tool for performing long reviews."				\
 		"Users not familiar with the editor may want to make note of the following vim commands:"	\
 		"the :help command to request help; the :qa command to exit the editor;"			\
 		"the h, j, k, l, and arrow keys to move around in a pane;"					\
@@ -1489,7 +1489,7 @@ function KamajiModifierUsage() {
   echo "Where <request> is one of the following:"
   echo "      bless  [ <filename> | last ]..."
   echo "      delta  [ <filename> | last ]..."
-  echo "      export [ ruleset ]"
+  echo "      export [ makefile | ruleset ]"
   echo "      grade  [ <filename> | last ]..."
   echo "      invoke [ <filename> | last ]..."
   echo "      make   [ <filename> | last | grades | outputs ]..."
@@ -1946,7 +1946,7 @@ function KamajiBuildRulesForTestingSource() {
   local -r SourceFName=$(basename ${SourceFSpec})
   local -r SourceFType=$(Xtension ${SourceFName})
   #
-  #  Detect a SourceFType amonst the delclared data file names.
+  #  Detect a SourceFType amongst the declared data file names.
   #
   local -r DataFileNameLess=${__KamajiDataFileNameList/:${SourceFName}:/}
   #
@@ -2026,7 +2026,7 @@ function KamajiBuildRulesLoadXtraDependents() {
             #
          else
             #
-            EchoErrorAndExit 1 "Errant specification in extra dependant file: Cannot find the '${ExternFSpec}' file."
+            EchoErrorAndExit 1 "Errant specification in extra dependent file: Cannot find the '${ExternFSpec}' file."
             #
          fi
          #
@@ -2162,9 +2162,9 @@ function KamajiRequestBless() {
           #  
        fi
        #
-       #  Find the Review decendants of the target.
+       #  Find the Review descendants of the target.
        #
-       TargetFList+=" $(KamajiEchoListOfDecendantFName ${SourceFName} Review)"
+       TargetFList+=" $(KamajiEchoListOfDescendantFName ${SourceFName} Review)"
        #  
      done
      #
@@ -2536,9 +2536,9 @@ function KamajiRequestGradeOrOutputOrReviewOrDelta() {
           #
        fi
        #
-       #  Find the ${TargetClass} decendants of the target.
+       #  Find the ${TargetClass} descendants of the target.
        #
-       TargetCheck=$(KamajiEchoListOfDecendantFName ${SourceFName} ${TargetClass})
+       TargetCheck=$(KamajiEchoListOfDescendantFName ${SourceFName} ${TargetClass})
        #
        if [ ${#TargetCheck} -eq 0 ]
        then
@@ -2740,7 +2740,7 @@ function KamajiRequestShow_version() {
   local -r    Request=${1}
   local -r    Object=${2}
   #
-  echo "${__KamajiScriptName} version 0.5"
+  echo "${__KamajiScriptName} version 0.6"
   #
 }
 

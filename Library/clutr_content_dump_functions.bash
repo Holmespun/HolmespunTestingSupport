@@ -52,11 +52,11 @@ function __clutCaseRunTimeDumpUnknown() {
   #
   local -r MimeType=$(file --mime "${TargetFSpec}" | sed --expression='s,.*: ,,')
   #
-  local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
+# local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
   #
   echo "<meta> Data file type (${TargetFType}) without well-defined dump handler."
   echo "<meta> The file utility describes its MIME type as \"${MimeType}\""
-  echo "<meta> The file has an md5sum of ${Checksum}."
+# echo "<meta> The file has an md5sum of ${Checksum}."
   #
 }
 
@@ -106,11 +106,11 @@ function __clutCaseRunTimeDumpGzip() {
   #
   local -r TargetFSpec="${1}"
   #
-  local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
+# local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
   #
   echo "<meta> Gzip file."
   #
-  echo "<meta> The file has an md5sum of ${Checksum}."
+# echo "<meta> The file has an md5sum of ${Checksum}."
   #
   echo "<meta> The archive contains the following files..."
   #
@@ -130,11 +130,11 @@ function __clutCaseRunTimeDumpImageFile() {
   #
   local -r TargetFSpec="${1}"
   #
-  local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
+# local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
   #
   echo "<meta> Image file:$(file ${TargetFSpec} | sed --expression='s,.*:,,')."
   #
-  echo "<meta> The file has an md5sum of ${Checksum}."
+# echo "<meta> The file has an md5sum of ${Checksum}."
   #
   echo "<meta> No further information available."
   #
@@ -342,11 +342,11 @@ function __clutCaseRunTimeDumpZip() {
   #
   local -r TargetFSpec="${1}"
   #
-  local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
+# local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
   #
   echo "<meta> Zip file."
   #
-  echo "<meta> The file has an md5sum of ${Checksum}."
+# echo "<meta> The file has an md5sum of ${Checksum}."
   #
   echo "<meta> The archive contains the following files..."
   #

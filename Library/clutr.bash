@@ -180,7 +180,7 @@ function __clutCaseRunTimeEchoTemporaryFSpec() {
 ###		ModifiedDSpec are dumped. Files that exist in both directories but differ are dumped.
 ###
 #
-#  20190321 BGH; removed "--text" from the diff command because we have not established that the file shouodl be text.
+#  20190321 BGH; removed "--text" from the diff command because we have not established that the file should be text.
 #
 #----------------------------------------------------------------------------------------------------------------------
 

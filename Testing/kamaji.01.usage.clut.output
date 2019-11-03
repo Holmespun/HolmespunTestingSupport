@@ -33,7 +33,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -74,7 +74,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 1.5. Finalizations.
 1.6. Workspace Impact...
 1.6.1. The initial and final workspace contents are equivalent.
@@ -100,7 +100,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -141,7 +141,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 2.5. Finalizations.
 2.6. Workspace Impact...
 2.6.1. The initial and final workspace contents are equivalent.
@@ -167,7 +167,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -208,7 +208,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 3.5. Finalizations.
 3.6. Workspace Impact...
 3.6.1. The initial and final workspace contents are equivalent.
@@ -238,7 +238,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -279,7 +279,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: .kamaji.sed
@@ -334,7 +334,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -435,7 +435,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    not used if this variable is set to NONE or if the /usr/bin/time program is
     |    not available.
     |    
-    |    verbosity-level <adjective> - The level of disgnostic output produced. The
+    |    verbosity-level <adjective> - The level of diagnostic output produced. The
     |    'quiet' level suppresses diagnostic output. The 'light' level will describe
     |    the 'make' requests used to fulfill the user's request. The 'heavy' level
     |    will augment light output with a description of commands applied to files
@@ -454,7 +454,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 5.5. Finalizations.
 5.6. Workspace Impact...
 5.6.1. The initial and final workspace contents are equivalent.
@@ -479,7 +479,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -521,7 +521,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |a ruleset when it does not find one to load.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 6.5. Finalizations.
 6.6. Workspace Impact...
 6.6.1. The initial and final workspace contents are equivalent.
@@ -546,7 +546,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -585,7 +585,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |every time it is requested.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 7.5. Finalizations.
 7.6. Workspace Impact...
 7.6.1. The initial and final workspace contents are equivalent.
@@ -610,7 +610,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -623,14 +623,14 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Users can request that kamaji generate one or more specific files by naming
     |them in a 'make' request. When the user asks kamaji to make a file that is
     |already the most up-to-date version of itself, then kamaji ignores the request;
-    |it is not an error. Files are only remade after the files that thay are created
-    |from are remade, if necessary. Files are only remade when files that thay are
+    |it is not an error. Files are only remade after the files that they are created
+    |from are remade, if necessary. Files are only remade when files that they are
     |created from have changed; either because the user changed them or because they
     |themselves were remade.
     |
     |A 'make grades' request is the same as a 'grade' request: Every output file is
     |generated, compared to its associated baseline, and then graded based on that
-    |comparision.
+    |comparison.
     |
     |A 'make outputs' request is the same as an 'invoke' request: Every output file
     |is generated.
@@ -640,7 +640,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |when kamaji is used for test-driven development.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 8.5. Finalizations.
 8.6. Workspace Impact...
 8.6.1. The initial and final workspace contents are equivalent.
@@ -665,7 +665,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -766,7 +766,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    not used if this variable is set to NONE or if the /usr/bin/time program is
     |    not available.
     |    
-    |    verbosity-level <adjective> - The level of disgnostic output produced. The
+    |    verbosity-level <adjective> - The level of diagnostic output produced. The
     |    'quiet' level suppresses diagnostic output. The 'light' level will describe
     |    the 'make' requests used to fulfill the user's request. The 'heavy' level
     |    will augment light output with a description of commands applied to files
@@ -785,7 +785,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 9.5. Finalizations.
 9.6. Workspace Impact...
 9.6.1. The initial and final workspace contents are equivalent.
@@ -810,7 +810,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -824,7 +824,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the software version.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 10.5. Finalizations.
 10.6. Workspace Impact...
 10.6.1. The initial and final workspace contents are equivalent.
@@ -849,7 +849,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -865,7 +865,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |one. An 'export ruleset' request can be used to store the current ruleset.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 11.5. Finalizations.
 11.6. Workspace Impact...
 11.6.1. The initial and final workspace contents are equivalent.
@@ -890,7 +890,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -905,7 +905,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 12.5. Finalizations.
 12.6. Workspace Impact...
 12.6.1. The initial and final workspace contents are equivalent.
@@ -930,7 +930,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -971,7 +971,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 13.5. Finalizations.
 13.6. Workspace Impact...
 13.6.1. The initial and final workspace contents are equivalent.
@@ -996,7 +996,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1012,7 +1012,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 14.5. Finalizations.
 14.6. Workspace Impact...
 14.6.1. The initial and final workspace contents are equivalent.
@@ -1037,7 +1037,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1053,7 +1053,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 15.5. Finalizations.
 15.6. Workspace Impact...
 15.6.1. The initial and final workspace contents are equivalent.
@@ -1078,7 +1078,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1094,7 +1094,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 16.5. Finalizations.
 16.6. Workspace Impact...
 16.6.1. The initial and final workspace contents are equivalent.
@@ -1119,7 +1119,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1134,7 +1134,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 17.5. Finalizations.
 17.6. Workspace Impact...
 17.6.1. The initial and final workspace contents are equivalent.
@@ -1159,7 +1159,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1175,7 +1175,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 18.5. Finalizations.
 18.6. Workspace Impact...
 18.6.1. The initial and final workspace contents are equivalent.
@@ -1200,7 +1200,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1224,7 +1224,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 19.5. Finalizations.
 19.6. Workspace Impact...
 19.6.1. The initial and final workspace contents are equivalent.
@@ -1249,7 +1249,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1273,7 +1273,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 20.5. Finalizations.
 20.6. Workspace Impact...
 20.6.1. The initial and final workspace contents are equivalent.
@@ -1298,7 +1298,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1322,7 +1322,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 21.5. Finalizations.
 21.6. Workspace Impact...
 21.6.1. The initial and final workspace contents are equivalent.
@@ -1347,7 +1347,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1368,7 +1368,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |are so few that specialized tools are not necessary to perform a detailed
     |review. Long reviews are performed for all other results.
     |
-    |The vimdiff command is a very useful tool for perfoming long reviews. Users not
+    |The vimdiff command is a useful tool for performing long reviews. Users not
     |familiar with the editor may want to make note of the following vim commands:
     |the :help command to request help; the :qa command to exit the editor; the h,
     |j, k, l, and arrow keys to move around in a pane; and the [ctrl]-h, [ctrl]-l,
@@ -1382,7 +1382,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |new-, short-, and long-review-command variables, respectively.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 22.5. Finalizations.
 22.6. Workspace Impact...
 22.6.1. The initial and final workspace contents are equivalent.
@@ -1407,7 +1407,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1424,7 +1424,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 23.5. Finalizations.
 23.6. Workspace Impact...
 23.6.1. The initial and final workspace contents are equivalent.
@@ -1449,7 +1449,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1466,7 +1466,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 24.5. Finalizations.
 24.6. Workspace Impact...
 24.6.1. The initial and final workspace contents are equivalent.
@@ -1491,7 +1491,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ ruleset ]
+    |      export [ makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -1503,7 +1503,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |
     |A 'delta' request asks kamaji to compare the current output of each CLUT or
     |unit test exercise to its baseline. The main reason that the delta command
-    |exists is that output file comparesons may be expensive, and thus they are a
+    |exists is that output file comparisons may be expensive, and thus they are a
     |good candidate to apply apply parallel processing to.
     |
     |A 'delta last' request will compare the current output of the last make target
@@ -1517,7 +1517,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |processing that test a higher priority than all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.5
+    |kamaji version 0.6
 25.5. Finalizations.
 25.6. Workspace Impact...
 25.6.1. The initial and final workspace contents are equivalent.

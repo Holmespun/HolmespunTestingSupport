@@ -40,7 +40,7 @@ unit test.
 	Where <request> is one of the following:
 	      bless  [ <filename> | last ]...
 	      delta  [ <filename> | last ]...
-	      export [ ruleset ]
+	      export [ makefile | ruleset ]
 	      grade  [ <filename> | last ]...
 	      invoke [ <filename> | last ]...
 	      make   [ <filename> | last | grades | outputs ]...
@@ -100,7 +100,7 @@ unit test.
 	Where <request> is one of the following:
 	      bless  [ <filename> | last ]...
 	      delta  [ <filename> | last ]...
-	      export [ ruleset ]
+	      export [ makefile | ruleset ]
 	      grade  [ <filename> | last ]...
 	      invoke [ <filename> | last ]...
 	      make   [ <filename> | last | grades | outputs ]...
@@ -185,15 +185,15 @@ unit test.
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	printf.clutc.20191030_105639_17649/00.compiled.bash > printf.clut.output.partial 2>&1
-	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191030_105637_14740/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' printf.clut.output.partial
+	printf.clutc.20191103_092016_17616/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191103_092015_14817/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' printf.clut.output.partial
 	mv printf.clut.output.partial printf.clut.output
 	$
 	~~~~
 
 	Kamaji displayed system commands that he invoked on your behalf
 	and added some comments to explain why he did these things:
-	- He builds a ruleset based on the content sof the baseline-folder.
+	- He builds a ruleset based on the contents of the baseline-folder.
 	- He uses symbolic linked in the working-folder to represent baseline and other source files.
 	- He remembers the last target file you requested he generate so that you can use the *last* shortcut.
 	- He created a Bash script using the *clutc* program because it was needed but did not exist.
@@ -268,14 +268,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20191030_105639_17649
-	./Working/printf.clutc.20191030_105639_17649/00.compiled.bash
-	./Working/printf.clutc.20191030_105639_17649/00.namelist.text
-	./Working/printf.clutc.20191030_105639_17649/01.bash
+	./Working/printf.clutc.20191103_092016_17616
+	./Working/printf.clutc.20191103_092016_17616/00.compiled.bash
+	./Working/printf.clutc.20191103_092016_17616/00.namelist.text
+	./Working/printf.clutc.20191103_092016_17616/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20191030_105639_18769
-	./Working/printf.clutr.20191030_105639_18769/01.Alpha
-	./Working/printf.clutr.20191030_105639_18769/01.Omega
+	./Working/printf.clutr.20191103_092017_18775
+	./Working/printf.clutr.20191103_092017_18775/01.Alpha
+	./Working/printf.clutr.20191103_092017_18775/01.Omega
 	$
 	~~~~
 

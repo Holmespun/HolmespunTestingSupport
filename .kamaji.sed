@@ -26,20 +26,11 @@ s,[0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\},HH:MM:SS,g
 
 #----------------------------------------------------------------------------------------------------------------------
 #
-#  In:	PATH="/home/bgh/Holmespun/HolmespunTestingSupport/Working/kamaji.bash
+#  In:	PATH="/home/username/Holmespun/HolmespunTestingSupport/Working/kamaji.bash
 #  Out: PATH="${HolmespunTestingSupport}/Working/kamaji.bash
 #
 #----------------------------------------------------------------------------------------------------------------------
 
 s,/[^[:space:]]*/HolmespunTestingSupport,${HolmespunTestingSupport},
-
-#----------------------------------------------------------------------------------------------------------------------
-#
-#  In:	.kamaji.last_target.13148.text
-#  Out: .kamaji.last_target.PID.text
-#
-#----------------------------------------------------------------------------------------------------------------------
-
-#s/.kamaji.last_target.[0-9]\{1,5\}.text/.kamaji.last_target.PID.text/
 
 #----------------------------------------------------------------------------------------------------------------------

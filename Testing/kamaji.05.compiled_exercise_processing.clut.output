@@ -64,7 +64,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -90,7 +90,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 1.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 1.6.2.5. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
@@ -167,7 +166,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -193,7 +192,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 2.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 2.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 2.6.2.5. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
 2.6.2.6. GAMMA_exercise.golden.masked...
@@ -276,7 +274,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -302,7 +300,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 3.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 3.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 3.6.2.5. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
 3.6.2.6. GAMMA_exercise.golden.masked...
@@ -425,7 +422,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
 5.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
@@ -441,7 +438,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 5.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 5.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 5.6.2.5. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
@@ -501,7 +497,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -521,7 +517,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 6.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 6.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 6.6.2.5. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
@@ -584,7 +579,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -607,7 +602,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 7.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 7.6.2.5. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
@@ -673,7 +667,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191029_084342_12885/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20191103_092016_17656/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -699,7 +693,6 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.6.2.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-    |<meta> The file has an md5sum of bc796d9408cc179a357664dc80a2e6b3.
 8.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 8.6.2.5. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
