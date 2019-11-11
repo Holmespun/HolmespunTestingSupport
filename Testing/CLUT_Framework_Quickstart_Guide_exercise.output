@@ -81,7 +81,7 @@ unit test.
 	masked. Masking is performed using a user-defined sed script.
 	
 	Copyright (c) 2019 Brian G. Holmes.
-	kamaji version 0.5
+	kamaji version 0.6
 	$
 	~~~~
 
@@ -139,7 +139,7 @@ unit test.
 	every time it is requested.
 	
 	Copyright (c) 2019 Brian G. Holmes.
-	kamaji version 0.5
+	kamaji version 0.6
 	$
 	~~~~
 
@@ -185,8 +185,8 @@ unit test.
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	printf.clutc.20191103_092016_17616/00.compiled.bash > printf.clut.output.partial 2>&1
-	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191103_092015_14817/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,_TIMEZONE_,_TIMEZONE_,g' printf.clut.output.partial
+	printf.clutc.20191111_072558_7969/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191111_072557_5374/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
 	mv printf.clut.output.partial printf.clut.output
 	$
 	~~~~
@@ -268,14 +268,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20191103_092016_17616
-	./Working/printf.clutc.20191103_092016_17616/00.compiled.bash
-	./Working/printf.clutc.20191103_092016_17616/00.namelist.text
-	./Working/printf.clutc.20191103_092016_17616/01.bash
+	./Working/printf.clutc.20191111_072558_7969
+	./Working/printf.clutc.20191111_072558_7969/00.compiled.bash
+	./Working/printf.clutc.20191111_072558_7969/00.namelist.text
+	./Working/printf.clutc.20191111_072558_7969/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20191103_092017_18775
-	./Working/printf.clutr.20191103_092017_18775/01.Alpha
-	./Working/printf.clutr.20191103_092017_18775/01.Omega
+	./Working/printf.clutr.20191111_072558_8969
+	./Working/printf.clutr.20191111_072558_8969/01.Alpha
+	./Working/printf.clutr.20191111_072558_8969/01.Omega
 	$
 	~~~~
 

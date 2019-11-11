@@ -1,8 +1,16 @@
-Testing/kamaji.00.common_functions.bash kamaji.02.modifiers.clut
-Testing/kamaji.00.common_functions.bash kamaji.03.clut_processing.clut
-Testing/kamaji.00.common_functions.bash kamaji.04.script_exercise_processing.clut
-Testing/kamaji.00.common_functions.bash kamaji.05.compiled_exercise_processing.clut
-Testing/kamaji.00.common_functions.bash kamaji.06.export_ruleset.clut
-Testing/kamaji.00.common_functions.bash kamaji.07.export_makefile.clut
-Testing/kamaji.00.common_functions.bash kamaji.08.configuration.clut
-Testing/kamaji.00.common_functions.bash kamaji.09.review.clut
+#
+#  .kamaji.deps
+#
+#  Makefile-format filename to filename dependency declarations as they would appear in the working-folder.
+#
+
+kamaji.02.modifiers.clut : kamaji.00.common_functions.bash
+kamaji.03.clut_processing.clut : kamaji.00.common_functions.bash
+kamaji.04.script_exercise_processing.clut : kamaji.00.common_functions.bash
+kamaji.05.compiled_exercise_processing.clut : kamaji.00.common_functions.bash
+kamaji.06.export_ruleset.clut : kamaji.00.common_functions.bash
+kamaji.07.export_makefile.clut : kamaji.00.common_functions.bash
+kamaji.08.configuration.clut : kamaji.00.common_functions.bash
+kamaji.09.review.clut : kamaji.00.common_functions.bash
+
+#  (eof)

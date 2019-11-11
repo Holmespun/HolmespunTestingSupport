@@ -872,7 +872,7 @@ function KamajiConfigurationCheckValues() {
   __KamajiSystemMasking+=" --expression='s,${USER},_USER_,g'"
   __KamajiSystemMasking+=" --expression='s,${LOGNAME},_LOGNAME_,g'"
   __KamajiSystemMasking+=" --expression='s,$(uname -n),_HOSTNAME_,g'"
-  __KamajiSystemMasking+=" --expression='s,$(date '+%Z'),_TIMEZONE_,g'"
+  __KamajiSystemMasking+=" --expression='s,\([^A-Z]\)$(date '+%Z')\([^A-Z]\),\1_TIMEZONE_\2,g'"
   #
   local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
   #
@@ -1996,10 +1996,21 @@ function KamajiBuildRulesForTestingSource() {
 }
 
 #----------------------------------------------------------------------------------------------------------------------
+#
+#  KamajiBuildRulesLoadXtraDependents
+#
+#  <target-fname> : <source-fname>...
+#
+#----------------------------------------------------------------------------------------------------------------------
 
 function KamajiBuildRulesLoadXtraDependents() {
   #
-  local Directory ExternFSpec ExternFName TargetFSpec TargetFName
+  local    Directory SourceFName
+  local    TargetFName ColonSeparator ListOfSourceFName
+  local    ListOfTargetFName
+  #
+  local -i LastIndexOfTargetFName
+  local -i LineNumber
   #
   for Directory in ${HOME} .
   do
@@ -2007,28 +2018,105 @@ function KamajiBuildRulesLoadXtraDependents() {
     if [ -s ${Directory}/${__KamajiXtraDependentFName} ]
     then
        #
-       while read ExternFSpec TargetFSpec
+       LineNumber=0
+       #
+       while read TargetFName ColonSeparator ListOfSourceFName
        do
          #
-         if [ -s ${ExternFSpec} ]
-	 then
+         LineNumber+=1
+         #
+         [ ${#TargetFName} -eq 0 ] && continue
+         #
+	 [ "${TargetFName:0:1}" = "#" ] && continue
+         #
+         if [ "${ColonSeparator}" != ":" ]
+         then
             #
-	    #  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+            LastIndexOfTargetFName=$((${#TargetFName}-1))
             #
-            ExternFName=$(basename ${ExternFSpec})
-            TargetFName=$(basename ${TargetFSpec})
+            if [ "${TargetFName:${LastIndexOfTargetFName}:1}" = ":" ]
+	    then
+               #
+	       TargetFName=${TargetFName:0:${LastIndexOfTargetFName}}
+               #
+            else
+               #
+               EchoErrorAndExit 1 "In ${Directory}/${__KamajiXtraDependentFName} on line ${LineNumber}:"	\
+				  "Missing colon separator."
+	       #
+	    fi
             #
-            [ "${ExternFSpec:0:1}" != "/" ] && ExternFSpec="../${ExternFSpec}"
-            #
-	    AppendArrayIndexValue __KamajiXtraParentList "${TargetFName}" "${ExternFName}"
-            #
-	    __KamajiRepresentative["${ExternFName}"]="../${ExternFSpec}"
-            #
-         else
-            #
-            EchoErrorAndExit 1 "Errant specification in extra dependent file: Cannot find the '${ExternFSpec}' file."
+            ListOfSourceFName="${ColonSeparator} ${ListOfSourceFName}"
             #
          fi
+         #
+         #  Files can only be identified with names; otherwise misleading to user.
+         #
+         for SourceFName in ${TargetFName} ${ListOfSourceFName}
+	 do
+           #
+           if [ "$(basename ${SourceFName})" != "${SourceFName}" ]
+	   then
+              #
+              EchoErrorAndExit 1 "In ${Directory}/${__KamajiXtraDependentFName} on line ${LineNumber}:"	\
+			         "Targets and dependencies must be filenames, not specifications with paths."
+              #
+	   fi
+           #
+         done
+         #
+         #  Source files must be known to Kamaji already.
+         #
+	 #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+	 #  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+         #
+         for SourceFName in ${ListOfSourceFName}
+	 do
+           #
+           if [ "${__KamajiRepresentative[${SourceFName}]+IS_SET}" != "IS_SET" ]
+	   then
+	      #
+              if [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
+	      then
+	         #
+	         EchoErrorAndExit 1 "In ${Directory}/${__KamajiXtraDependentFName} on line ${LineNumber}:" \
+				    "Dependency '${SourceFName}' is not a baseline file or a known derivative."
+	         #
+	      fi
+	      #
+           fi
+           #
+         done
+         #
+         #  Representatiives cannot have extra parents, but their children can.
+         #
+	 #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+	 #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+         #
+         ListOfTargetFName=${TargetFName}
+         #
+         if [ "${__KamajiRepresentative[${TargetFName}]+IS_SET}" = "IS_SET" ]
+         then
+            #
+            ListOfTargetFName=${__KamajiMyChildrenList[${TargetFName}]}
+            #
+         fi
+         #
+	 #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+	 #  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+         #
+         for TargetFName in ${ListOfTargetFName}
+	 do
+           #
+           for SourceFName in ${ListOfSourceFName}
+	   do
+             #
+	     AppendArrayIndexValue __KamajiXtraParentList "${TargetFName}" "${SourceFName}"
+	     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
+             #
+           done
+           #
+         done
          #
        done < ${Directory}/${__KamajiXtraDependentFName}
        #
@@ -2108,6 +2196,12 @@ function KamajiBuildRules() {
     AppendArrayIndexValue __KamajiClassifiedList "${SourceClass}" "${SourceFName}"
     #
   done
+  #
+  #  Load the user-configured list of dependencies.
+  #
+  #  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+  #
+  KamajiBuildRulesLoadXtraDependents
   #
   #  If the user requested a fast build without a saved ruleset then save the current ruleset for use next time.
   #
@@ -2379,8 +2473,8 @@ function KamajiRequestExport_makefile() {
         if [ "${__KamajiXtraParentList[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
         then
            #
-           OutputLine+="${__KamajiXtraParentList[${ItemOfParentFName}]}"
-           #
+	   OutputLine+="${__KamajiXtraParentList[${ItemOfParentFName}]// / ${__KamajiWorkinDSpec}/}"
+	   #
         fi
         #
         OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : ${RulesetFSpec}"
@@ -3092,7 +3186,7 @@ function KamajiMake() {
   local    ListOfMyParentalFName=${__KamajiMyParentalList[${TargetFName}]}
   local    ListOfXtraParentFName=
   #
-  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -e ${__KamajiWorkinDSpec}/${TargetFName} ]
+  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -h ${__KamajiWorkinDSpec}/${TargetFName} ]
   then
      #
      local -r GoldenFSpec=${__KamajiRepresentative[${TargetFName}]}
