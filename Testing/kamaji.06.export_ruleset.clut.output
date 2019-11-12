@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
+CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 
 0. Global Information
 0.1. Notations
@@ -951,6 +951,462 @@ CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
 6.6.2. Working/GAMMA_exercise (created)...
     |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
 
-CLUT Source File: kamaji.06.export_ruleset.clut (6 cases)
+7. ExportRuleset_XtraDeps_Simple_Straight.
+7.1. Requirements.
+    |None.
+7.2. Initializations.
+7.2.1. mkdir Testing
+7.2.2. spit .kamaji.conf baseline-folder Testing
+7.2.3. spit .kamaji.conf verbosity-level heavy
+7.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+7.2.5. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
+7.2.6. spit .kamaji.conf data-extension-list text
+7.2.7. spit .kamaji.deps BETA_exercise.bash : BETA_exercise.text
+7.3. Initial Workspace contains 5 files...
+    |.kamaji.conf
+    |.kamaji.deps
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.text
+7.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+    |data-extension-list text
+7.3.2. .kamaji.deps...
+    |BETA_exercise.bash : BETA_exercise.text
+7.3.3. Testing contains 2 files.
+7.3.3.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+7.3.3.2. BETA_exercise.text...
+    |Just some data that BETA depends upon.
+7.4. Target CLU Call.
+7.4.1.  kamaji export ruleset
+7.4.1.1. Exit Status 0!
+7.4.1.2. STDERR [text]...
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.text
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.text BETA_exercise.text
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |kamaji export ruleset
+7.5. Finalizations.
+7.6. Workspace Impact...
+    |Only in 07.Omega: .kamaji.sed
+    |Only in 07.Omega: Working
+7.6.1. .kamaji.sed (created) is empty.
+7.6.2. Working (created) contains 4 files.
+7.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |#
+    |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
+    |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |__KamajiClassifiedList[Unknown]=" BETA_exercise.text"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[BETA_exercise.text]=" BETA_exercise.bash"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |__KamajiMyParentalList[BETA_exercise.text]=""
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |__KamajiRepresentative[BETA_exercise.text]="../Testing/BETA_exercise.text"
+    |#
+    |__KamajiXtraParentList[BETA_exercise.output]=" BETA_exercise.text"
+    |#
+    |#  (eof)
+7.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+7.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+7.6.2.4. BETA_exercise.text is a symbolic link to ../Testing/BETA_exercise.text
+
+8. ExportRuleset_XtraDeps_Simple_CloseColon.
+8.1. Requirements.
+    |None.
+8.2. Initializations.
+8.2.1. mkdir Testing
+8.2.2. spit .kamaji.conf baseline-folder Testing
+8.2.3. spit .kamaji.conf verbosity-level heavy
+8.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+8.2.5. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
+8.2.6. spit .kamaji.conf data-extension-list text
+8.2.7. spit .kamaji.deps BETA_exercise.bash: BETA_exercise.text
+8.3. Initial Workspace contains 5 files...
+    |.kamaji.conf
+    |.kamaji.deps
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.text
+8.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+    |data-extension-list text
+8.3.2. .kamaji.deps...
+    |BETA_exercise.bash: BETA_exercise.text
+8.3.3. Testing contains 2 files.
+8.3.3.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+8.3.3.2. BETA_exercise.text...
+    |Just some data that BETA depends upon.
+8.4. Target CLU Call.
+8.4.1.  kamaji export ruleset
+8.4.1.1. Exit Status 0!
+8.4.1.2. STDERR [text]...
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.text
+    |#	Testing/BETA_exercise.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/BETA_exercise.text BETA_exercise.text
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |kamaji export ruleset
+8.5. Finalizations.
+8.6. Workspace Impact...
+    |Only in 08.Omega: .kamaji.sed
+    |Only in 08.Omega: Working
+8.6.1. .kamaji.sed (created) is empty.
+8.6.2. Working (created) contains 4 files.
+8.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |#
+    |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
+    |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |__KamajiClassifiedList[Unknown]=" BETA_exercise.text"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[BETA_exercise.text]=" BETA_exercise.bash"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |__KamajiMyParentalList[BETA_exercise.text]=""
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |__KamajiRepresentative[BETA_exercise.text]="../Testing/BETA_exercise.text"
+    |#
+    |__KamajiXtraParentList[BETA_exercise.output]=" BETA_exercise.text"
+    |#
+    |#  (eof)
+8.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+8.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+8.6.2.4. BETA_exercise.text is a symbolic link to ../Testing/BETA_exercise.text
+
+9. ExportRuleset_XtraDeps_Simple_WithoutColon.
+9.1. Requirements.
+    |None.
+9.2. Initializations.
+9.2.1. mkdir Testing
+9.2.2. spit .kamaji.conf baseline-folder Testing
+9.2.3. spit .kamaji.conf verbosity-level heavy
+9.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+9.2.5. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
+9.2.6. spit .kamaji.conf data-extension-list text
+9.2.7. spit .kamaji.deps BETA_exercise.bash BETA_exercise.text
+9.3. Initial Workspace contains 5 files...
+    |.kamaji.conf
+    |.kamaji.deps
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/BETA_exercise.text
+9.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+    |data-extension-list text
+9.3.2. .kamaji.deps...
+    |BETA_exercise.bash BETA_exercise.text
+9.3.3. Testing contains 2 files.
+9.3.3.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+9.3.3.2. BETA_exercise.text...
+    |Just some data that BETA depends upon.
+9.4. Target CLU Call.
+9.4.1.  kamaji export ruleset
+9.4.1.1. Exit Status 1!
+9.4.1.2. STDERR [text]...
+    |# Building rules based on baseline files...
+    |#	Testing/BETA_exercise.text
+    |#	Testing/BETA_exercise.bash
+    |ERROR: In ./.kamaji.deps on line 1: Missing colon separator.
+9.5. Finalizations.
+9.6. Workspace Impact...
+    |Only in 09.Omega: .kamaji.sed
+    |Only in 09.Omega: Working
+9.6.1. .kamaji.sed (created) is empty.
+9.6.2. Working (created) is empty.
+
+10. ExportRuleset_XtraDeps_DepOnDep_Straight.
+10.1. Requirements.
+    |None.
+10.2. Initializations.
+10.2.1. mkdir Testing
+10.2.2. spit .kamaji.conf baseline-folder Testing
+10.2.3. spit .kamaji.conf verbosity-level heavy
+10.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+10.2.5. spit Testing/THETA_library.bash A script that BETA depends upon.
+10.2.6. spit Testing/THETA_library.text Some data that THETA depends upon.
+10.2.7. spit .kamaji.conf data-extension-list text
+10.2.8. spit .kamaji.conf data-filename-list THETA_library.bash
+10.2.9. spit .kamaji.deps BETA_exercise.bash : THETA_library.bash
+10.2.10. spit .kamaji.deps THETA_library.bash : THETA_library.text
+10.3. Initial Workspace contains 6 files...
+    |.kamaji.conf
+    |.kamaji.deps
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/THETA_library.bash
+    |Testing/THETA_library.text
+10.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+    |data-extension-list text
+    |data-filename-list THETA_library.bash
+10.3.2. .kamaji.deps...
+    |BETA_exercise.bash : THETA_library.bash
+    |THETA_library.bash : THETA_library.text
+10.3.3. Testing contains 3 files.
+10.3.3.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+10.3.3.2. THETA_library.bash...
+    |A script that BETA depends upon.
+10.3.3.3. THETA_library.text...
+    |Some data that THETA depends upon.
+10.4. Target CLU Call.
+10.4.1.  kamaji export ruleset
+10.4.1.1. Exit Status 0!
+10.4.1.2. STDERR [text]...
+    |# Building rules based on baseline files...
+    |#	Testing/THETA_library.text
+    |#	Testing/BETA_exercise.bash
+    |#	Testing/THETA_library.bash
+    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |ln --symbolic ../Testing/THETA_library.bash THETA_library.bash
+    |ln --symbolic ../Testing/THETA_library.text THETA_library.text
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |kamaji export ruleset
+10.5. Finalizations.
+10.6. Workspace Impact...
+    |Only in 10.Omega: .kamaji.sed
+    |Only in 10.Omega: Working
+10.6.1. .kamaji.sed (created) is empty.
+10.6.2. Working (created) contains 5 files.
+10.6.2.1. .kamaji.ruleset.bash...
+    |#
+    |#  Working/.kamaji.ruleset.bash
+    |#
+    |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
+    |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+    |#  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+    |#  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+    |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+    |#
+    |#  Where FName == file name within the working-folder
+    |#        FName == file specification outside of the working-folder
+    |#
+    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
+    |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
+    |#
+    |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
+    |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
+    |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
+    |__KamajiClassifiedList[Output]=" BETA_exercise.output"
+    |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
+    |__KamajiClassifiedList[Script]=" THETA_library.bash BETA_exercise.bash"
+    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |__KamajiClassifiedList[Unknown]=" THETA_library.text"
+    |#
+    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
+    |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
+    |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
+    |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[THETA_library.bash]=" BETA_exercise.bash"
+    |__KamajiMyChildrenList[THETA_library.text]=" THETA_library.bash"
+    |#
+    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[BETA_exercise.bash]=""
+    |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
+    |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.grade BETA_exercise.output.delta"
+    |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
+    |__KamajiMyParentalList[THETA_library.bash]=""
+    |__KamajiMyParentalList[THETA_library.text]=""
+    |#
+    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
+    |__KamajiRepresentative[THETA_library.bash]="../Testing/THETA_library.bash"
+    |__KamajiRepresentative[THETA_library.text]="../Testing/THETA_library.text"
+    |#
+    |__KamajiXtraParentList[BETA_exercise.output]=" THETA_library.text THETA_library.bash"
+    |#
+    |#  (eof)
+10.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+10.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+10.6.2.4. THETA_library.bash is a symbolic link to ../Testing/THETA_library.bash
+10.6.2.5. THETA_library.text is a symbolic link to ../Testing/THETA_library.text
+
+11. ExportRuleset_XtraDeps_DepOnDep_Unused.
+11.1. Requirements.
+    |None.
+11.2. Initializations.
+11.2.1. mkdir Testing
+11.2.2. spit .kamaji.conf baseline-folder Testing
+11.2.3. spit .kamaji.conf verbosity-level heavy
+11.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+11.2.5. spit Testing/ZETA_library.bash A script that nothing depends upon.
+11.2.6. spit Testing/ZETA_library.text Some data that ZETA depends upon.
+11.2.7. spit .kamaji.conf data-extension-list text
+11.2.8. spit .kamaji.conf data-filename-list ZETA_library.bash
+11.2.9. spit .kamaji.deps ZETA_library.bash : ZETA_library.text
+11.3. Initial Workspace contains 6 files...
+    |.kamaji.conf
+    |.kamaji.deps
+    |Testing
+    |Testing/BETA_exercise.bash
+    |Testing/ZETA_library.bash
+    |Testing/ZETA_library.text
+11.3.1. .kamaji.conf...
+    |baseline-folder Testing
+    |verbosity-level heavy
+    |data-extension-list text
+    |data-filename-list ZETA_library.bash
+11.3.2. .kamaji.deps...
+    |ZETA_library.bash : ZETA_library.text
+11.3.3. Testing contains 3 files.
+11.3.3.1. BETA_exercise.bash...
+    |#!/bin/bash
+    |#
+    |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
+    |#
+    |#  This is a unit test exercise script that represents a series of test cases.
+    |#
+    |echo "TC1: Good news, everyone!"
+    |echo "TC2: I miss Morbo."
+    |#
+11.3.3.2. ZETA_library.bash...
+    |A script that nothing depends upon.
+11.3.3.3. ZETA_library.text...
+    |Some data that ZETA depends upon.
+11.4. Target CLU Call.
+11.4.1.  kamaji export ruleset
+11.4.1.1. Exit Status 1!
+11.4.1.2. STDERR [text]...
+    |# Building rules based on baseline files...
+    |#	Testing/ZETA_library.text
+    |#	Testing/BETA_exercise.bash
+    |#	Testing/ZETA_library.bash
+    |ERROR: Dependency 'ZETA_library.text' target 'ZETA_library.bash' has no known derivatives.
+11.5. Finalizations.
+11.6. Workspace Impact...
+    |Only in 11.Omega: .kamaji.sed
+    |Only in 11.Omega: Working
+11.6.1. .kamaji.sed (created) is empty.
+11.6.2. Working (created) is empty.
+
+CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.

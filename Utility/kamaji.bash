@@ -2012,6 +2012,8 @@ function KamajiBuildRulesLoadXtraDependents() {
   local -i LastIndexOfTargetFName
   local -i LineNumber
   #
+  local -A IncompleteXtraDependency
+  #
   for Directory in ${HOME} .
   do
     #
@@ -2088,39 +2090,70 @@ function KamajiBuildRulesLoadXtraDependents() {
            #
          done
          #
-         #  Representatiives cannot have extra parents, but their children can.
+         #  Stash the relatonship until all Xtra relationships are known.
          #
-	 #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
-	 #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+	 AppendArrayIndexValue __KamajiMyChildrenList "${SourceFName}" "${TargetFName}"
          #
-         ListOfTargetFName=${TargetFName}
-         #
-         if [ "${__KamajiRepresentative[${TargetFName}]+IS_SET}" = "IS_SET" ]
-         then
-            #
-            ListOfTargetFName=${__KamajiMyChildrenList[${TargetFName}]}
-            #
-         fi
-         #
-	 #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
-	 #  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
-         #
-         for TargetFName in ${ListOfTargetFName}
-	 do
-           #
-           for SourceFName in ${ListOfSourceFName}
-	   do
-             #
-	     AppendArrayIndexValue __KamajiXtraParentList "${TargetFName}" "${SourceFName}"
-	     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
-             #
-           done
-           #
-         done
+         AppendArrayIndexValue IncompleteXtraDependency "${TargetFName}" "${SourceFName}"
          #
        done < ${Directory}/${__KamajiXtraDependentFName}
        #
     fi
+    #
+  done
+  #
+  for TargetFName in ${!IncompleteXtraDependency[*]}
+  do
+    #
+    for SourceFName in ${IncompleteXtraDependency[${TargetFName}]}
+    do
+      #
+      #  Representatiives cannot have extra parents, but their children can.
+      #
+      #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+      #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
+      #
+      ListOfTargetFName=${TargetFName}
+      NextOfTargetFName=
+      #
+      while [ ${#ListOfTargetFName} -gt 0 ]
+      do
+        #
+        for QuarryFName in ${ListOfTargetFName}
+	do
+          #
+          if [ "${__KamajiRepresentative[${QuarryFName}]+IS_SET}" = "IS_SET" ]
+          then
+             #
+             if [ "${__KamajiMyChildrenList[${QuarryFName}]+IS_SET}" = "IS_SET" ]
+             then
+                #
+                NextOfTargetFName+=" ${__KamajiMyChildrenList[${QuarryFName}]}"
+                #
+             else
+                #
+	        EchoErrorAndExit 1 "Dependency '${SourceFName}' target '${QuarryFName}' has no known derivatives."
+                #
+             fi
+             #
+          else
+             #
+             #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
+             #  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
+             #
+	     AppendArrayIndexValue __KamajiXtraParentList "${QuarryFName}" "${SourceFName}"
+	     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
+             #
+          fi
+          #
+        done
+        #
+        ListOfTargetFName=${NextOfTargetFName}
+        NextOfTargetFName=
+        #
+      done
+      #
+    done
     #
   done
   #
