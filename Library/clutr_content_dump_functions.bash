@@ -179,6 +179,22 @@ function __clutCaseRunTimeDumpPrecompiledHeader() {
 }
 
 #----------------------------------------------------------------------------------------------------------------------
+
+function __echoSqliteTableSchema() {
+  #
+  local -r DatabaseFSpec="${1}"
+  local -r TableNameItem="${2}"
+  #
+  sqlite3 ${DatabaseFSpec} ".schema ${TableNameItem}"					\
+		| tr '[[:cntrl:]]' ' '							\
+		| sed --expression='s,[[:space:]][[:space:]]*, ,g'			\
+		      --expression='s/([[:space:]]*\([[:alpha:]]\)/\n       ( \1/'	\
+		      --expression='s/,[[:space:]]*\([[:alpha:]]\)/\n       , \1/g'	\
+		      --expression='s/;[[:space:]]/;\n/g'
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
 ###
 ###  @fn	__clutCaseRunTimeDumpSqliteDatabaseExpose
 ###  @param	TargetFSpec	The specification for the target database file.
@@ -239,47 +255,16 @@ function __clutCaseRunTimeDumpSqliteDatabaseExpose() {
     if [ ${TableRowCount[${TableNameItem}]} -gt 0 ]
     then
        #
-       sqlite3 ${DatabaseFSpec} ".schema ${TableNameItem}" | sed --expression='s,[ ][ ][ ]*,\n       ,g'
+       __echoSqliteTableSchema ${DatabaseFSpec} ${TableNameItem}
        #
        echo
        #
-       sqlite3 ${DatabaseFSpec} "select * from ${TableNameItem};"
+       sqlite3 -header ${DatabaseFSpec} "SELECT * FROM ${TableNameItem};"
+#      sqlite3 -column -header ${DatabaseFSpec} "SELECT * FROM ${TableNameItem};"
        #
        echo
        #
     fi
-    #
-  done
-  #
-}
-
-function __clutCaseRunTimeDumpSqliteDatabaseExposeOriginal() {
-  #
-  local -r DatabaseFSpec="${1}"
-  #
-  for Table in $(sqlite3 ${DatabaseFSpec} ".tables" | xargs printf '%s\n' | sort)
-  do
-    #
-    sqlite3 ${DatabaseFSpec} ".schema $Table" | sed --expression='s,[ ][ ][ ]*,\n       ,g'
-    #
-    echo
-    #
-    RowCount=$(sqlite3 ${DatabaseFSpec} "SELECT COUNT(rowid) FROM ${Table};")
-    #
-    if [ ${RowCount} -gt 0 ]
-    then
-       #
-       echo "Table has COUNT(rowid) of ${RowCount}..."
-       #
-       sqlite3 ${DatabaseFSpec} "select * from $Table;"
-       #
-    else
-       #
-       echo "Table has no rows."
-       #
-    fi
-    #
-    echo
     #
   done
   #
@@ -300,12 +285,12 @@ function __clutCaseRunTimeDumpSqliteDatabaseHidden() {
   for Table in $(sqlite3 ${DatabaseFSpec} ".tables" | xargs printf '%s\n' | sort)
   do
     #
-    sqlite3 ${DatabaseFSpec} ".schema $Table" | sed --expression='s,[ ][ ][ ]*,\n       ,g'
+    __echoSqliteTableSchema ${DatabaseFSpec} ${Table}
     #
     echo
     echo -n "Table record count: "
     #
-    sqlite3 ${DatabaseFSpec} "select COUNT(rowid) from ${Table};"
+    sqlite3 ${DatabaseFSpec} "SELECT COUNT(rowid) FROM ${Table};"
     #
     echo
     #
