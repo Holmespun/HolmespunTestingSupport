@@ -56,15 +56,24 @@ test : test-as-directed
 
 #----------------------------------------------------------------------------------------------------------------------
 
-spell-check:
-	@echo "make $@"
-	$(QUIET) find . -type f | grep -v -E "\.git/|Working/" | xargs wordsNotKnown
-
-#----------------------------------------------------------------------------------------------------------------------
-
 install :
 	@echo "make $@"
 	$(QUIET) Support/INSTALL.bash
+
+#----------------------------------------------------------------------------------------------------------------------
+#
+#  pre-publish: Github does not resolve symbolic links, so the Documen MD files that are based on Testing output files
+#  need to be copied instead of linked.
+#
+#----------------------------------------------------------------------------------------------------------------------
+
+pre-publish:
+	@echo "make $@"
+	$(QUIET) cp	Testing/CLUT_Framework_Quickstart_Guide_exercise.output			\
+			Documen/CLUT_Framework_Quickstart_Guide.md
+	$(QUIET) cp	Testing/Kamaji_Automated_Test_Manager_Quickstart_Guide_exercise.output	\
+			Documen/Kamaji_Automated_Test_Manager_Quickstart_Guide.md
+	$(QUIET) find . -type f | grep -v -E "\.git/|Working/" | xargs wordsNotKnown
 
 #----------------------------------------------------------------------------------------------------------------------
 #  (eof)

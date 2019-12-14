@@ -1,1 +1,316 @@
-../Testing/CLUT_Framework_Quickstart_Guide_exercise.output
+[](CLUT_Framework_quickstart_guide_exercise.bash...)
+[](================================================)
+
+# CLUT Framework Quick-Start Guide
+
+This markdown file was generated automatically using the
+[Testing/CLUT_Framework_Quickstart_Guide_exercise.bash](Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)
+unit test.
+
+1. Clone the repositories.
+
+    ~~~~bash
+    $ git clone https://github.com/Holmespun/HolmespunLibraryBashing.git
+    $ git clone https://github.com/Holmespun/HolmespunTestingSupport.git
+    ~~~~
+
+1. Give yourself temporary access to the utilities in each of these repositories.
+You do not want this addition to the PATH variable to be active after the repository is installed.
+
+    ~~~~bash
+    $ export PATH=${PWD}/HolmespunLibraryBashing/bin:${PATH}
+    $ export PATH=${PWD}/HolmespunTestingSupport/bin:${PATH}
+    ~~~~
+
+1. [Optional] Follow the rest of the installation instructions provided in the
+[Installation](Documen/Kamaji_Automated_Test_Manager.md#installation) section of the
+[Kamaji Automated Test Manager](Documen/Kamaji_Automated_Test_Manager.md) documentation.
+
+1. Create a project directory to play around in and a Testing subdirectory.
+
+	~~~~bash
+	$ cd
+	$ mkdir ClutQuickStart
+	$ cd ClutQuickStart
+	$ mkdir Testing
+	$
+	~~~~
+
+1. Create a simple Testing/printf.clut script that contains a single basic test case:
+
+	~~~~
+	#
+	#  Testing/printf.clut (version 1)
+	#
+	
+	set -u
+	
+	function defineTestCases() {
+	  #
+	  clut_case_start      BasicButBeautiful
+	  clut_case_comment    Capture output when no parameters given.
+	  clut_case_end
+	  #
+	}
+	
+	clut_definition_set    defineTestCases
+	
+	#  (eof)
+	~~~~
+
+	Now we will ask Kamaji to manage our testing efforts.
+	Kamaji can be asked to provide three different levels of diagnostic output;
+	these are requested using the silent and verbose modifiers.
+	We will use the verbose modifier below to request that Kamaji show you what he is doing.
+
+1. Request that the CLUT be compiled and invoked; all tests acted upon when you do not name one.
+
+	~~~~
+	$ kamaji verbose verbose invoke printf.clut
+	# Building rules based on baseline files...
+	#	Testing/printf.clut
+	ln --symbolic /usr/bin/printf printf
+	ln --symbolic ../.kamaji.sed .kamaji.sed
+	ln --symbolic ../Testing/printf.clut printf.clut
+	echo "printf.clut.output" > Working/.kamaji.last_target.text
+	# GT Working/printf.clut.bash does not exist
+	kamaji make printf.clut.bash
+	clutc printf.clut /usr/bin/printf printf.clut.bash
+	# GT Working/printf.clut.output does not exist
+	kamaji make printf.clut.output
+	printf.clutc.20191214_091149_17630/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191214_091149_17427/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
+	mv printf.clut.output.partial printf.clut.output
+	$
+	~~~~
+
+	Kamaji displayed system commands that he invoked on your behalf
+	and added some comments to explain why he did these things:
+	- He builds a ruleset based on the contents of the baseline-folder.
+	- He uses symbolic linked in the working-folder to represent baseline and other source files.
+	- He remembers the last target file you requested he generate so that you can use the *last* shortcut.
+	- He created a Bash script using the *clutc* program because it was needed but did not exist.
+	- He created a CLUT output file using that Bash script because it was needed but did not exist.
+	- He modified the output file to mask system information, like your user name and home folder name.
+	- He used a *partial* output file so the output file itself would not be overwritten with incomplete
+	information if the program that generates it is interrupted.
+
+1. Grade the output file; this test will fail because we have not defined a baseline output file.
+Review the output file.
+
+	~~~~bash
+	$ kamaji grade
+	FAIL: printf.clut.output.grade
+	$ kamaji review
+	FAIL: printf.clut.output.grade
+	     1	CLUT Output Begins...
+	     2	CLUT Output Format Version: 5.5
+	     3	CLUT Source File: printf.clut (1 cases)
+	     4	
+	     5	0. Global Information
+	     6	0.1. Notations
+	     7	    |No notations defined.
+	     8	0.2. Requirement Statements
+	     9	    |No requirements defined.
+	    10	0.3. Requirement Coverage
+	    11	    |No requirements defined.
+	    12	0.4. Comparable Masks
+	    13	    |No masks defined.
+	    14	
+	    15	1. BasicButBeautiful.
+	    16	    |Capture output when no parameters given.
+	    17	1.1. Requirements.
+	    18	    |None.
+	    19	1.2. Initializations.
+	    20	1.3. Initial Workspace is empty.
+	    21	1.4. Target CLU Call.
+	    22	1.4.1.  printf
+	    23	1.4.1.1. Exit Status 2!
+	    24	1.4.1.2. STDERR [text]...
+	    25	    |printf: usage: printf [-v var] format [arguments]
+	    26	1.5. Finalizations.
+	    27	1.6. Workspace Impact...
+	    28	1.6.1. The initial and final workspace contents are equivalent.
+	    29	
+	    30	CLUT Source File: printf.clut (1 cases)
+	    31	CLUT Output Format Version: 5.5
+	    32	CLUT Output Complete.
+	$
+	~~~~
+
+The BasicButBeautiful test case is a useful one for most programs.
+It shows us what the program does with no input and no specific direction.
+In this case, the printf command produces an exit status of two (2)
+after writing a usage statement to standard error,
+
+Let's look at the files created by this process:
+
+	~~~~bash
+	$ find .
+	.
+	./.kamaji.sed
+	./Testing
+	./Testing/printf.clut
+	./Working
+	./Working/.kamaji.last_target.text
+	./Working/.kamaji.sed
+	./Working/printf
+	./Working/printf.clut
+	./Working/printf.clut.bash
+	./Working/printf.clut.output
+	./Working/printf.clut.output.delta
+	./Working/printf.clut.output.masked
+	./Working/printf.clut.output.reviewed
+	./Working/printf.clutc.20191214_091149_17630
+	./Working/printf.clutc.20191214_091149_17630/00.compiled.bash
+	./Working/printf.clutc.20191214_091149_17630/00.namelist.text
+	./Working/printf.clutc.20191214_091149_17630/01.bash
+	./Working/printf.clutr
+	./Working/printf.clutr.20191214_091149_17728
+	./Working/printf.clutr.20191214_091149_17728/01.Alpha
+	./Working/printf.clutr.20191214_091149_17728/01.Omega
+	$
+	~~~~
+
+	The printf.clutc directories are used by the clutc command.
+	CLUT compilation creates a Bash script called printf.clut.bash from the printf.clut definitions.
+	Kamaji runs that Bash script within a printf.clutr directory to produce the printf.clut.output file.
+
+	At this point, it is up to the user to inspect the CLUT output to determine whether or not it is correct.
+	Correct output should be used to set the baseline.
+
+1. Make the current output file the new baseline, and grade the CLUT based on that new baseline.
+
+	~~~~bash
+	$ kamaji bless
+	$ kamaji grade
+	PASS: printf.clut.output.grade
+	$
+	~~~~
+
+1. Modify the CLUT file to include two new test cases:
+
+	~~~~
+	#
+	#  Testing/printf.clut (version 1)
+	#
+	
+	set -u
+	
+	function defineTestCases() {
+	  #
+	  clut_case_start      BasicButBeautiful
+	  clut_case_comment    Capture output when no parameters given.
+	  clut_case_end
+	  #
+	  clut_case_start      IntegerRepresentations
+	  clut_case_comment    Decimal, hex, text, and floating point 17.
+	  clut_case_parameter  \\\"%03d %04X %04s %04f\\\\n\\\"
+	  clut_case_parameter  17
+	  clut_case_parameter  17
+	  clut_case_parameter  17
+	  clut_case_parameter  17
+	  clut_case_end
+	  #
+	  clut_case_start      FloatRepresentations
+	  clut_case_comment    Decimal, hex, text, and floating point 18.19.
+	  clut_case_parameter  \\\"%03d %04X %04s %04f\\\\n\\\"
+	  clut_case_parameter  18.19
+	  clut_case_parameter  18.19
+	  clut_case_parameter  18.19
+	  clut_case_parameter  18.19
+	  clut_case_end
+	  #
+	}
+	
+	clut_definition_set    defineTestCases
+	
+	#  (eof)
+	~~~~
+
+1. Generate a new output file and check to see if it matches the baseline.
+
+	~~~~bash
+	$ kamaji grade
+	FAIL: printf.clut.output.grade
+	~~~~
+
+	Now you have a simple sunny-day test case that shows
+	different ways that the printf command formats an integer,
+	as well as one that shows that one that shows that the command will report format incompatibility errors,
+	but still produce output.
+
+1. Inspect the differences and
+make the current output file the new baseline.
+
+	~~~~bash
+	$ kamaji review
+	FAIL: printf.clut.output.grade
+	3c3
+	< CLUT Source File: printf.clut (1 cases)
+	---
+	> CLUT Source File: printf.clut (3 cases)
+	30c30,62
+	< CLUT Source File: printf.clut (1 cases)
+	---
+	> 2. IntegerRepresentations.
+	>     |Decimal, hex, text, and floating point 17.
+	> 2.1. Requirements.
+	>     |None.
+	> 2.2. Initializations.
+	> 2.3. Initial Workspace is empty.
+	> 2.4. Target CLU Call.
+	> 2.4.1.  printf "%03d %04X %04s %04f\n" 17 17 17 17
+	> 2.4.1.1. STDOUT [text]...
+	>     |017 0011   17 17.000000
+	> 2.5. Finalizations.
+	> 2.6. Workspace Impact...
+	> 2.6.1. The initial and final workspace contents are equivalent.
+	> 
+	> 3. FloatRepresentations.
+	>     |Decimal, hex, text, and floating point 18.19.
+	> 3.1. Requirements.
+	>     |None.
+	> 3.2. Initializations.
+	> 3.3. Initial Workspace is empty.
+	> 3.4. Target CLU Call.
+	> 3.4.1.  printf "%03d %04X %04s %04f\n" 18.19 18.19 18.19 18.19
+	> 3.4.1.1. Exit Status 1!
+	> 3.4.1.2. STDERR [text]...
+	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
+	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
+	> 3.4.1.3. STDOUT [text]...
+	>     |018 0000 18.19 18.190000
+	> 3.5. Finalizations.
+	> 3.6. Workspace Impact...
+	> 3.6.1. The initial and final workspace contents are equivalent.
+	> 
+	> CLUT Source File: printf.clut (3 cases)
+	$ kamaji bless
+	~~~~
+
+1. Build up your test cases by repeating the last few steps.
+
+Refer to the [CLUT_Framework.md](CLUT_Framework.md)) for further details,
+including a list of best practices.
+
+## Copyright 2018-2019 Brian G. Holmes
+
+This program is part of the Holmespun Testing Support repository.
+
+The Holmespun Testing Support repository contains free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+The Holmespun Testing Support repository is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this file. If not, see
+<https://www.gnu.org/licenses/>.
+
+See the [COPYING.text](COPYING.text) file for further licensing information.
+
+**(eof)**
+
+[](================================================)
