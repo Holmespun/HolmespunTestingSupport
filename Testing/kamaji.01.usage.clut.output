@@ -74,7 +74,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 1.5. Finalizations.
 1.6. Workspace Impact...
 1.6.1. The initial and final workspace contents are equivalent.
@@ -141,7 +141,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 2.5. Finalizations.
 2.6. Workspace Impact...
 2.6.1. The initial and final workspace contents are equivalent.
@@ -208,7 +208,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 3.5. Finalizations.
 3.6. Workspace Impact...
 3.6.1. The initial and final workspace contents are equivalent.
@@ -279,7 +279,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: .kamaji.sed
@@ -454,7 +454,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 5.5. Finalizations.
 5.6. Workspace Impact...
 5.6.1. The initial and final workspace contents are equivalent.
@@ -521,7 +521,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |a ruleset when it does not find one to load.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 6.5. Finalizations.
 6.6. Workspace Impact...
 6.6.1. The initial and final workspace contents are equivalent.
@@ -585,7 +585,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |every time it is requested.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 7.5. Finalizations.
 7.6. Workspace Impact...
 7.6.1. The initial and final workspace contents are equivalent.
@@ -640,7 +640,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |when kamaji is used for test-driven development.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 8.5. Finalizations.
 8.6. Workspace Impact...
 8.6.1. The initial and final workspace contents are equivalent.
@@ -785,7 +785,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |configuration variables' request.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 9.5. Finalizations.
 9.6. Workspace Impact...
 9.6.1. The initial and final workspace contents are equivalent.
@@ -824,7 +824,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the software version.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 10.5. Finalizations.
 10.6. Workspace Impact...
 10.6.1. The initial and final workspace contents are equivalent.
@@ -865,7 +865,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |one. An 'export ruleset' request can be used to store the current ruleset.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 11.5. Finalizations.
 11.6. Workspace Impact...
 11.6.1. The initial and final workspace contents are equivalent.
@@ -905,7 +905,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 12.5. Finalizations.
 12.6. Workspace Impact...
 12.6.1. The initial and final workspace contents are equivalent.
@@ -971,7 +971,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 13.5. Finalizations.
 13.6. Workspace Impact...
 13.6.1. The initial and final workspace contents are equivalent.
@@ -1012,7 +1012,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 14.5. Finalizations.
 14.6. Workspace Impact...
 14.6.1. The initial and final workspace contents are equivalent.
@@ -1053,7 +1053,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 15.5. Finalizations.
 15.6. Workspace Impact...
 15.6.1. The initial and final workspace contents are equivalent.
@@ -1094,7 +1094,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 16.5. Finalizations.
 16.6. Workspace Impact...
 16.6.1. The initial and final workspace contents are equivalent.
@@ -1134,7 +1134,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |silent" and "kamaji usage export"
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 17.5. Finalizations.
 17.6. Workspace Impact...
 17.6.1. The initial and final workspace contents are equivalent.
@@ -1175,7 +1175,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier turns off all diagnostic output.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 18.5. Finalizations.
 18.6. Workspace Impact...
 18.6.1. The initial and final workspace contents are equivalent.
@@ -1224,7 +1224,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 19.5. Finalizations.
 19.6. Workspace Impact...
 19.6.1. The initial and final workspace contents are equivalent.
@@ -1273,7 +1273,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 20.5. Finalizations.
 20.6. Workspace Impact...
 20.6.1. The initial and final workspace contents are equivalent.
@@ -1322,7 +1322,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |generation for that test a higher priority than for all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 21.5. Finalizations.
 21.6. Workspace Impact...
 21.6.1. The initial and final workspace contents are equivalent.
@@ -1382,7 +1382,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |new-, short-, and long-review-command variables, respectively.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 22.5. Finalizations.
 22.6. Workspace Impact...
 22.6.1. The initial and final workspace contents are equivalent.
@@ -1424,7 +1424,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 23.5. Finalizations.
 23.6. Workspace Impact...
 23.6.1. The initial and final workspace contents are equivalent.
@@ -1466,7 +1466,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |valid.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 24.5. Finalizations.
 24.6. Workspace Impact...
 24.6.1. The initial and final workspace contents are equivalent.
@@ -1517,7 +1517,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |processing that test a higher priority than all others.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 25.5. Finalizations.
 25.6. Workspace Impact...
 25.6.1. The initial and final workspace contents are equivalent.

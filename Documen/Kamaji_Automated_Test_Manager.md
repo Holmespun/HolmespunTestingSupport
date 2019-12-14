@@ -1,16 +1,40 @@
-# Kamaji Test Manager
+# Kamaji Automated Test Manager
 
 Kamaji manages a work-flow for test programs.
 Its primary purposes are to assign a pass-fail grade to each test,
 and to revise that grade when new information is available.
 Its secondary purpose is fulfill its primary purpose in a way that makes generating test results easy.
 
+* [Overview](#overview)>
+[Related Documentation](#related-documentation)
+* [Overview](#overview)>
+[Modification History](#modification-history)
+* [Overview](#overview)>
+[Demonstrative Output Paradigm](#demonstrative-output-paradigm)
+* [Overview](#overview)>
+[Testing Resources and Derived Works](#testing-resources-and-derived-works)
+* [Overview](#overview)>
+[Kinds of Testing Resources](#kinds-of-testing-resources)
+* [Overview](#overview)>
+[Derive Me Crazy](#derive-me-crazy)
+* [Overview](#overview)>
+[Kamaji, Test Thyself](#kamaji-test-thyself)
+* [Overview](#overview)>
+[Help](#help)
+* [Overview](#overview)>
+[Configuration](#configuration)
+* [Overview](#overview)>
+[General Workflow](#general-workflow)
+* [Overview](#overview)>
+[Verbosity And Silence](#verbosity-and-silence)
+* [Installation](#installation)
+* [Best Practices](#best-practices) 
 
 ## Overview
 
-Kamaji is designed for users who believe in automated regression testing, test-driven development, and
-the use of the demonstrative output paradigm.
-Automated regression testing and a wide test base introduces confidence into the otherwise uncertain process of
+Kamaji is designed for users who believe in the use of automated testing, test-driven development, and
+the demonstrative output paradigm.
+Automated testing and a wide test base introduces confidence into the otherwise uncertain process of
 modifying software.
 Test-driven development allows the developer to measure the impact of every modification made.
 Use of the demonstrative output paradigm casts a wide net that can detect small and unexpected impacts.
@@ -55,14 +79,19 @@ In addition, Kamaji allows the user to:
 1. Record execution time and resource utilization for every test it runs in a format defined by the user.
 
 
-### Related Articles
+### Related Documentation
 
-TBD
+* [Kamaji Automated Test Manager Quickstart Guide](Kamaji_Automated_Test_Manager_Quickstart_Guide.md)
+
+* [CLUT Framework](CLUT_Framework.md)
+
+* [CLUT Framework Quickstart Guide](CLUT_Framework_Quickstart_Guide.md)
 
 
 ### Modification History
 
 * 2019-09-02 BGH; Initial version.
+* 2019-12-14 BGH; Added related documentation.
 
 
 ### Demonstrative Output Paradigm
@@ -545,11 +574,13 @@ An UNINSTALL.bash script will also be created in each of the new /opt/holmespun 
 It costs very little to keep files around until you **know** they are not needed.
 
 1. Source the [.bash.conf](../.bash.conf) file or define your own aliases for the kamaji requests you use most often.
-One-word aliases allow easy use of the bang-splat (!\*) to apply a different request to the same target.
+One-word aliases allow easy use of the bang-splat (!\*) command-line shortcut
+to apply a different request to the same target.
 
 1. Refer to targets using the working-folder name.
 Kamaji will remove any directory path information from your target name before attempting to process it.
-You can use the filename tab autocomplete keyboard shortcut if you are specifying a file that already exists.
+    * You can use the filename tab autocomplete keyboard shortcut if you are specifying a file that already exists.
+    * You can use wildcard characters to specify a group of tests.
 
 1. Save yourself some keystrokes by abbreviating Kamaji requests and modifiers.
 

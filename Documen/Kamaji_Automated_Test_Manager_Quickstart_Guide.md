@@ -1,0 +1,1 @@
+../Testing/Kamaji_Automated_Test_Manager_Quickstart_Guide_exercise.output

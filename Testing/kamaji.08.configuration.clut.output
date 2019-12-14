@@ -294,7 +294,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 3.5. Finalizations.
 3.6. Workspace Impact...
     |Only in 03.Omega: FOXTROT
@@ -399,7 +399,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |masked. Masking is performed using a user-defined sed script.
     |
     |Copyright (c) 2019 Brian G. Holmes.
-    |kamaji version 0.6
+    |kamaji version 1.00
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: FOXTROT
@@ -449,7 +449,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 5.4. Target CLU Call.
 5.4.1.  kamaji show version
 5.4.1.1. STDOUT [text]...
-    |kamaji version 0.6
+    |kamaji version 1.00
 5.5. Finalizations.
 5.6. Workspace Impact...
     |Only in 05.Omega: FOXTROT

@@ -110,13 +110,24 @@ echo -n "[Testing/CLUT_Framework_Quickstart_Guide_exercise.bash]"
 echo "(Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)"
 echo "unit test."
 echo ""
-echo "1. Clone the Holmespun Testing Support repository; it can go anywhere that is convenient to you."
-echo "1. Add the fully-qualified path of the [bin](bin) directory to your PATH variable."
+echo "1. Clone the repositories."
 echo ""
-echo "	If you cloned the repository into your home directory, then the"
-echo "	\"export PATH=\${HOME}/Holmespun/HolmespunTestingSupport/bin:\${PATH}\" command will work for you."
-echo "	The modified PATH variable allows you to store the repository anywhere you like\;"
-echo "	it need not be collocated with your source code."
+echo "    ~~~~bash"
+echo "    $ git clone https://github.com/Holmespun/HolmespunLibraryBashing.git"
+echo "    $ git clone https://github.com/Holmespun/HolmespunTestingSupport.git"
+echo "    ~~~~"
+echo ""
+echo "1. Give yourself temporary access to the utilities in each of these repositories."
+echo "You do not want this addition to the PATH variable to be active after the repository is installed."
+echo ""
+echo "    ~~~~bash"
+echo "    $ export PATH=\${PWD}/HolmespunLibraryBashing/bin:\${PATH}"
+echo "    $ export PATH=\${PWD}/HolmespunTestingSupport/bin:\${PATH}"
+echo "    ~~~~"
+echo ""
+echo "1. [Optional] Follow the rest of the installation instructions provided in the"
+echo "[Installation](Documen/Kamaji_Automated_Test_Manager.md#installation) section of the"
+echo "[Kamaji Automated Test Manager](Documen/Kamaji_Automated_Test_Manager.md) documentation."
 echo ""
 echo "1. Create a project directory to play around in and a Testing subdirectory."
 echo ""
@@ -127,24 +138,6 @@ echoAndExecute	mkdir ClutQuickStart
 
 echoAndExecute	cd ClutQuickStart
 echoAndExecute	mkdir Testing
-
-echo "	$"
-echo "	~~~~"
-echo ""
-echo "1. Display the kamaji general usage statement."
-echo ""
-echo "	~~~~"
-
-echoAndExecute 	kamaji usage
-
-echo "	$"
-echo "	~~~~"
-echo ""
-echo "1. Request help on the kamaji grade command."
-echo ""
-echo "	~~~~"
-
-echoAndExecute	kamaji help grade
 
 echo "	$"
 echo "	~~~~"

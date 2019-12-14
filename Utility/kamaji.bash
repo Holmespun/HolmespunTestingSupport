@@ -114,14 +114,12 @@
 #  20190910 BGH; readlink representative invoke (see below).
 #  20191027 BGH; version 0.4, testing the clutc utility.
 #  20191028 BGH; version 0.5, silent running for specific makefile targets, delta command.
+#  20191214 BGH; version 1.00, repository documentation in place.
 #
 #  Problems detected when the representative of a script is called: The files it sources are  not in the same relative
 #  hierarchy as the symbolic link. Created a Bash script representative that worked very well, but a Bash script
 #  representative does not carry the same modification date as the file it is supposed to represent. As such, we invoke
 #  the readlink version of each representative. 20190910 BGH.
-#
-#  TODO: New requests rework, workout, vimdiff=review (grade and vimdiff), and bless=baseline (cp if fresh, or grade)
-#  TODO: Save the rules to a bash file that can be reused if all Golden and SedScript files represented there.
 #
 #----------------------------------------------------------------------------------------------------------------------
 #
@@ -2090,7 +2088,7 @@ function KamajiBuildRulesLoadXtraDependents() {
            #
          done
          #
-         #  Stash the relatonship until all Xtra relationships are known.
+         #  Stash the relationship until all Xtra relationships are known.
          #
 	 AppendArrayIndexValue __KamajiMyChildrenList "${SourceFName}" "${TargetFName}"
          #
@@ -2108,7 +2106,7 @@ function KamajiBuildRulesLoadXtraDependents() {
     for SourceFName in ${IncompleteXtraDependency[${TargetFName}]}
     do
       #
-      #  Representatiives cannot have extra parents, but their children can.
+      #  Representatives cannot have extra parents, but their children can.
       #
       #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
       #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
@@ -2867,7 +2865,7 @@ function KamajiRequestShow_version() {
   local -r    Request=${1}
   local -r    Object=${2}
   #
-  echo "${__KamajiScriptName} version 0.6"
+  echo "${__KamajiScriptName} version 1.00"
   #
 }
 

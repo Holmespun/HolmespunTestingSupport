@@ -1,8 +1,9 @@
 # Command-Line Utility Test Framework
 
-The Command-Line Utility Test (CLUT) Framework allows users to test command-line programs in an isolated directory
+The Command-Line Utility Test (CLUT) Framework allows users to
+test command-line programs using a series of test cases that are executed in an isolated directory
 with user-defined inputs and command-line parameters.
-CLUT cases exercise a Command-Line Utility (CLU) program as it is invoked from the command-line.
+CLUT cases exercise a utility/program as it is invoked from the command-line.
 As such, they exercise software interfaces and integration aspects in ways that class and functional unit tests cannot.
 The CLUT framework supports test-driven development in an interactive prototyping development process.
 
@@ -67,17 +68,18 @@ The CLUT framework supports test-driven development in an interactive prototypin
 [clut_shared_finalize](#clut_shared_finalize)
 * [Framework Functions](#framework-functions)>
 [clut_shared_initialize](#clut_shared_initialize)
-* [Copyright 2018 Brian G. Holmes](#copyright-2018-brian-g-holmes)
+* [Copyright 2018-2019 Brian G. Holmes](#copyright-2018-2019-brian-g-holmes)
 
 You may also want to read the
 [Quick-Start Guide (README_CLUT_Framework_Quickstart_Guide.md)](README_CLUT_Framework_Quickstart_Guide.md).
 
 ## Modification History
 
-* 2018-10-31 BGH; Moved to the Holmespun Testing Support repository.
-* 2018-05-07 BGH; Improved examples based on those created for Doxygen documentation.
-* 2018-03-12 BGH; Described new global information section and the requirements handling functions.
-* 2018-02-24 BGH; Initial document version.
+* 2018-10-31 Moved to the Holmespun Testing Support repository.
+* 2018-05-07 Improved examples based on those created for Doxygen documentation.
+* 2018-03-12 Described new global information section and the requirements handling functions.
+* 2018-02-24 Initial document version.
+* 2019-12-14 Moved to the Holmespun Testing Support repository.
 
 ## Overview
 

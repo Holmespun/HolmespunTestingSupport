@@ -7,13 +7,24 @@ This markdown file was generated automatically using the
 [Testing/CLUT_Framework_Quickstart_Guide_exercise.bash](Testing/CLUT_Framework_Quickstart_Guide_exercise.bash)
 unit test.
 
-1. Clone the Holmespun Testing Support repository; it can go anywhere that is convenient to you.
-1. Add the fully-qualified path of the [bin](bin) directory to your PATH variable.
+1. Clone the repositories.
 
-	If you cloned the repository into your home directory, then the
-	"export PATH=${HOME}/Holmespun/HolmespunTestingSupport/bin:${PATH}" command will work for you.
-	The modified PATH variable allows you to store the repository anywhere you like\;
-	it need not be collocated with your source code.
+    ~~~~bash
+    $ git clone https://github.com/Holmespun/HolmespunLibraryBashing.git
+    $ git clone https://github.com/Holmespun/HolmespunTestingSupport.git
+    ~~~~
+
+1. Give yourself temporary access to the utilities in each of these repositories.
+You do not want this addition to the PATH variable to be active after the repository is installed.
+
+    ~~~~bash
+    $ export PATH=${PWD}/HolmespunLibraryBashing/bin:${PATH}
+    $ export PATH=${PWD}/HolmespunTestingSupport/bin:${PATH}
+    ~~~~
+
+1. [Optional] Follow the rest of the installation instructions provided in the
+[Installation](Documen/Kamaji_Automated_Test_Manager.md#installation) section of the
+[Kamaji Automated Test Manager](Documen/Kamaji_Automated_Test_Manager.md) documentation.
 
 1. Create a project directory to play around in and a Testing subdirectory.
 
@@ -22,124 +33,6 @@ unit test.
 	$ mkdir ClutQuickStart
 	$ cd ClutQuickStart
 	$ mkdir Testing
-	$
-	~~~~
-
-1. Display the kamaji general usage statement.
-
-	~~~~
-	$ kamaji usage
-	USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
-	
-	Where <modifier> is one of the following:
-	      fast
-	      help
-	      silent
-	      verbose
-	
-	Where <request> is one of the following:
-	      bless  [ <filename> | last ]...
-	      delta  [ <filename> | last ]...
-	      export [ makefile | ruleset ]
-	      grade  [ <filename> | last ]...
-	      invoke [ <filename> | last ]...
-	      make   [ <filename> | last | grades | outputs ]...
-	      review [ <filename> | last ]...
-	      set    <name> <value>
-	      show   [ configuration [ names | variables ] | copyright | version ]
-	
-	Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
-	quiet (silent), and usage (help) are supported. Modifier and request
-	abbreviations are also supported; ambiguity is resolved using alphabetical
-	order. No other modifiers or requests are applied after a help request is
-	fulfilled.
-	
-	Specific usage may be displayed by following a help request by the subject of
-	interest; for example, "kamaji help fast" or "kamaji help grade"
-	
-	CLUT cases and unit test exercises are used and evaluated in similar ways:
-	compile it (if not already executable), invoke it to produce output, mask that
-	output, compare the masked output to its baseline, and then grade it based on
-	that comparison.
-	
-	CLUT definitions are compiled into Bash scripts. Unit test exercises may be
-	written in compilable code or a scripting language. Compilable code must be
-	compiled and linked into executable files using a make framework. Scripts need
-	not be compiled.
-	
-	CLUT cases and unit test exercises produce demonstrative output that need not
-	be valid or invalid on its face. Users must evaluate the initial output from
-	these tests to determine whether it is valid; valid output must be blessed by
-	the user and copied to a safe location as baseline output. Future changes to
-	the tested code will result in output that differs from the baseline; these
-	differences should also be blessed to update the baseline. Users will benefit
-	from retesting frequently between minor and controlled functional changes to
-	the code being tested.
-	
-	Passing grades are only granted when current output matches baseline output,
-	but this matching is only attempted after the current and baseline output are
-	masked. Masking is performed using a user-defined sed script.
-	
-	Copyright (c) 2019 Brian G. Holmes.
-	kamaji version 0.6
-	$
-	~~~~
-
-1. Request help on the kamaji grade command.
-
-	~~~~
-	$ kamaji help grade
-	USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
-	
-	Where <modifier> is one of the following:
-	      fast
-	      help
-	      silent
-	      verbose
-	
-	Where <request> is one of the following:
-	      bless  [ <filename> | last ]...
-	      delta  [ <filename> | last ]...
-	      export [ makefile | ruleset ]
-	      grade  [ <filename> | last ]...
-	      invoke [ <filename> | last ]...
-	      make   [ <filename> | last | grades | outputs ]...
-	      review [ <filename> | last ]...
-	      set    <name> <value>
-	      show   [ configuration [ names | variables ] | copyright | version ]
-	
-	Grade...
-	
-	A 'grade' request will determine the pass or fail status of a one or more CLUT
-	or unit test exercise.
-	
-	A passing grade is granted for a test program when the program produces output
-	that matches its expected/golden baseline output. Comparisons are made to
-	output files only after they are masked to remove non-deterministic values
-	(e.g. dates, times, account names).
-	
-	Masking is performed by a user-defined sed script; the mask-sed-script
-	configuration value can be used to specify the location of that script.
-	
-	A 'grade last' request with grade the output associated with the last make
-	target processed by kamaji the last time it was invoked. The "last" target is
-	the same no matter where it appears in the list of targets passed to a 'grade'
-	request.
-	
-	A 'grade' request without any specific targets is the same as a 'grade' request
-	for all known targets. Furthermore, those targets will be evaluated based when
-	their base sources were last modified. In this way, when the user modifies the
-	source file for a specific CLUT or unit test, kamaji will give evaluation of
-	that test a higher priority than for all others.
-	
-	Although grades are identified using the "grade" file name extension, the
-	actual grade is not stored. This practice will cause kamaji to evaluate a CLUT
-	or unit test exercise, and display the assigned grade, every time the user
-	requests it. As such, the user will get explicit grade feedback for every test
-	every time it is requested.
-	
-	Copyright (c) 2019 Brian G. Holmes.
-	kamaji version 0.6
 	$
 	~~~~
 
@@ -185,8 +78,8 @@ unit test.
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	printf.clutc.20191111_072558_7969/00.compiled.bash > printf.clut.output.partial 2>&1
-	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191111_072557_5374/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
+	printf.clutc.20191214_091149_17630/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191214_091149_17427/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
 	mv printf.clut.output.partial printf.clut.output
 	$
 	~~~~
@@ -268,14 +161,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20191111_072558_7969
-	./Working/printf.clutc.20191111_072558_7969/00.compiled.bash
-	./Working/printf.clutc.20191111_072558_7969/00.namelist.text
-	./Working/printf.clutc.20191111_072558_7969/01.bash
+	./Working/printf.clutc.20191214_091149_17630
+	./Working/printf.clutc.20191214_091149_17630/00.compiled.bash
+	./Working/printf.clutc.20191214_091149_17630/00.namelist.text
+	./Working/printf.clutc.20191214_091149_17630/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20191111_072558_8969
-	./Working/printf.clutr.20191111_072558_8969/01.Alpha
-	./Working/printf.clutr.20191111_072558_8969/01.Omega
+	./Working/printf.clutr.20191214_091149_17728
+	./Working/printf.clutr.20191214_091149_17728/01.Alpha
+	./Working/printf.clutr.20191214_091149_17728/01.Omega
 	$
 	~~~~
 
