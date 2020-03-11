@@ -453,18 +453,18 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |//
 4.4. Target CLU Call.
-4.4.1.  kamaji ex makefile
+4.4.1.  kamaji export makefile
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
-    |#	Testing/ALPHA.clut
     |#	Testing/GAMMA_exercise.cpp
+    |#	Testing/ALPHA.clut
     |#	Testing/BETA_exercise.bash
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
-    |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
-    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
+    |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
+    |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export makefile
 4.5. Finalizations.
 4.6. Workspace Impact...
@@ -497,14 +497,14 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |QUIET ?= @
     |
     |KamajiGradeTargetList :=
-    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
     |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
+    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
     |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
     |
     |KamajiDeltaTargetList :=
-    |KamajiDeltaTargetList += Working/GAMMA_exercise.output.delta
-    |KamajiDeltaTargetList += Working/BETA_exercise.output.delta
     |KamajiDeltaTargetList += Working/ALPHA.clut.output.delta
+    |KamajiDeltaTargetList += Working/BETA_exercise.output.delta
+    |KamajiDeltaTargetList += Working/GAMMA_exercise.output.delta
     |
     |.PHONY: kamaji-grade kamaji-delta kamaji-output
     |

@@ -36,6 +36,7 @@ export HOLMESPUN_MONOCHROMATIC=ACTIVE
 function testCaseDefinitions() {
   #
   clut_case_name		NoArguments
+  clut_case_initialize		mkdir Testing
   clut_case_comment		"General usage should be displayed."
   clut_case_end
   #

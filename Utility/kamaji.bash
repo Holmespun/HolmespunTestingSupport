@@ -144,6 +144,8 @@
 
 set -u
 
+export LC_COLLATE=C
+
 source $(whereHolmespunLibraryBashing)/Library/echoInColor.bash
 source $(whereHolmespunLibraryBashing)/Library/echoRelativePath.bash
 source $(whereHolmespunLibraryBashing)/Library/spit_spite_spitn_and_spew.bash
@@ -558,14 +560,16 @@ function EchoMeaningOf() {
   #
   local -r WordList=":${AcceptableValueList// /:}:"
   #
-  local -r WordLess=${WordList%%:${Target}*}
+  local -r WordLessSimple=${WordList%:${Target}*}
+  #
+  local -r WordLessGreedy=${WordList%%:${Target}*}
   #
   local    Result=${Default}
   #
-  if [ ${#WordLess} -lt ${#WordList} ]
+  if [ ${#WordLessSimple} -eq ${#WordLessGreedy} ] && [ ${#WordLessSimple} -lt ${#WordList} ]
   then
      #
-     Result=${WordList:${#WordLess}}
+     Result=${WordList:${#WordLessSimple}}
      Result=${Result:1}
      Result=${Result%%:*}
      #
@@ -1525,7 +1529,7 @@ function KamajiModifierUsage() {
   #
   if [ ${#ModifiedRequest} -gt 0 ]
   then
-     ModifiedCorrected=$(EchoMeaningOf ${ModifiedRequest} "NA" ${!UsageModifierSubjectList[*]})
+     ModifiedCorrected=$(EchoMeaningOf "${ModifiedRequest}" "NA" ${!UsageModifierSubjectList[*]})
   fi
   #
   if [ "${ModifiedCorrected}" = "NA" ]
@@ -2100,10 +2104,10 @@ function KamajiBuildRulesLoadXtraDependents() {
     #
   done
   #
-  for TargetFName in ${!IncompleteXtraDependency[*]}
+  for TargetFName in $(echo ${!IncompleteXtraDependency[*]} | tr ' ' '\n' | sort)
   do
     #
-    for SourceFName in ${IncompleteXtraDependency[${TargetFName}]}
+    for SourceFName in $(echo ${IncompleteXtraDependency[${TargetFName}]} | tr ' ' '\n' | sort)
     do
       #
       #  Representatives cannot have extra parents, but their children can.
@@ -2198,7 +2202,7 @@ function KamajiBuildRules() {
   #
   local ParentFName ChildsFName
   #
-  for ParentFName in ${!__KamajiMyChildrenList[*]}
+  for ParentFName in $(echo ${!__KamajiMyChildrenList[*]} | tr ' ' '\n' | sort)
   do
     #
     for ChildsFName in ${__KamajiMyChildrenList[${ParentFName}]}
@@ -2219,7 +2223,7 @@ function KamajiBuildRules() {
   __KamajiClassifiedList[Output]=
   __KamajiClassifiedList[Review]=
   #
-  for SourceFName in ${!__KamajiMyParentalList[*]}
+  for SourceFName in $(echo ${!__KamajiMyParentalList[*]} | tr ' ' '\n' | sort)
   do
     #
     SourceClass=$(KamajiFileClassification ${SourceFName} $(Xtension ${SourceFName}))
@@ -2345,7 +2349,7 @@ function KamajiRequestConfigure() {
   #
   [ ${#Value} -eq 0 ] && KamajiExitAfterUsage "Empty values are not useful in a configuration file."
   #
-  local -r VariableName=$(EchoMeaningOf ${Name} "" ${!__KamajiConfigurationValue[*]})
+  local -r VariableName=$(EchoMeaningOf "${Name}" "" ${!__KamajiConfigurationValue[*]})
   #
   [ ${#VariableName} -eq 0 ] && KamajiExitAfterUsage "The '${Name}' configuration variable is not supported."
   #
@@ -2605,7 +2609,7 @@ function KamajiRequestExport() {
   shift 2
   local -r ArgumentList="${*}"
   #
-  local -r Target=$(EchoMeaningOf ${Object} "" makefile ruleset)
+  local -r Target=$(EchoMeaningOf "${Object}" "" makefile ruleset)
   #
   local -r FunctionWeWant=${FUNCNAME}_${Target}
   #
@@ -2731,7 +2735,7 @@ function KamajiRequestMake() {
   for GivnSourceFSpec in ${GivnSourceFList}
   do
     #
-    Target=$(EchoMeaningOf ${GivnSourceFSpec} "$(basename ${GivnSourceFSpec})" grades last outputs)
+    Target=$(EchoMeaningOf "${GivnSourceFSpec}" "$(basename ${GivnSourceFSpec})" grades last outputs)
     #
     if [ "${Target}" = "last" ]
     then
@@ -2812,7 +2816,7 @@ function KamajiRequestShow_configuration() {
   #
   local    Key
   #
-  local -r Addition=$(EchoMeaningOf ${Target} "" names variables)
+  local -r Addition=$(EchoMeaningOf "${Target}" "" names variables)
   #
   DiagnosticLight "${__KamajiScriptName} ${Request} ${Object} ${Addition}"
   #
@@ -2878,7 +2882,7 @@ function KamajiRequestShow() {
   shift 2
   local -r ArgumentList="${*}"
   #
-  local -r Target=$(EchoMeaningOf ${Object} "" configuration copyright version)
+  local -r Target=$(EchoMeaningOf "${Object}" "" configuration copyright version)
   #
   local -r FunctionWeWant=${FUNCNAME}_${Target}
   #
@@ -3329,7 +3333,7 @@ function KamajiMain() {
         if [ "${__KamajiRepresentative[*]+IS_SET}" = "IS_SET" ]
 	then
 	   #
-	   for SourceFName in ${!__KamajiRepresentative[*]}
+	   for SourceFName in $(echo ${!__KamajiRepresentative[*]} | tr ' ' '\n' | sort)
 	   do
 	     #
 	     KamajiMake ${SourceFName}
@@ -3358,7 +3362,7 @@ function KamajiMain() {
      #
      RequestFunctionFor[usage]=KamajiModifierUsage
      #
-     local -r RequestCorrected=$(EchoMeaningOf ${RequestedAction} "N/A" ${!RequestFunctionFor[*]})
+     local -r RequestCorrected=$(EchoMeaningOf "${RequestedAction}" "N/A" ${!RequestFunctionFor[*]})
      #
      if [ "${RequestCorrected}" = "N/A" ]
      then

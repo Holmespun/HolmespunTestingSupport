@@ -293,7 +293,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 3.5. Finalizations.
 3.6. Workspace Impact...
@@ -398,7 +398,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 4.5. Finalizations.
 4.6. Workspace Impact...
@@ -499,7 +499,7 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 6.4. Target CLU Call.
 6.4.1.  kamaji show copy
 6.4.1.1. STDOUT [text]...
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
 6.5. Finalizations.
 6.6. Workspace Impact...
     |Only in 06.Omega: FOXTROT
@@ -550,26 +550,26 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 7.4.1.  kamaji show configuration
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |kamaji show configuration variables
+    |kamaji show configuration 
 7.4.1.3. STDOUT [text]...
-    |baseline-folder
-    |data-extension-list
-    |data-filename-list
-    |last-target-filename
-    |long-review-command
-    |long-review-line-count
-    |long-review-tailpipe
-    |makefile-filename
-    |mask-sed-script
-    |new-review-command
-    |new-review-tailpipe
-    |ruleset-filename
-    |script-type-list
-    |short-review-command
-    |short-review-tailpipe
-    |time-output-format
-    |verbosity-level
-    |working-folder
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |long-review-command     QUEBEC
+    |long-review-line-count  51
+    |long-review-tailpipe    ROMEO
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |ruleset-filename        INDIA
+    |script-type-list        bash sh py rb JULIETT NOVEMBER
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |time-output-format      NONE
+    |verbosity-level         KILO
+    |working-folder          MIKE
 7.5. Finalizations.
 7.6. Workspace Impact...
     |Only in 07.Omega: FOXTROT

@@ -63,7 +63,7 @@ function testCaseDefinitions() {
   clut_shared_initialize	create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
   #
   clut_case_name		ShowMakefile_ThreeKinds
-  clut_case_parameter		ex makefile
+  clut_case_parameter		export makefile
   clut_case_end
   #
 }

@@ -54,7 +54,7 @@ function testCaseDefinitionsInitial() {
   #
   clut_case_name		ExportRuleset_CompiledExercise
   clut_case_initialize		create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-  clut_case_parameter		ex ruleset
+  clut_case_parameter		export ruleset
   clut_case_end
   #
   clut_shared_initialize	create_production_script_alpha ALPHA.bash

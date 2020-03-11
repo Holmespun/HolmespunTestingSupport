@@ -78,8 +78,8 @@ You do not want this addition to the PATH variable to be active after the reposi
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	printf.clutc.20191214_091149_17630/00.compiled.bash > printf.clut.output.partial 2>&1
-	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191214_091149_17427/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
+	printf.clutc.20200311_165720_4396/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20200311_165719_3530/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
 	mv printf.clut.output.partial printf.clut.output
 	$
 	~~~~
@@ -161,14 +161,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20191214_091149_17630
-	./Working/printf.clutc.20191214_091149_17630/00.compiled.bash
-	./Working/printf.clutc.20191214_091149_17630/00.namelist.text
-	./Working/printf.clutc.20191214_091149_17630/01.bash
+	./Working/printf.clutc.20200311_165720_4396
+	./Working/printf.clutc.20200311_165720_4396/00.compiled.bash
+	./Working/printf.clutc.20200311_165720_4396/00.namelist.text
+	./Working/printf.clutc.20200311_165720_4396/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20191214_091149_17728
-	./Working/printf.clutr.20191214_091149_17728/01.Alpha
-	./Working/printf.clutr.20191214_091149_17728/01.Omega
+	./Working/printf.clutr.20200311_165721_5143
+	./Working/printf.clutr.20200311_165721_5143/01.Alpha
+	./Working/printf.clutr.20200311_165721_5143/01.Omega
 	$
 	~~~~
 
@@ -280,7 +280,7 @@ make the current output file the new baseline.
 	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
 	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
 	> 3.4.1.3. STDOUT [text]...
-	>     |018 0000 18.19 18.190000
+	>     |018 0012 18.19 18.190000
 	> 3.5. Finalizations.
 	> 3.6. Workspace Impact...
 	> 3.6.1. The initial and final workspace contents are equivalent.

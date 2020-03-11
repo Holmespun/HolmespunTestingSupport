@@ -17,11 +17,15 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 1.1. Requirements.
     |None.
 1.2. Initializations.
-1.3. Initial Workspace is empty.
+1.2.1. mkdir Testing
+1.3. Initial Workspace contains one file...
+    |Testing
+1.3.1. Testing is empty.
 1.4. Target CLU Call.
 1.4.1.  kamaji
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
+    |ERROR: Unable to fulfill a '' request.
     |USAGE: kamaji [<modifier>]... [<request>] [<parameter>]...
     |
     |Where <modifier> is one of the following:
@@ -73,11 +77,15 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 1.5. Finalizations.
 1.6. Workspace Impact...
-1.6.1. The initial and final workspace contents are equivalent.
+    |Only in 01.Omega: .kamaji.sed
+    |Only in 01.Omega: Working
+1.6.1. .kamaji.sed (created) is empty.
+1.6.2. Working (created) contains one file.
+1.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
 
 2. Usage.
     |General usage should be displayed.
@@ -140,7 +148,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 2.5. Finalizations.
 2.6. Workspace Impact...
@@ -207,7 +215,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 3.5. Finalizations.
 3.6. Workspace Impact...
@@ -278,7 +286,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 4.5. Finalizations.
 4.6. Workspace Impact...
@@ -453,7 +461,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |A list of the configuration variable names can be displayed using a 'show
     |configuration variables' request.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 5.5. Finalizations.
 5.6. Workspace Impact...
@@ -520,7 +528,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |instead of generating one itself. The 'fast' modifier will generate and export
     |a ruleset when it does not find one to load.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 6.5. Finalizations.
 6.6. Workspace Impact...
@@ -584,7 +592,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |requests it. As such, the user will get explicit grade feedback for every test
     |every time it is requested.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 7.5. Finalizations.
 7.6. Workspace Impact...
@@ -639,7 +647,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |'grade' or 'invoke' or 'make' request. This is an especially useful shorthand
     |when kamaji is used for test-driven development.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 8.5. Finalizations.
 8.6. Workspace Impact...
@@ -784,7 +792,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |A list of the configuration variable names can be displayed using a 'show
     |configuration variables' request.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 9.5. Finalizations.
 9.6. Workspace Impact...
@@ -823,7 +831,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |The 'show' request can be used to display the configuration, the copyright, or
     |the software version.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 10.5. Finalizations.
 10.6. Workspace Impact...
@@ -864,7 +872,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier is used, kamaji loads a stored ruleset instead of generating a new
     |one. An 'export ruleset' request can be used to store the current ruleset.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 11.5. Finalizations.
 11.6. Workspace Impact...
@@ -904,7 +912,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
     |silent" and "kamaji usage export"
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 12.5. Finalizations.
 12.6. Workspace Impact...
@@ -970,7 +978,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 13.5. Finalizations.
 13.6. Workspace Impact...
@@ -1011,7 +1019,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 14.5. Finalizations.
 14.6. Workspace Impact...
@@ -1052,7 +1060,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 15.5. Finalizations.
 15.6. Workspace Impact...
@@ -1093,7 +1101,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 16.5. Finalizations.
 16.6. Workspace Impact...
@@ -1133,7 +1141,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
     |silent" and "kamaji usage export"
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 17.5. Finalizations.
 17.6. Workspace Impact...
@@ -1174,7 +1182,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 18.5. Finalizations.
 18.6. Workspace Impact...
@@ -1223,7 +1231,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the source file for a specific CLUT or unit test, then kamaji will give output
     |generation for that test a higher priority than for all others.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 19.5. Finalizations.
 19.6. Workspace Impact...
@@ -1272,7 +1280,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the source file for a specific CLUT or unit test, then kamaji will give output
     |generation for that test a higher priority than for all others.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 20.5. Finalizations.
 20.6. Workspace Impact...
@@ -1321,7 +1329,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the source file for a specific CLUT or unit test, then kamaji will give output
     |generation for that test a higher priority than for all others.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 21.5. Finalizations.
 21.6. Workspace Impact...
@@ -1381,7 +1389,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |configuration variables allow the user to manipulate the output produced by the
     |new-, short-, and long-review-command variables, respectively.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 22.5. Finalizations.
 22.6. Workspace Impact...
@@ -1423,7 +1431,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |a convenient shorthand, but it will cost you if you baseline output that is not
     |valid.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 23.5. Finalizations.
 23.6. Workspace Impact...
@@ -1465,7 +1473,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |a convenient shorthand, but it will cost you if you baseline output that is not
     |valid.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 24.5. Finalizations.
 24.6. Workspace Impact...
@@ -1516,7 +1524,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifies the source file for a specific CLUT or unit test, kamaji will make
     |processing that test a higher priority than all others.
     |
-    |Copyright (c) 2019 Brian G. Holmes.
+    |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
 25.5. Finalizations.
 25.6. Workspace Impact...
