@@ -2172,7 +2172,7 @@ function KamajiBuildRules() {
      KamajiExitAfterUsage "The baseline directory '${__KamajiGoldenDSpec}' does not exist."
   fi
   #
-  local -r ListOfSourceFSpec=$(find -L ${__KamajiGoldenDSpec} -type f)
+  local -r ListOfSourceFSpec=$(find -L ${__KamajiGoldenDSpec} -type f | sort)
   #
   local    ItemOfSourceFSpec SourceFName SourceFSpec SourceClass
   #

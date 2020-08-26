@@ -457,9 +457,9 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
-    |#	Testing/GAMMA_exercise.cpp
     |#	Testing/ALPHA.clut
     |#	Testing/BETA_exercise.bash
+    |#	Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
