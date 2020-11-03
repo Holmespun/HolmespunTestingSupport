@@ -55,6 +55,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -65,7 +66,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -152,6 +153,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 2.4.1.1. Exit Status 1!
 2.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |#    Testing/GAMMA_exercise.output
     |ln --symbolic ../.kamaji.sed .kamaji.sed
@@ -168,7 +170,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -261,6 +263,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |#    Testing/GAMMA_exercise.output
     |ln --symbolic ../.kamaji.sed .kamaji.sed
@@ -277,7 +280,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -361,6 +364,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -417,6 +421,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -427,7 +432,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
 5.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
@@ -493,6 +498,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 6.4.1.1. Exit Status 0!
 6.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -503,7 +509,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -576,6 +582,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -586,7 +593,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -665,6 +672,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.4.1.1. Exit Status 1!
 8.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -675,7 +683,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_022005_1765842/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20201103_142053_2106226/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -757,6 +765,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp

@@ -525,6 +525,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |   baseline-folder
     |   data-extension-list
     |   data-filename-list
+    |   find-expresson-list
     |   last-target-filename
     |   long-review-command
     |   long-review-line-count
@@ -542,6 +543,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |   working-folder
     |Active configuration sources:
     |   # The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |   #
     |   # ./.kamaji.conf
     |   baseline-folder ALFA
     |   data-extension-list BRAVO
@@ -2130,6 +2132,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 26.6.2. MIKE (created) contains 2 files.
 26.6.2.1. .kamaji.conf...
     |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |#
     |# ./.kamaji.conf
     |baseline-folder ALFA
     |data-extension-list BRAVO
@@ -2210,6 +2213,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 27.6.2. ThisNameDefinedRemotely (created) contains 2 files.
 27.6.2.1. .kamaji.conf...
     |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |#
     |# Remote/Location/Config_File.txt
     |working-folder ThisNameDefinedRemotely
     |#
@@ -2278,6 +2282,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 28.6.2. ThisNameDefinedRemotely (created) contains 2 files.
 28.6.2.1. .kamaji.conf...
     |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |#
     |# ./.kamaji.conf
     |baseline-folder ALFA
     |data-extension-list BRAVO

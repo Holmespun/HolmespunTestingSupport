@@ -429,6 +429,25 @@ function EchoAndExecute() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
+function EchoConfigurationFileList() {
+  #
+  local ConfigDSpec=${PWD}
+  #
+  echo ${HOME}/${__KamajiConfigurationFName}
+  #
+  while [ ${ConfigDSpec} != / ] && [ ${ConfigDSpec} != ${HOME} ]
+  do
+    #
+    echo ${ConfigDSpec}/${__KamajiConfigurationFName}
+    #
+    ConfigDSpec=$(dirname ${ConfigDSpec})
+    #
+  done | sort
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
 function EchoErrorAndExit() {
   #
   local -r -i ExitStatus=${1}
@@ -922,13 +941,14 @@ function KamajiConfigurationEchoValue() {
 
 function KamajiConfigurationLoadValues() {
   #
-  local Key Value ConfigDSpec ConfigFSpec
+  local Key Value ConfigFSpec
   #
   #  Set default configuration values.
   #
   __KamajiConfigurationDefault["baseline-folder"]="Testing"
   __KamajiConfigurationDefault["data-extension-list"]=
   __KamajiConfigurationDefault["data-filename-list"]=
+  __KamajiConfigurationDefault["find-expresson-list"]=
   __KamajiConfigurationDefault["last-target-filename"]="${__KamajiConfigurationFName%.*}.last_target.text"
   __KamajiConfigurationDefault["long-review-command"]="vimdiff -R"
   __KamajiConfigurationDefault["long-review-line-count"]=51
@@ -955,32 +975,21 @@ function KamajiConfigurationLoadValues() {
   if [ "${KAMAJI_CONFIG_LIST+IS_SET}" = "IS_SET" ]
   then
      #
-     spit ${__KamajiConfigurationLogFSpec}      \
-          "# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order."
-     #
-     for ConfigFSpec in ${KAMAJI_CONFIG_LIST}
-     do
-       #
-       [ -e ${ConfigFSpec} ] && KamajiConfigurationReadFile ${ConfigFSpec} ${__KamajiConfigurationLogFSpec}
-       #
-     done
+     spite ${__KamajiConfigurationLogFSpec}      \
+           "# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.\n#"
      #
   else
      #
-# for ConfigDSpec in ${HOME} $(D=$PWD; while [ $D != / ] && [ $D != $HOME ]; do echo $D; D=$(dirname $D); done | sort)
-     for ConfigDSpec in ${HOME} .
-     do
-       #
-       if [ -s ${ConfigDSpec}/${__KamajiConfigurationFName} ]
-       then
-          #
-          KamajiConfigurationReadFile ${ConfigDSpec}/${__KamajiConfigurationFName} ${__KamajiConfigurationLogFSpec}
-          #
-       fi
-       #
-     done
+     KAMAJI_CONFIG_LIST=$(EchoConfigurationFileList)
      #
   fi
+  #
+  for ConfigFSpec in ${KAMAJI_CONFIG_LIST}
+  do
+    #
+    [ -f ${ConfigFSpec} ] && KamajiConfigurationReadFile ${ConfigFSpec} ${__KamajiConfigurationLogFSpec}
+    #
+  done
   #
   #  Define oft-used configuration items.
   #
@@ -1186,6 +1195,16 @@ function KamajiModifierUsage_configure() {
                 "A list of names for \"data\" files that are stored in the baseline-folder,"                    \
                 "but do not represent CLUT or unit test exercises or their output."                             \
                 "Data files are represented in the working-folder."
+  #
+  EchoPara80-4  "find-expresson-list <expression>... -"                                                         \
+                "Expressions that are passed to the find command when determining which files within the"       \
+                "baseline-folder should be represented in the working-folder."                                  \
+                "The default '-type f' expression is ignored if this configuration item is set."                \
+                "The maxdepth, name, path, and prune options are best for building useful expressions here."    \
+                "For example, the compound expression"                                                          \
+                "'-name \"W*\" -prune -o -path ./.git -prune -o -print'"                                        \
+                "instructs find to ignore files that start with the capital letter W,"                          \
+                "and any files in the ./.git subdirectory."
   #
   EchoPara80-4  "last-target-filename <filename> -"                                                             \
                 "The name of the file in which the filename of the last make target is stored;"                 \
@@ -2248,7 +2267,13 @@ function KamajiBuildRules() {
      KamajiExitAfterUsage "The baseline directory '${__KamajiGoldenDSpec}' does not exist."
   fi
   #
-  local -r ListOfSourceFSpec=$(find -L ${__KamajiGoldenDSpec} -type f | sort)
+  local -r ConfiguredFindExpression=$(KamajiConfigurationEchoValue find-option-list)
+  #
+  local -r FindCommand="find -L ${__KamajiGoldenDSpec} ${ConfiguredFindExpression:--type f}"
+  #
+  DiagnosticHeavy "${FindCommand}"
+  #
+  local -r ListOfSourceFSpec=$(${FindCommand} | sort)
   #
   local    ItemOfSourceFSpec SourceFName SourceFSpec SourceClass
   #

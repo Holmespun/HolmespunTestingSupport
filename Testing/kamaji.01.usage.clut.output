@@ -405,6 +405,15 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    exercises or their output. Data files are represented in the
     |    working-folder.
     |    
+    |    find-expresson-list <expression>... - Expressions that are passed to the
+    |    find command when determining which files within the baseline-folder should
+    |    be represented in the working-folder. The default '-type f' expression is
+    |    ignored if this configuration item is set. The maxdepth, name, path, and
+    |    prune options are best for building useful expressions here. For example,
+    |    the compound expression '-name "W*" -prune -o -path ./.git -prune -o
+    |    -print' instructs find to ignore files that start with the capital letter
+    |    W, and any files in the ./.git subdirectory.
+    |    
     |    last-target-filename <filename> - The name of the file in which the
     |    filename of the last make target is stored; the file is stored in the
     |    working-folder.
@@ -761,6 +770,15 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    are stored in the baseline-folder, but do not represent CLUT or unit test
     |    exercises or their output. Data files are represented in the
     |    working-folder.
+    |    
+    |    find-expresson-list <expression>... - Expressions that are passed to the
+    |    find command when determining which files within the baseline-folder should
+    |    be represented in the working-folder. The default '-type f' expression is
+    |    ignored if this configuration item is set. The maxdepth, name, path, and
+    |    prune options are best for building useful expressions here. For example,
+    |    the compound expression '-name "W*" -prune -o -path ./.git -prune -o
+    |    -print' instructs find to ignore files that start with the capital letter
+    |    W, and any files in the ./.git subdirectory.
     |    
     |    last-target-filename <filename> - The name of the file in which the
     |    filename of the last make target is stored; the file is stored in the

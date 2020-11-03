@@ -60,6 +60,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
@@ -164,6 +165,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
@@ -266,6 +268,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
@@ -412,6 +415,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
@@ -610,6 +614,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
@@ -753,6 +758,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 6.2.9.1. Exit Status 0!
 6.2.9.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
@@ -999,6 +1005,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.text
     |ln --symbolic ../.kamaji.sed .kamaji.sed
@@ -1111,6 +1118,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 8.4.1.1. Exit Status 0!
 8.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.text
     |ln --symbolic ../.kamaji.sed .kamaji.sed
@@ -1223,6 +1231,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.text
     |ERROR: In ./.kamaji.deps on line 1: Missing colon separator.
@@ -1283,6 +1292,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 10.4.1.1. Exit Status 0!
 10.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/THETA_library.bash
     |#    Testing/THETA_library.text
@@ -1407,6 +1417,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 11.4.1.1. Exit Status 1!
 11.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
+    |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/ZETA_library.bash
     |#    Testing/ZETA_library.text
