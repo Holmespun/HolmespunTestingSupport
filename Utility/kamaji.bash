@@ -395,7 +395,7 @@ function EchoAndExecuteInWorking() {
         #
      IFS="${__KamajiIfsOriginal}"
      #
-  cd ..
+  cd ${__KamajiWhereWeWere}
   #
   return ${Status}
   #
@@ -948,6 +948,7 @@ function KamajiConfigurationLoadValues() {
   #
   #  Load user-defined configuration.
   #
+# for Directory in ${HOME} $(D=$PWD; while [ $D != / ] && [ $D != $HOME ]; do echo $D; D=$(dirname $D); done | sort)
   for Directory in ${HOME} .
   do
     #
@@ -1790,7 +1791,19 @@ function KamajiBuildRulesForTestingSource_Elf() {
 
 function KamajiBuildRulesForTestingSource_Naked() {
   #
-  : Nothing needs to be done.
+  local -r SourceFSpec=${1}
+  local -r SourceFType=${2-}
+  #
+  local -r SourceFName=$(basename ${SourceFSpec})
+  #
+  if [ "${SourceFName^^}" = "MAKEFILE" ]
+  then
+     #
+     __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+     #
+     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
+     #
+  fi
   #
 }
 
@@ -2317,9 +2330,25 @@ function KamajiRequestBless() {
        #
        if [ "${__KamajiRepresentative[${GoldenFName}]+IS_SET}" = "IS_SET" ]
        then
+          #
+          #  The golden output file is known and will be replaced.
+          #
           GoldenDSpec=$(dirname ${__KamajiRepresentative[${GoldenFName}]})
+          #
        else
+          #
+          #  The golden output file is new.
+          #
 	  GoldenDSpec=../${__KamajiGoldenDSpec}/${TargetFName%.review}
+          #
+          #  Remove the ruleset used for fast processing if it exists because it is obsolete.
+          #
+          local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .${__KamajiScriptName}.ruleset.bash)
+          #
+          local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
+          #
+          [ -e ${RulesetFSpec} ] && mv ${RulesetFSpec} ${RulesetFSpec}.was
+          #
        fi
        #
        #  Replace the golden output file with the current one.
@@ -2440,6 +2469,7 @@ function KamajiRequestExport_makefile() {
   #
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} ".PHONY: ${__KamajiScriptName}-grade ${__KamajiScriptName}-delta ${__KamajiScriptName}-output"
+  spit  ${MakefileFSpec} ".PHONY: ${__KamajiScriptName}-last"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "${__KamajiScriptName}-grade : \$(KamajiGradeTargetList)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
@@ -2452,6 +2482,10 @@ function KamajiRequestExport_makefile() {
   spit  ${MakefileFSpec} "${__KamajiScriptName}-output : \$(KamajiGradeTargetList:.grade=)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
   spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast invoke"
+  spit  ${MakefileFSpec} ""
+  spit  ${MakefileFSpec} "${__KamajiScriptName}-last :"
+  spite ${MakefileFSpec} "\t@echo \"make \$@\""
+  spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast make last"
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "${RulesetFSpec} :"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
@@ -2529,8 +2563,8 @@ function KamajiRequestExport_makefile() {
     while read OutputLine
     do
       #
-      printf "%s\n\t@echo \"make \$@\"\n\t\$(QUIET) ${__KamajiScriptName} fast silent make \$@\n\n"	\
-	     "${OutputLine}">> ${MakefileFSpec}
+      printf "%s\n\t@echo \"${__KamajiScriptName} make \$@\"\n\t\$(QUIET) "     >> ${MakefileFSpec}
+      printf "${__KamajiScriptName} fast make \$@\n\n${OutputLine}"      >> ${MakefileFSpec}
       #
     done < ${MakefileFSpec}.data
     #
@@ -3221,7 +3255,7 @@ function KamajiMake() {
   local    ListOfMyParentalFName=${__KamajiMyParentalList[${TargetFName}]}
   local    ListOfXtraParentFName=
   #
-  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -h ${__KamajiWorkinDSpec}/${TargetFName} ]
+  if [ ${#ListOfMyParentalFName} -eq 0 ] && [ ! -f ${__KamajiWorkinDSpec}/${TargetFName} ]
   then
      #
      local -r GoldenFSpec=${__KamajiRepresentative[${TargetFName}]}
@@ -3319,59 +3353,72 @@ function KamajiMain() {
      #
   else
      #
-     KamajiConfigurationCheckValues
-     #
-     if [ "${__KamajiRulesetIsReady}" != "true" ]
-     then
-        #
-	KamajiBuildRules
-        #
-        #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
-        #
-        #  Create each representative first because other files may have undeclared dependency on them.
-        #
-        if [ "${__KamajiRepresentative[*]+IS_SET}" = "IS_SET" ]
-	then
-	   #
-	   for SourceFName in $(echo ${!__KamajiRepresentative[*]} | tr ' ' '\n' | sort)
-	   do
-	     #
-	     KamajiMake ${SourceFName}
-	     #
-	   done
-	   #
-        fi
-        #
-     fi
+     #  Check to see if the user wants to use a command that can be invoked without checking configuration.
      #
      local -A RequestFunctionFor
      #
-     RequestFunctionFor[baseline]=KamajiRequestBless
-     RequestFunctionFor[bless]=KamajiRequestBless
      RequestFunctionFor[configure]=KamajiRequestConfigure
-     RequestFunctionFor[delta]=KamajiRequestDelta
-     RequestFunctionFor[execute]=KamajiRequestInvoke
-     RequestFunctionFor[export]=KamajiRequestExport
-     RequestFunctionFor[grades]=KamajiRequestGrade
-     RequestFunctionFor[invoke]=KamajiRequestInvoke
-     RequestFunctionFor[make]=KamajiRequestMake
-     RequestFunctionFor[review]=KamajiRequestReview
-     RequestFunctionFor[run]=KamajiRequestInvoke
      RequestFunctionFor[set]=KamajiRequestConfigure
      RequestFunctionFor[show]=KamajiRequestShow
-     #
      RequestFunctionFor[usage]=KamajiModifierUsage
      #
-     local -r RequestCorrected=$(EchoMeaningOf "${RequestedAction}" "N/A" ${!RequestFunctionFor[*]})
+     local -r RequestCorrectedEarly=$(EchoMeaningOf "${RequestedAction}" "N/A" ${!RequestFunctionFor[*]})
      #
-     if [ "${RequestCorrected}" = "N/A" ]
+     if [ "${RequestCorrectedEarly}" != "N/A" ]
      then
         #
-        KamajiExitAfterUsage "Unable to fulfill a '${RequestedAction}' request."
+        ${RequestFunctionFor[${RequestCorrectedEarly}]} ${RequestCorrectedEarly} ${ParameterList}
         #
      else
         #
-        ${RequestFunctionFor[${RequestCorrected}]} ${RequestCorrected} ${ParameterList}
+        KamajiConfigurationCheckValues
+        #
+        if [ "${__KamajiRulesetIsReady}" != "true" ]
+        then
+           #
+	   KamajiBuildRules
+           #
+           #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+           #
+           #  Create each representative first because other files may have undeclared dependency on them.
+           #
+           if [ "${__KamajiRepresentative[*]+IS_SET}" = "IS_SET" ]
+	   then
+	      #
+	      for SourceFName in $(echo ${!__KamajiRepresentative[*]} | tr ' ' '\n' | sort)
+	      do
+	        #
+	        KamajiMake ${SourceFName}
+	        #
+	      done
+	      #
+           fi
+           #
+        fi
+        #
+        RequestFunctionFor[baseline]=KamajiRequestBless
+        RequestFunctionFor[bless]=KamajiRequestBless
+        RequestFunctionFor[delta]=KamajiRequestDelta
+        RequestFunctionFor[execute]=KamajiRequestInvoke
+        RequestFunctionFor[export]=KamajiRequestExport
+        RequestFunctionFor[grades]=KamajiRequestGrade
+        RequestFunctionFor[invoke]=KamajiRequestInvoke
+        RequestFunctionFor[make]=KamajiRequestMake
+        RequestFunctionFor[review]=KamajiRequestReview
+        RequestFunctionFor[run]=KamajiRequestInvoke
+        #
+        local -r RequestCorrectedLater=$(EchoMeaningOf "${RequestedAction}" "N/A" ${!RequestFunctionFor[*]})
+        #
+        if [ "${RequestCorrectedLater}" = "N/A" ]
+        then
+           #
+           KamajiExitAfterUsage "Unable to fulfill a '${RequestedAction}' request."
+           #
+        else
+           #
+           ${RequestFunctionFor[${RequestCorrectedLater}]} ${RequestCorrectedLater} ${ParameterList}
+           #
+        fi
         #
      fi
      #
