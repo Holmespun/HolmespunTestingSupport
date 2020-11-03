@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.08.configuration.clut (25 cases)
+CLUT Source File: kamaji.08.configuration.clut (26 cases)
 
 0. Global Information
 0.1. Notations
@@ -231,13 +231,13 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ configuration [ names | variables ] | copyright | version ]
+    |      show   [ configuration | copyright | version ]
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -332,13 +332,13 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
-    |      show   [ configuration [ names | variables ] | copyright | version ]
+    |      show   [ configuration | copyright | version ]
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -512,26 +512,67 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
 7.4.1.  kamaji show configuration
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |kamaji show configuration 
+    |kamaji show configuration
 7.4.1.3. STDOUT [text]...
-    |baseline-folder         ALFA
-    |data-extension-list     BRAVO
-    |data-filename-list      CHARLIE
-    |last-target-filename    DELTA
-    |long-review-command     QUEBEC
-    |long-review-line-count  51
-    |long-review-tailpipe    ROMEO
-    |makefile-filename       ECHO
-    |mask-sed-script         FOXTROT
-    |new-review-command      OSCAR
-    |new-review-tailpipe     PAPA
-    |ruleset-filename        INDIA
-    |script-type-list        bash sh py rb JULIETT NOVEMBER
-    |short-review-command    SIERRA
-    |short-review-tailpipe   TANGO
-    |time-output-format      NONE
-    |verbosity-level         KILO
-    |working-folder          MIKE
+    |List of configurable items:
+    |   baseline-folder
+    |   data-extension-list
+    |   data-filename-list
+    |   last-target-filename
+    |   long-review-command
+    |   long-review-line-count
+    |   long-review-tailpipe
+    |   makefile-filename
+    |   mask-sed-script
+    |   new-review-command
+    |   new-review-tailpipe
+    |   ruleset-filename
+    |   script-type-list
+    |   short-review-command
+    |   short-review-tailpipe
+    |   time-output-format
+    |   verbosity-level
+    |   working-folder
+    |Active configuration sources:
+    |   # ./.kamaji.conf
+    |   baseline-folder ALFA
+    |   data-extension-list BRAVO
+    |   data-filename-list CHARLIE
+    |   last-target-filename DELTA
+    |   makefile-filename ECHO
+    |   mask-sed-script FOXTROT
+    |   ruleset-filename INDIA
+    |   script-type-list JULIETT
+    |   verbosity-level KILO
+    |   working-folder LIMA
+    |   new-review-command OSCAR
+    |   new-review-tailpipe PAPA
+    |   long-review-command QUEBEC
+    |   long-review-tailpipe ROMEO
+    |   short-review-command SIERRA
+    |   short-review-tailpipe TANGO
+    |   working-folder MIKE
+    |   script-type-list NOVEMBER
+    |   #
+    |Active configuration items:
+    |   baseline-folder         ALFA
+    |   data-extension-list     BRAVO
+    |   data-filename-list      CHARLIE
+    |   last-target-filename    DELTA
+    |   long-review-command     QUEBEC
+    |   long-review-line-count  51
+    |   long-review-tailpipe    ROMEO
+    |   makefile-filename       ECHO
+    |   mask-sed-script         FOXTROT
+    |   new-review-command      OSCAR
+    |   new-review-tailpipe     PAPA
+    |   ruleset-filename        INDIA
+    |   script-type-list        bash sh py rb JULIETT NOVEMBER
+    |   short-review-command    SIERRA
+    |   short-review-tailpipe   TANGO
+    |   time-output-format      NONE
+    |   verbosity-level         KILO
+    |   working-folder          MIKE
 7.5. Finalizations.
 7.6. Workspace Impact...
 7.6.1. The initial and final workspace contents are equivalent.
@@ -2012,6 +2053,78 @@ CLUT Source File: kamaji.08.configuration.clut (25 cases)
     |working-folder value-4-working-folder
 25.6.1.2. ALFA is empty.
 
-CLUT Source File: kamaji.08.configuration.clut (25 cases)
+26. ExportConfiguration.
+26.1. Requirements.
+    |None.
+26.2. Initializations.
+26.2.1. create_complete_configuration_file .kamaji.conf
+26.2.2. mkdir --parents ALFA
+26.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+26.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+26.3.2. ALFA is empty.
+26.4. Target CLU Call.
+26.4.1.  kamaji export configuration
+26.4.1.1. Exit Status 0!
+26.4.1.2. STDERR [text]...
+    |kamaji export configuration
+26.5. Finalizations.
+26.6. Workspace Impact...
+    |Only in 26.Omega: FOXTROT
+    |Only in 26.Omega: MIKE
+26.6.1. FOXTROT (created) is empty.
+26.6.2. MIKE (created) contains 2 files.
+26.6.2.1. .kamaji.conf...
+    |# ./.kamaji.conf
+    |baseline-folder ALFA
+    |data-extension-list BRAVO
+    |data-filename-list CHARLIE
+    |last-target-filename DELTA
+    |makefile-filename ECHO
+    |mask-sed-script FOXTROT
+    |ruleset-filename INDIA
+    |script-type-list JULIETT
+    |verbosity-level KILO
+    |working-folder LIMA
+    |new-review-command OSCAR
+    |new-review-tailpipe PAPA
+    |long-review-command QUEBEC
+    |long-review-tailpipe ROMEO
+    |short-review-command SIERRA
+    |short-review-tailpipe TANGO
+    |working-folder MIKE
+    |script-type-list NOVEMBER
+    |#
+26.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
+
+CLUT Source File: kamaji.08.configuration.clut (26 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.

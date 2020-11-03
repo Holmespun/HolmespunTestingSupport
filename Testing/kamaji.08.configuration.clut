@@ -134,6 +134,10 @@ function testCaseDefinitions() {
     #
   done
   #
+  clut_case_name		ExportConfiguration
+  clut_case_parameter		"export configuration"
+  clut_case_end
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
