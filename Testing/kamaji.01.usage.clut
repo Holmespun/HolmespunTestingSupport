@@ -35,6 +35,8 @@ export HOLMESPUN_MONOCHROMATIC=ACTIVE
 
 function testCaseDefinitions() {
   #
+  clut_shared_initialize        "export KAMAJI_CONFIG_LIST=./.kamaji.conf"
+  #
   clut_case_name		NoArguments
   clut_case_initialize		mkdir Testing
   clut_case_comment		"General usage should be displayed."

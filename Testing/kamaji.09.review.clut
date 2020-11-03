@@ -35,6 +35,8 @@ export HOLMESPUN_MONOCHROMATIC=ACTIVE
 
 function testCaseDefinitions() {
   #
+  clut_shared_initialize        "export KAMAJI_CONFIG_LIST=./.kamaji.conf"
+  #
   clut_global_dump_format	GAMMA_exercise dump_an_elf_file
   #
   clut_global_initialize	mkdir --parents Testing

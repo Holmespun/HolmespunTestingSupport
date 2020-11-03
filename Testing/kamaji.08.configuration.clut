@@ -69,10 +69,11 @@ function create_complete_configuration_file() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function testCaseDefinitions() {
+function testCaseDefinitionsOriginal() {
   #
-  clut_global_initialize	create_complete_configuration_file .kamaji.conf
-  clut_global_initialize	mkdir --parents ALFA
+  clut_shared_initialize	create_complete_configuration_file .kamaji.conf
+  clut_shared_initialize	mkdir --parents ALFA
+  clut_shared_initialize        "export KAMAJI_CONFIG_LIST=./.kamaji.conf"
   #
   clut_case_name		SetConfiguration_ReplaceValue
   clut_case_parameter		"set makefile-filename OSCAR"
@@ -134,7 +135,30 @@ function testCaseDefinitions() {
     #
   done
   #
-  clut_case_name		ExportConfiguration
+}
+
+function testCaseDefinitionsExportAndOverride() {
+  #
+  clut_shared_initialize	create_complete_configuration_file .kamaji.conf
+  #
+  clut_case_name		ExportConfigurationLocal
+  clut_case_initialize  	mkdir --parents ALFA
+  clut_case_parameter		"export configuration"
+  clut_case_end
+  #
+  clut_case_name		ExportConfigurationRemote
+  clut_case_initialize          mkdir --parents Remote/Location
+  clut_case_initialize          spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
+  clut_case_initialize          export KAMAJI_CONFIG_LIST=Remote/Location/Config_File.txt
+  clut_case_initialize  	mkdir --parents Testing
+  clut_case_parameter		"export configuration"
+  clut_case_end
+  #
+  clut_case_name		ExportConfigurationRemoteAndLocal
+  clut_case_initialize          mkdir --parents Remote/Location
+  clut_case_initialize          spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
+  clut_case_initialize          "export KAMAJI_CONFIG_LIST=\\\"./.kamaji.conf Remote/Location/Config_File.txt\\\""
+  clut_case_initialize  	mkdir --parents ALFA Testing
   clut_case_parameter		"export configuration"
   clut_case_end
   #
@@ -142,6 +166,7 @@ function testCaseDefinitions() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-clut_definition_set		testCaseDefinitions
+clut_definition_set		testCaseDefinitionsOriginal
+clut_definition_set             testCaseDefinitionsExportAndOverride
 
 #----------------------------------------------------------------------------------------------------------------------

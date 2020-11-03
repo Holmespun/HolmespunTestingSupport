@@ -53,6 +53,8 @@ function create_exercise_compilable_alpha_output() {
 
 function testCaseDefinitions() {
   #
+  clut_shared_initialize        "export KAMAJI_CONFIG_LIST=./.kamaji.conf"
+  #
   clut_global_initialize	mkdir Testing
   clut_global_initialize	spit .kamaji.conf "baseline-folder Testing"
   clut_global_initialize	spit .kamaji.conf "time-output-format %C %x"

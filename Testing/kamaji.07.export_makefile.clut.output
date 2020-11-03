@@ -19,8 +19,9 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.2.1. mkdir Testing
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf verbosity-level heavy
-1.2.4. create_production_script_alpha ALPHA.bash
-1.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
+1.2.4. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+1.2.5. create_production_script_alpha ALPHA.bash
+1.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 1.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -59,7 +60,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
-    |#	Testing/ALPHA.clut
+    |#    Testing/ALPHA.clut
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
@@ -156,7 +157,8 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.2.1. mkdir Testing
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf verbosity-level heavy
-2.2.4. create_exercise_script_alpha Testing/BETA_exercise.bash
+2.2.4. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -180,7 +182,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
-    |#	Testing/BETA_exercise.bash
+    |#    Testing/BETA_exercise.bash
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |kamaji export makefile
@@ -271,7 +273,8 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 3.2.1. mkdir Testing
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf verbosity-level heavy
-3.2.4. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+3.2.4. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
 3.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -304,7 +307,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
-    |#	Testing/GAMMA_exercise.cpp
+    |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export makefile
@@ -399,10 +402,11 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.2.1. mkdir Testing
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf verbosity-level heavy
-4.2.4. create_production_script_alpha ALPHA.bash
-4.2.5. create_production_script_alpha_clut Testing/ALPHA.clut
-4.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
-4.2.7. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
+4.2.4. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+4.2.5. create_production_script_alpha ALPHA.bash
+4.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
+4.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
+4.2.8. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
 4.3. Initial Workspace contains 6 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -472,9 +476,9 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
     |# Building rules based on baseline files...
-    |#	Testing/ALPHA.clut
-    |#	Testing/BETA_exercise.bash
-    |#	Testing/GAMMA_exercise.cpp
+    |#    Testing/ALPHA.clut
+    |#    Testing/BETA_exercise.bash
+    |#    Testing/GAMMA_exercise.cpp
     |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut

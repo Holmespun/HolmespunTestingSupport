@@ -17,7 +17,8 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 1.1. Requirements.
     |None.
 1.2. Initializations.
-1.2.1. mkdir Testing
+1.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+1.2.2. mkdir Testing
 1.3. Initial Workspace contains one file...
     |Testing
 1.3.1. Testing is empty.
@@ -92,6 +93,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 2.1. Requirements.
     |None.
 2.2. Initializations.
+2.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 2.3. Initial Workspace is empty.
 2.4. Target CLU Call.
 2.4.1.  kamaji usage
@@ -159,6 +161,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 3.1. Requirements.
     |None.
 3.2. Initializations.
+3.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 3.3. Initial Workspace is empty.
 3.4. Target CLU Call.
 3.4.1.  kamaji help
@@ -226,7 +229,8 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 4.1. Requirements.
     |None.
 4.2. Initializations.
-4.2.1. mkdir Testing
+4.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+4.2.2. mkdir Testing
 4.3. Initial Workspace contains one file...
     |Testing
 4.3.1. Testing is empty.
@@ -326,6 +330,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 5.1. Requirements.
     |None.
 5.2. Initializations.
+5.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 5.3. Initial Workspace is empty.
 5.4. Target CLU Call.
 5.4.1.  kamaji help configure
@@ -352,10 +357,24 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |
     |Configure|Set...
     |
-    |Named configuration variables and their values are stored in the
-    |$HOME/.kamaji.conf and ./.kamaji.conf files; settings in the latter will
-    |re-define or augment variables in the former. Both files can contain comments,
-    |blank lines, and variable settings. Variables cannot be set to an empty value.
+    |Named configuration items and their values are stored in .kamaji.conf files. If
+    |it exists, then configuration items are first read from the $HOME/.kamaji.conf
+    |file. If the $PWD is within the $HOME hierarchy, then configuration files from
+    |every subdirectory between $HOME and $PWD are read. If the $PWD is not within
+    |the $HOME hierarchy, then configuration files from every subdirectory between /
+    |and $PWD are read, with the exception of / itself.
+    |
+    |The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST
+    |environment variable. The variable may be defined using zero or more file
+    |specifications separated by whitespace. The files specfied in the
+    |KAMAJI_CONFIG_LIST need not actually exist.
+    |
+    |Based on the order read, items set later will re-define or augment items that
+    |were defined earlier.
+    |
+    |Configuration files may contain comments (#), blank lines, and item settings.
+    |Item settings must name the item and provide a value; the values cannot be
+    |empty.
     |
     |The following settings represent the non-empty defaults:
     |
@@ -371,7 +390,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    verbosity-level         quiet
     |    working-folder          Working
     |
-    |The following variables are defined:
+    |The following items may be set:
     |
     |    baseline-folder <directory-specification> - Specification for the directory
     |    where baseline output files are stored.
@@ -459,7 +478,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |augmented.
     |
     |A list of the configuration variable names can be displayed using a 'show
-    |configuration variables' request.
+    |configuration' request.
     |
     |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
@@ -471,6 +490,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 6.1. Requirements.
     |None.
 6.2. Initializations.
+6.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 6.3. Initial Workspace is empty.
 6.4. Target CLU Call.
 6.4.1.  kamaji help export
@@ -546,6 +566,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 7.1. Requirements.
     |None.
 7.2. Initializations.
+7.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 7.3. Initial Workspace is empty.
 7.4. Target CLU Call.
 7.4.1.  kamaji help grade
@@ -610,6 +631,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 8.1. Requirements.
     |None.
 8.2. Initializations.
+8.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 8.3. Initial Workspace is empty.
 8.4. Target CLU Call.
 8.4.1.  kamaji help make
@@ -665,6 +687,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 9.1. Requirements.
     |None.
 9.2. Initializations.
+9.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 9.3. Initial Workspace is empty.
 9.4. Target CLU Call.
 9.4.1.  kamaji help set
@@ -691,10 +714,24 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |
     |Configure|Set...
     |
-    |Named configuration variables and their values are stored in the
-    |$HOME/.kamaji.conf and ./.kamaji.conf files; settings in the latter will
-    |re-define or augment variables in the former. Both files can contain comments,
-    |blank lines, and variable settings. Variables cannot be set to an empty value.
+    |Named configuration items and their values are stored in .kamaji.conf files. If
+    |it exists, then configuration items are first read from the $HOME/.kamaji.conf
+    |file. If the $PWD is within the $HOME hierarchy, then configuration files from
+    |every subdirectory between $HOME and $PWD are read. If the $PWD is not within
+    |the $HOME hierarchy, then configuration files from every subdirectory between /
+    |and $PWD are read, with the exception of / itself.
+    |
+    |The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST
+    |environment variable. The variable may be defined using zero or more file
+    |specifications separated by whitespace. The files specfied in the
+    |KAMAJI_CONFIG_LIST need not actually exist.
+    |
+    |Based on the order read, items set later will re-define or augment items that
+    |were defined earlier.
+    |
+    |Configuration files may contain comments (#), blank lines, and item settings.
+    |Item settings must name the item and provide a value; the values cannot be
+    |empty.
     |
     |The following settings represent the non-empty defaults:
     |
@@ -710,7 +747,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    verbosity-level         quiet
     |    working-folder          Working
     |
-    |The following variables are defined:
+    |The following items may be set:
     |
     |    baseline-folder <directory-specification> - Specification for the directory
     |    where baseline output files are stored.
@@ -798,7 +835,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |augmented.
     |
     |A list of the configuration variable names can be displayed using a 'show
-    |configuration variables' request.
+    |configuration' request.
     |
     |Copyright (c) 2019-2020 Brian G. Holmes.
     |kamaji version 1.00
@@ -810,6 +847,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 10.1. Requirements.
     |None.
 10.2. Initializations.
+10.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 10.3. Initial Workspace is empty.
 10.4. Target CLU Call.
 10.4.1.  kamaji help show
@@ -849,6 +887,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 11.1. Requirements.
     |None.
 11.2. Initializations.
+11.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 11.3. Initial Workspace is empty.
 11.4. Target CLU Call.
 11.4.1.  kamaji usage fast
@@ -890,6 +929,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 12.1. Requirements.
     |None.
 12.2. Initializations.
+12.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 12.3. Initial Workspace is empty.
 12.4. Target CLU Call.
 12.4.1.  kamaji usage help
@@ -930,6 +970,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 13.1. Requirements.
     |None.
 13.2. Initializations.
+13.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 13.3. Initial Workspace is empty.
 13.4. Target CLU Call.
 13.4.1.  kamaji usage meticulous
@@ -996,6 +1037,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 14.1. Requirements.
     |None.
 14.2. Initializations.
+14.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 14.3. Initial Workspace is empty.
 14.4. Target CLU Call.
 14.4.1.  kamaji usage noisy
@@ -1037,6 +1079,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 15.1. Requirements.
     |None.
 15.2. Initializations.
+15.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 15.3. Initial Workspace is empty.
 15.4. Target CLU Call.
 15.4.1.  kamaji usage quiet
@@ -1078,6 +1121,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 16.1. Requirements.
     |None.
 16.2. Initializations.
+16.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 16.3. Initial Workspace is empty.
 16.4. Target CLU Call.
 16.4.1.  kamaji usage silent
@@ -1119,6 +1163,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 17.1. Requirements.
     |None.
 17.2. Initializations.
+17.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 17.3. Initial Workspace is empty.
 17.4. Target CLU Call.
 17.4.1.  kamaji usage usage
@@ -1159,6 +1204,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 18.1. Requirements.
     |None.
 18.2. Initializations.
+18.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 18.3. Initial Workspace is empty.
 18.4. Target CLU Call.
 18.4.1.  kamaji usage verbose
@@ -1200,6 +1246,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 19.1. Requirements.
     |None.
 19.2. Initializations.
+19.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 19.3. Initial Workspace is empty.
 19.4. Target CLU Call.
 19.4.1.  kamaji help execute
@@ -1249,6 +1296,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 20.1. Requirements.
     |None.
 20.2. Initializations.
+20.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 20.3. Initial Workspace is empty.
 20.4. Target CLU Call.
 20.4.1.  kamaji help invoke
@@ -1298,6 +1346,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 21.1. Requirements.
     |None.
 21.2. Initializations.
+21.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 21.3. Initial Workspace is empty.
 21.4. Target CLU Call.
 21.4.1.  kamaji help run
@@ -1347,6 +1396,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 22.1. Requirements.
     |None.
 22.2. Initializations.
+22.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 22.3. Initial Workspace is empty.
 22.4. Target CLU Call.
 22.4.1.  kamaji help review
@@ -1407,6 +1457,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 23.1. Requirements.
     |None.
 23.2. Initializations.
+23.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 23.3. Initial Workspace is empty.
 23.4. Target CLU Call.
 23.4.1.  kamaji help bless
@@ -1449,6 +1500,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 24.1. Requirements.
     |None.
 24.2. Initializations.
+24.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 24.3. Initial Workspace is empty.
 24.4. Target CLU Call.
 24.4.1.  kamaji help baseline
@@ -1491,6 +1543,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 25.1. Requirements.
     |None.
 25.2. Initializations.
+25.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 25.3. Initial Workspace is empty.
 25.4. Target CLU Call.
 25.4.1.  kamaji help delta

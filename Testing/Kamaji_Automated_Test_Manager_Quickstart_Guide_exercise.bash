@@ -44,6 +44,8 @@ source ${BashLibraryDSpec}/spit_spite_spitn_and_spew.bash
 
 export HOLMESPUN_MONOCHROMATIC=BleakAndWet
 
+export KAMAJI_CONFIG_LIST=./.kamaji.conf
+
 #----------------------------------------------------------------------------------------------------------------------
 #
 #  Sub-make commands inherit some MAKEFLAGS.  As such, we must clear MAKEFLAGS here so that parallel use requests

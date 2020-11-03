@@ -922,7 +922,7 @@ function KamajiConfigurationEchoValue() {
 
 function KamajiConfigurationLoadValues() {
   #
-  local Key Value Directory
+  local Key Value ConfigDSpec ConfigFSpec
   #
   #  Set default configuration values.
   #
@@ -952,20 +952,37 @@ function KamajiConfigurationLoadValues() {
   #
   #  Record the user-defined configuration as it is loaded.
   #
-# for Directory in ${HOME} $(D=$PWD; while [ $D != / ] && [ $D != $HOME ]; do echo $D; D=$(dirname $D); done | sort)
-  for Directory in ${HOME} .
-  do
-    #
-    if [ -s ${Directory}/${__KamajiConfigurationFName} ]
-    then
+  if [ "${KAMAJI_CONFIG_LIST+IS_SET}" = "IS_SET" ]
+  then
+     #
+     spit ${__KamajiConfigurationLogFSpec}      \
+          "# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order."
+     #
+     for ConfigFSpec in ${KAMAJI_CONFIG_LIST}
+     do
        #
-       KamajiConfigurationReadFile ${Directory}/${__KamajiConfigurationFName} ${__KamajiConfigurationLogFSpec}
+       [ -e ${ConfigFSpec} ] && KamajiConfigurationReadFile ${ConfigFSpec} ${__KamajiConfigurationLogFSpec}
        #
-    fi
-    #
-  done
+     done
+     #
+  else
+     #
+# for ConfigDSpec in ${HOME} $(D=$PWD; while [ $D != / ] && [ $D != $HOME ]; do echo $D; D=$(dirname $D); done | sort)
+     for ConfigDSpec in ${HOME} .
+     do
+       #
+       if [ -s ${ConfigDSpec}/${__KamajiConfigurationFName} ]
+       then
+          #
+          KamajiConfigurationReadFile ${ConfigDSpec}/${__KamajiConfigurationFName} ${__KamajiConfigurationLogFSpec}
+          #
+       fi
+       #
+     done
+     #
+  fi
   #
-  #  Define oft-used configuration variables.
+  #  Define oft-used configuration items.
   #
   __KamajiGoldenDSpec=$(KamajiConfigurationEchoValue baseline-folder)
   #
@@ -1119,11 +1136,25 @@ function KamajiModifierUsage_configure() {
   #
   EchoPara80    "$(echoInColorWhiteBold "Configure|Set...")"
   #
-  EchoPara80    "Named configuration variables and their values are stored in the"                              \
-                "\$HOME/${__KamajiConfigurationFName} and ./${__KamajiConfigurationFName} files;"               \
-                "settings in the latter will re-define or augment variables in the former."                     \
-                "Both files can contain comments, blank lines, and variable settings."                          \
-                "Variables cannot be set to an empty value."
+  EchoPara80    "Named configuration items and their values are stored in"                                      \
+                "${__KamajiConfigurationFName} files."                                                          \
+                "If it exists, then configuration items are first read from the"                                \
+                "\$HOME/${__KamajiConfigurationFName} file."                                                    \
+                "If the \$PWD is within the \$HOME hierarchy, then configuration files from every"              \
+                "subdirectory between \$HOME and \$PWD are read."                                               \
+                "If the \$PWD is not within the \$HOME hierarchy, then configuration files from every"          \
+                "subdirectory between / and \$PWD are read, with the exception of / itself."
+  #
+  EchoPara80    "The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST environment"      \
+                "variable."                                                                                     \
+                "The variable may be defined using zero or more file specifications separated by whitespace."   \
+                "The files specfied in the KAMAJI_CONFIG_LIST need not actually exist."
+  #
+  EchoPara80    "Based on the order read, items set later will re-define or augment items that were defined"    \
+                "earlier."
+  #
+  EchoPara80    "Configuration files may contain comments (#), blank lines, and item settings."                 \
+                "Item settings must name the item and provide a value; the values cannot be empty."
   #
   EchoPara80    "The following settings represent the non-empty defaults:"
   #
@@ -1141,7 +1172,7 @@ function KamajiModifierUsage_configure() {
   #
   echo
   #
-  EchoPara80    "The following variables are defined":
+  EchoPara80    "The following items may be set:"
   #
   EchoPara80-4  "baseline-folder <directory-specification> -"                                                   \
                 "Specification for the directory where baseline output files are stored."
@@ -1235,7 +1266,7 @@ function KamajiModifierUsage_configure() {
                 "unless that variable represents a list, in which case the value is augmented."
   #
   EchoPara80    "A list of the configuration variable names can be displayed using a"                           \
-                "'show configuration variables' request."
+                "'show configuration' request."
   #
 }
 
