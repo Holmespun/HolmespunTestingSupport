@@ -62,7 +62,7 @@ install :
 
 #----------------------------------------------------------------------------------------------------------------------
 #
-#  pre-publish: Github does not resolve symbolic links, so the Documen MD files that are based on Testing output files
+#  pre-publish: GitHub does not resolve symbolic links, so the Documen MD files that are based on Testing output files
 #  need to be copied instead of linked.
 #
 #----------------------------------------------------------------------------------------------------------------------

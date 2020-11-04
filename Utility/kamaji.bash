@@ -948,7 +948,7 @@ function KamajiConfigurationLoadValues() {
   __KamajiConfigurationDefault["baseline-folder"]="Testing"
   __KamajiConfigurationDefault["data-extension-list"]=
   __KamajiConfigurationDefault["data-filename-list"]=
-  __KamajiConfigurationDefault["find-expresson-list"]=
+  __KamajiConfigurationDefault["find-expression-list"]=
   __KamajiConfigurationDefault["last-target-filename"]="${__KamajiConfigurationFName%.*}.last_target.text"
   __KamajiConfigurationDefault["long-review-command"]="vimdiff -R"
   __KamajiConfigurationDefault["long-review-line-count"]=51
@@ -1157,7 +1157,7 @@ function KamajiModifierUsage_configure() {
   EchoPara80    "The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST environment"      \
                 "variable."                                                                                     \
                 "The variable may be defined using zero or more file specifications separated by whitespace."   \
-                "The files specfied in the KAMAJI_CONFIG_LIST need not actually exist."
+                "The files specified in the KAMAJI_CONFIG_LIST need not actually exist."
   #
   EchoPara80    "Based on the order read, items set later will re-define or augment items that were defined"    \
                 "earlier."
@@ -1196,7 +1196,7 @@ function KamajiModifierUsage_configure() {
                 "but do not represent CLUT or unit test exercises or their output."                             \
                 "Data files are represented in the working-folder."
   #
-  EchoPara80-4  "find-expresson-list <expression>... -"                                                         \
+  EchoPara80-4  "find-expression-list <expression>... -"                                                         \
                 "Expressions that are passed to the find command when determining which files within the"       \
                 "baseline-folder should be represented in the working-folder."                                  \
                 "The default '-type f' expression is ignored if this configuration item is set."                \

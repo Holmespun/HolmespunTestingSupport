@@ -366,7 +366,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |
     |The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST
     |environment variable. The variable may be defined using zero or more file
-    |specifications separated by whitespace. The files specfied in the
+    |specifications separated by whitespace. The files specified in the
     |KAMAJI_CONFIG_LIST need not actually exist.
     |
     |Based on the order read, items set later will re-define or augment items that
@@ -405,7 +405,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    exercises or their output. Data files are represented in the
     |    working-folder.
     |    
-    |    find-expresson-list <expression>... - Expressions that are passed to the
+    |    find-expression-list <expression>... - Expressions that are passed to the
     |    find command when determining which files within the baseline-folder should
     |    be represented in the working-folder. The default '-type f' expression is
     |    ignored if this configuration item is set. The maxdepth, name, path, and
@@ -732,7 +732,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |
     |The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST
     |environment variable. The variable may be defined using zero or more file
-    |specifications separated by whitespace. The files specfied in the
+    |specifications separated by whitespace. The files specified in the
     |KAMAJI_CONFIG_LIST need not actually exist.
     |
     |Based on the order read, items set later will re-define or augment items that
@@ -771,7 +771,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    exercises or their output. Data files are represented in the
     |    working-folder.
     |    
-    |    find-expresson-list <expression>... - Expressions that are passed to the
+    |    find-expression-list <expression>... - Expressions that are passed to the
     |    find command when determining which files within the baseline-folder should
     |    be represented in the working-folder. The default '-type f' expression is
     |    ignored if this configuration item is set. The maxdepth, name, path, and

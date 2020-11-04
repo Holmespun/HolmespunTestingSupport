@@ -1,6 +1,6 @@
 CLUT Output Begins...
 CLUT Output Format Version: 5.5
-CLUT Source File: kamaji.08.configuration.clut (28 cases)
+CLUT Source File: kamaji.08.configuration.clut (29 cases)
 
 0. Global Information
 0.1. Notations
@@ -30,6 +30,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -59,7 +60,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 1.5. Finalizations.
 1.6. Workspace Impact...
     |diff --recursive --no-dereference 01.Alpha/.kamaji.conf 01.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> makefile-filename OSCAR
 1.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -72,6 +73,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -113,6 +115,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -142,7 +145,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 2.5. Finalizations.
 2.6. Workspace Impact...
     |diff --recursive --no-dereference 02.Alpha/.kamaji.conf 02.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> script-type-list PAPA
 2.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -155,6 +158,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -196,6 +200,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -298,6 +303,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -400,6 +406,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -447,6 +454,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -494,6 +502,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -525,7 +534,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |   baseline-folder
     |   data-extension-list
     |   data-filename-list
-    |   find-expresson-list
+    |   find-expression-list
     |   last-target-filename
     |   long-review-command
     |   long-review-line-count
@@ -548,6 +557,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |   baseline-folder ALFA
     |   data-extension-list BRAVO
     |   data-filename-list CHARLIE
+    |   find-expression-list -name UNIFORM
     |   last-target-filename DELTA
     |   makefile-filename ECHO
     |   mask-sed-script FOXTROT
@@ -568,6 +578,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |   baseline-folder         ALFA
     |   data-extension-list     BRAVO
     |   data-filename-list      CHARLIE
+    |   find-expression-list    -name UNIFORM
     |   last-target-filename    DELTA
     |   long-review-command     QUEBEC
     |   long-review-line-count  51
@@ -605,6 +616,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -634,7 +646,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 8.5. Finalizations.
 8.6. Workspace Impact...
     |diff --recursive --no-dereference 08.Alpha/.kamaji.conf 08.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> baseline-folder value-4-baseline-folder
 8.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -647,6 +659,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -688,6 +701,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -717,7 +731,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 9.5. Finalizations.
 9.6. Workspace Impact...
     |diff --recursive --no-dereference 09.Alpha/.kamaji.conf 09.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> data-extension-list value-4-data-extension-list
 9.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -730,6 +744,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -771,6 +786,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -800,7 +816,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 10.5. Finalizations.
 10.6. Workspace Impact...
     |diff --recursive --no-dereference 10.Alpha/.kamaji.conf 10.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> data-filename-list value-4-data-filename-list
 10.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -813,6 +829,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -854,6 +871,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -883,7 +901,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 11.5. Finalizations.
 11.6. Workspace Impact...
     |diff --recursive --no-dereference 11.Alpha/.kamaji.conf 11.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> last-target-filename value-4-last-target-filename
 11.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -896,6 +914,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -937,6 +956,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -966,7 +986,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 12.5. Finalizations.
 12.6. Workspace Impact...
     |diff --recursive --no-dereference 12.Alpha/.kamaji.conf 12.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> long-review-command value-4-long-review-command
 12.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -979,6 +999,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1020,6 +1041,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1049,7 +1071,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 13.5. Finalizations.
 13.6. Workspace Impact...
     |diff --recursive --no-dereference 13.Alpha/.kamaji.conf 13.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> long-review-line-count value-4-long-review-line-count
 13.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1062,6 +1084,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1103,6 +1126,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1132,7 +1156,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 14.5. Finalizations.
 14.6. Workspace Impact...
     |diff --recursive --no-dereference 14.Alpha/.kamaji.conf 14.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> long-review-tailpipe value-4-long-review-tailpipe
 14.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1145,6 +1169,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1186,6 +1211,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1215,7 +1241,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 15.5. Finalizations.
 15.6. Workspace Impact...
     |diff --recursive --no-dereference 15.Alpha/.kamaji.conf 15.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> makefile-filename value-4-makefile-filename
 15.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1228,6 +1254,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1269,6 +1296,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1298,7 +1326,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 16.5. Finalizations.
 16.6. Workspace Impact...
     |diff --recursive --no-dereference 16.Alpha/.kamaji.conf 16.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> mask-sed-script value-4-mask-sed-script
 16.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1311,6 +1339,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1352,6 +1381,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1381,7 +1411,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 17.5. Finalizations.
 17.6. Workspace Impact...
     |diff --recursive --no-dereference 17.Alpha/.kamaji.conf 17.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> new-review-command value-4-new-review-command
 17.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1394,6 +1424,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1435,6 +1466,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1464,7 +1496,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 18.5. Finalizations.
 18.6. Workspace Impact...
     |diff --recursive --no-dereference 18.Alpha/.kamaji.conf 18.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> new-review-tailpipe value-4-new-review-tailpipe
 18.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1477,6 +1509,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1518,6 +1551,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1547,7 +1581,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 19.5. Finalizations.
 19.6. Workspace Impact...
     |diff --recursive --no-dereference 19.Alpha/.kamaji.conf 19.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> ruleset-filename value-4-ruleset-filename
 19.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1560,6 +1594,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1601,6 +1636,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1630,7 +1666,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 20.5. Finalizations.
 20.6. Workspace Impact...
     |diff --recursive --no-dereference 20.Alpha/.kamaji.conf 20.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> script-type-list value-4-script-type-list
 20.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1643,6 +1679,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1684,6 +1721,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1713,7 +1751,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 21.5. Finalizations.
 21.6. Workspace Impact...
     |diff --recursive --no-dereference 21.Alpha/.kamaji.conf 21.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> short-review-command value-4-short-review-command
 21.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1726,6 +1764,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1767,6 +1806,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1796,7 +1836,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 22.5. Finalizations.
 22.6. Workspace Impact...
     |diff --recursive --no-dereference 22.Alpha/.kamaji.conf 22.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> short-review-tailpipe value-4-short-review-tailpipe
 22.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1809,6 +1849,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1850,6 +1891,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1879,7 +1921,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 23.5. Finalizations.
 23.6. Workspace Impact...
     |diff --recursive --no-dereference 23.Alpha/.kamaji.conf 23.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> time-output-format value-4-time-output-format
 23.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1892,6 +1934,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1933,6 +1976,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -1962,7 +2006,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 24.5. Finalizations.
 24.6. Workspace Impact...
     |diff --recursive --no-dereference 24.Alpha/.kamaji.conf 24.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> verbosity-level value-4-verbosity-level
 24.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -1975,6 +2019,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -2016,6 +2061,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -2045,7 +2091,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
 25.5. Finalizations.
 25.6. Workspace Impact...
     |diff --recursive --no-dereference 25.Alpha/.kamaji.conf 25.Omega/.kamaji.conf
-    |27a28
+    |28a29
     |> working-folder value-4-working-folder
 25.6.1.  (changed) contains 2 files...
     |.kamaji.conf
@@ -2058,6 +2104,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -2081,12 +2128,13 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |working-folder value-4-working-folder
 25.6.1.2. ALFA is empty.
 
-26. ExportConfigurationLocal.
+26. SetConfiguration_find-expression-list.
 26.1. Requirements.
     |None.
 26.2. Initializations.
 26.2.1. create_complete_configuration_file .kamaji.conf
 26.2.2. mkdir --parents ALFA
+26.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
 26.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -2098,6 +2146,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -2120,57 +2169,19 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |#  (eof}
 26.3.2. ALFA is empty.
 26.4. Target CLU Call.
-26.4.1.  kamaji export configuration
+26.4.1.  kamaji set find-expression-list value-4-find-expression-list
 26.4.1.1. Exit Status 0!
 26.4.1.2. STDERR [text]...
-    |kamaji export configuration
+    |kamaji set find-expression-list value-4-find-expression-list
 26.5. Finalizations.
 26.6. Workspace Impact...
-    |Only in 26.Omega: FOXTROT
-    |Only in 26.Omega: MIKE
-26.6.1. FOXTROT (created) is empty.
-26.6.2. MIKE (created) contains 2 files.
-26.6.2.1. .kamaji.conf...
-    |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
-    |#
-    |# ./.kamaji.conf
-    |baseline-folder ALFA
-    |data-extension-list BRAVO
-    |data-filename-list CHARLIE
-    |last-target-filename DELTA
-    |makefile-filename ECHO
-    |mask-sed-script FOXTROT
-    |ruleset-filename INDIA
-    |script-type-list JULIETT
-    |verbosity-level KILO
-    |working-folder LIMA
-    |new-review-command OSCAR
-    |new-review-tailpipe PAPA
-    |long-review-command QUEBEC
-    |long-review-tailpipe ROMEO
-    |short-review-command SIERRA
-    |short-review-tailpipe TANGO
-    |working-folder MIKE
-    |script-type-list NOVEMBER
-    |#
-26.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
-
-27. ExportConfigurationRemote.
-27.1. Requirements.
-    |None.
-27.2. Initializations.
-27.2.1. create_complete_configuration_file .kamaji.conf
-27.2.2. mkdir --parents Remote/Location
-27.2.3. spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
-27.2.4. export KAMAJI_CONFIG_LIST=Remote/Location/Config_File.txt
-27.2.5. mkdir --parents Testing
-27.3. Initial Workspace contains 5 files...
+    |diff --recursive --no-dereference 26.Alpha/.kamaji.conf 26.Omega/.kamaji.conf
+    |28a29
+    |> find-expression-list value-4-find-expression-list
+26.6.1.  (changed) contains 2 files...
     |.kamaji.conf
-    |Remote
-    |Remote/Location
-    |Remote/Location/Config_File.txt
-    |Testing
-27.3.1. .kamaji.conf...
+    |ALFA
+26.6.1.1. .kamaji.conf...
     |#
     |#  .kamaji.conf created by create_complete_configuration_file
     |#
@@ -2178,6 +2189,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -2198,39 +2210,96 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |
     |#
     |#  (eof}
-27.3.2. Remote contains 2 files.
-27.3.2.1. Location contains one file.
-27.3.2.1.1. Config_File.txt...
-    |working-folder ThisNameDefinedRemotely
-27.3.3. Testing is empty.
+    |find-expression-list value-4-find-expression-list
+26.6.1.2. ALFA is empty.
+
+27. ExportConfigurationLocal.
+27.1. Requirements.
+    |None.
+27.2. Initializations.
+27.2.1. create_complete_configuration_file .kamaji.conf
+27.2.2. mkdir --parents ALFA
+27.3. Initial Workspace contains 2 files...
+    |.kamaji.conf
+    |ALFA
+27.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+27.3.2. ALFA is empty.
 27.4. Target CLU Call.
 27.4.1.  kamaji export configuration
+27.4.1.1. Exit Status 0!
+27.4.1.2. STDERR [text]...
+    |kamaji export configuration
 27.5. Finalizations.
 27.6. Workspace Impact...
-    |Only in 27.Omega: .kamaji.sed
-    |Only in 27.Omega: ThisNameDefinedRemotely
-27.6.1. .kamaji.sed (created) is empty.
-27.6.2. ThisNameDefinedRemotely (created) contains 2 files.
+    |Only in 27.Omega: FOXTROT
+    |Only in 27.Omega: MIKE
+27.6.1. FOXTROT (created) is empty.
+27.6.2. MIKE (created) contains 2 files.
 27.6.2.1. .kamaji.conf...
     |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
     |#
-    |# Remote/Location/Config_File.txt
-    |working-folder ThisNameDefinedRemotely
+    |# ./.kamaji.conf
+    |baseline-folder ALFA
+    |data-extension-list BRAVO
+    |data-filename-list CHARLIE
+    |find-expression-list -name UNIFORM
+    |last-target-filename DELTA
+    |makefile-filename ECHO
+    |mask-sed-script FOXTROT
+    |ruleset-filename INDIA
+    |script-type-list JULIETT
+    |verbosity-level KILO
+    |working-folder LIMA
+    |new-review-command OSCAR
+    |new-review-tailpipe PAPA
+    |long-review-command QUEBEC
+    |long-review-tailpipe ROMEO
+    |short-review-command SIERRA
+    |short-review-tailpipe TANGO
+    |working-folder MIKE
+    |script-type-list NOVEMBER
     |#
-27.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+27.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
 
-28. ExportConfigurationRemoteAndLocal.
+28. ExportConfigurationRemote.
 28.1. Requirements.
     |None.
 28.2. Initializations.
 28.2.1. create_complete_configuration_file .kamaji.conf
 28.2.2. mkdir --parents Remote/Location
 28.2.3. spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
-28.2.4. export KAMAJI_CONFIG_LIST="./.kamaji.conf Remote/Location/Config_File.txt"
-28.2.5. mkdir --parents ALFA Testing
-28.3. Initial Workspace contains 6 files...
+28.2.4. export KAMAJI_CONFIG_LIST=Remote/Location/Config_File.txt
+28.2.5. mkdir --parents Testing
+28.3. Initial Workspace contains 5 files...
     |.kamaji.conf
-    |ALFA
     |Remote
     |Remote/Location
     |Remote/Location/Config_File.txt
@@ -2243,6 +2312,7 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |baseline-folder         ALFA
     |data-extension-list     BRAVO
     |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
     |last-target-filename    DELTA
     |makefile-filename       ECHO
     |mask-sed-script         FOXTROT
@@ -2263,30 +2333,97 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |
     |#
     |#  (eof}
-28.3.2. ALFA is empty.
-28.3.3. Remote contains 2 files.
-28.3.3.1. Location contains one file.
-28.3.3.1.1. Config_File.txt...
+28.3.2. Remote contains 2 files.
+28.3.2.1. Location contains one file.
+28.3.2.1.1. Config_File.txt...
     |working-folder ThisNameDefinedRemotely
-28.3.4. Testing is empty.
+28.3.3. Testing is empty.
 28.4. Target CLU Call.
 28.4.1.  kamaji export configuration
-28.4.1.1. Exit Status 0!
-28.4.1.2. STDERR [text]...
-    |kamaji export configuration
 28.5. Finalizations.
 28.6. Workspace Impact...
-    |Only in 28.Omega: FOXTROT
+    |Only in 28.Omega: .kamaji.sed
     |Only in 28.Omega: ThisNameDefinedRemotely
-28.6.1. FOXTROT (created) is empty.
+28.6.1. .kamaji.sed (created) is empty.
 28.6.2. ThisNameDefinedRemotely (created) contains 2 files.
 28.6.2.1. .kamaji.conf...
+    |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |#
+    |# Remote/Location/Config_File.txt
+    |working-folder ThisNameDefinedRemotely
+    |#
+28.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+
+29. ExportConfigurationRemoteAndLocal.
+29.1. Requirements.
+    |None.
+29.2. Initializations.
+29.2.1. create_complete_configuration_file .kamaji.conf
+29.2.2. mkdir --parents Remote/Location
+29.2.3. spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
+29.2.4. export KAMAJI_CONFIG_LIST="./.kamaji.conf Remote/Location/Config_File.txt"
+29.2.5. mkdir --parents ALFA Testing
+29.3. Initial Workspace contains 6 files...
+    |.kamaji.conf
+    |ALFA
+    |Remote
+    |Remote/Location
+    |Remote/Location/Config_File.txt
+    |Testing
+29.3.1. .kamaji.conf...
+    |#
+    |#  .kamaji.conf created by create_complete_configuration_file
+    |#
+    |
+    |baseline-folder         ALFA
+    |data-extension-list     BRAVO
+    |data-filename-list      CHARLIE
+    |find-expression-list    -name UNIFORM
+    |last-target-filename    DELTA
+    |makefile-filename       ECHO
+    |mask-sed-script         FOXTROT
+    |ruleset-filename        INDIA
+    |script-type-list        JULIETT
+    |verbosity-level         KILO
+    |working-folder          LIMA
+    |
+    |new-review-command      OSCAR
+    |new-review-tailpipe     PAPA
+    |long-review-command     QUEBEC
+    |long-review-tailpipe    ROMEO
+    |short-review-command    SIERRA
+    |short-review-tailpipe   TANGO
+    |
+    |working-folder          MIKE
+    |script-type-list        NOVEMBER
+    |
+    |#
+    |#  (eof}
+29.3.2. ALFA is empty.
+29.3.3. Remote contains 2 files.
+29.3.3.1. Location contains one file.
+29.3.3.1.1. Config_File.txt...
+    |working-folder ThisNameDefinedRemotely
+29.3.4. Testing is empty.
+29.4. Target CLU Call.
+29.4.1.  kamaji export configuration
+29.4.1.1. Exit Status 0!
+29.4.1.2. STDERR [text]...
+    |kamaji export configuration
+29.5. Finalizations.
+29.6. Workspace Impact...
+    |Only in 29.Omega: FOXTROT
+    |Only in 29.Omega: ThisNameDefinedRemotely
+29.6.1. FOXTROT (created) is empty.
+29.6.2. ThisNameDefinedRemotely (created) contains 2 files.
+29.6.2.1. .kamaji.conf...
     |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
     |#
     |# ./.kamaji.conf
     |baseline-folder ALFA
     |data-extension-list BRAVO
     |data-filename-list CHARLIE
+    |find-expression-list -name UNIFORM
     |last-target-filename DELTA
     |makefile-filename ECHO
     |mask-sed-script FOXTROT
@@ -2306,8 +2443,8 @@ CLUT Source File: kamaji.08.configuration.clut (28 cases)
     |# Remote/Location/Config_File.txt
     |working-folder ThisNameDefinedRemotely
     |#
-28.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
+29.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
 
-CLUT Source File: kamaji.08.configuration.clut (28 cases)
+CLUT Source File: kamaji.08.configuration.clut (29 cases)
 CLUT Output Format Version: 5.5
 CLUT Output Complete.
