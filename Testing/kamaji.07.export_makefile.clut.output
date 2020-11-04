@@ -125,10 +125,6 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |
-    |	@echo "kamaji make $@"
-    |	$(QUIET) kamaji fast make $@
-    |
     |Working/ALPHA.clut.bash : Working/.kamaji.ruleset.bash Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
@@ -145,7 +141,11 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/ALPHA.clut.output#
+    |Working/ALPHA.clut.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/ALPHA.clut.output
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |#
     |#  (eof}
 1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 1.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
@@ -247,10 +247,6 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |
-    |	@echo "kamaji make $@"
-    |	$(QUIET) kamaji fast make $@
-    |
     |Working/BETA_exercise.output : Working/.kamaji.ruleset.bash Working/BETA_exercise.bash
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
@@ -263,7 +259,11 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/BETA_exercise.output#
+    |Working/BETA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/BETA_exercise.output
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |#
     |#  (eof}
 2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
@@ -373,10 +373,6 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |
-    |	@echo "kamaji make $@"
-    |	$(QUIET) kamaji fast make $@
-    |
     |Working/GAMMA_exercise : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.cpp
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
@@ -393,7 +389,11 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output#
+    |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |#
     |#  (eof}
 3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 3.6.2.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
@@ -552,10 +552,6 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |
-    |	@echo "kamaji make $@"
-    |	$(QUIET) kamaji fast make $@
-    |
     |Working/ALPHA.clut.bash : Working/.kamaji.ruleset.bash Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
@@ -608,7 +604,11 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output#
+    |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |#
     |#  (eof}
 4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 4.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash

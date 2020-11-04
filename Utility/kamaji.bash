@@ -2680,8 +2680,10 @@ function KamajiRequestExport_makefile() {
     while read OutputLine
     do
       #
-      printf "%s\n\t@echo \"${__KamajiScriptName} make \$@\"\n\t\$(QUIET) "     >> ${MakefileFSpec}
-      printf "${__KamajiScriptName} fast make \$@\n\n${OutputLine}"      >> ${MakefileFSpec}
+      spit  ${MakefileFSpec} "${OutputLine}"
+      spite ${MakefileFSpec} "\t@echo \"${__KamajiScriptName} make \$@\""
+      spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast make \$@"
+      spit  ${MakefileFSpec}
       #
     done < ${MakefileFSpec}.data
     #
