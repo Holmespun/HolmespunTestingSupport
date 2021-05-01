@@ -84,7 +84,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
@@ -188,7 +188,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
@@ -291,7 +291,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
@@ -443,7 +443,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
@@ -650,7 +650,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
@@ -854,7 +854,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
@@ -1030,7 +1030,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
@@ -1143,7 +1143,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
@@ -1319,7 +1319,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"

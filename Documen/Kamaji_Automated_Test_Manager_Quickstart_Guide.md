@@ -126,7 +126,7 @@ You do not want this addition to the PATH variable to be active after the reposi
 	~~~~
 	$ kamaji review prototype_exercise.output
 	FAIL: prototype_exercise.output.grade
-	     1	Test prototype_exercise.bash; User _USER_; Date 2019-12-14 09:26:28.
+	     1	Test prototype_exercise.bash; User _USER_; Date 2020-11-03 14:22:11.
 	     2	Given input 1000000000, prototype.py produces Sat Sep  8 21:46:40 2001
 	     3	Given input 1575806789, prototype.py produces Sun Dec  8 07:06:29 2019
 	     4	Given input 2000000000, prototype.py produces Tue May 17 23:33:20 2033
@@ -141,7 +141,8 @@ You do not want this addition to the PATH variable to be active after the reposi
 	~~~~bash
 	$ kamaji verbose verbose bless prototype_exercise.output
 	# Building rules based on baseline files...
-	#	Testing/prototype_exercise.bash
+	find -L Testing -type f
+	#    Testing/prototype_exercise.bash
 	kamaji bless prototype_exercise.output
 	echo "prototype_exercise.output.review" > Working/.kamaji.last_target.text
 	cp prototype_exercise.output ../Testing/prototype_exercise.output
@@ -213,9 +214,9 @@ You do not want this addition to the PATH variable to be active after the reposi
 	$ kamaji review
 	FAIL: prototype_exercise.output.grade
 	1c1
-	< Test prototype_exercise.bash; User _USER_; Date 2019-12-14 09:26:28.
+	< Test prototype_exercise.bash; User _USER_; Date 2020-11-03 14:22:11.
 	---
-	> Test prototype_exercise.bash; User _USER_; Date 2019-12-14 09:26:32.
+	> Test prototype_exercise.bash; User _USER_; Date 2020-11-03 14:22:12.
 	~~~~
 
 	Date and time values are one of the most common elements that are masked to make output files comparable.

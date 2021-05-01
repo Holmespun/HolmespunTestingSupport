@@ -310,7 +310,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |#  __KamajiXtraParentList[TargetFName]="SourceFName...": What files are user-defined sources of target?
     |#
     |#  Where FName == file name within the working-folder
-    |#        FName == file specification outside of the working-folder
+    |#        FSpec == file specification outside of the working-folder
     |#
     |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
     |#

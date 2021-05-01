@@ -68,9 +68,10 @@ You do not want this addition to the PATH variable to be active after the reposi
 	~~~~
 	$ kamaji verbose verbose invoke printf.clut
 	# Building rules based on baseline files...
-	#	Testing/printf.clut
-	ln --symbolic /usr/bin/printf printf
+	find -L Testing -type f
+	#    Testing/printf.clut
 	ln --symbolic ../.kamaji.sed .kamaji.sed
+	ln --symbolic /usr/bin/printf printf
 	ln --symbolic ../Testing/printf.clut printf.clut
 	echo "printf.clut.output" > Working/.kamaji.last_target.text
 	# GT Working/printf.clut.bash does not exist
@@ -78,8 +79,8 @@ You do not want this addition to the PATH variable to be active after the reposi
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	printf.clutc.20191214_091149_17630/00.compiled.bash > printf.clut.output.partial 2>&1
-	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20191214_091149_17427/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
+	printf.clutc.20201103_142211_2149199/00.compiled.bash > printf.clut.output.partial 2>&1
+	sed --in-place  --expression='s,_WORKING_/ClutQuickStart.20201103_142210_2147279/ClutQuickStart/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' printf.clut.output.partial
 	mv printf.clut.output.partial printf.clut.output
 	$
 	~~~~
@@ -161,14 +162,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20191214_091149_17630
-	./Working/printf.clutc.20191214_091149_17630/00.compiled.bash
-	./Working/printf.clutc.20191214_091149_17630/00.namelist.text
-	./Working/printf.clutc.20191214_091149_17630/01.bash
+	./Working/printf.clutc.20201103_142211_2149199
+	./Working/printf.clutc.20201103_142211_2149199/00.compiled.bash
+	./Working/printf.clutc.20201103_142211_2149199/00.namelist.text
+	./Working/printf.clutc.20201103_142211_2149199/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20191214_091149_17728
-	./Working/printf.clutr.20191214_091149_17728/01.Alpha
-	./Working/printf.clutr.20191214_091149_17728/01.Omega
+	./Working/printf.clutr.20201103_142211_2150280
+	./Working/printf.clutr.20201103_142211_2150280/01.Alpha
+	./Working/printf.clutr.20201103_142211_2150280/01.Omega
 	$
 	~~~~
 
@@ -277,10 +278,10 @@ make the current output file the new baseline.
 	> 3.4.1.  printf "%03d %04X %04s %04f\n" 18.19 18.19 18.19 18.19
 	> 3.4.1.1. Exit Status 1!
 	> 3.4.1.2. STDERR [text]...
-	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
-	>     |_HOME_/Holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
+	>     |/opt/holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
+	>     |/opt/holmespun/HolmespunTestingSupport/Library/clutr.bash: line 657: printf: 18.19: invalid number
 	> 3.4.1.3. STDOUT [text]...
-	>     |018 0000 18.19 18.190000
+	>     |018 0012 18.19 18.190000
 	> 3.5. Finalizations.
 	> 3.6. Workspace Impact...
 	> 3.6.1. The initial and final workspace contents are equivalent.

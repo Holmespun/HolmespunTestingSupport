@@ -54,15 +54,15 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |cp BETA_exercise.output.masked BETA_exercise.output.delta
     |# GT Working/BETA_exercise.output.grade does not exist
     |kamaji make BETA_exercise.output.grade
     |FAIL: BETA_exercise.output.grade
@@ -137,16 +137,16 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
     |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
@@ -231,16 +231,16 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
     |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
@@ -362,7 +362,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
 5.5. Finalizations.
 5.6. Workspace Impact...
@@ -422,11 +422,11 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
 6.5. Finalizations.
 6.6. Workspace Impact...
@@ -489,15 +489,15 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |cp BETA_exercise.output.masked BETA_exercise.output.delta
 7.5. Finalizations.
 7.6. Workspace Impact...
     |Only in 07.Omega: .kamaji.sed
@@ -562,15 +562,15 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20201103_142053_2106209/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.04.script_exercise_processing.clutr.20210501_112259_201504/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |cp BETA_exercise.output.masked BETA_exercise.output.delta
     |# GT Working/BETA_exercise.output.grade does not exist
     |kamaji make BETA_exercise.output.grade
     |FAIL: BETA_exercise.output.grade

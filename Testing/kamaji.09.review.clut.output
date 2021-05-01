@@ -56,15 +56,15 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
-    |cat BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
+    |cp BETA_exercise.output.masked BETA_exercise.output.delta
     |# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output
     |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked
@@ -151,16 +151,16 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
     |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
@@ -252,16 +252,16 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
     |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
@@ -365,16 +365,16 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
     |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/04.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/04.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
@@ -546,7 +546,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |echo "GAMMA_exercise.output.review" > Working/.kamaji.last_target.text
     |# GT Working/GAMMA_exercise.golden.masked does not exist
     |kamaji make GAMMA_exercise.golden.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial 2>&1
     |mv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
@@ -554,11 +554,11 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
     |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
@@ -581,16 +581,16 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
     |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=BETA_exercise.output.time.text ../Testing/BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' BETA_exercise.output.partial
     |mv BETA_exercise.output.partial BETA_exercise.output
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial
+    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
     |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
@@ -615,16 +615,16 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20201103_142055_2130238/00.compiled.bash > ALPHA.clut.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' ALPHA.clut.output.partial
+    |/usr/bin/time --format='%C %x' --append --output=ALPHA.clut.output.time.text ALPHA.clutc.20210501_112301_222175/00.compiled.bash > ALPHA.clut.output.partial 2>&1
+    |sed --in-place  --expression='s,_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' ALPHA.clut.output.partial
     |mv ALPHA.clut.output.partial ALPHA.clut.output
     |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial
+    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1
     |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
     |# GT Working/ALPHA.clut.output.delta does not exist
     |kamaji make ALPHA.clut.output.delta
-    |cat ALPHA.clut.output.masked > ALPHA.clut.output.delta 2>&1
+    |cp ALPHA.clut.output.masked ALPHA.clut.output.delta
     |# LT Working/ALPHA.bash is older-than Working/ALPHA.clut.bash
     |# LT Working/ALPHA.clut is older-than Working/ALPHA.clut.bash
     |# LT Working/ALPHA.clut.bash is older-than Working/ALPHA.clut.output
@@ -660,7 +660,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 5.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
 5.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 5.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-5.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20201103_142055_2130238/00.compiled.bash
+5.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210501_112301_222175/00.compiled.bash
 5.6.2.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -759,15 +759,15 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |CLUT Output Complete.
 5.6.2.9. ALPHA.clut.output.reviewed is empty.
 5.6.2.10. ALPHA.clut.output.time.text...
-    |ALPHA.clutc.20201103_142055_2130238/00.compiled.bash 0
-5.6.2.11. ALPHA.clutc.20201103_142055_2130238 contains 3 files.
+    |ALPHA.clutc.20210501_112301_222175/00.compiled.bash 0
+5.6.2.11. ALPHA.clutc.20210501_112301_222175 contains 3 files.
 5.6.2.11.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20201103_142055_2130238/00.compiled.bash...
+    |#  ./ALPHA.clutc.20210501_112301_222175/00.compiled.bash...
     |#
-    |#  Created by clutc on 2020-11-03 at 14:20:55.
+    |#  Created by clutc on 2021-05-01 at 11:23:01.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -791,7 +791,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="_WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/05.Working:${PATH}"
+    |export PATH="_WORKING_/kamaji.09.review.clutr.20210501_112259_201288/05.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -965,7 +965,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source _WORKING_/kamaji.09.review.clutr.20201103_142053_2105880/05.Working/Working/ALPHA.clut
+    |source _WORKING_/kamaji.09.review.clutr.20210501_112259_201288/05.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1198,8 +1198,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-5.6.2.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20201103_142055_2130657
-5.6.2.13. ALPHA.clutr.20201103_142055_2130657 contains 2 files.
+5.6.2.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210501_112301_222571
+5.6.2.13. ALPHA.clutr.20210501_112301_222571 contains 2 files.
 5.6.2.13.1. 01.Alpha is empty.
 5.6.2.13.2. 01.Omega is empty.
 5.6.2.14. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash

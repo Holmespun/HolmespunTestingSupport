@@ -20,8 +20,9 @@
 #       DiagnosticComplex
 #       EchoAbsoluteDirectorySpecFor
 #       EchoAgeRelation
-#       EchoAndExecuteOutputSwap
-#       EchoAndExecuteInWorking
+#       EchoAndExecuteStandardCheckingStderr
+#       EchoAndExecuteInWorkingStdout
+#       EchoAndExecuteInWorkingToFile
 #       EchoAndExecute
 #       EchoErrorAndExit
 #       EchoExecutableFilesMatching
@@ -186,6 +187,8 @@ declare    __KamajiTimeCommand="TBD"
 declare    __KamajiVerbosityRequested="TBD"
 
 declare    __KamajiWorkinDSpec="TBD"
+
+declare    __KamajiNikrowDSpec="TBD"    # Back out of the working-folder.
 
 declare    __KamajiSedScriptFSpec="TBD"
 declare    __KamajiSedScriptFName="TBD"
@@ -353,16 +356,27 @@ function EchoAgeRelation() {
 }
 
 #----------------------------------------------------------------------------------------------------------------------
+#
+#  EchoAndExecuteStandardCheckingStderr interprets any information written to stderr by the given SystemRequest as an
+#  error message, outputs that information as a colored error message, and adjusted the return status appropriately.
+#  Error output is written to stderr. Information originally written to stdout by the SystemRequest is written to
+#  stderr.
+# 
+#----------------------------------------------------------------------------------------------------------------------
 
-function EchoAndExecuteOutputSwap() {
+function EchoAndExecuteStandardCheckingStderr() {
   #
   local -r SystemRequest="${*}"
   #
+  local -i Status=0
+  #
+  local    ErrorMessage=
+  #
   exec 5>&2
      #
-     local -r ErrorMessage=$(eval ${SystemRequest} 2>&1 1>&5)
+     ErrorMessage=$(eval ${SystemRequest} 2>&1 1>&5)
      #
-     local    Status=${?}
+     Status=${?}
      #
   exec 5>&-
   #
@@ -381,7 +395,7 @@ function EchoAndExecuteOutputSwap() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function EchoAndExecuteInWorking() {
+function EchoAndExecuteInWorkingStdout() {
   #
   local -r SystemRequest="${*}"
   #
@@ -393,11 +407,35 @@ function EchoAndExecuteInWorking() {
      #
      IFS=
         #
-        EchoAndExecuteOutputSwap ${SystemRequest} 2>&1 1>&2
+        EchoAndExecuteStandardCheckingStderr ${SystemRequest} 2>&1 1>&2
         #
         Status=${?}
         #
      IFS="${__KamajiIfsOriginal}"
+     #
+  cd ${__KamajiWhereWeWere}
+  #
+  return ${Status}
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function EchoAndExecuteInWorkingToFile() {
+  #
+  local -r CaptureOutput="${1}"
+  shift 1
+  local -r SystemRequest="${*}"
+  #
+  local -i Status
+  #
+  DiagnosticHeavy "${SystemRequest} > ${CaptureOutput} 2>&1" 1>&2
+  #
+  cd ${__KamajiWorkinDSpec}
+     #
+     eval ${SystemRequest} > ${CaptureOutput} 2>&1
+     #
+     Status=${?}
      #
   cd ${__KamajiWhereWeWere}
   #
@@ -417,7 +455,7 @@ function EchoAndExecute() {
   #
   IFS=
      #
-     EchoAndExecuteOutputSwap ${SystemRequest} 2>&1 1>&2
+     EchoAndExecuteStandardCheckingStderr ${SystemRequest} 2>&1 1>&2
      #
      Status=${?}
      #
@@ -870,11 +908,11 @@ function KamajiOrderByLatestBaseSource() {
 
 function KamajiConfigurationCheckValues() {
   #
-  [ ${#__KamajiWorkinDSpec} -eq 0 ] && KamajiExitAfterUsage "The working-folder is improperly configured."
+  [ ${#__KamajiWorkinDSpec} -eq 0 ] && EchoErrorAndExit 2 "The working-folder is improperly configured."
   #
-  [ ${#__KamajiGoldenDSpec} -eq 0 ] && KamajiExitAfterUsage "The baseline-folder is improperly configured."
+  [ ${#__KamajiGoldenDSpec} -eq 0 ] && EchoErrorAndExit 2 "The baseline-folder is improperly configured."
   #
-  [ ! -d ${__KamajiGoldenDSpec} ] && KamajiExitAfterUsage "The baseline-folder '${__KamajiGoldenDSpec}' does not exist."
+  [ ! -d ${__KamajiGoldenDSpec} ] && EchoErrorAndExit 2 "The baseline-folder '${__KamajiGoldenDSpec}' does not exist."
   #
   [ ! -d ${__KamajiWorkinDSpec} ] && mkdir --parents ${__KamajiWorkinDSpec}
   #
@@ -886,8 +924,8 @@ function KamajiConfigurationCheckValues() {
   if [ "${GoldenDSpec}" = "${WorkinDSpec}" ]
   then
      #
-     KamajiExitAfterUsage "The baseline-folder and/or working-folder are improperly configured;"        \
-                          "these cannot be the same."
+     EchoErrorAndExit 2 "The baseline-folder and/or working-folder are improperly configured;"        \
+                        "these cannot be the same."
      #
   fi
   #
@@ -901,7 +939,7 @@ function KamajiConfigurationCheckValues() {
   #
   local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
   #
-  local -r TimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format)
+  local    TimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format)
   #
   if [ "${TimeOutputFormat}" = "NONE" ] || [ ! -x /usr/bin/time ]
   then
@@ -915,6 +953,8 @@ function KamajiConfigurationCheckValues() {
      __KamajiTimeCommand="/usr/bin/time --format='${TimeOutputFormat}' --append "
      #
   fi
+  #
+  __KamajiNikrowDSpec=$(echoRelativePath ${WorkinDSpec} ${PWD})         # ".." if working-folder is simple name.
   #
 }
 
@@ -1734,9 +1774,9 @@ function KamajiBuildRulesForTestingSource_Clut() {
       then
          if [ "${RunnerFSpec:0:2}" = "./" ]
          then
-            RunnerFSpec=".${RunnerFSpec}"
+            RunnerFSpec="${__KamajiNikrowDSpec}/${RunnerFSpec:2}"
          else
-            RunnerFSpec="../${RunnerFSpec}"
+            RunnerFSpec="${__KamajiNikrowDSpec}/${RunnerFSpec}"
          fi
       fi
       #
@@ -1760,7 +1800,7 @@ function KamajiBuildRulesForTestingSource_Clut() {
   #
   #  __KamajiRepresentative allow Kamaji to assume most complicated work is done in __KamajiWorkinDSpec.
   #
-  __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+  __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
   __KamajiRepresentative["${RunnerFName}"]="${RunnerFSpec}"
   #
   #  __KamajiBaseSourceList[TargetFName]=SourceFName: What recipe should I follow given FName as a target?
@@ -1828,7 +1868,7 @@ function KamajiBuildRulesForTestingSource_Elf() {
   #
   #  __KamajiRepresentative allow Kamaji to assume most complicated work is done in __KamajiWorkinDSpec.
   #
-  __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+  __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
   #
   #  __KamajiBaseSourceList[TargetFName]=SourceFName: What recipe should I follow given FName as a target?
   #
@@ -1881,7 +1921,7 @@ function KamajiBuildRulesForTestingSource_Naked() {
   if [ "${SourceFName^^}" = "MAKEFILE" ]
   then
      #
-     __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+     __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
      #
      AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
      #
@@ -1908,7 +1948,7 @@ function KamajiBuildRulesForTestingSource_Output() {
   #
   #  __KamajiRepresentative allow Kamaji to assume most complicated work is done in __KamajiWorkinDSpec.
   #
-  __KamajiRepresentative["${SourceFRoot}.golden"]="../${SourceFSpec}"
+  __KamajiRepresentative["${SourceFRoot}.golden"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
   #
   #  __KamajiBaseSourceList[TargetFName]=SourceFName: What recipe should I follow given FName as a target?
   #
@@ -1962,7 +2002,7 @@ function KamajiBuildRulesForTestingSource_Script() {
   #
   #  __KamajiRepresentative allow Kamaji to assume most complicated work is done in __KamajiWorkinDSpec.
   #
-  __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+  __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
   #
   #  __KamajiBaseSourceList[TargetFName]=SourceFName: What recipe should I follow given FName as a target?
   #
@@ -2024,7 +2064,7 @@ function KamajiBuildRulesForTestingSource_Unknown() {
      #
   else
      #
-     __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+     __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
      #
      AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
      #
@@ -2076,7 +2116,7 @@ function KamajiBuildRulesForTestingSource() {
      #
      local -r FunctionToCall=$(declare -F ${FunctionWeWant})
      #
-     [ ${#FunctionToCall} -eq 0 ] && KamajiExitAfterUsage "Fatal programming flaw; ${FunctionWeWant} is undefined."
+     [ ${#FunctionToCall} -eq 0 ] && EchoErrorAndExit 2 "Fatal programming flaw; ${FunctionWeWant} is undefined."
      #
      ${FunctionToCall} ${SourceFSpec} ${SourceFType}
      #
@@ -2084,7 +2124,7 @@ function KamajiBuildRulesForTestingSource() {
      #
      #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
      #
-     __KamajiRepresentative["${SourceFName}"]="../${SourceFSpec}"
+     __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
      #
      AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
      #
@@ -2264,12 +2304,10 @@ function KamajiBuildRules() {
   #
   if [ ! -d ${__KamajiGoldenDSpec} ]
   then
-     KamajiExitAfterUsage "The baseline directory '${__KamajiGoldenDSpec}' does not exist."
+     EchoErrorAndExit 2 "The baseline directory '${__KamajiGoldenDSpec}' does not exist."
   fi
   #
-  local -r ConfiguredFindExpression=$(KamajiConfigurationEchoValue find-option-list)
-  #
-  local -r FindCommand="find -L ${__KamajiGoldenDSpec} ${ConfiguredFindExpression:--type f}"
+  local -r FindCommand="find -L ${__KamajiGoldenDSpec} $(KamajiConfigurationEchoValue find-expression-list -type f)"
   #
   DiagnosticHeavy "${FindCommand}"
   #
@@ -2283,7 +2321,7 @@ function KamajiBuildRules() {
   #  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
   #  __KamajiMyChildrenList[SourceFName]="TargetFName...": What files are created directly from this source?
   #
-  __KamajiRepresentative["${__KamajiSedScriptFName}"]="../${__KamajiSedScriptFSpec}"
+  __KamajiRepresentative["${__KamajiSedScriptFName}"]="${__KamajiNikrowDSpec}/${__KamajiSedScriptFSpec}"
   #
   AppendArrayIndexValue __KamajiBaseSourceList "${__KamajiSedScriptFName}" " ${__KamajiSedScriptFName}"
   AppendArrayIndexValue __KamajiMyParentalList "${__KamajiSedScriptFName}" ""
@@ -2427,7 +2465,7 @@ function KamajiRequestBless() {
           #
           #  The golden output file is new.
           #
-          GoldenDSpec=../${__KamajiGoldenDSpec}/${TargetFName%.review}
+          GoldenDSpec=${__KamajiNikrowDSpec}/${__KamajiGoldenDSpec}/${TargetFName%.review}
           #
           #  Remove the ruleset used for fast processing if it exists because it is obsolete.
           #
@@ -2441,11 +2479,11 @@ function KamajiRequestBless() {
        #
        #  Replace the golden output file with the current one.
        #
-       EchoAndExecuteInWorking "cp ${TargetFName%.review} ${GoldenDSpec}"
+       EchoAndExecuteInWorkingStdout "cp ${TargetFName%.review} ${GoldenDSpec}"
        #
        #  Remove the reviewed file so that it cannot be used again.
        #
-       EchoAndExecuteInWorking "rm ${TargetFName}ed"
+       EchoAndExecuteInWorkingStdout "rm ${TargetFName}ed"
        #
     fi
     #
@@ -2464,11 +2502,11 @@ function KamajiRequestConfigure() {
   #
   DiagnosticLight "${__KamajiScriptName} ${Request} ${Name} ${Value}"
   #
-  [ ${#Value} -eq 0 ] && KamajiExitAfterUsage "Empty values are not useful in a configuration file."
+  [ ${#Value} -eq 0 ] && EchoErrorAndExit 2 "Empty values are not allowed in a configuration file."
   #
   local -r VariableName=$(EchoMeaningOf "${Name}" "" ${!__KamajiConfigurationValue[*]})
   #
-  [ ${#VariableName} -eq 0 ] && KamajiExitAfterUsage "The '${Name}' configuration variable is not supported."
+  [ ${#VariableName} -eq 0 ] && EchoErrorAndExit 2 "The '${Name}' configuration variable is not supported."
   #
   EchoAndExecute "echo \"${VariableName} ${Value}\" >> ./${__KamajiConfigurationFName}"
   #
@@ -2498,18 +2536,18 @@ function KamajiRequestExport_configuration() {
   if [ -e ${__KamajiWorkinDSpec}/${__KamajiConfigurationFName} ]
   then
      #
-     EchoAndExecuteInWorking mv ${__KamajiConfigurationFName} ${__KamajiConfigurationFName}.was
+     EchoAndExecuteInWorkingStdout mv ${__KamajiConfigurationFName} ${__KamajiConfigurationFName}.was
      #
   fi
   #
   if [ -e ${__KamajiConfigurationLogFSpec} ]
   then
      #
-     EchoAndExecuteInWorking mv ${__KamajiConfigurationLogFSpec} ${__KamajiConfigurationFName}
+     EchoAndExecuteInWorkingStdout mv ${__KamajiConfigurationLogFSpec} ${__KamajiConfigurationFName}
      #
   else
      #
-     EchoAndExecuteInWorking touch ${__KamajiConfigurationFName}
+     EchoAndExecuteInWorkingStdout touch ${__KamajiConfigurationFName}
      #
   fi
   #
@@ -2530,7 +2568,7 @@ function KamajiRequestExport_makefile() {
   #
   local    TargetClass TargetFName
   #
-  [ -e ${MakefileFSpec} ] && EchoAndExecuteInWorking mv ${MakefileFName} ${MakefileFName}.was
+  [ -e ${MakefileFSpec} ] && EchoAndExecuteInWorkingStdout mv ${MakefileFName} ${MakefileFName}.was
   #
   #  Export an explicit makefile.
   #
@@ -2641,7 +2679,7 @@ function KamajiRequestExport_makefile() {
         if [ "${__KamajiRepresentative[${ItemOfParentFName}]+IS_SET}" = "IS_SET" ]
         then
            #
-           OutputLine+="${__KamajiRepresentative[${ItemOfParentFName}]#../}"
+           OutputLine+="${__KamajiRepresentative[${ItemOfParentFName}]#${__KamajiNikrowDSpec}/}"
            #
         elif [ ${#__KamajiMyParentalList[${ItemOfParentFName}]} -eq 0 ]
         then
@@ -2720,7 +2758,7 @@ function KamajiRequestExport_ruleset() {
      #  
   fi
   #
-  [ -e ${RulesetFSpec} ] && EchoAndExecuteInWorking mv ${RulesetFName} ${RulesetFName}.was
+  [ -e ${RulesetFSpec} ] && EchoAndExecuteInWorkingStdout mv ${RulesetFName} ${RulesetFName}.was
   #
   spit ${RulesetFSpec} "#"
   spit ${RulesetFSpec} "#  ${RulesetFSpec}"
@@ -2739,7 +2777,7 @@ function KamajiRequestExport_ruleset() {
                                 "What files are user-defined sources of target?"
   spit ${RulesetFSpec} "#"
   spit ${RulesetFSpec} "#  Where FName == file name within the working-folder"
-  spit ${RulesetFSpec} "#        FName == file specification outside of the working-folder"
+  spit ${RulesetFSpec} "#        FSpec == file specification outside of the working-folder"
   #
   KamajiEchoArrayAssignments __KamajiBaseSourceList ${!__KamajiBaseSourceList[*]} | sort >> ${RulesetFSpec}
   KamajiEchoArrayAssignments __KamajiClassifiedList ${!__KamajiClassifiedList[*]} | sort >> ${RulesetFSpec}
@@ -3060,8 +3098,8 @@ function KamajiMake_Delta_from_GoldenMasked_OutputMasked() {
   #
   local -r TargetFSpec=${__KamajiWorkinDSpec}/${TargetFName}
   #
-  EchoAndExecuteInWorking       \
-        "diff --text --ignore-space-change ${GoldenMaskedFName} ${OutputMaskedFName} > ${TargetFName} 2>&1"
+  EchoAndExecuteInWorkingToFile ${TargetFName}  \
+        "diff --text --ignore-space-change ${GoldenMaskedFName} ${OutputMaskedFName}"
   #
   Status=${?}
   #
@@ -3081,7 +3119,7 @@ function KamajiMake_Delta_from_OutputMasked() {
   local -r TargetFName=${1}
   local -r OutputMaskedFName=${2}
   #
-  EchoAndExecuteInWorking "cat ${OutputMaskedFName} > ${TargetFName} 2>&1"
+  EchoAndExecuteInWorkingStdout "cp ${OutputMaskedFName} ${TargetFName}"
   #
 }
 
@@ -3105,13 +3143,13 @@ function KamajiMake_GoldenMasked_from_Golden_SedMaskingScript() {
   local -r GoldenSourceFName=${2}
   local -r SedScriptFName=${3}
   #
-  EchoAndExecuteInWorking "sed --file=${SedScriptFName} ${GoldenSourceFName} > ${TargetFName}.partial"
+  EchoAndExecuteInWorkingToFile ${TargetFName}.partial "sed --file=${SedScriptFName} ${GoldenSourceFName}"
   #
   Status=${?}
   #
   [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The sed command failed."
   #
-  EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
+  EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
   #
 }
 
@@ -3156,7 +3194,7 @@ function KamajiMake_Naked_from_Elf() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  EchoAndExecuteInWorking "make --no-print-directory ${TargetFName}"
+  EchoAndExecuteInWorkingStdout "make --no-print-directory ${TargetFName}"
   #
   Status=${?}
   #
@@ -3179,19 +3217,19 @@ function KamajiMake_Output_from_Naked() {
   #
   [ ${#__KamajiTimeCommand} -gt 0 ] && ActualTimeCommand+="--output=${TargetFName}.time.text "
   #
-  EchoAndExecuteInWorking "${ActualTimeCommand}${ActualFSpec} > ${TargetFName}.partial 2>&1"
+  EchoAndExecuteInWorkingToFile ${TargetFName}.partial "${ActualTimeCommand}${ActualFSpec}"
   #
   Status=${?}
   #
   [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed."
   #
-  EchoAndExecuteInWorking "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
+  EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
   #
   Status=${?}
   #
   [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The account and system masking sed command failed."
   #
-  EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
+  EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
   #
 }
 
@@ -3210,19 +3248,19 @@ function KamajiMake_Output_from_Script() {
   #
   [ ${#__KamajiTimeCommand} -gt 0 ] && ActualTimeCommand+="--output=${TargetFName}.time.text "
   #
-  EchoAndExecuteInWorking "${ActualTimeCommand}${ActualFSpec} > ${TargetFName}.partial 2>&1"
+  EchoAndExecuteInWorkingToFile ${TargetFName}.partial "${ActualTimeCommand}${ActualFSpec}"
   #
   Status=${?}
   #
   [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed."
   #
-  EchoAndExecuteInWorking "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
+  EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The account and system masking sed command failed."
+  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The script output account and system masking sed command failed."
   #
-  EchoAndExecuteInWorking "mv ${TargetFName}.partial ${TargetFName}"
+  EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
   #
 }
 
@@ -3301,9 +3339,9 @@ function KamajiMake_Review_from_Delta_Grade() {
      #
      [ ${#ReviewTailpipe} -gt 0 ] && ReviewCommand+=" | ${ReviewTailpipe}"
      #
-     EchoAndExecuteInWorking "${ReviewCommand}"
+     EchoAndExecuteInWorkingStdout "${ReviewCommand}"
      #
-     EchoAndExecuteInWorking touch ${TargetFName}ed
+     EchoAndExecuteInWorkingStdout touch ${TargetFName}ed
      #
   fi
   #
@@ -3336,7 +3374,7 @@ function KamajiMake_Script_from_Clut_Naked() {
      ExecActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${ExecSourceFName})
   fi
   #
-  EchoAndExecuteInWorking "clutc ${ClutSourceFName} ${ExecActualFSpec} ${TargetFName}"
+  EchoAndExecuteInWorkingStdout "clutc ${ClutSourceFName} ${ExecActualFSpec} ${TargetFName}"
   #
   Status=${?}
   #
@@ -3382,7 +3420,7 @@ function KamajiMake() {
      #
      local -r GoldenFSpec=${__KamajiRepresentative[${TargetFName}]}
      #
-     EchoAndExecuteInWorking "ln --symbolic ${GoldenFSpec} ${TargetFName}"
+     EchoAndExecuteInWorkingStdout "ln --symbolic ${GoldenFSpec} ${TargetFName}"
      #
      return
      #
