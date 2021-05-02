@@ -172,13 +172,20 @@ declare -A __KamajiConfigurationDefault
 
 declare -A __KamajiConfigurationValue
 
-declare    __KamajiGoldenDSpec="TBD"
-
 declare    __KamajiDataFileNameList="TBD"
+
+declare    __KamajiGoldenDSpec="TBD"
 
 declare    __KamajiLastMakeTargetFSpec="TBD"
 
+declare    __KamajiMalleableConfigFSpec="TBD"
+
+declare    __KamajiNikrowDSpec="TBD"    # Back out of the working-folder.
+
 declare    __KamajiScriptExtensionList="TBD"
+
+declare    __KamajiSedScriptFSpec="TBD"
+declare    __KamajiSedScriptFName="TBD"
 
 declare    __KamajiSystemMasking="TBD"
 
@@ -187,11 +194,6 @@ declare    __KamajiTimeCommand="TBD"
 declare    __KamajiVerbosityRequested="TBD"
 
 declare    __KamajiWorkinDSpec="TBD"
-
-declare    __KamajiNikrowDSpec="TBD"    # Back out of the working-folder.
-
-declare    __KamajiSedScriptFSpec="TBD"
-declare    __KamajiSedScriptFName="TBD"
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -383,7 +385,7 @@ function EchoAndExecuteStandardCheckingStderr() {
   if [ ${#ErrorMessage} -gt 0 ]
   then
      #
-     [ ${Status} -eq 0 ] && Status=1
+     [ ${Status} -eq 0 ] && Status=33
      #
      echoInColorRed ${ErrorMessage}
      #
@@ -1012,6 +1014,8 @@ function KamajiConfigurationLoadValues() {
   #
   #  Record the user-defined configuration as it is loaded.
   #
+  __KamajiMalleableConfigFSpec=
+  #
   if [ "${KAMAJI_CONFIG_LIST+IS_SET}" = "IS_SET" ]
   then
      #
@@ -1027,7 +1031,19 @@ function KamajiConfigurationLoadValues() {
   for ConfigFSpec in ${KAMAJI_CONFIG_LIST}
   do
     #
-    [ -f ${ConfigFSpec} ] && KamajiConfigurationReadFile ${ConfigFSpec} ${__KamajiConfigurationLogFSpec}
+    if [ -f ${ConfigFSpec} ]
+    then
+       #
+       KamajiConfigurationReadFile ${ConfigFSpec} ${__KamajiConfigurationLogFSpec}
+       #
+       [ -w ${ConfigFSpec} ] && __KamajiMalleableConfigFSpec=${ConfigFSpec}
+       #
+    elif [ -w $(dirname ${ConfigFSpec}) ]
+    then
+       #
+       __KamajiMalleableConfigFSpec=${ConfigFSpec}
+       #
+    fi
     #
   done
   #
@@ -2508,7 +2524,12 @@ function KamajiRequestConfigure() {
   #
   [ ${#VariableName} -eq 0 ] && EchoErrorAndExit 2 "The '${Name}' configuration variable is not supported."
   #
-  EchoAndExecute "echo \"${VariableName} ${Value}\" >> ./${__KamajiConfigurationFName}"
+  if [ ${#__KamajiMalleableConfigFSpec} -eq 0 ]
+  then
+     EchoErrorAndExit 2 "No malleable configuration files found; check KAMAJI_CONFIG_LIST and file permissions."
+  fi
+  #
+  EchoAndExecute "echo \"${VariableName} ${Value}\" >> ${__KamajiMalleableConfigFSpec}"
   #
 }
 
@@ -3221,13 +3242,16 @@ function KamajiMake_Output_from_Naked() {
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed."
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed; exit status ${Status}."
   #
   EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The account and system masking sed command failed."
+  if [ ${Status} -ne 0 ]
+  then
+     EchoErrorAndExit ${Status} "The account and system masking sed command failed; exit status ${Status}."
+  fi
   #
   EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
   #
@@ -3252,13 +3276,16 @@ function KamajiMake_Output_from_Script() {
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed."
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed; exit status ${Status}."
   #
   EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoErrorAndExit ${Status} "The script output account and system masking sed command failed."
+  if [ ${Status} -ne 0 ]
+  then
+     EchoErrorAndExit ${Status} "The script output account and system masking sed command failed; status ${Status}."
+  fi
   #
   EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
   #
