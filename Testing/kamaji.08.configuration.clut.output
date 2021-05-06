@@ -18,7 +18,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 1.2. Initializations.
 1.2.1. create_complete_configuration_file .kamaji.conf
 1.2.2. mkdir --parents ALFA
-1.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+1.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/01.Working
 1.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -103,7 +103,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 2.2. Initializations.
 2.2.1. create_complete_configuration_file .kamaji.conf
 2.2.2. mkdir --parents ALFA
-2.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+2.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/02.Working
 2.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -188,7 +188,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 3.2. Initializations.
 3.2.1. create_complete_configuration_file .kamaji.conf
 3.2.2. mkdir --parents ALFA
-3.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+3.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/03.Working
 3.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -238,7 +238,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 4.2. Initializations.
 4.2.1. create_complete_configuration_file .kamaji.conf
 4.2.2. mkdir --parents ALFA
-4.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+4.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/04.Working
 4.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -288,7 +288,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 5.2. Initializations.
 5.2.1. create_complete_configuration_file .kamaji.conf
 5.2.2. mkdir --parents ALFA
-5.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+5.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/05.Working
 5.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -336,7 +336,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 6.2. Initializations.
 6.2.1. create_complete_configuration_file .kamaji.conf
 6.2.2. mkdir --parents ALFA
-6.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+6.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/06.Working
 6.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -384,7 +384,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 7.2. Initializations.
 7.2.1. create_complete_configuration_file .kamaji.conf
 7.2.2. mkdir --parents ALFA
-7.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+7.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/07.Working
 7.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -445,9 +445,9 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
     |   verbosity-level
     |   working-folder
     |Active configuration sources:
-    |   # The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |   # The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |   #
-    |   # ./.kamaji.conf
+    |   # _WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/07.Working/.kamaji.conf
     |   baseline-folder ALFA
     |   data-extension-list BRAVO
     |   data-filename-list CHARLIE
@@ -498,7 +498,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 8.2. Initializations.
 8.2.1. create_complete_configuration_file .kamaji.conf
 8.2.2. mkdir --parents ALFA
-8.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+8.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/08.Working
 8.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -583,7 +583,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 9.2. Initializations.
 9.2.1. create_complete_configuration_file .kamaji.conf
 9.2.2. mkdir --parents ALFA
-9.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+9.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/09.Working
 9.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -668,7 +668,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 10.2. Initializations.
 10.2.1. create_complete_configuration_file .kamaji.conf
 10.2.2. mkdir --parents ALFA
-10.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+10.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/10.Working
 10.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -753,7 +753,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 11.2. Initializations.
 11.2.1. create_complete_configuration_file .kamaji.conf
 11.2.2. mkdir --parents ALFA
-11.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+11.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/11.Working
 11.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -838,7 +838,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 12.2. Initializations.
 12.2.1. create_complete_configuration_file .kamaji.conf
 12.2.2. mkdir --parents ALFA
-12.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+12.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/12.Working
 12.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -923,7 +923,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 13.2. Initializations.
 13.2.1. create_complete_configuration_file .kamaji.conf
 13.2.2. mkdir --parents ALFA
-13.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+13.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/13.Working
 13.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1008,7 +1008,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 14.2. Initializations.
 14.2.1. create_complete_configuration_file .kamaji.conf
 14.2.2. mkdir --parents ALFA
-14.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+14.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/14.Working
 14.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1093,7 +1093,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 15.2. Initializations.
 15.2.1. create_complete_configuration_file .kamaji.conf
 15.2.2. mkdir --parents ALFA
-15.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+15.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/15.Working
 15.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1178,7 +1178,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 16.2. Initializations.
 16.2.1. create_complete_configuration_file .kamaji.conf
 16.2.2. mkdir --parents ALFA
-16.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+16.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/16.Working
 16.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1263,7 +1263,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 17.2. Initializations.
 17.2.1. create_complete_configuration_file .kamaji.conf
 17.2.2. mkdir --parents ALFA
-17.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+17.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/17.Working
 17.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1348,7 +1348,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 18.2. Initializations.
 18.2.1. create_complete_configuration_file .kamaji.conf
 18.2.2. mkdir --parents ALFA
-18.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+18.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/18.Working
 18.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1433,7 +1433,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 19.2. Initializations.
 19.2.1. create_complete_configuration_file .kamaji.conf
 19.2.2. mkdir --parents ALFA
-19.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+19.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/19.Working
 19.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1518,7 +1518,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 20.2. Initializations.
 20.2.1. create_complete_configuration_file .kamaji.conf
 20.2.2. mkdir --parents ALFA
-20.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+20.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/20.Working
 20.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1603,7 +1603,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 21.2. Initializations.
 21.2.1. create_complete_configuration_file .kamaji.conf
 21.2.2. mkdir --parents ALFA
-21.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+21.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/21.Working
 21.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1688,7 +1688,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 22.2. Initializations.
 22.2.1. create_complete_configuration_file .kamaji.conf
 22.2.2. mkdir --parents ALFA
-22.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+22.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/22.Working
 22.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1773,7 +1773,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 23.2. Initializations.
 23.2.1. create_complete_configuration_file .kamaji.conf
 23.2.2. mkdir --parents ALFA
-23.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+23.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/23.Working
 23.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1858,7 +1858,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 24.2. Initializations.
 24.2.1. create_complete_configuration_file .kamaji.conf
 24.2.2. mkdir --parents ALFA
-24.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+24.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/24.Working
 24.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -1943,7 +1943,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 25.2. Initializations.
 25.2.1. create_complete_configuration_file .kamaji.conf
 25.2.2. mkdir --parents ALFA
-25.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+25.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/25.Working
 25.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -2028,7 +2028,7 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 26.2. Initializations.
 26.2.1. create_complete_configuration_file .kamaji.conf
 26.2.2. mkdir --parents ALFA
-26.2.3. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+26.2.3. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/26.Working
 26.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -2112,7 +2112,8 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
     |None.
 27.2. Initializations.
 27.2.1. create_complete_configuration_file .kamaji.conf
-27.2.2. mkdir --parents ALFA
+27.2.2. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/27.Working
+27.2.3. mkdir --parents ALFA
 27.3. Initial Workspace contains 2 files...
     |.kamaji.conf
     |ALFA
@@ -2158,9 +2159,9 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 27.6.1. FOXTROT (created) is empty.
 27.6.2. MIKE (created) contains 2 files.
 27.6.2.1. .kamaji.conf...
-    |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
+    |# The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
-    |# ./.kamaji.conf
+    |# _WORKING_/kamaji.08.configuration.clutr.20210506_134605_722195/27.Working/.kamaji.conf
     |baseline-folder ALFA
     |data-extension-list BRAVO
     |data-filename-list CHARLIE
@@ -2184,160 +2185,18 @@ CLUT Source File: kamaji.08.configuration.clut (29 cases)
 27.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
 
 28. ExportConfigurationRemote.
+    |Exercises a functionality that is no longer supported.
 28.1. Requirements.
-    |None.
 28.2. Initializations.
-28.2.1. create_complete_configuration_file .kamaji.conf
-28.2.2. mkdir --parents Remote/Location
-28.2.3. spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
-28.2.4. export KAMAJI_CONFIG_LIST=Remote/Location/Config_File.txt
-28.2.5. mkdir --parents Testing
-28.3. Initial Workspace contains 5 files...
-    |.kamaji.conf
-    |Remote
-    |Remote/Location
-    |Remote/Location/Config_File.txt
-    |Testing
-28.3.1. .kamaji.conf...
-    |#
-    |#  .kamaji.conf created by create_complete_configuration_file
-    |#
-    |
-    |baseline-folder         ALFA
-    |data-extension-list     BRAVO
-    |data-filename-list      CHARLIE
-    |find-expression-list    -name UNIFORM
-    |last-target-filename    DELTA
-    |makefile-filename       ECHO
-    |mask-sed-script         FOXTROT
-    |ruleset-filename        INDIA
-    |script-type-list        JULIETT
-    |verbosity-level         KILO
-    |working-folder          LIMA
-    |
-    |new-review-command      OSCAR
-    |new-review-tailpipe     PAPA
-    |long-review-command     QUEBEC
-    |long-review-tailpipe    ROMEO
-    |short-review-command    SIERRA
-    |short-review-tailpipe   TANGO
-    |
-    |working-folder          MIKE
-    |script-type-list        NOVEMBER
-    |
-    |#
-    |#  (eof}
-28.3.2. Remote contains 2 files.
-28.3.2.1. Location contains one file.
-28.3.2.1.1. Config_File.txt...
-    |working-folder ThisNameDefinedRemotely
-28.3.3. Testing is empty.
-28.4. Target CLU Call.
-28.4.1.  kamaji export configuration
-28.5. Finalizations.
-28.6. Workspace Impact...
-    |Only in 28.Omega: .kamaji.sed
-    |Only in 28.Omega: ThisNameDefinedRemotely
-28.6.1. .kamaji.sed (created) is empty.
-28.6.2. ThisNameDefinedRemotely (created) contains 2 files.
-28.6.2.1. .kamaji.conf...
-    |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
-    |#
-    |# Remote/Location/Config_File.txt
-    |working-folder ThisNameDefinedRemotely
-    |#
-28.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+28.3. Target CLU Call.
+28.4. Finalizations.
 
 29. ExportConfigurationRemoteAndLocal.
+    |Exercises a functionality that is no longer supported.
 29.1. Requirements.
-    |None.
 29.2. Initializations.
-29.2.1. create_complete_configuration_file .kamaji.conf
-29.2.2. mkdir --parents Remote/Location
-29.2.3. spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
-29.2.4. export KAMAJI_CONFIG_LIST="./.kamaji.conf Remote/Location/Config_File.txt"
-29.2.5. mkdir --parents ALFA Testing
-29.3. Initial Workspace contains 6 files...
-    |.kamaji.conf
-    |ALFA
-    |Remote
-    |Remote/Location
-    |Remote/Location/Config_File.txt
-    |Testing
-29.3.1. .kamaji.conf...
-    |#
-    |#  .kamaji.conf created by create_complete_configuration_file
-    |#
-    |
-    |baseline-folder         ALFA
-    |data-extension-list     BRAVO
-    |data-filename-list      CHARLIE
-    |find-expression-list    -name UNIFORM
-    |last-target-filename    DELTA
-    |makefile-filename       ECHO
-    |mask-sed-script         FOXTROT
-    |ruleset-filename        INDIA
-    |script-type-list        JULIETT
-    |verbosity-level         KILO
-    |working-folder          LIMA
-    |
-    |new-review-command      OSCAR
-    |new-review-tailpipe     PAPA
-    |long-review-command     QUEBEC
-    |long-review-tailpipe    ROMEO
-    |short-review-command    SIERRA
-    |short-review-tailpipe   TANGO
-    |
-    |working-folder          MIKE
-    |script-type-list        NOVEMBER
-    |
-    |#
-    |#  (eof}
-29.3.2. ALFA is empty.
-29.3.3. Remote contains 2 files.
-29.3.3.1. Location contains one file.
-29.3.3.1.1. Config_File.txt...
-    |working-folder ThisNameDefinedRemotely
-29.3.4. Testing is empty.
-29.4. Target CLU Call.
-29.4.1.  kamaji export configuration
-29.4.1.1. Exit Status 0!
-29.4.1.2. STDERR [text]...
-    |kamaji export configuration
-29.5. Finalizations.
-29.6. Workspace Impact...
-    |Only in 29.Omega: FOXTROT
-    |Only in 29.Omega: ThisNameDefinedRemotely
-29.6.1. FOXTROT (created) is empty.
-29.6.2. ThisNameDefinedRemotely (created) contains 2 files.
-29.6.2.1. .kamaji.conf...
-    |# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.
-    |#
-    |# ./.kamaji.conf
-    |baseline-folder ALFA
-    |data-extension-list BRAVO
-    |data-filename-list CHARLIE
-    |find-expression-list -name UNIFORM
-    |last-target-filename DELTA
-    |makefile-filename ECHO
-    |mask-sed-script FOXTROT
-    |ruleset-filename INDIA
-    |script-type-list JULIETT
-    |verbosity-level KILO
-    |working-folder LIMA
-    |new-review-command OSCAR
-    |new-review-tailpipe PAPA
-    |long-review-command QUEBEC
-    |long-review-tailpipe ROMEO
-    |short-review-command SIERRA
-    |short-review-tailpipe TANGO
-    |working-folder MIKE
-    |script-type-list NOVEMBER
-    |#
-    |# Remote/Location/Config_File.txt
-    |working-folder ThisNameDefinedRemotely
-    |#
-29.6.2.2. FOXTROT is a symbolic link to ../FOXTROT
+29.3. Target CLU Call.
+29.4. Finalizations.
 
 CLUT Source File: kamaji.08.configuration.clut (29 cases)
 CLUT Output Format Version: 5.5

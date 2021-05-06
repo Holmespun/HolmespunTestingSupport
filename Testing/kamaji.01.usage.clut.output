@@ -17,7 +17,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 1.1. Requirements.
     |None.
 1.2. Initializations.
-1.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+1.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/01.Working
 1.2.2. mkdir Testing
 1.3. Initial Workspace contains one file...
     |Testing
@@ -78,7 +78,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 1.5. Finalizations.
 1.6. Workspace Impact...
@@ -93,7 +93,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 2.1. Requirements.
     |None.
 2.2. Initializations.
-2.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+2.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/02.Working
 2.3. Initial Workspace is empty.
 2.4. Target CLU Call.
 2.4.1.  kamaji usage
@@ -150,7 +150,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 2.5. Finalizations.
 2.6. Workspace Impact...
@@ -161,7 +161,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 3.1. Requirements.
     |None.
 3.2. Initializations.
-3.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+3.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/03.Working
 3.3. Initial Workspace is empty.
 3.4. Target CLU Call.
 3.4.1.  kamaji help
@@ -218,7 +218,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 3.5. Finalizations.
 3.6. Workspace Impact...
@@ -229,7 +229,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 4.1. Requirements.
     |None.
 4.2. Initializations.
-4.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+4.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/04.Working
 4.2.2. mkdir Testing
 4.3. Initial Workspace contains one file...
     |Testing
@@ -290,7 +290,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 4.5. Finalizations.
 4.6. Workspace Impact...
@@ -330,7 +330,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 5.1. Requirements.
     |None.
 5.2. Initializations.
-5.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+5.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/05.Working
 5.3. Initial Workspace is empty.
 5.4. Target CLU Call.
 5.4.1.  kamaji help configure
@@ -364,10 +364,9 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the $HOME hierarchy, then configuration files from every subdirectory between /
     |and $PWD are read, with the exception of / itself.
     |
-    |The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST
-    |environment variable. The variable may be defined using zero or more file
-    |specifications separated by whitespace. The files specified in the
-    |KAMAJI_CONFIG_LIST need not actually exist.
+    |The user can limit the number of directories searched for configuration files
+    |by defining the KAMAJI_CONFIG_BASE_DSPEC variable: If defined then only
+    |configuration files within that directory and its subdirectries will be used.
     |
     |Based on the order read, items set later will re-define or augment items that
     |were defined earlier.
@@ -489,7 +488,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |A list of the configuration variable names can be displayed using a 'show
     |configuration' request.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 5.5. Finalizations.
 5.6. Workspace Impact...
@@ -499,7 +498,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 6.1. Requirements.
     |None.
 6.2. Initializations.
-6.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+6.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/06.Working
 6.3. Initial Workspace is empty.
 6.4. Target CLU Call.
 6.4.1.  kamaji help export
@@ -565,7 +564,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |instead of generating one itself. The 'fast' modifier will generate and export
     |a ruleset when it does not find one to load.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 6.5. Finalizations.
 6.6. Workspace Impact...
@@ -575,7 +574,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 7.1. Requirements.
     |None.
 7.2. Initializations.
-7.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+7.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/07.Working
 7.3. Initial Workspace is empty.
 7.4. Target CLU Call.
 7.4.1.  kamaji help grade
@@ -630,7 +629,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |requests it. As such, the user will get explicit grade feedback for every test
     |every time it is requested.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 7.5. Finalizations.
 7.6. Workspace Impact...
@@ -640,7 +639,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 8.1. Requirements.
     |None.
 8.2. Initializations.
-8.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+8.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/08.Working
 8.3. Initial Workspace is empty.
 8.4. Target CLU Call.
 8.4.1.  kamaji help make
@@ -686,7 +685,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |'grade' or 'invoke' or 'make' request. This is an especially useful shorthand
     |when kamaji is used for test-driven development.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 8.5. Finalizations.
 8.6. Workspace Impact...
@@ -696,7 +695,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 9.1. Requirements.
     |None.
 9.2. Initializations.
-9.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+9.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/09.Working
 9.3. Initial Workspace is empty.
 9.4. Target CLU Call.
 9.4.1.  kamaji help set
@@ -730,10 +729,9 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the $HOME hierarchy, then configuration files from every subdirectory between /
     |and $PWD are read, with the exception of / itself.
     |
-    |The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST
-    |environment variable. The variable may be defined using zero or more file
-    |specifications separated by whitespace. The files specified in the
-    |KAMAJI_CONFIG_LIST need not actually exist.
+    |The user can limit the number of directories searched for configuration files
+    |by defining the KAMAJI_CONFIG_BASE_DSPEC variable: If defined then only
+    |configuration files within that directory and its subdirectries will be used.
     |
     |Based on the order read, items set later will re-define or augment items that
     |were defined earlier.
@@ -855,7 +853,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |A list of the configuration variable names can be displayed using a 'show
     |configuration' request.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 9.5. Finalizations.
 9.6. Workspace Impact...
@@ -865,7 +863,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 10.1. Requirements.
     |None.
 10.2. Initializations.
-10.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+10.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/10.Working
 10.3. Initial Workspace is empty.
 10.4. Target CLU Call.
 10.4.1.  kamaji help show
@@ -895,7 +893,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |The 'show' request can be used to display the configuration, the copyright, or
     |the software version.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 10.5. Finalizations.
 10.6. Workspace Impact...
@@ -905,7 +903,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 11.1. Requirements.
     |None.
 11.2. Initializations.
-11.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+11.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/11.Working
 11.3. Initial Workspace is empty.
 11.4. Target CLU Call.
 11.4.1.  kamaji usage fast
@@ -937,7 +935,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifier is used, kamaji loads a stored ruleset instead of generating a new
     |one. An 'export ruleset' request can be used to store the current ruleset.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 11.5. Finalizations.
 11.6. Workspace Impact...
@@ -947,7 +945,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 12.1. Requirements.
     |None.
 12.2. Initializations.
-12.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+12.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/12.Working
 12.3. Initial Workspace is empty.
 12.4. Target CLU Call.
 12.4.1.  kamaji usage help
@@ -978,7 +976,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
     |silent" and "kamaji usage export"
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 12.5. Finalizations.
 12.6. Workspace Impact...
@@ -988,7 +986,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 13.1. Requirements.
     |None.
 13.2. Initializations.
-13.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+13.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/13.Working
 13.3. Initial Workspace is empty.
 13.4. Target CLU Call.
 13.4.1.  kamaji usage meticulous
@@ -1045,7 +1043,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |but this matching is only attempted after the current and baseline output are
     |masked. Masking is performed using a user-defined sed script.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 13.5. Finalizations.
 13.6. Workspace Impact...
@@ -1055,7 +1053,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 14.1. Requirements.
     |None.
 14.2. Initializations.
-14.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+14.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/14.Working
 14.3. Initial Workspace is empty.
 14.4. Target CLU Call.
 14.4.1.  kamaji usage noisy
@@ -1087,7 +1085,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 14.5. Finalizations.
 14.6. Workspace Impact...
@@ -1097,7 +1095,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 15.1. Requirements.
     |None.
 15.2. Initializations.
-15.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+15.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/15.Working
 15.3. Initial Workspace is empty.
 15.4. Target CLU Call.
 15.4.1.  kamaji usage quiet
@@ -1129,7 +1127,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 15.5. Finalizations.
 15.6. Workspace Impact...
@@ -1139,7 +1137,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 16.1. Requirements.
     |None.
 16.2. Initializations.
-16.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+16.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/16.Working
 16.3. Initial Workspace is empty.
 16.4. Target CLU Call.
 16.4.1.  kamaji usage silent
@@ -1171,7 +1169,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 16.5. Finalizations.
 16.6. Workspace Impact...
@@ -1181,7 +1179,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 17.1. Requirements.
     |None.
 17.2. Initializations.
-17.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+17.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/17.Working
 17.3. Initial Workspace is empty.
 17.4. Target CLU Call.
 17.4.1.  kamaji usage usage
@@ -1212,7 +1210,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |interested in after the 'usage' or 'help' keyword. For example, "kamaji help
     |silent" and "kamaji usage export"
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 17.5. Finalizations.
 17.6. Workspace Impact...
@@ -1222,7 +1220,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 18.1. Requirements.
     |None.
 18.2. Initializations.
-18.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+18.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/18.Working
 18.3. Initial Workspace is empty.
 18.4. Target CLU Call.
 18.4.1.  kamaji usage verbose
@@ -1254,7 +1252,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Multiple verbose modifiers will produce heavy diagnostic output. The silent
     |modifier turns off all diagnostic output.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 18.5. Finalizations.
 18.6. Workspace Impact...
@@ -1264,7 +1262,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 19.1. Requirements.
     |None.
 19.2. Initializations.
-19.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+19.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/19.Working
 19.3. Initial Workspace is empty.
 19.4. Target CLU Call.
 19.4.1.  kamaji help execute
@@ -1304,7 +1302,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the source file for a specific CLUT or unit test, then kamaji will give output
     |generation for that test a higher priority than for all others.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 19.5. Finalizations.
 19.6. Workspace Impact...
@@ -1314,7 +1312,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 20.1. Requirements.
     |None.
 20.2. Initializations.
-20.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+20.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/20.Working
 20.3. Initial Workspace is empty.
 20.4. Target CLU Call.
 20.4.1.  kamaji help invoke
@@ -1354,7 +1352,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the source file for a specific CLUT or unit test, then kamaji will give output
     |generation for that test a higher priority than for all others.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 20.5. Finalizations.
 20.6. Workspace Impact...
@@ -1364,7 +1362,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 21.1. Requirements.
     |None.
 21.2. Initializations.
-21.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+21.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/21.Working
 21.3. Initial Workspace is empty.
 21.4. Target CLU Call.
 21.4.1.  kamaji help run
@@ -1404,7 +1402,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |the source file for a specific CLUT or unit test, then kamaji will give output
     |generation for that test a higher priority than for all others.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 21.5. Finalizations.
 21.6. Workspace Impact...
@@ -1414,7 +1412,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 22.1. Requirements.
     |None.
 22.2. Initializations.
-22.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+22.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/22.Working
 22.3. Initial Workspace is empty.
 22.4. Target CLU Call.
 22.4.1.  kamaji help review
@@ -1465,7 +1463,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |configuration variables allow the user to manipulate the output produced by the
     |new-, short-, and long-review-command variables, respectively.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 22.5. Finalizations.
 22.6. Workspace Impact...
@@ -1475,7 +1473,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 23.1. Requirements.
     |None.
 23.2. Initializations.
-23.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+23.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/23.Working
 23.3. Initial Workspace is empty.
 23.4. Target CLU Call.
 23.4.1.  kamaji help bless
@@ -1508,7 +1506,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |a convenient shorthand, but it will cost you if you baseline output that is not
     |valid.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 23.5. Finalizations.
 23.6. Workspace Impact...
@@ -1518,7 +1516,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 24.1. Requirements.
     |None.
 24.2. Initializations.
-24.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+24.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/24.Working
 24.3. Initial Workspace is empty.
 24.4. Target CLU Call.
 24.4.1.  kamaji help baseline
@@ -1551,7 +1549,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |a convenient shorthand, but it will cost you if you baseline output that is not
     |valid.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 24.5. Finalizations.
 24.6. Workspace Impact...
@@ -1561,7 +1559,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 25.1. Requirements.
     |None.
 25.2. Initializations.
-25.2.1. export KAMAJI_CONFIG_LIST=./.kamaji.conf
+25.2.1. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.01.usage.clutr.20210506_134849_734164/25.Working
 25.3. Initial Workspace is empty.
 25.4. Target CLU Call.
 25.4.1.  kamaji help delta
@@ -1603,7 +1601,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |modifies the source file for a specific CLUT or unit test, kamaji will make
     |processing that test a higher priority than all others.
     |
-    |Copyright (c) 2019-2020 Brian G. Holmes.
+    |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
 25.5. Finalizations.
 25.6. Workspace Impact...

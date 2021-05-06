@@ -35,7 +35,7 @@ export HOLMESPUN_MONOCHROMATIC=ACTIVE
 
 function testCaseDefinitions() {
   #
-  clut_shared_initialize        "export KAMAJI_CONFIG_LIST=./.kamaji.conf"
+  clut_shared_initialize        "export KAMAJI_CONFIG_BASE_DSPEC=\${PWD}"
   #
   clut_global_initialize	mkdir Testing
   clut_global_initialize	spit .kamaji.conf "baseline-folder Testing"

@@ -150,6 +150,7 @@ set -u
 export LC_COLLATE=C
 
 source $(whereHolmespunLibraryBashing)/Library/echoInColor.bash
+source $(whereHolmespunLibraryBashing)/Library/echoListOfConfigurationFSpec.bash
 source $(whereHolmespunLibraryBashing)/Library/echoRelativePath.bash
 source $(whereHolmespunLibraryBashing)/Library/spit_spite_spitn_and_spew.bash
 
@@ -983,7 +984,7 @@ function KamajiConfigurationEchoValue() {
 
 function KamajiConfigurationLoadValues() {
   #
-  local Key Value ConfigFSpec
+  local Key Value ItemOfConfigFSpec
   #
   #  Set default configuration values.
   #
@@ -1014,34 +1015,32 @@ function KamajiConfigurationLoadValues() {
   #
   #  Record the user-defined configuration as it is loaded.
   #
-  __KamajiMalleableConfigFSpec=
+  local -r ListOfConfigFSpec=$(echoListOfConfigurationFSpec ${__KamajiConfigurationFName} KAMAJI_CONFIG_BASE_DSPEC)
   #
-  if [ "${KAMAJI_CONFIG_LIST+IS_SET}" = "IS_SET" ]
+  if [ "${KAMAJI_CONFIG_BASE_DSPEC+IS_SET}" = "IS_SET" ]
   then
      #
      spite ${__KamajiConfigurationLogFSpec}      \
-           "# The KAMAJI_CONFIG_LIST variable is being used to specify the configuration files and their order.\n#"
-     #
-  else
-     #
-     KAMAJI_CONFIG_LIST=$(EchoConfigurationFileList)
+           "# The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.\n#"
      #
   fi
   #
-  for ConfigFSpec in ${KAMAJI_CONFIG_LIST}
+  __KamajiMalleableConfigFSpec=
+  #
+  for ItemOfConfigFSpec in ${ListOfConfigFSpec}
   do
     #
-    if [ -f ${ConfigFSpec} ]
+    if [ -f ${ItemOfConfigFSpec} ]
     then
        #
-       KamajiConfigurationReadFile ${ConfigFSpec} ${__KamajiConfigurationLogFSpec}
+       KamajiConfigurationReadFile ${ItemOfConfigFSpec} ${__KamajiConfigurationLogFSpec}
        #
-       [ -w ${ConfigFSpec} ] && __KamajiMalleableConfigFSpec=${ConfigFSpec}
+       [ -w ${ItemOfConfigFSpec} ] && __KamajiMalleableConfigFSpec=${ItemOfConfigFSpec}
        #
-    elif [ -w $(dirname ${ConfigFSpec}) ]
+    elif [ -w $(dirname ${ItemOfConfigFSpec}) ]
     then
        #
-       __KamajiMalleableConfigFSpec=${ConfigFSpec}
+       __KamajiMalleableConfigFSpec=${ItemOfConfigFSpec}
        #
     fi
     #
@@ -1210,10 +1209,10 @@ function KamajiModifierUsage_configure() {
                 "If the \$PWD is not within the \$HOME hierarchy, then configuration files from every"          \
                 "subdirectory between / and \$PWD are read, with the exception of / itself."
   #
-  EchoPara80    "The order defined above may be overridden by defining the KAMAJI_CONFIG_LIST environment"      \
-                "variable."                                                                                     \
-                "The variable may be defined using zero or more file specifications separated by whitespace."   \
-                "The files specified in the KAMAJI_CONFIG_LIST need not actually exist."
+  EchoPara80    "The user can limit the number of directories searched for configuration files by defining the" \
+                "KAMAJI_CONFIG_BASE_DSPEC variable:"                                                            \
+                "If defined then only configuration files within that directory and its subdirectries will be"  \
+                "used."
   #
   EchoPara80    "Based on the order read, items set later will re-define or augment items that were defined"    \
                 "earlier."
@@ -2526,7 +2525,7 @@ function KamajiRequestConfigure() {
   #
   if [ ${#__KamajiMalleableConfigFSpec} -eq 0 ]
   then
-     EchoErrorAndExit 2 "No malleable configuration files found; check KAMAJI_CONFIG_LIST and file permissions."
+     EchoErrorAndExit 2 "No malleable configuration files found; check KAMAJI_CONFIG_BASE_DSPEC and file permissions."
   fi
   #
   EchoAndExecute "echo \"${VariableName} ${Value}\" >> ${__KamajiMalleableConfigFSpec}"

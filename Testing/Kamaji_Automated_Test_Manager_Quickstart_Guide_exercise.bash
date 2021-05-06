@@ -44,7 +44,7 @@ source ${BashLibraryDSpec}/spit_spite_spitn_and_spew.bash
 
 export HOLMESPUN_MONOCHROMATIC=BleakAndWet
 
-export KAMAJI_CONFIG_LIST=./.kamaji.conf
+export KAMAJI_CONFIG_BASE_DSPEC=${PWD}
 
 #----------------------------------------------------------------------------------------------------------------------
 #
