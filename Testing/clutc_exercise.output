@@ -199,9 +199,9 @@ myAwesomeProgram.clut.bash...
    |#!/bin/bash
    |#----------------------------------------------------------------------------------------
    |#
-   |#  ./myAwesomeProgram.clutc.20191103_092015_15463/00.compiled.bash...
+   |#  ./myAwesomeProgram.clutc.20210510_084917_1998288/00.compiled.bash...
    |#
-   |#  Created by clutc on 2019-11-03 at 09:20:16.
+   |#  Created by clutc on 2021-05-10 at 08:49:17.
    |#
    |#  CLUT cases were defined in myAwesomeProgram.clut; there were 7 of them.
    |#
@@ -225,7 +225,7 @@ myAwesomeProgram.clut.bash...
    |#
    |#----------------------------------------------------------------------------------------
    |
-   |export PATH="_WORKING_:${PATH}"
+   |export PATH="%WORKING%:${PATH}"
    |
    |#----------------------------------------------------------------------------------------
    |#
@@ -503,7 +503,7 @@ myAwesomeProgram.clut.bash...
    |#
    |#-----------------------------------------------------------------------------------------
    |
-   |source _WORKING_/myAwesomeProgram.clut
+   |source %WORKING%/myAwesomeProgram.clut
    |
    |#---------------------------------------------------------------------------------------
    |
@@ -863,7 +863,7 @@ myAwesomeProgram.clut.bash...
    |     #
    |     clutCaseRunTimeReport 1 Target CLU Call.
    |     #
-   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2019-11-03_output.fuzzy2"
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2021-05-10_output.fuzzy2"
    |     #
    |     clutCaseRunTimeReport 1 Finalizations.
    |     #

@@ -21,7 +21,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.2.3. spit .kamaji.conf time-output-format %C %x
 1.2.4. spit .kamaji.conf verbosity-level heavy
 1.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-1.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/01.Working
+1.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/01.Working
 1.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -66,7 +66,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/01.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/01.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -114,7 +114,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 2.2.3. spit .kamaji.conf time-output-format %C %x
 2.2.4. spit .kamaji.conf verbosity-level heavy
 2.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-2.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/02.Working
+2.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/02.Working
 2.2.7. create_exercise_compilable_alpha_output Testing/GAMMA_exercise.output WRONG
 2.3. Initial Workspace contains 4 files...
     |.kamaji.conf
@@ -170,7 +170,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/02.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/02.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -224,7 +224,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 3.2.3. spit .kamaji.conf time-output-format %C %x
 3.2.4. spit .kamaji.conf verbosity-level heavy
 3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-3.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/03.Working
+3.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/03.Working
 3.2.7. create_exercise_compilable_alpha_output Testing/GAMMA_exercise.output RIGHT
 3.3. Initial Workspace contains 4 files...
     |.kamaji.conf
@@ -280,7 +280,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/03.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/03.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -330,7 +330,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 4.2.3. spit .kamaji.conf time-output-format %C %x
 4.2.4. spit .kamaji.conf verbosity-level heavy
 4.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-4.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/04.Working
+4.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/04.Working
 4.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -387,7 +387,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 5.2.3. spit .kamaji.conf time-output-format %C %x
 5.2.4. spit .kamaji.conf verbosity-level heavy
 5.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-5.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/05.Working
+5.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/05.Working
 5.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -432,7 +432,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/05.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
 5.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
@@ -464,7 +464,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 6.2.3. spit .kamaji.conf time-output-format %C %x
 6.2.4. spit .kamaji.conf verbosity-level heavy
 6.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-6.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/06.Working
+6.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/06.Working
 6.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -509,7 +509,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/06.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/06.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -548,7 +548,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.2.3. spit .kamaji.conf time-output-format %C %x
 7.2.4. spit .kamaji.conf verbosity-level heavy
 7.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-7.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/07.Working
+7.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/07.Working
 7.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -593,7 +593,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/07.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/07.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -638,7 +638,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.2.3. spit .kamaji.conf time-output-format %C %x
 8.2.4. spit .kamaji.conf verbosity-level heavy
 8.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-8.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/08.Working
+8.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/08.Working
 8.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -683,7 +683,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
     |/usr/bin/time --format='%C %x' --append --output=GAMMA_exercise.output.time.text ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/08.Working/Working,_WORKING_,g' --expression='s,_HOME_,_HOME_,g' --expression='s,_USER_,_USER_,g' --expression='s,_USER_,_LOGNAME_,g' --expression='s,_HOSTNAME_,_HOSTNAME_,g' --expression='s,\([^A-Z]\)_TIMEZONE_\([^A-Z]\),\1_TIMEZONE_\2,g' GAMMA_exercise.output.partial
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/08.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
     |mv GAMMA_exercise.output.partial GAMMA_exercise.output
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
@@ -731,7 +731,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 9.2.3. spit .kamaji.conf time-output-format %C %x
 9.2.4. spit .kamaji.conf verbosity-level heavy
 9.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-9.2.6. export KAMAJI_CONFIG_BASE_DSPEC=_WORKING_/kamaji.05.compiled_exercise_processing.clutr.20210506_134849_732219/09.Working
+9.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210510_091859_2107260/09.Working
 9.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing

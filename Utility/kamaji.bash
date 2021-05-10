@@ -175,6 +175,8 @@ declare -A __KamajiConfigurationValue
 
 declare    __KamajiDataFileNameList="TBD"
 
+declare    __KamajiEnvironmentMasking="TBD"
+
 declare    __KamajiGoldenDSpec="TBD"
 
 declare    __KamajiLastMakeTargetFSpec="TBD"
@@ -187,8 +189,6 @@ declare    __KamajiScriptExtensionList="TBD"
 
 declare    __KamajiSedScriptFSpec="TBD"
 declare    __KamajiSedScriptFName="TBD"
-
-declare    __KamajiSystemMasking="TBD"
 
 declare    __KamajiTimeCommand="TBD"
 
@@ -932,13 +932,26 @@ function KamajiConfigurationCheckValues() {
      #
   fi
   #
-  __KamajiSystemMasking=
-  __KamajiSystemMasking+=" --expression='s,${WorkinDSpec},_WORKING_,g'"
-  __KamajiSystemMasking+=" --expression='s,${HOME},_HOME_,g'"
-  __KamajiSystemMasking+=" --expression='s,${USER},_USER_,g'"
-  __KamajiSystemMasking+=" --expression='s,${LOGNAME},_LOGNAME_,g'"
-  __KamajiSystemMasking+=" --expression='s,$(uname -n),_HOSTNAME_,g'"
-  __KamajiSystemMasking+=" --expression='s,\([^A-Z]\)$(date '+%Z')\([^A-Z]\),\1_TIMEZONE_\2,g'"
+  local -r EnvMaskMarker="$(KamajiConfigurationEchoValue environment-masking)"
+  #
+  local -r EnvMaskPrefix="${EnvMaskMarker%% *}"
+  local    EnvMaskSuffix="${EnvMaskMarker#* }"
+  #
+  __KamajiEnvironmentMasking=
+  #
+  if [ "${EnvMaskPrefix}" != "NONE" ]
+  then
+     #
+     [ "${EnvMaskSuffix}" = "${EnvMaskMarker}" ] && EnvMaskSuffix=
+     #
+     __KamajiEnvironmentMasking+=" --expression='s,${WorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${HOME},${EnvMaskPrefix}HOME${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${USER},${EnvMaskPrefix}USER${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${LOGNAME},${EnvMaskPrefix}LOGNAME${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,$(uname -n),${EnvMaskPrefix}HOSTNAME${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,\<$(date '+%Z')\>,${EnvMaskPrefix}TIMEZONE${EnvMaskSuffix},g'"
+     #
+  fi
   #
   local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
   #
@@ -991,6 +1004,7 @@ function KamajiConfigurationLoadValues() {
   __KamajiConfigurationDefault["baseline-folder"]="Testing"
   __KamajiConfigurationDefault["data-extension-list"]=
   __KamajiConfigurationDefault["data-filename-list"]=
+  __KamajiConfigurationDefault["environment-masking"]="% %"
   __KamajiConfigurationDefault["find-expression-list"]=
   __KamajiConfigurationDefault["last-target-filename"]="${__KamajiConfigurationFName%.*}.last_target.text"
   __KamajiConfigurationDefault["long-review-command"]="vimdiff -R"
@@ -1251,7 +1265,18 @@ function KamajiModifierUsage_configure() {
                 "but do not represent CLUT or unit test exercises or their output."                             \
                 "Data files are represented in the working-folder."
   #
-  EchoPara80-4  "find-expression-list <expression>... -"                                                         \
+  EchoPara80-4  "environment-masking { <prefix> | NONE } [ <suffix> ]... -"                                     \
+                "Environment masking is used to remove system details from output files,"                       \
+                "so that those details are not preserved in repositories:"                                      \
+                "The full directory specification of the working-folder;"                                       \
+                "Text that matches the dereferenced \$HOME, \$USER, and \$LOGNAME enviroment variables;"        \
+                "The \$(uname -n) host name; and"                                                               \
+                "The \$(date '+%Z') time zone."                                                                 \
+                "These are represented in the output by a mask name surrounded by the given prefix and suffix." \
+                "Mask names are WORKING, USER, LOGNAME, HOSTNAME, AND TIMEZONE, respectvely."                   \
+                "If the prefix is set to NONE then environment masking is disabled."                            
+  #
+  EchoPara80-4  "find-expression-list <expression>... -"                                                        \
                 "Expressions that are passed to the find command when determining which files within the"       \
                 "baseline-folder should be represented in the working-folder."                                  \
                 "The default '-type f' expression is ignored if this configuration item is set."                \
@@ -3243,13 +3268,18 @@ function KamajiMake_Output_from_Naked() {
   #
   [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed; exit status ${Status}."
   #
-  EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
-  #
-  Status=${?}
-  #
-  if [ ${Status} -ne 0 ]
+  if [ ${#__KamajiEnvironmentMasking} -gt 0 ]
   then
-     EchoErrorAndExit ${Status} "The account and system masking sed command failed; exit status ${Status}."
+     #
+     EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiEnvironmentMasking} ${TargetFName}.partial"
+     #
+     Status=${?}
+     #
+     if [ ${Status} -ne 0 ]
+     then
+        EchoErrorAndExit ${Status} "The environmental masking sed command failed; exit status ${Status}."
+     fi
+     #
   fi
   #
   EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
@@ -3277,13 +3307,18 @@ function KamajiMake_Output_from_Script() {
   #
   [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed; exit status ${Status}."
   #
-  EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiSystemMasking} ${TargetFName}.partial"
-  #
-  Status=${?}
-  #
-  if [ ${Status} -ne 0 ]
+  if [ ${#__KamajiEnvironmentMasking} -gt 0 ]
   then
-     EchoErrorAndExit ${Status} "The script output account and system masking sed command failed; status ${Status}."
+     #
+     EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiEnvironmentMasking} ${TargetFName}.partial"
+     #
+     Status=${?}
+     #
+     if [ ${Status} -ne 0 ]
+     then
+        EchoErrorAndExit ${Status} "The script output environmental masking sed command failed; exit status ${Status}."
+     fi
+     #
   fi
   #
   EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
