@@ -190,7 +190,7 @@ declare    __KamajiScriptExtensionList="TBD"
 declare    __KamajiSedScriptFSpec="TBD"
 declare    __KamajiSedScriptFName="TBD"
 
-declare    __KamajiTimeCommand="TBD"
+declare    __KamajiTimeFormat="TBD"
 
 declare    __KamajiVerbosityRequested="TBD"
 
@@ -953,20 +953,18 @@ function KamajiConfigurationCheckValues() {
      #
   fi
   #
-  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %C %x"
+  local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %x %C"
   #
-  local    TimeOutputFormat=$(KamajiConfigurationEchoValue time-output-format)
+  __KamajiTimeFormat="$(KamajiConfigurationEchoValue time-output-format)"
   #
-  if [ "${TimeOutputFormat}" = "NONE" ] || [ ! -x /usr/bin/time ]
+  if [ "${__KamajiTimeFormat}" = "NONE" ] || [ ! -x /usr/bin/time ]
   then
      #
-     __KamajiTimeCommand=
+     __KamajiTimeFormat=
      #
   else
      #
-     [ "${TimeOutputFormat}" = "FULL" ] && TimeOutputFormat="${DefaultTimeFormat}"
-     #
-     __KamajiTimeCommand="/usr/bin/time --format='${TimeOutputFormat}' --append "
+     [ "${__KamajiTimeFormat}" = "FULL" ] && __KamajiTimeFormat="${DefaultTimeFormat}"
      #
   fi
   #
@@ -2342,11 +2340,6 @@ function KamajiBuildRules() {
   #
   DiagnosticHeavy "# Building rules based on baseline files..."
   #
-  if [ ! -d ${__KamajiGoldenDSpec} ]
-  then
-     EchoErrorAndExit 2 "The baseline directory '${__KamajiGoldenDSpec}' does not exist."
-  fi
-  #
   local -r FindCommand="find -L ${__KamajiGoldenDSpec} $(KamajiConfigurationEchoValue find-expression-list -type f)"
   #
   DiagnosticHeavy "${FindCommand}"
@@ -3249,24 +3242,32 @@ function KamajiMake_Naked_from_Elf() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function KamajiMake_Output_from_Naked() {
+function KamajiMake_Output_from_Naked_Or_Script() {
   #
   local -r TargetFName=${1}
   local -r SourceFName=${2}
+  local -r SourceLabel=${3}     # program | script
   #
-  local    ActualFSpec=./${SourceFName}
+  local -r SedFailText="environmental masking sed command failed"
   #
-  [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
+# local    ActualFSpec=./${SourceFName}
   #
-  local    ActualTimeCommand=${__KamajiTimeCommand}
+# [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
   #
-  [ ${#__KamajiTimeCommand} -gt 0 ] && ActualTimeCommand+="--output=${TargetFName}.time.text "
+  local    TimeCommand=
   #
-  EchoAndExecuteInWorkingToFile ${TargetFName}.partial "${ActualTimeCommand}${ActualFSpec}"
+  if [ ${#__KamajiTimeFormat} -gt 0 ]
+  then
+     #
+     TimeCommand="/usr/bin/time --format='${__KamajiTimeFormat}' --output=${TargetFName}.time.text.partial "
+     #
+  fi
+  #
+  EchoAndExecuteInWorkingToFile ${TargetFName}.partial "${TimeCommand}./${SourceFName}"
   #
   Status=${?}
   #
-  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} program failed; exit status ${Status}."
+  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} ${SourceLabel} failed; exit status ${Status}."
   #
   if [ ${#__KamajiEnvironmentMasking} -gt 0 ]
   then
@@ -3277,12 +3278,34 @@ function KamajiMake_Output_from_Naked() {
      #
      if [ ${Status} -ne 0 ]
      then
-        EchoErrorAndExit ${Status} "The environmental masking sed command failed; exit status ${Status}."
+        EchoErrorAndExit ${Status} "The ${SourceLabel} output ${SedFailText}; exit status ${Status}."
      fi
      #
   fi
   #
   EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
+  #
+  if [ ${#__KamajiTimeFormat} -gt 0 ]
+  then
+     #
+     EchoAndExecuteInWorkingStdout "echo \"# ${__KamajiTimeFormat}\" >> ${TargetFName}.time.text"
+     #
+     EchoAndExecuteInWorkingStdout "cat ${TargetFName}.time.text.partial >> ${TargetFName}.time.text"
+     #
+     EchoAndExecuteInWorkingStdout "rm  ${TargetFName}.time.text.partial"
+     #
+  fi
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function KamajiMake_Output_from_Naked() {
+  #
+  local -r TargetFName=${1}
+  local -r SourceFName=${2}
+  #
+  KamajiMake_Output_from_Naked_Or_Script ${TargetFName} ${SourceFName} program
   #
 }
 
@@ -3293,35 +3316,7 @@ function KamajiMake_Output_from_Script() {
   local -r TargetFName=${1}
   local -r SourceFName=${2}
   #
-  local    ActualFSpec=./${SourceFName}
-  #
-  [ -L ${__KamajiWorkinDSpec}/${SourceFName} ] && ActualFSpec=$(readlink ${__KamajiWorkinDSpec}/${SourceFName})
-  #
-  local    ActualTimeCommand=${__KamajiTimeCommand}
-  #
-  [ ${#__KamajiTimeCommand} -gt 0 ] && ActualTimeCommand+="--output=${TargetFName}.time.text "
-  #
-  EchoAndExecuteInWorkingToFile ${TargetFName}.partial "${ActualTimeCommand}${ActualFSpec}"
-  #
-  Status=${?}
-  #
-  [ ${Status} -eq 0 ] || EchoFailureAndExit ${Status} "The ${SourceFName} script failed; exit status ${Status}."
-  #
-  if [ ${#__KamajiEnvironmentMasking} -gt 0 ]
-  then
-     #
-     EchoAndExecuteInWorkingStdout "sed --in-place ${__KamajiEnvironmentMasking} ${TargetFName}.partial"
-     #
-     Status=${?}
-     #
-     if [ ${Status} -ne 0 ]
-     then
-        EchoErrorAndExit ${Status} "The script output environmental masking sed command failed; exit status ${Status}."
-     fi
-     #
-  fi
-  #
-  EchoAndExecuteInWorkingStdout "mv ${TargetFName}.partial ${TargetFName}"
+  KamajiMake_Output_from_Naked_Or_Script ${TargetFName} ${SourceFName} script
   #
 }
 
