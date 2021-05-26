@@ -800,11 +800,20 @@ function KamajiFileClassification() {
   local -r SourceFSpec=${1}
   local -r SourceFType=${2-}
   #
+  local -r SourceFName=$(basename ${SourceFSpec})
+  #
   local -r SourceFTest=${__KamajiScriptExtensionList/:${SourceFType}:/}
+  #
+  local -r DataDefined=${__KamajiDataFileNameList/:${SourceFName}:/}
   #
   local    Result=Unknown
   #
-  if [ "${SourceFSpec}" = "${__KamajiSedScriptFSpec}" ]
+  if [ ${#DataDefined} -ne ${#__KamajiDataFileNameList} ]
+  then
+     #
+     Result="Data"
+     #
+  elif [ "${SourceFSpec}" = "${__KamajiSedScriptFSpec}" ]
   then
      #
      Result="SedMaskingScript"
@@ -884,6 +893,8 @@ function KamajiOrderByLatestBaseSource() {
   do
     #
     BigTime=0
+    #
+#   echo "### TargetFName=${TargetFName}" >&2
     #
     for SourceFName in ${__KamajiBaseSourceList[${TargetFName}]}
     do
@@ -2121,34 +2132,27 @@ function KamajiBuildRulesForTestingSource() {
   local -r SourceFName=$(basename ${SourceFSpec})
   local -r SourceFType=$(Xtension ${SourceFName})
   #
-  #  Detect a SourceFType amongst the declared data file names.
-  #
-  local -r DataFileNameLess=${__KamajiDataFileNameList/:${SourceFName}:/}
-  #
-  local    DataFileNameFlag=0
-  #
-  [ ${#DataFileNameLess} -ne ${#__KamajiDataFileNameList} ] && DataFileNameFlag=1
-  #
   #  Detect a Script that is not executable.
   #
-  local    SourceClass=Undetermined
+  local    SourceClass=$(KamajiFileClassification ${SourceFSpec} ${SourceFType})
   #
-  if [ ${DataFileNameFlag} -eq 0 ]
+  if [ "${SourceClass}" = "Script" ] && [ ! -x ${SourceFSpec} ]
   then
-     #
-     SourceClass=$(KamajiFileClassification ${SourceFSpec} ${SourceFType})
-     #
-     if [ "${SourceClass}" = "Script" ] && [ ! -x ${SourceFSpec} ]
-     then
-        EchoErrorAndExit 1 "The ${SourceFSpec} is neither executable nor declared data."
-     fi
-     #
+     EchoErrorAndExit 1 "The ${SourceFSpec} is neither executable nor declared data."
   fi
   #
   #  Process the source file as non-data or data.
   #
-  if [ ${DataFileNameFlag} -eq 0 ]
+  if [ "${SourceClass}" = "Data" ]
   then
+     #
+     #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
+     #
+     __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
+     #
+     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
+     #
+  else
      #
      local -r FunctionWeWant=${FUNCNAME}_${SourceClass}
      #
@@ -2157,14 +2161,6 @@ function KamajiBuildRulesForTestingSource() {
      [ ${#FunctionToCall} -eq 0 ] && EchoErrorAndExit 2 "Fatal programming flaw; ${FunctionWeWant} is undefined."
      #
      ${FunctionToCall} ${SourceFSpec} ${SourceFType}
-     #
-  else
-     #
-     #  __KamajiRepresentative[TargetFName]="SourceFSpec": What external file does this file name represent?
-     #
-     __KamajiRepresentative["${SourceFName}"]="${__KamajiNikrowDSpec}/${SourceFSpec}"
-     #
-     AppendArrayIndexValue __KamajiMyParentalList "${SourceFName}" ""
      #
   fi
   #
@@ -2636,7 +2632,7 @@ function KamajiRequestExport_makefile() {
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} "QUIET ?= @"
   #
-  for TargetClass in Grade Delta
+  for TargetClass in Output Delta Grade
   do
     #
     spit ${MakefileFSpec} ""
@@ -2658,8 +2654,6 @@ function KamajiRequestExport_makefile() {
   #
   local -r RulesetFName=$(KamajiConfigurationEchoValue ruleset-filename .${__KamajiScriptName}.ruleset.bash)
   #
-  local -r RulesetFSpec=${__KamajiWorkinDSpec}/${RulesetFName}
-  #
   spit  ${MakefileFSpec} ""
   spit  ${MakefileFSpec} ".PHONY: ${__KamajiScriptName}-grade ${__KamajiScriptName}-delta ${__KamajiScriptName}-output"
   spit  ${MakefileFSpec} ".PHONY: ${__KamajiScriptName}-last"
@@ -2672,7 +2666,7 @@ function KamajiRequestExport_makefile() {
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
   spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast delta"
   spit  ${MakefileFSpec} ""
-  spit  ${MakefileFSpec} "${__KamajiScriptName}-output : \$(KamajiGradeTargetList:.grade=)"
+  spit  ${MakefileFSpec} "${__KamajiScriptName}-output : \$(KamajiOutputTargetList)"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
   spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast invoke"
   spit  ${MakefileFSpec} ""
@@ -2680,9 +2674,11 @@ function KamajiRequestExport_makefile() {
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
   spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast make last"
   spit  ${MakefileFSpec} ""
-  spit  ${MakefileFSpec} "${RulesetFSpec} :"
+  spit  ${MakefileFSpec} "${__KamajiWorkinDSpec}/${RulesetFName} :"
   spite ${MakefileFSpec} "\t@echo \"make \$@\""
   spite ${MakefileFSpec} "\t\$(QUIET) ${__KamajiScriptName} fast silent show version"
+  spit  ${MakefileFSpec} ""
+  spit  ${MakefileFSpec} "\$(KamajiOutputTargetList) : | ${__KamajiWorkinDSpec}/${RulesetFName}"
   spit  ${MakefileFSpec} ""
   #
   #  Generate makefile dependency rules for each of the targets leading up to the grades.
@@ -2739,7 +2735,7 @@ function KamajiRequestExport_makefile() {
            #
         fi
         #
-        OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} : ${RulesetFSpec}"
+        OutputList[${OutputIndx}]="${__KamajiWorkinDSpec}/${ItemOfParentFName} :"
         #
         OutputList[${OutputIndx}]+="$(echo "${OutputLine}" | tr ' ' '\n' | sort --unique | tr '\n' ' ')"
         #
@@ -3465,6 +3461,8 @@ function KamajiMake() {
   local -r TargetFName=${1}
   #
   local -r TargetClass=$(KamajiFileClassification ${TargetFName} $(Xtension ${TargetFName}))
+  #
+  [ "${TargetClass}" = "Data" ] && return
   #
   #  Representatives must only exist; the files they represent are updated by the user.
   #
