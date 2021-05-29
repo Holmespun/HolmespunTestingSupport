@@ -46,17 +46,17 @@ function testCaseDefinitions() {
   clut_case_name		ShowMakefile_Clut
   clut_case_initialize		create_production_script_alpha ALPHA.bash
   clut_case_initialize		create_production_script_alpha_clut Testing/ALPHA.clut
-  clut_case_parameter		export makefile
+  clut_case_parameter		export makefile MAKEFILE.text
   clut_case_end
   #
   clut_case_name		ShowMakefile_ScriptExercise
   clut_case_initialize		create_exercise_script_alpha Testing/BETA_exercise.bash
-  clut_case_parameter		export mak
+  clut_case_parameter		export mak /dev/stdout
   clut_case_end
   #
   clut_case_name		ShowMakefile_CompiledExercise
   clut_case_initialize		create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-  clut_case_parameter		expo makefile
+  clut_case_parameter		expo makefile /dev/stderr
   clut_case_end
   #
   clut_shared_initialize	create_production_script_alpha ALPHA.bash

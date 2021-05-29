@@ -155,7 +155,7 @@ function testCaseDefinitionsExportAndOverride() {
   #
   clut_case_name		ExportConfigurationLocal
   clut_case_initialize  	mkdir --parents ALFA
-  clut_case_parameter		"export configuration"
+  clut_case_parameter		"export configuration CONFIGURATION.text"
   clut_case_end
   #
   clut_case_name		ExportConfigurationRemote
@@ -164,7 +164,7 @@ function testCaseDefinitionsExportAndOverride() {
   clut_case_initialize          spit Remote/Location/Config_File.txt working-folder ThisNameDefinedRemotely
   clut_case_initialize          export KAMAJI_CONFIG_LIST=Remote/Location/Config_File.txt
   clut_case_initialize  	mkdir --parents Testing
-  clut_case_parameter		"export configuration"
+  clut_case_parameter		"export configuration /dev/stdout"
   clut_case_end
   #
   clut_case_name		ExportConfigurationRemoteAndLocal

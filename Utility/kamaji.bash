@@ -37,6 +37,10 @@
 #       EchoPara80-4
 #       Xtension
 #       SortArray
+#       WasWorkingFile
+#       PublishWorkingFile
+#       StartWorkingFile
+#       ExportWorkingFile
 #
 #       KamajiEchoArrayAssignments
 #       KamajiEchoListOfDescendantFName
@@ -315,7 +319,7 @@ function DiagnosticComplex() {
 function EchoAbsoluteDirectorySpecFor() {
   #
   local -r ParentDSpec=${1}
-  local -r NestedDSpec=${2}
+  local -r NestedDSpec=${2-}
   #
   local -r WhereWeWere=${PWD}
 
@@ -808,6 +812,41 @@ function StartWorkingFile() {
   spit ${__KamajiWorkinDSpec}/${TargetFName} "#"
   spit ${__KamajiWorkinDSpec}/${TargetFName} "#  Date and time: $(date '+%Y-%m-%d') at $(date '+%H:%M:%S')"
   spit ${__KamajiWorkinDSpec}/${TargetFName} "#"
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+
+function ExportWorkingFile() {
+  #
+  local -r WorkinFName=${1}
+  local    TargetFSpec=${2-}
+  #
+  local -r WorkinFSpec=$(EchoAbsoluteDirectorySpecFor ${__KamajiWorkinDSpec})/${WorkinFName}
+  #
+  [ ${#TargetFSpec} -eq 0 ] && return
+  #
+  TargetFSpec=$(EchoAbsoluteDirectorySpecFor $(dirname ${TargetFSpec}))/$(basename ${TargetFSpec})
+  #
+  if [ "${TargetFSpec}" != "${WorkinFSpec}" ]
+  then
+     #
+     if [ "${TargetFSpec:0:5}" = "/dev/" ]
+     then
+        #
+        EchoAndExecuteInWorkingToFile ${TargetFSpec} "cat ${WorkinFName}"
+        #
+     else
+        #
+        [ -f ${TargetFSpec} ] && EchoAndExecute mv ${TargetFSpec} ${TargetFSpec}.was
+        #
+        [ -e ${TargetFSpec} ] && EchoErrorAndExit 1 "The ${TargetFSpec} file exists and is not a regular file."
+        #
+        EchoAndExecuteInWorkingStdout cp ${WorkinFName} ${TargetFSpec}
+        #
+     fi
+     #
+  fi
   #
 }
 
@@ -1561,7 +1600,7 @@ function KamajiModifierUsage_grade() {
   #
   EchoPara80    "Although grades are identified using the \"grade\" file name extension,"                       \
                 "the actual grade is not stored."                                                               \
-                "This practice will cause ${__KamajiScriptFName} to evaluate a CLUT or unit test exercise,"      \
+                "This practice will cause ${__KamajiScriptFName} to evaluate a CLUT or unit test exercise,"     \
                 "and display the assigned grade, every time the user requests it."                              \
                 "As such, the user will get explicit grade feedback for every test every time it is requested."
   #
@@ -1575,43 +1614,52 @@ function KamajiModifierUsage_export() {
   #
   EchoPara80    "$(echoInColorWhiteBold "Export...")"
   #
-  EchoPara80    "The ${__KamajiScriptFName} script allows the user to export three forms of data:"               \
+  EchoPara80    "The ${__KamajiScriptFName} script allows the user to export three forms of data:"              \
                 "configuration, makefile, and ruleset."
   #
   EchoPara80    "$(echoInColorWhiteBold "Export Configuration...")"
   #
   EchoPara80    "The 'export configuration' request is used to produce a configuration file that represents"    \
                 "all of the active configuration sources."                                                      \
-                "The exported configuration file is placed in the working-folder."                              \
-                "It contains the same information as shown in the 'Active configuration sources' section of"    \
-                "the information displayed by the 'show configuration' command."
+                "The ${__KamajiConfigurationFName} file is used to store the composit information in the"       \
+                "working-folder."                                                                               \
+                "That file is then copied to an external output file if the user specifies one;"                \
+                "/dev/stdout and /dev/stderr may be specified."
   #
   EchoPara80    "$(echoInColorWhiteBold "Export Makefile...")"
   #
   EchoPara80    "The 'export makefile' request is used to produce a makefile that can be used to integrate"     \
-                "${__KamajiScriptFName} into a makefile system."                                                 \
-                "An exported makefile contains a rule for every derived file known to ${__KamajiScriptFName}."   \
+                "${__KamajiScriptFName} into a makefile system."                                                \
+                "An exported makefile contains a rule for every derived file known to ${__KamajiScriptFName}."  \
                 "Use of the make command --jobs switch with the exported makefile can produce results even"     \
                 "faster than invoking parallel ${__KamajiScriptFName} grade requests."
   #
+  EchoPara80    "The ${__KamajiMakefileFName} file is used to store the makefile in the working-folder."        \
+                "That file is then copied to an external output file if the user specifies one;"                \
+                "/dev/stdout and /dev/stderr may be specified."
+  #
   EchoPara80    "$(echoInColorWhiteBold "Export Ruleset...")"
   #
-  EchoPara80    "The ${__KamajiScriptFName} script defines a ruleset that it uses to guide creation of every"    \
+  EchoPara80    "The ${__KamajiScriptFName} script defines a ruleset that it uses to guide creation of every"   \
                 "file in the working-folder;"                                                                   \
                 "to determine what files need to be made or re-made, and the"                                   \
                 "proper order in which that should happen."
   #
-  EchoPara80    "By default, ${__KamajiScriptFName} generates its ruleset every time it is called"               \
+  EchoPara80    "By default, ${__KamajiScriptFName} generates its ruleset every time it is called"              \
                 "so that it can properly react to dramatic changes in the baseline-folder."                     \
                 "As the ruleset only changes when files are added or removed from the baseline-folder, it is"   \
-                "inefficient to regenerate the ruleset when the baseline-folder has not changed in this way."
+                "less efficient to regenerate the ruleset when the baseline-folder has not changed."
   #
-  EchoPara80    "Users can request that ${__KamajiScriptFName} export its current ruleset for future use"        \
-                "using the 'export' request."                                                                   \
-  #
-  EchoPara80    "The 'fast' modifier can be used to ask ${__KamajiScriptFName} to"                               \
-                "load an exported ruleset instead of generating one itself."                                    \
+  EchoPara80    "The 'fast' modifier can be used to ask ${__KamajiScriptFName} to"                              \
+                "load an exported ruleset instead of generating anew."                                          \
                 "The 'fast' modifier will generate and export a ruleset when it does not find one to load."
+  #
+  EchoPara80    "Users can request that ${__KamajiScriptFName} export its current ruleset for future use"       \
+                "using the 'export' request."                                                                   \
+                "The ${__KamajiRulesetFName} file is used to store the ruleset in the working-folder;"          \
+                "this version of the file is used to support future fast processing requests."                  \
+                "That file is then copied to an external output file if the user specifies one;"                \
+                "/dev/stdout and /dev/stderr may be specified."
   #
 }
 
@@ -1730,7 +1778,7 @@ function KamajiModifierUsage_fast() {
                 "the 'fast' modifier can be used to improve the efficiency of ${__KamajiScriptFName}."           \
                 "When the 'fast' modifier is used,"                                                             \
                 "${__KamajiScriptFName} loads a stored ruleset instead of generating a new one."                 \
-                "An 'export ruleset' request can be used to store the current ruleset."
+                "An 'export ruleset' request can be used to inspect the current ruleset."
   #
 }
 
@@ -1784,13 +1832,19 @@ function KamajiModifierUsage() {
   echo "Where <request> is one of the following:"
   echo "      bless  [ <filename> | last ]..."
   echo "      delta  [ <filename> | last ]..."
-  echo "      export [ configuration | makefile | ruleset ]"
+  echo "      export [ configuration | makefile | ruleset ] [ <filespec> ]"
   echo "      grade  [ <filename> | last ]..."
   echo "      invoke [ <filename> | last ]..."
   echo "      make   [ <filename> | last | grades | outputs ]..."
   echo "      review [ <filename> | last ]..."
   echo "      set    <name> <value>"
   echo "      show   [ configuration | copyright | version ]"
+  echo ""
+  echo "Where the user specified..."
+  echo "      <filespec> is a file specification;"
+  echo "      <filename> may be a file specification, but only the file name part will be used;"
+  echo "      <name> is that of a configuration variable (e.g. working-folder);"
+  echo "      <value> is a non-empty set of one or more space-separated tokens."
   echo ""
   #
   declare -A UsageModifierSubjectList
@@ -2684,14 +2738,17 @@ function KamajiRequestExport_configuration() {
   #
   local -r Request=${1}
   local -r Object=${2}
+  local -r ToFSpec=${3-}
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object}"
+  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
   #
   StartWorkingFile   ${__KamajiConfigurationFName}.${__KamajiPartialSuffix}
   #
   spew ${__KamajiWorkinDSpec}/${__KamajiConfigurationFName}.${__KamajiPartialSuffix} ${__KamajiConfigLogFSpec}
   #
   PublishWorkingFile ${__KamajiConfigurationFName}.${__KamajiPartialSuffix}
+  #
+  ExportWorkingFile ${__KamajiConfigurationFName} ${ToFSpec}
   #
 }
 
@@ -2701,8 +2758,9 @@ function KamajiRequestExport_makefile() {
   #
   local -r Request=${1}
   local -r Object=${2}
+  local -r ToFSpec=${3-}
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object}"
+  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
   #
   local -r MakefileFName=${__KamajiMakefileFName}.${__KamajiPartialSuffix}
   #
@@ -2874,6 +2932,8 @@ function KamajiRequestExport_makefile() {
   #
   PublishWorkingFile ${MakefileFName}
   #
+  ExportWorkingFile ${__KamajiMakefileFName} ${ToFSpec}
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -2882,12 +2942,13 @@ function KamajiRequestExport_ruleset() {
   #
   local -r Request=${1}
   local -r Object=${2}
+  local -r ToFSpec=${3-}
+  #
+  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
   #
   local -r RulesetFName=${__KamajiRulesetFName}.${__KamajiPartialSuffix}
   #
   local    ArrayName ArrayReference
-  #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object}"
   #
   StartWorkingFile ${RulesetFName}
   #
@@ -2923,6 +2984,8 @@ function KamajiRequestExport_ruleset() {
   #
   PublishWorkingFile ${RulesetFName}
   #
+  ExportWorkingFile ${__KamajiRulesetFName} ${ToFSpec}
+  #
 }
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -2934,7 +2997,7 @@ function KamajiRequestExport() {
   shift 2
   local -r ArgumentList="${*}"
   #
-  local -r Target=$(EchoMeaningOf "${Object}" "" configuration makefile ruleset)
+  local -r Target=$(EchoMeaningOf "${Object}" "configuration" configuration makefile ruleset)
   #
   local -r FunctionWeWant=${FUNCNAME}_${Target}
   #

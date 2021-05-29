@@ -46,17 +46,17 @@ function testCaseDefinitionsInitial() {
   clut_case_name		ExportRuleset_Clut
   clut_case_initialize		create_production_script_alpha ALPHA.bash
   clut_case_initialize		create_production_script_alpha_clut Testing/ALPHA.clut
-  clut_case_parameter		export ruleset
+  clut_case_parameter		export ruleset RULESET.text
   clut_case_end
   #
   clut_case_name		ExportRuleset_ScriptExercise
   clut_case_initialize		create_exercise_script_alpha Testing/BETA_exercise.bash
-  clut_case_parameter		expo ruleset
+  clut_case_parameter		expo ruleset /dev/stdout
   clut_case_end
   #
   clut_case_name		ExportRuleset_CompiledExercise
   clut_case_initialize		create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-  clut_case_parameter		export ruleset
+  clut_case_parameter		export ruleset /dev/stderr
   clut_case_end
   #
   clut_shared_initialize	create_production_script_alpha ALPHA.bash
@@ -65,7 +65,7 @@ function testCaseDefinitionsInitial() {
   clut_shared_initialize	create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
   #
   clut_case_name		ExportRuleset_ThreeKinds_Export
-  clut_case_parameter		export ru
+  clut_case_parameter		export ru /dev/null
   clut_case_end
   #
   clut_case_name		ExportRuleset_ThreeKinds_FastToExport

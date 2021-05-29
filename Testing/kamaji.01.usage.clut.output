@@ -17,7 +17,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 1.1. Requirements.
     |None.
 1.2. Initializations.
-1.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/01.Working
+1.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/01.Working
 1.2.2. mkdir Testing
 1.3. Initial Workspace contains one file...
     |Testing
@@ -38,13 +38,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -92,7 +98,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 2.1. Requirements.
     |None.
 2.2. Initializations.
-2.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/02.Working
+2.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/02.Working
 2.3. Initial Workspace is empty.
 2.4. Target CLU Call.
 2.4.1.  kamaji usage
@@ -109,13 +115,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -160,7 +172,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 3.1. Requirements.
     |None.
 3.2. Initializations.
-3.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/03.Working
+3.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/03.Working
 3.3. Initial Workspace is empty.
 3.4. Target CLU Call.
 3.4.1.  kamaji help
@@ -177,13 +189,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -228,7 +246,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 4.1. Requirements.
     |None.
 4.2. Initializations.
-4.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/04.Working
+4.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/04.Working
 4.2.2. mkdir Testing
 4.3. Initial Workspace contains one file...
     |Testing
@@ -249,13 +267,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -301,7 +325,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |#
     |#  User request:  kamaji fast bobo
     |#
-    |#  Date and time: 2021-05-29 at 09:57:47
+    |#  Date and time: 2021-05-29 at 11:27:40
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -331,7 +355,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 5.1. Requirements.
     |None.
 5.2. Initializations.
-5.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/05.Working
+5.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/05.Working
 5.3. Initial Workspace is empty.
 5.4. Target CLU Call.
 5.4.1.  kamaji help configure
@@ -348,13 +372,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Configure|Set...
     |
@@ -499,7 +529,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 6.1. Requirements.
     |None.
 6.2. Initializations.
-6.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/06.Working
+6.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/06.Working
 6.3. Initial Workspace is empty.
 6.4. Target CLU Call.
 6.4.1.  kamaji help export
@@ -516,13 +546,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Export...
     |
@@ -532,10 +568,10 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Export Configuration...
     |
     |The 'export configuration' request is used to produce a configuration file that
-    |represents all of the active configuration sources. The exported configuration
-    |file is placed in the working-folder. It contains the same information as shown
-    |in the 'Active configuration sources' section of the information displayed by
-    |the 'show configuration' command.
+    |represents all of the active configuration sources. The .kamaji.conf file is
+    |used to store the composit information in the working-folder. That file is then
+    |copied to an external output file if the user specifies one; /dev/stdout and
+    |/dev/stderr may be specified.
     |
     |Export Makefile...
     |
@@ -545,6 +581,10 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |with the exported makefile can produce results even faster than invoking
     |parallel kamaji grade requests.
     |
+    |The .kamaji.make file is used to store the makefile in the working-folder. That
+    |file is then copied to an external output file if the user specifies one;
+    |/dev/stdout and /dev/stderr may be specified.
+    |
     |Export Ruleset...
     |
     |The kamaji script defines a ruleset that it uses to guide creation of every
@@ -553,16 +593,18 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |
     |By default, kamaji generates its ruleset every time it is called so that it can
     |properly react to dramatic changes in the baseline-folder. As the ruleset only
-    |changes when files are added or removed from the baseline-folder, it is
-    |inefficient to regenerate the ruleset when the baseline-folder has not changed
-    |in this way.
-    |
-    |Users can request that kamaji export its current ruleset for future use using
-    |the 'export' request.
+    |changes when files are added or removed from the baseline-folder, it is less
+    |efficient to regenerate the ruleset when the baseline-folder has not changed.
     |
     |The 'fast' modifier can be used to ask kamaji to load an exported ruleset
-    |instead of generating one itself. The 'fast' modifier will generate and export
-    |a ruleset when it does not find one to load.
+    |instead of generating anew. The 'fast' modifier will generate and export a
+    |ruleset when it does not find one to load.
+    |
+    |Users can request that kamaji export its current ruleset for future use using
+    |the 'export' request. The .kamaji.ruleset.bash file is used to store the
+    |ruleset in the working-folder; this version of the file is used to support
+    |future fast processing requests. That file is then copied to an external output
+    |file if the user specifies one; /dev/stdout and /dev/stderr may be specified.
     |
     |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
@@ -574,7 +616,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 7.1. Requirements.
     |None.
 7.2. Initializations.
-7.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/07.Working
+7.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/07.Working
 7.3. Initial Workspace is empty.
 7.4. Target CLU Call.
 7.4.1.  kamaji help grade
@@ -591,13 +633,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Grade...
     |
@@ -640,7 +688,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 8.1. Requirements.
     |None.
 8.2. Initializations.
-8.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/08.Working
+8.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/08.Working
 8.3. Initial Workspace is empty.
 8.4. Target CLU Call.
 8.4.1.  kamaji help make
@@ -657,13 +705,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Make...
     |
@@ -696,7 +750,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 9.1. Requirements.
     |None.
 9.2. Initializations.
-9.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/09.Working
+9.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/09.Working
 9.3. Initial Workspace is empty.
 9.4. Target CLU Call.
 9.4.1.  kamaji help set
@@ -713,13 +767,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Configure|Set...
     |
@@ -864,7 +924,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 10.1. Requirements.
     |None.
 10.2. Initializations.
-10.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/10.Working
+10.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/10.Working
 10.3. Initial Workspace is empty.
 10.4. Target CLU Call.
 10.4.1.  kamaji help show
@@ -881,13 +941,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Show...
     |
@@ -904,7 +970,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 11.1. Requirements.
     |None.
 11.2. Initializations.
-11.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/11.Working
+11.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/11.Working
 11.3. Initial Workspace is empty.
 11.4. Target CLU Call.
 11.4.1.  kamaji usage fast
@@ -921,7 +987,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
@@ -929,12 +995,18 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
     |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
+    |
     |Fast...
     |
     |When the number of files in the baseline-folder does not change, the 'fast'
     |modifier can be used to improve the efficiency of kamaji. When the 'fast'
     |modifier is used, kamaji loads a stored ruleset instead of generating a new
-    |one. An 'export ruleset' request can be used to store the current ruleset.
+    |one. An 'export ruleset' request can be used to inspect the current ruleset.
     |
     |Copyright (c) 2019-2021 Brian G. Holmes.
     |kamaji version 1.00
@@ -946,7 +1018,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 12.1. Requirements.
     |None.
 12.2. Initializations.
-12.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/12.Working
+12.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/12.Working
 12.3. Initial Workspace is empty.
 12.4. Target CLU Call.
 12.4.1.  kamaji usage help
@@ -963,13 +1035,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Usage|Help...
     |
@@ -987,7 +1065,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 13.1. Requirements.
     |None.
 13.2. Initializations.
-13.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/13.Working
+13.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/13.Working
 13.3. Initial Workspace is empty.
 13.4. Target CLU Call.
 13.4.1.  kamaji usage meticulous
@@ -1004,13 +1082,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Synonyms compare (delta), configure (set), noisy (verbose), pre-grade (delta),
     |quiet (silent), and usage (help) are supported. Modifier and request
@@ -1054,7 +1138,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 14.1. Requirements.
     |None.
 14.2. Initializations.
-14.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/14.Working
+14.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/14.Working
 14.3. Initial Workspace is empty.
 14.4. Target CLU Call.
 14.4.1.  kamaji usage noisy
@@ -1071,13 +1155,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Verbose|Noisy and Silent|Quiet...
     |
@@ -1096,7 +1186,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 15.1. Requirements.
     |None.
 15.2. Initializations.
-15.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/15.Working
+15.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/15.Working
 15.3. Initial Workspace is empty.
 15.4. Target CLU Call.
 15.4.1.  kamaji usage quiet
@@ -1113,13 +1203,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Verbose|Noisy and Silent|Quiet...
     |
@@ -1138,7 +1234,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 16.1. Requirements.
     |None.
 16.2. Initializations.
-16.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/16.Working
+16.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/16.Working
 16.3. Initial Workspace is empty.
 16.4. Target CLU Call.
 16.4.1.  kamaji usage silent
@@ -1155,13 +1251,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Verbose|Noisy and Silent|Quiet...
     |
@@ -1180,7 +1282,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 17.1. Requirements.
     |None.
 17.2. Initializations.
-17.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/17.Working
+17.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/17.Working
 17.3. Initial Workspace is empty.
 17.4. Target CLU Call.
 17.4.1.  kamaji usage usage
@@ -1197,13 +1299,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Usage|Help...
     |
@@ -1221,7 +1329,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 18.1. Requirements.
     |None.
 18.2. Initializations.
-18.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/18.Working
+18.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/18.Working
 18.3. Initial Workspace is empty.
 18.4. Target CLU Call.
 18.4.1.  kamaji usage verbose
@@ -1238,13 +1346,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Verbose|Noisy and Silent|Quiet...
     |
@@ -1263,7 +1377,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 19.1. Requirements.
     |None.
 19.2. Initializations.
-19.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/19.Working
+19.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/19.Working
 19.3. Initial Workspace is empty.
 19.4. Target CLU Call.
 19.4.1.  kamaji help execute
@@ -1280,13 +1394,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Execute|Invoke|Run...
     |
@@ -1313,7 +1433,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 20.1. Requirements.
     |None.
 20.2. Initializations.
-20.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/20.Working
+20.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/20.Working
 20.3. Initial Workspace is empty.
 20.4. Target CLU Call.
 20.4.1.  kamaji help invoke
@@ -1330,13 +1450,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Execute|Invoke|Run...
     |
@@ -1363,7 +1489,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 21.1. Requirements.
     |None.
 21.2. Initializations.
-21.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/21.Working
+21.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/21.Working
 21.3. Initial Workspace is empty.
 21.4. Target CLU Call.
 21.4.1.  kamaji help run
@@ -1380,13 +1506,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Execute|Invoke|Run...
     |
@@ -1413,7 +1545,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 22.1. Requirements.
     |None.
 22.2. Initializations.
-22.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/22.Working
+22.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/22.Working
 22.3. Initial Workspace is empty.
 22.4. Target CLU Call.
 22.4.1.  kamaji help review
@@ -1430,13 +1562,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Review...
     |
@@ -1474,7 +1612,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 23.1. Requirements.
     |None.
 23.2. Initializations.
-23.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/23.Working
+23.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/23.Working
 23.3. Initial Workspace is empty.
 23.4. Target CLU Call.
 23.4.1.  kamaji help bless
@@ -1491,13 +1629,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Baseline|Bless...
     |
@@ -1517,7 +1661,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 24.1. Requirements.
     |None.
 24.2. Initializations.
-24.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/24.Working
+24.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/24.Working
 24.3. Initial Workspace is empty.
 24.4. Target CLU Call.
 24.4.1.  kamaji help baseline
@@ -1534,13 +1678,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Baseline|Bless...
     |
@@ -1560,7 +1710,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 25.1. Requirements.
     |None.
 25.2. Initializations.
-25.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/25.Working
+25.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_112739_985746/25.Working
 25.3. Initial Workspace is empty.
 25.4. Target CLU Call.
 25.4.1.  kamaji help delta
@@ -1577,13 +1727,19 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |Where <request> is one of the following:
     |      bless  [ <filename> | last ]...
     |      delta  [ <filename> | last ]...
-    |      export [ configuration | makefile | ruleset ]
+    |      export [ configuration | makefile | ruleset ] [ <filespec> ]
     |      grade  [ <filename> | last ]...
     |      invoke [ <filename> | last ]...
     |      make   [ <filename> | last | grades | outputs ]...
     |      review [ <filename> | last ]...
     |      set    <name> <value>
     |      show   [ configuration | copyright | version ]
+    |
+    |Where the user specified...
+    |      <filespec> is a file specification;
+    |      <filename> may be a file specification, but only the file name part will be used;
+    |      <name> is that of a configuration variable (e.g. working-folder);
+    |      <value> is a non-empty set of one or more space-separated tokens.
     |
     |Compare|Delta|Pre-Grade...
     |
