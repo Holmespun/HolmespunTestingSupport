@@ -19,7 +19,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 1.2.1. mkdir Testing
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf verbosity-level heavy
-1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/01.Working
+1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/01.Working
 1.2.5. create_production_script_alpha ALPHA.bash
 1.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 1.3. Initial Workspace contains 4 files...
@@ -59,22 +59,25 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 1.4.1.  kamaji export ruleset
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_875664.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_875664.partial.text .kamaji.ruleset.bash
 1.5. Finalizations.
 1.6. Workspace Impact...
-    |Only in 01.Omega: .kamaji.sed
     |Only in 01.Omega: Working
-1.6.1. .kamaji.sed (created) is empty.
-1.6.2. Working (created) contains 4 files.
-1.6.2.1. .kamaji.ruleset.bash...
+1.6.1. Working (created) contains 4 files.
+1.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -85,17 +88,15 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
     |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
-    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
-    |#
     |__KamajiClassifiedList[Clut]=" ALPHA.clut"
     |__KamajiClassifiedList[Delta]=" ALPHA.clut.output.delta"
     |__KamajiClassifiedList[Grade]=" ALPHA.clut.output.grade"
@@ -103,9 +104,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiClassifiedList[Output]=" ALPHA.clut.output"
     |__KamajiClassifiedList[Review]=" ALPHA.clut.output.review"
     |__KamajiClassifiedList[Script]=" ALPHA.bash ALPHA.clut.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" ALPHA.clut.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
     |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
     |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
@@ -113,25 +115,25 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiMyChildrenList[ALPHA.clut.output.masked]=" ALPHA.clut.output.delta"
     |__KamajiMyChildrenList[ALPHA.clut.output]=" ALPHA.clut.output.masked"
     |__KamajiMyChildrenList[ALPHA.clut]=" ALPHA.clut.bash"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[ALPHA.bash]=""
     |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
     |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
     |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
-    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed.composit.sed ALPHA.clut.output"
     |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.delta ALPHA.clut.output.grade"
     |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
     |__KamajiMyParentalList[ALPHA.clut]=""
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
     |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
     |#
     |#  (eof)
-1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-1.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
-1.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+1.6.1.2. .kamaji.sed.filelist.text...
+    |
+1.6.1.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+1.6.1.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
 
 2. ExportRuleset_ScriptExercise.
 2.1. Requirements.
@@ -140,7 +142,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 2.2.1. mkdir Testing
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf verbosity-level heavy
-2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/02.Working
+2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/02.Working
 2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -164,21 +166,24 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 2.4.1.  kamaji expo ruleset
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_879458.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_879458.partial.text .kamaji.ruleset.bash
 2.5. Finalizations.
 2.6. Workspace Impact...
-    |Only in 02.Omega: .kamaji.sed
     |Only in 02.Omega: Working
-2.6.1. .kamaji.sed (created) is empty.
-2.6.2. Working (created) contains 3 files.
-2.6.2.1. .kamaji.ruleset.bash...
+2.6.1. Working (created) contains 3 files.
+2.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji expo ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -189,43 +194,42 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |#
     |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
     |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
     |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
     |__KamajiClassifiedList[Output]=" BETA_exercise.output"
     |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
     |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
     |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
     |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |#
     |#  (eof)
-2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+2.6.1.2. .kamaji.sed.filelist.text...
+    |
+2.6.1.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
 
 3. ExportRuleset_CompiledExercise.
 3.1. Requirements.
@@ -234,7 +238,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 3.2.1. mkdir Testing
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf verbosity-level heavy
-3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/03.Working
+3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/03.Working
 3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
 3.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -267,21 +271,24 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 3.4.1.  kamaji export ruleset
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_882876.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_882876.partial.text .kamaji.ruleset.bash
 3.5. Finalizations.
 3.6. Workspace Impact...
-    |Only in 03.Omega: .kamaji.sed
     |Only in 03.Omega: Working
-3.6.1. .kamaji.sed (created) is empty.
-3.6.2. Working (created) contains 3 files.
-3.6.2.1. .kamaji.ruleset.bash...
+3.6.1. Working (created) contains 3 files.
+3.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -292,15 +299,13 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
-    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
-    |#
     |__KamajiClassifiedList[Delta]=" GAMMA_exercise.output.delta"
     |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
     |__KamajiClassifiedList[Grade]=" GAMMA_exercise.output.grade"
@@ -308,31 +313,32 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiClassifiedList[OutputMasked]=" GAMMA_exercise.output.masked"
     |__KamajiClassifiedList[Output]=" GAMMA_exercise.output"
     |__KamajiClassifiedList[Review]=" GAMMA_exercise.output.review"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[GAMMA_exercise.cpp]=" GAMMA_exercise"
     |__KamajiMyChildrenList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.grade GAMMA_exercise.output.review"
     |__KamajiMyChildrenList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.review"
     |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
     |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
     |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
     |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
     |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
-    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed GAMMA_exercise.output"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed.composit.sed GAMMA_exercise.output"
     |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
     |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
     |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
     |#
     |#  (eof)
-3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-3.6.2.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+3.6.1.2. .kamaji.sed.filelist.text...
+    |
+3.6.1.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 4. ExportRuleset_ThreeKinds_Export.
 4.1. Requirements.
@@ -341,7 +347,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 4.2.1. mkdir Testing
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf verbosity-level heavy
-4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/04.Working
+4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/04.Working
 4.2.5. create_production_script_alpha ALPHA.bash
 4.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 4.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -414,26 +420,29 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 4.4.1.  kamaji export ru
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_886768.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_886768.partial.text .kamaji.ruleset.bash
 4.5. Finalizations.
 4.6. Workspace Impact...
-    |Only in 04.Omega: .kamaji.sed
     |Only in 04.Omega: Working
-4.6.1. .kamaji.sed (created) is empty.
-4.6.2. Working (created) contains 6 files.
-4.6.2.1. .kamaji.ruleset.bash...
+4.6.1. Working (created) contains 6 files.
+4.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ru
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -444,28 +453,26 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
     |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
-    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
-    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
-    |#
     |__KamajiClassifiedList[Clut]=" ALPHA.clut"
     |__KamajiClassifiedList[Delta]=" ALPHA.clut.output.delta BETA_exercise.output.delta GAMMA_exercise.output.delta"
     |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
@@ -475,9 +482,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiClassifiedList[Output]=" ALPHA.clut.output BETA_exercise.output GAMMA_exercise.output"
     |__KamajiClassifiedList[Review]=" ALPHA.clut.output.review BETA_exercise.output.review GAMMA_exercise.output.review"
     |__KamajiClassifiedList[Script]=" ALPHA.bash ALPHA.clut.bash BETA_exercise.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
     |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
     |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
@@ -496,42 +504,42 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
     |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
     |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[ALPHA.bash]=""
     |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
     |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
     |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
-    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed.composit.sed ALPHA.clut.output"
     |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.delta ALPHA.clut.output.grade"
     |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
     |__KamajiMyParentalList[ALPHA.clut]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
     |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
     |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
     |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
-    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed GAMMA_exercise.output"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed.composit.sed GAMMA_exercise.output"
     |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
     |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
     |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
     |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
     |#
     |#  (eof)
-4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-4.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
-4.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-4.6.2.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-4.6.2.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+4.6.1.2. .kamaji.sed.filelist.text...
+    |
+4.6.1.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+4.6.1.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+4.6.1.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+4.6.1.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 5. ExportRuleset_ThreeKinds_FastToExport.
 5.1. Requirements.
@@ -540,7 +548,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 5.2.1. mkdir Testing
 5.2.2. spit .kamaji.conf baseline-folder Testing
 5.2.3. spit .kamaji.conf verbosity-level heavy
-5.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/05.Working
+5.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/05.Working
 5.2.5. create_production_script_alpha ALPHA.bash
 5.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 5.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -613,13 +621,14 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 5.4.1.  kamaji fast make GAMMA_exercise
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_890839.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
     |kamaji export ruleset
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
+    |mv .kamaji.ruleset.bash.pid_890839.partial.text .kamaji.ruleset.bash
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
@@ -632,15 +641,17 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 5.5. Finalizations.
 5.6. Workspace Impact...
-    |Only in 05.Omega: .kamaji.sed
     |Only in 05.Omega: Working
-5.6.1. .kamaji.sed (created) is empty.
-5.6.2. Working (created) contains 8 files.
-5.6.2.1. .kamaji.last_target.text...
+5.6.1. Working (created) contains 8 files.
+5.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise
-5.6.2.2. .kamaji.ruleset.bash...
+5.6.1.2. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji fast make GAMMA_exercise
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -651,28 +662,26 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
     |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
-    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
-    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
-    |#
     |__KamajiClassifiedList[Clut]=" ALPHA.clut"
     |__KamajiClassifiedList[Delta]=" ALPHA.clut.output.delta BETA_exercise.output.delta GAMMA_exercise.output.delta"
     |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
@@ -682,9 +691,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiClassifiedList[Output]=" ALPHA.clut.output BETA_exercise.output GAMMA_exercise.output"
     |__KamajiClassifiedList[Review]=" ALPHA.clut.output.review BETA_exercise.output.review GAMMA_exercise.output.review"
     |__KamajiClassifiedList[Script]=" ALPHA.bash ALPHA.clut.bash BETA_exercise.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
     |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
     |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
@@ -703,44 +713,44 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
     |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
     |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[ALPHA.bash]=""
     |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
     |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
     |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
-    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed.composit.sed ALPHA.clut.output"
     |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.delta ALPHA.clut.output.grade"
     |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
     |__KamajiMyParentalList[ALPHA.clut]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
     |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
     |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
     |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
-    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed GAMMA_exercise.output"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed.composit.sed GAMMA_exercise.output"
     |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
     |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
     |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
     |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
     |#
     |#  (eof)
-5.6.2.3. .kamaji.sed is a symbolic link to ../.kamaji.sed
-5.6.2.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
-5.6.2.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-5.6.2.6. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-5.6.2.7. GAMMA_exercise...
+5.6.1.3. .kamaji.sed.filelist.text...
+    |
+5.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
+5.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+5.6.1.6. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+5.6.1.7. GAMMA_exercise...
     |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
-5.6.2.8. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+5.6.1.8. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 6. ExportRuleset_ThreeKinds_FastToUseExport.
 6.1. Requirements.
@@ -749,7 +759,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 6.2.1. mkdir Testing
 6.2.2. spit .kamaji.conf baseline-folder Testing
 6.2.3. spit .kamaji.conf verbosity-level heavy
-6.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/06.Working
+6.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/06.Working
 6.2.5. create_production_script_alpha ALPHA.bash
 6.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 6.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -757,20 +767,20 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 6.2.9. kamaji export ruleset
 6.2.9.1. Exit Status 0!
 6.2.9.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_897121.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export ruleset
-6.3. Initial Workspace contains 14 files...
+    |mv .kamaji.ruleset.bash.pid_897121.partial.text .kamaji.ruleset.bash
+6.3. Initial Workspace contains 13 files...
     |.kamaji.conf
-    |.kamaji.sed
     |ALPHA.bash
     |Testing
     |Testing/ALPHA.clut
@@ -778,7 +788,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |Testing/GAMMA_exercise.cpp
     |Working
     |Working/.kamaji.ruleset.bash
-    |Working/.kamaji.sed
+    |Working/.kamaji.sed.filelist.text
     |Working/ALPHA.bash
     |Working/ALPHA.clut
     |Working/BETA_exercise.bash
@@ -786,8 +796,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 6.3.1. .kamaji.conf...
     |baseline-folder Testing
     |verbosity-level heavy
-6.3.2. .kamaji.sed is empty.
-6.3.3. ALPHA.bash...
+6.3.2. ALPHA.bash...
     |#!/bin/bash
     |#
     |#  ALPHA.bash created by create_production_script_alpha.
@@ -796,8 +805,8 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |echo "I am the greetest! Now I am leaving Earth for no raisin!"
     |#
-6.3.4. Testing contains 3 files.
-6.3.4.1. ALPHA.clut...
+6.3.3. Testing contains 3 files.
+6.3.3.1. ALPHA.clut...
     |#!/bin/bash
     |#
     |#  Testing/ALPHA.clut created by create_production_script_alpha_clut.
@@ -812,7 +821,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |clut_definition_set	testCollection
     |#
-6.3.4.2. BETA_exercise.bash...
+6.3.3.2. BETA_exercise.bash...
     |#!/bin/bash
     |#
     |#  Testing/BETA_exercise.bash created by create_exercise_script_alpha.
@@ -822,7 +831,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |echo "TC1: Good news, everyone!"
     |echo "TC2: I miss Morbo."
     |#
-6.3.4.3. GAMMA_exercise.cpp...
+6.3.3.3. GAMMA_exercise.cpp...
     |//
     |//  Testing/GAMMA_exercise.cpp created by create_exercise_compilable_alpha.
     |//
@@ -841,10 +850,14 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |}
     |
     |//
-6.3.5. Working contains 6 files.
-6.3.5.1. .kamaji.ruleset.bash...
+6.3.4. Working contains 6 files.
+6.3.4.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:49
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -855,28 +868,26 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[ALPHA.bash]=" ../ALPHA.bash"
     |__KamajiBaseSourceList[ALPHA.clut.bash]=" ../ALPHA.bash Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.delta]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output.grade]=" Testing/ALPHA.clut"
-    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed"
+    |__KamajiBaseSourceList[ALPHA.clut.output.masked]=" Testing/ALPHA.clut .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[ALPHA.clut.output.review]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut.output]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[ALPHA.clut]=" Testing/ALPHA.clut"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[GAMMA_exercise.output.delta]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output.grade]=" Testing/GAMMA_exercise.cpp"
-    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed"
+    |__KamajiBaseSourceList[GAMMA_exercise.output.masked]=" Testing/GAMMA_exercise.cpp .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[GAMMA_exercise.output.review]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise.output]=" Testing/GAMMA_exercise.cpp"
     |__KamajiBaseSourceList[GAMMA_exercise]=" Testing/GAMMA_exercise.cpp"
-    |#
     |__KamajiClassifiedList[Clut]=" ALPHA.clut"
     |__KamajiClassifiedList[Delta]=" ALPHA.clut.output.delta BETA_exercise.output.delta GAMMA_exercise.output.delta"
     |__KamajiClassifiedList[Elf]=" GAMMA_exercise.cpp"
@@ -886,9 +897,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiClassifiedList[Output]=" ALPHA.clut.output BETA_exercise.output GAMMA_exercise.output"
     |__KamajiClassifiedList[Review]=" ALPHA.clut.output.review BETA_exercise.output.review GAMMA_exercise.output.review"
     |__KamajiClassifiedList[Script]=" ALPHA.bash ALPHA.clut.bash BETA_exercise.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" ALPHA.clut.output.masked BETA_exercise.output.masked GAMMA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[ALPHA.bash]=" ALPHA.clut.bash"
     |__KamajiMyChildrenList[ALPHA.clut.bash]=" ALPHA.clut.output"
     |__KamajiMyChildrenList[ALPHA.clut.output.delta]=" ALPHA.clut.output.grade ALPHA.clut.output.review"
@@ -907,42 +919,42 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiMyChildrenList[GAMMA_exercise.output.masked]=" GAMMA_exercise.output.delta"
     |__KamajiMyChildrenList[GAMMA_exercise.output]=" GAMMA_exercise.output.masked"
     |__KamajiMyChildrenList[GAMMA_exercise]=" GAMMA_exercise.output"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[ALPHA.bash]=""
     |__KamajiMyParentalList[ALPHA.clut.bash]=" ALPHA.bash ALPHA.clut"
     |__KamajiMyParentalList[ALPHA.clut.output.delta]=" ALPHA.clut.output.masked"
     |__KamajiMyParentalList[ALPHA.clut.output.grade]=" ALPHA.clut.output.delta"
-    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed ALPHA.clut.output"
+    |__KamajiMyParentalList[ALPHA.clut.output.masked]=" .kamaji.sed.composit.sed ALPHA.clut.output"
     |__KamajiMyParentalList[ALPHA.clut.output.review]=" ALPHA.clut.output.delta ALPHA.clut.output.grade"
     |__KamajiMyParentalList[ALPHA.clut.output]=" ALPHA.clut.bash"
     |__KamajiMyParentalList[ALPHA.clut]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
     |__KamajiMyParentalList[GAMMA_exercise.cpp]=""
     |__KamajiMyParentalList[GAMMA_exercise.output.delta]=" GAMMA_exercise.output.masked"
     |__KamajiMyParentalList[GAMMA_exercise.output.grade]=" GAMMA_exercise.output.delta"
-    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed GAMMA_exercise.output"
+    |__KamajiMyParentalList[GAMMA_exercise.output.masked]=" .kamaji.sed.composit.sed GAMMA_exercise.output"
     |__KamajiMyParentalList[GAMMA_exercise.output.review]=" GAMMA_exercise.output.delta GAMMA_exercise.output.grade"
     |__KamajiMyParentalList[GAMMA_exercise.output]=" GAMMA_exercise"
     |__KamajiMyParentalList[GAMMA_exercise]=" GAMMA_exercise.cpp"
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[ALPHA.bash]="../ALPHA.bash"
     |__KamajiRepresentative[ALPHA.clut]="../Testing/ALPHA.clut"
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |__KamajiRepresentative[GAMMA_exercise.cpp]="../Testing/GAMMA_exercise.cpp"
     |#
     |#  (eof)
-6.3.5.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-6.3.5.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
-6.3.5.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-6.3.5.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-6.3.5.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+6.3.4.2. .kamaji.sed.filelist.text...
+    |
+6.3.4.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+6.3.4.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+6.3.4.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+6.3.4.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 6.4. Target CLU Call.
 6.4.1.  kamaji fast make GAMMA_exercise
 6.4.1.1. Exit Status 0!
@@ -970,7 +982,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 7.2.1. mkdir Testing
 7.2.2. spit .kamaji.conf baseline-folder Testing
 7.2.3. spit .kamaji.conf verbosity-level heavy
-7.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/07.Working
+7.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/07.Working
 7.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 7.2.6. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
 7.2.7. spit .kamaji.conf data-extension-list text
@@ -1004,23 +1016,26 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 7.4.1.  kamaji export ruleset
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_903241.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.text
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.text BETA_exercise.text
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_903241.partial.text .kamaji.ruleset.bash
 7.5. Finalizations.
 7.6. Workspace Impact...
-    |Only in 07.Omega: .kamaji.sed
     |Only in 07.Omega: Working
-7.6.1. .kamaji.sed (created) is empty.
-7.6.2. Working (created) contains 4 files.
-7.6.2.1. .kamaji.ruleset.bash...
+7.6.1. Working (created) contains 4 files.
+7.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:50
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1031,50 +1046,48 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |#
     |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
     |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
     |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
     |__KamajiClassifiedList[Output]=" BETA_exercise.output"
     |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
     |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
     |__KamajiClassifiedList[Unknown]=" BETA_exercise.text"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
     |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
     |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
     |__KamajiMyChildrenList[BETA_exercise.text]=" BETA_exercise.bash"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
     |__KamajiMyParentalList[BETA_exercise.text]=""
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |__KamajiRepresentative[BETA_exercise.text]="../Testing/BETA_exercise.text"
-    |#
     |__KamajiXtraParentList[BETA_exercise.output]=" BETA_exercise.text"
     |#
     |#  (eof)
-7.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-7.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-7.6.2.4. BETA_exercise.text is a symbolic link to ../Testing/BETA_exercise.text
+7.6.1.2. .kamaji.sed.filelist.text...
+    |
+7.6.1.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+7.6.1.4. BETA_exercise.text is a symbolic link to ../Testing/BETA_exercise.text
 
 8. ExportRuleset_XtraDeps_Simple_CloseColon.
 8.1. Requirements.
@@ -1083,7 +1096,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 8.2.1. mkdir Testing
 8.2.2. spit .kamaji.conf baseline-folder Testing
 8.2.3. spit .kamaji.conf verbosity-level heavy
-8.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/08.Working
+8.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/08.Working
 8.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 8.2.6. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
 8.2.7. spit .kamaji.conf data-extension-list text
@@ -1117,23 +1130,26 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 8.4.1.  kamaji export ruleset
 8.4.1.1. Exit Status 0!
 8.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_905148.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.text
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.text BETA_exercise.text
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_905148.partial.text .kamaji.ruleset.bash
 8.5. Finalizations.
 8.6. Workspace Impact...
-    |Only in 08.Omega: .kamaji.sed
     |Only in 08.Omega: Working
-8.6.1. .kamaji.sed (created) is empty.
-8.6.2. Working (created) contains 4 files.
-8.6.2.1. .kamaji.ruleset.bash...
+8.6.1. Working (created) contains 4 files.
+8.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:50
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1144,50 +1160,48 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |#
     |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
     |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
     |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
     |__KamajiClassifiedList[Output]=" BETA_exercise.output"
     |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
     |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
     |__KamajiClassifiedList[Unknown]=" BETA_exercise.text"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
     |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.masked]=" BETA_exercise.output.delta"
     |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
     |__KamajiMyChildrenList[BETA_exercise.text]=" BETA_exercise.bash"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
     |__KamajiMyParentalList[BETA_exercise.text]=""
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |__KamajiRepresentative[BETA_exercise.text]="../Testing/BETA_exercise.text"
-    |#
     |__KamajiXtraParentList[BETA_exercise.output]=" BETA_exercise.text"
     |#
     |#  (eof)
-8.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-8.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-8.6.2.4. BETA_exercise.text is a symbolic link to ../Testing/BETA_exercise.text
+8.6.1.2. .kamaji.sed.filelist.text...
+    |
+8.6.1.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+8.6.1.4. BETA_exercise.text is a symbolic link to ../Testing/BETA_exercise.text
 
 9. ExportRuleset_XtraDeps_Simple_WithoutColon.
 9.1. Requirements.
@@ -1196,7 +1210,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 9.2.1. mkdir Testing
 9.2.2. spit .kamaji.conf baseline-folder Testing
 9.2.3. spit .kamaji.conf verbosity-level heavy
-9.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/09.Working
+9.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/09.Working
 9.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 9.2.6. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
 9.2.7. spit .kamaji.conf data-extension-list text
@@ -1230,6 +1244,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 9.4.1.  kamaji export ruleset
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_906443.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -1237,10 +1252,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ERROR: In ./.kamaji.deps on line 1: Missing colon separator.
 9.5. Finalizations.
 9.6. Workspace Impact...
-    |Only in 09.Omega: .kamaji.sed
     |Only in 09.Omega: Working
-9.6.1. .kamaji.sed (created) is empty.
-9.6.2. Working (created) is empty.
+9.6.1. Working (created) contains one file.
+9.6.1.1. .kamaji.sed.filelist.text...
+    |
 
 10. ExportRuleset_XtraDeps_DepOnDep_Straight.
 10.1. Requirements.
@@ -1249,7 +1264,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 10.2.1. mkdir Testing
 10.2.2. spit .kamaji.conf baseline-folder Testing
 10.2.3. spit .kamaji.conf verbosity-level heavy
-10.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/10.Working
+10.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/10.Working
 10.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 10.2.6. spit Testing/THETA_library.bash A script that BETA depends upon.
 10.2.7. spit Testing/THETA_library.text Some data that THETA depends upon.
@@ -1291,25 +1306,28 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 10.4.1.  kamaji export ruleset
 10.4.1.1. Exit Status 0!
 10.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_907757.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/THETA_library.bash
     |#    Testing/THETA_library.text
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/THETA_library.bash THETA_library.bash
     |ln --symbolic ../Testing/THETA_library.text THETA_library.text
     |kamaji export ruleset
+    |mv .kamaji.ruleset.bash.pid_907757.partial.text .kamaji.ruleset.bash
 10.5. Finalizations.
 10.6. Workspace Impact...
-    |Only in 10.Omega: .kamaji.sed
     |Only in 10.Omega: Working
-10.6.1. .kamaji.sed (created) is empty.
-10.6.2. Working (created) contains 5 files.
-10.6.2.1. .kamaji.ruleset.bash...
+10.6.1. Working (created) contains 5 files.
+10.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji export ruleset
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:50
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1320,24 +1338,24 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiBaseSourceList[BETA_exercise.output.delta]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output.grade]=" Testing/BETA_exercise.bash"
-    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed"
+    |__KamajiBaseSourceList[BETA_exercise.output.masked]=" Testing/BETA_exercise.bash .kamaji.sed.composit.sed"
     |__KamajiBaseSourceList[BETA_exercise.output.review]=" Testing/BETA_exercise.bash"
     |__KamajiBaseSourceList[BETA_exercise.output]=" Testing/BETA_exercise.bash"
-    |#
+    |__KamajiClassifiedList[Data]=" THETA_library.bash"
     |__KamajiClassifiedList[Delta]=" BETA_exercise.output.delta"
     |__KamajiClassifiedList[Grade]=" BETA_exercise.output.grade"
     |__KamajiClassifiedList[OutputMasked]=" BETA_exercise.output.masked"
     |__KamajiClassifiedList[Output]=" BETA_exercise.output"
     |__KamajiClassifiedList[Review]=" BETA_exercise.output.review"
-    |__KamajiClassifiedList[Script]=" BETA_exercise.bash THETA_library.bash"
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
+    |__KamajiClassifiedList[Script]=" BETA_exercise.bash"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
     |__KamajiClassifiedList[Unknown]=" THETA_library.text"
-    |#
-    |__KamajiMyChildrenList[.kamaji.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.composit.sed]=" BETA_exercise.output.masked"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
     |__KamajiMyChildrenList[BETA_exercise.bash]=" BETA_exercise.output"
     |__KamajiMyChildrenList[BETA_exercise.output.delta]=" BETA_exercise.output.grade BETA_exercise.output.review"
     |__KamajiMyChildrenList[BETA_exercise.output.grade]=" BETA_exercise.output.review"
@@ -1345,29 +1363,28 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |__KamajiMyChildrenList[BETA_exercise.output]=" BETA_exercise.output.masked"
     |__KamajiMyChildrenList[THETA_library.bash]=" BETA_exercise.bash"
     |__KamajiMyChildrenList[THETA_library.text]=" THETA_library.bash"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
     |__KamajiMyParentalList[BETA_exercise.bash]=""
     |__KamajiMyParentalList[BETA_exercise.output.delta]=" BETA_exercise.output.masked"
     |__KamajiMyParentalList[BETA_exercise.output.grade]=" BETA_exercise.output.delta"
-    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed BETA_exercise.output"
+    |__KamajiMyParentalList[BETA_exercise.output.masked]=" .kamaji.sed.composit.sed BETA_exercise.output"
     |__KamajiMyParentalList[BETA_exercise.output.review]=" BETA_exercise.output.delta BETA_exercise.output.grade"
     |__KamajiMyParentalList[BETA_exercise.output]=" BETA_exercise.bash"
     |__KamajiMyParentalList[THETA_library.bash]=""
     |__KamajiMyParentalList[THETA_library.text]=""
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |__KamajiRepresentative[BETA_exercise.bash]="../Testing/BETA_exercise.bash"
     |__KamajiRepresentative[THETA_library.bash]="../Testing/THETA_library.bash"
     |__KamajiRepresentative[THETA_library.text]="../Testing/THETA_library.text"
-    |#
     |__KamajiXtraParentList[BETA_exercise.output]=" THETA_library.bash THETA_library.text"
     |#
     |#  (eof)
-10.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-10.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-10.6.2.4. THETA_library.bash is a symbolic link to ../Testing/THETA_library.bash
-10.6.2.5. THETA_library.text is a symbolic link to ../Testing/THETA_library.text
+10.6.1.2. .kamaji.sed.filelist.text...
+    |
+10.6.1.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+10.6.1.4. THETA_library.bash is a symbolic link to ../Testing/THETA_library.bash
+10.6.1.5. THETA_library.text is a symbolic link to ../Testing/THETA_library.text
 
 11. ExportRuleset_XtraDeps_DepOnDep_Unused.
 11.1. Requirements.
@@ -1376,7 +1393,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 11.2.1. mkdir Testing
 11.2.2. spit .kamaji.conf baseline-folder Testing
 11.2.3. spit .kamaji.conf verbosity-level heavy
-11.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210510_091855_2102625/11.Working
+11.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210529_095747_873535/11.Working
 11.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 11.2.6. spit Testing/ZETA_library.bash A script that nothing depends upon.
 11.2.7. spit Testing/ZETA_library.text Some data that ZETA depends upon.
@@ -1416,6 +1433,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 11.4.1.  kamaji export ruleset
 11.4.1.1. Exit Status 1!
 11.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_908424.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -1424,10 +1442,10 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ERROR: Dependency 'ZETA_library.text' target 'ZETA_library.bash' has no known derivatives.
 11.5. Finalizations.
 11.6. Workspace Impact...
-    |Only in 11.Omega: .kamaji.sed
     |Only in 11.Omega: Working
-11.6.1. .kamaji.sed (created) is empty.
-11.6.2. Working (created) is empty.
+11.6.1. Working (created) contains one file.
+11.6.1.1. .kamaji.sed.filelist.text...
+    |
 
 CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 CLUT Output Format Version: 5.5

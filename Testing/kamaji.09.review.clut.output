@@ -20,7 +20,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf time-output-format %C %x
 1.2.4. spit .kamaji.conf verbosity-level heavy
-1.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/01.Working
+1.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/01.Working
 1.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 1.2.7. spit .kamaji.conf new-review-command cat --number --show-ends
 1.3. Initial Workspace contains 3 files...
@@ -47,29 +47,33 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 1.4.1.  kamaji review
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_874719.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_874719.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.time.text.partial ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/01.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' BETA_exercise.output.partial
-    |mv BETA_exercise.output.partial BETA_exercise.output
-    |echo "# %C %x" >> BETA_exercise.output.time.text
-    |cat BETA_exercise.output.time.text.partial >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_874719.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_874719.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/01.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_874719,pid_%PID%,g' BETA_exercise.output.pid_874719.partial.text
+    |mv BETA_exercise.output.pid_874719.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.pid_874719.partial.text.time.text
+    |cat BETA_exercise.output.pid_874719.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.pid_874719.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
-    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_874719.partial.text 2>&1
+    |mv BETA_exercise.output.masked.pid_874719.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |cp BETA_exercise.output.masked BETA_exercise.output.delta
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta
     |# GT Working/BETA_exercise.output.grade does not exist
@@ -84,27 +88,39 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |     2	TC2: I miss Morbo.$
 1.5. Finalizations.
 1.6. Workspace Impact...
-    |Only in 01.Omega: .kamaji.sed
     |Only in 01.Omega: Working
-1.6.1. .kamaji.sed (created) is empty.
-1.6.2. Working (created) contains 8 files.
-1.6.2.1. .kamaji.last_target.text...
+1.6.1. Working (created) contains 9 files.
+1.6.1.1. .kamaji.last_target.text...
     |BETA_exercise.output.review
-1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-1.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-1.6.2.4. BETA_exercise.output...
+1.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji review
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+1.6.1.3. .kamaji.sed.filelist.text...
+    |
+1.6.1.4. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+1.6.1.5. BETA_exercise.output...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-1.6.2.5. BETA_exercise.output.delta...
+1.6.1.6. BETA_exercise.output.delta...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-1.6.2.6. BETA_exercise.output.masked...
+1.6.1.7. BETA_exercise.output.masked...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-1.6.2.7. BETA_exercise.output.reviewed is empty.
-1.6.2.8. BETA_exercise.output.time.text...
-    |# %C %x
+1.6.1.8. BETA_exercise.output.reviewed is empty.
+1.6.1.9. BETA_exercise.output.time.text...
     |./BETA_exercise.bash 0
+    |#  %C %x
 
 2. Review_Match.
 2.1. Requirements.
@@ -114,7 +130,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf time-output-format %C %x
 2.2.4. spit .kamaji.conf verbosity-level heavy
-2.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/02.Working
+2.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/02.Working
 2.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.2.7. spit Testing/BETA_exercise.output TC1: Good news, everyone!
 2.2.8. spit Testing/BETA_exercise.output TC2: I miss Morbo.
@@ -145,37 +161,43 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 2.4.1.  kamaji review
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_880391.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.output
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_880391.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
-    |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.pid_880391.partial.text 2>&1
+    |mv BETA_exercise.golden.masked.pid_880391.partial.text BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.time.text.partial ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/02.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' BETA_exercise.output.partial
-    |mv BETA_exercise.output.partial BETA_exercise.output
-    |echo "# %C %x" >> BETA_exercise.output.time.text
-    |cat BETA_exercise.output.time.text.partial >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_880391.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_880391.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/02.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_880391,pid_%PID%,g' BETA_exercise.output.pid_880391.partial.text
+    |mv BETA_exercise.output.pid_880391.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.pid_880391.partial.text.time.text
+    |cat BETA_exercise.output.pid_880391.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.pid_880391.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
-    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_880391.partial.text 2>&1
+    |mv BETA_exercise.output.masked.pid_880391.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.golden.masked
     |# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta
     |# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta
@@ -186,28 +208,40 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |kamaji make BETA_exercise.output.review
 2.5. Finalizations.
 2.6. Workspace Impact...
-    |Only in 02.Omega: .kamaji.sed
     |Only in 02.Omega: Working
-2.6.1. .kamaji.sed (created) is empty.
-2.6.2. Working (created) contains 9 files.
-2.6.2.1. .kamaji.last_target.text...
+2.6.1. Working (created) contains 10 files.
+2.6.1.1. .kamaji.last_target.text...
     |BETA_exercise.output.review
-2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-2.6.2.4. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
-2.6.2.5. BETA_exercise.golden.masked...
+2.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji review
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+2.6.1.3. .kamaji.sed.filelist.text...
+    |
+2.6.1.4. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+2.6.1.5. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+2.6.1.6. BETA_exercise.golden.masked...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-2.6.2.6. BETA_exercise.output...
+2.6.1.7. BETA_exercise.output...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-2.6.2.7. BETA_exercise.output.delta is empty.
-2.6.2.8. BETA_exercise.output.masked...
+2.6.1.8. BETA_exercise.output.delta is empty.
+2.6.1.9. BETA_exercise.output.masked...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-2.6.2.9. BETA_exercise.output.time.text...
-    |# %C %x
+2.6.1.10. BETA_exercise.output.time.text...
     |./BETA_exercise.bash 0
+    |#  %C %x
 
 3. Review_Short.
 3.1. Requirements.
@@ -217,7 +251,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf time-output-format %C %x
 3.2.4. spit .kamaji.conf verbosity-level heavy
-3.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/03.Working
+3.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/03.Working
 3.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 3.2.7. spit .kamaji.conf short-review-command diff --side-by-side --width=74
 3.2.8. spit Testing/BETA_exercise.output TC1: Good news, everyone!
@@ -250,37 +284,43 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 3.4.1.  kamaji review
 3.4.1.1. Exit Status 1!
 3.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_886980.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.output
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_886980.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
-    |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.pid_886980.partial.text 2>&1
+    |mv BETA_exercise.golden.masked.pid_886980.partial.text BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.time.text.partial ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/03.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' BETA_exercise.output.partial
-    |mv BETA_exercise.output.partial BETA_exercise.output
-    |echo "# %C %x" >> BETA_exercise.output.time.text
-    |cat BETA_exercise.output.time.text.partial >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_886980.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_886980.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/03.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_886980,pid_%PID%,g' BETA_exercise.output.pid_886980.partial.text
+    |mv BETA_exercise.output.pid_886980.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.pid_886980.partial.text.time.text
+    |cat BETA_exercise.output.pid_886980.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.pid_886980.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
-    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_886980.partial.text 2>&1
+    |mv BETA_exercise.output.masked.pid_886980.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.golden.masked
     |# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta
     |# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta
@@ -296,33 +336,45 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC2: You miss Morbo.		    |	TC2: I miss Morbo.
 3.5. Finalizations.
 3.6. Workspace Impact...
-    |Only in 03.Omega: .kamaji.sed
     |Only in 03.Omega: Working
-3.6.1. .kamaji.sed (created) is empty.
-3.6.2. Working (created) contains 10 files.
-3.6.2.1. .kamaji.last_target.text...
+3.6.1. Working (created) contains 11 files.
+3.6.1.1. .kamaji.last_target.text...
     |BETA_exercise.output.review
-3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-3.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-3.6.2.4. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
-3.6.2.5. BETA_exercise.golden.masked...
+3.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji review
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+3.6.1.3. .kamaji.sed.filelist.text...
+    |
+3.6.1.4. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+3.6.1.5. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+3.6.1.6. BETA_exercise.golden.masked...
     |TC1: Good news, everyone!
     |TC2: You miss Morbo.
-3.6.2.6. BETA_exercise.output...
+3.6.1.7. BETA_exercise.output...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-3.6.2.7. BETA_exercise.output.delta...
+3.6.1.8. BETA_exercise.output.delta...
     |2c2
     |< TC2: You miss Morbo.
     |---
     |> TC2: I miss Morbo.
-3.6.2.8. BETA_exercise.output.masked...
+3.6.1.9. BETA_exercise.output.masked...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-3.6.2.9. BETA_exercise.output.reviewed is empty.
-3.6.2.10. BETA_exercise.output.time.text...
-    |# %C %x
+3.6.1.10. BETA_exercise.output.reviewed is empty.
+3.6.1.11. BETA_exercise.output.time.text...
     |./BETA_exercise.bash 0
+    |#  %C %x
 
 4. Review_Long.
 4.1. Requirements.
@@ -332,7 +384,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf time-output-format %C %x
 4.2.4. spit .kamaji.conf verbosity-level heavy
-4.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/04.Working
+4.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/04.Working
 4.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 4.2.7. spit .kamaji.conf long-review-line-count 2
 4.2.8. spit .kamaji.conf long-review-command diff
@@ -367,37 +419,43 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 4.4.1.  kamaji review
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_892423.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |#    Testing/BETA_exercise.output
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.output BETA_exercise.golden
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_892423.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
-    |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.pid_892423.partial.text 2>&1
+    |mv BETA_exercise.golden.masked.pid_892423.partial.text BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.time.text.partial ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/04.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' BETA_exercise.output.partial
-    |mv BETA_exercise.output.partial BETA_exercise.output
-    |echo "# %C %x" >> BETA_exercise.output.time.text
-    |cat BETA_exercise.output.time.text.partial >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_892423.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_892423.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/04.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_892423,pid_%PID%,g' BETA_exercise.output.pid_892423.partial.text
+    |mv BETA_exercise.output.pid_892423.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.pid_892423.partial.text.time.text
+    |cat BETA_exercise.output.pid_892423.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.pid_892423.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
-    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_892423.partial.text 2>&1
+    |mv BETA_exercise.output.masked.pid_892423.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.golden.masked
     |# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta
     |# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta
@@ -415,33 +473,45 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |> TC2: I miss Morbo.
 4.5. Finalizations.
 4.6. Workspace Impact...
-    |Only in 04.Omega: .kamaji.sed
     |Only in 04.Omega: Working
-4.6.1. .kamaji.sed (created) is empty.
-4.6.2. Working (created) contains 10 files.
-4.6.2.1. .kamaji.last_target.text...
+4.6.1. Working (created) contains 11 files.
+4.6.1.1. .kamaji.last_target.text...
     |BETA_exercise.output.review
-4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-4.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-4.6.2.4. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
-4.6.2.5. BETA_exercise.golden.masked...
+4.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji review
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+4.6.1.3. .kamaji.sed.filelist.text...
+    |
+4.6.1.4. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+4.6.1.5. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+4.6.1.6. BETA_exercise.golden.masked...
     |TC1: Good news, everyone!
     |TC2: You miss Morbo.
-4.6.2.6. BETA_exercise.output...
+4.6.1.7. BETA_exercise.output...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-4.6.2.7. BETA_exercise.output.delta...
+4.6.1.8. BETA_exercise.output.delta...
     |2c2
     |< TC2: You miss Morbo.
     |---
     |> TC2: I miss Morbo.
-4.6.2.8. BETA_exercise.output.masked...
+4.6.1.9. BETA_exercise.output.masked...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-4.6.2.9. BETA_exercise.output.reviewed is empty.
-4.6.2.10. BETA_exercise.output.time.text...
-    |# %C %x
+4.6.1.10. BETA_exercise.output.reviewed is empty.
+4.6.1.11. BETA_exercise.output.time.text...
     |./BETA_exercise.bash 0
+    |#  %C %x
 
 5. Review_all_together_now.
 5.1. Requirements.
@@ -451,7 +521,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 5.2.2. spit .kamaji.conf baseline-folder Testing
 5.2.3. spit .kamaji.conf time-output-format %C %x
 5.2.4. spit .kamaji.conf verbosity-level heavy
-5.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/05.Working
+5.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/05.Working
 5.2.6. create_production_script_alpha ALPHA.bash
 5.2.7. create_production_script_alpha_clut Testing/ALPHA.clut
 5.2.8. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -545,6 +615,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 5.4.1.  kamaji review
 5.4.1.1. Exit Status 3!
 5.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_898526.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
@@ -552,7 +623,6 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#    Testing/BETA_exercise.output
     |#    Testing/GAMMA_exercise.cpp
     |#    Testing/GAMMA_exercise.output
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
@@ -560,33 +630,39 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |ln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden
     |echo "GAMMA_exercise.output.review" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_898526.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise.golden.masked does not exist
     |kamaji make GAMMA_exercise.golden.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial 2>&1
-    |mv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.pid_898526.partial.text 2>&1
+    |mv GAMMA_exercise.golden.masked.pid_898526.partial.text GAMMA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_898526.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_898526.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_898526,pid_%PID%,g' GAMMA_exercise.output.pid_898526.partial.text
+    |mv GAMMA_exercise.output.pid_898526.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_898526.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_898526.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_898526.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_898526.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_898526.partial.text GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
     |diff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1
-    |# LT Working/.kamaji.sed is older-than Working/GAMMA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/GAMMA_exercise.golden.masked
     |# LT Working/GAMMA_exercise.golden is older-than Working/GAMMA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/GAMMA_exercise.cpp is older-than Working/GAMMA_exercise
     |# LT Working/GAMMA_exercise is older-than Working/GAMMA_exercise.output
-    |# LT Working/.kamaji.sed is older-than Working/GAMMA_exercise.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/GAMMA_exercise.output.masked
     |# LT Working/GAMMA_exercise.output is older-than Working/GAMMA_exercise.output.masked
     |# LT Working/GAMMA_exercise.golden.masked is older-than Working/GAMMA_exercise.output.delta
     |# LT Working/GAMMA_exercise.output.masked is older-than Working/GAMMA_exercise.output.delta
@@ -598,29 +674,33 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |diff GAMMA_exercise.golden.masked GAMMA_exercise.output.masked
     |touch GAMMA_exercise.output.reviewed
     |echo "BETA_exercise.output.review" > Working/.kamaji.last_target.text
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed BETA_exercise.golden > BETA_exercise.golden.masked.partial 2>&1
-    |mv BETA_exercise.golden.masked.partial BETA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.pid_898526.partial.text 2>&1
+    |mv BETA_exercise.golden.masked.pid_898526.partial.text BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.time.text.partial ./BETA_exercise.bash > BETA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' BETA_exercise.output.partial
-    |mv BETA_exercise.output.partial BETA_exercise.output
-    |echo "# %C %x" >> BETA_exercise.output.time.text
-    |cat BETA_exercise.output.time.text.partial >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_898526.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_898526.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_898526,pid_%PID%,g' BETA_exercise.output.pid_898526.partial.text
+    |mv BETA_exercise.output.pid_898526.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.pid_898526.partial.text.time.text
+    |cat BETA_exercise.output.pid_898526.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.pid_898526.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed BETA_exercise.output > BETA_exercise.output.masked.partial 2>&1
-    |mv BETA_exercise.output.masked.partial BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_898526.partial.text 2>&1
+    |mv BETA_exercise.output.masked.pid_898526.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.golden.masked
     |# LT Working/BETA_exercise.golden is older-than Working/BETA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/BETA_exercise.bash is older-than Working/BETA_exercise.output
-    |# LT Working/.kamaji.sed is older-than Working/BETA_exercise.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.output is older-than Working/BETA_exercise.output.masked
     |# LT Working/BETA_exercise.golden.masked is older-than Working/BETA_exercise.output.delta
     |# LT Working/BETA_exercise.output.masked is older-than Working/BETA_exercise.output.delta
@@ -632,28 +712,30 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |diff --side-by-side --width=74 BETA_exercise.golden.masked BETA_exercise.output.masked
     |touch BETA_exercise.output.reviewed
     |echo "ALPHA.clut.output.review" > Working/.kamaji.last_target.text
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/ALPHA.clut.bash does not exist
     |kamaji make ALPHA.clut.bash
     |clutc ALPHA.clut ../ALPHA.bash ALPHA.clut.bash
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
-    |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.time.text.partial ./ALPHA.clut.bash > ALPHA.clut.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' ALPHA.clut.output.partial
-    |mv ALPHA.clut.output.partial ALPHA.clut.output
-    |echo "# %C %x" >> ALPHA.clut.output.time.text
-    |cat ALPHA.clut.output.time.text.partial >> ALPHA.clut.output.time.text
-    |rm  ALPHA.clut.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.pid_898526.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.pid_898526.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_898526,pid_%PID%,g' ALPHA.clut.output.pid_898526.partial.text
+    |mv ALPHA.clut.output.pid_898526.partial.text ALPHA.clut.output
+    |echo "#  %C %x" >> ALPHA.clut.output.pid_898526.partial.text.time.text
+    |cat ALPHA.clut.output.pid_898526.partial.text.time.text >> ALPHA.clut.output.time.text
+    |rm  ALPHA.clut.output.pid_898526.partial.text.time.text
     |# GT Working/ALPHA.clut.output.masked does not exist
     |kamaji make ALPHA.clut.output.masked
-    |sed --file=.kamaji.sed ALPHA.clut.output > ALPHA.clut.output.masked.partial 2>&1
-    |mv ALPHA.clut.output.masked.partial ALPHA.clut.output.masked
+    |sed --file=.kamaji.sed.composit.sed ALPHA.clut.output > ALPHA.clut.output.masked.pid_898526.partial.text 2>&1
+    |mv ALPHA.clut.output.masked.pid_898526.partial.text ALPHA.clut.output.masked
     |# GT Working/ALPHA.clut.output.delta does not exist
     |kamaji make ALPHA.clut.output.delta
     |cp ALPHA.clut.output.masked ALPHA.clut.output.delta
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# LT Working/ALPHA.bash is older-than Working/ALPHA.clut.bash
     |# LT Working/ALPHA.clut is older-than Working/ALPHA.clut.bash
     |# LT Working/ALPHA.clut.bash is older-than Working/ALPHA.clut.output
-    |# LT Working/.kamaji.sed is older-than Working/ALPHA.clut.output.masked
+    |# LT Working/.kamaji.sed.composit.sed is older-than Working/ALPHA.clut.output.masked
     |# LT Working/ALPHA.clut.output is older-than Working/ALPHA.clut.output.masked
     |# LT Working/ALPHA.clut.output.masked is older-than Working/ALPHA.clut.output.delta
     |# GT Working/ALPHA.clut.output.grade does not exist
@@ -676,17 +758,29 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     | 31 108 792 ALPHA.clut.output.masked
 5.5. Finalizations.
 5.6. Workspace Impact...
-    |Only in 05.Omega: .kamaji.sed
     |Only in 05.Omega: Working
-5.6.1. .kamaji.sed (created) is empty.
-5.6.2. Working (created) contains 35 files.
-5.6.2.1. .kamaji.last_target.text...
+5.6.1. Working (created) contains 36 files.
+5.6.1.1. .kamaji.last_target.text...
     |ALPHA.clut.output.review
-5.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-5.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
-5.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-5.6.2.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210516_120433_1546498/00.compiled.bash
-5.6.2.6. ALPHA.clut.output...
+5.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji review
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:49
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+5.6.1.3. .kamaji.sed.filelist.text...
+    |
+5.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
+5.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+5.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210529_095750_904922/00.compiled.bash
+5.6.1.7. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
     |CLUT Source File: ALPHA.clut (1 cases)
@@ -718,7 +812,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |CLUT Source File: ALPHA.clut (1 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
-5.6.2.7. ALPHA.clut.output.delta...
+5.6.1.8. ALPHA.clut.output.delta...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
     |CLUT Source File: ALPHA.clut (1 cases)
@@ -750,7 +844,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |CLUT Source File: ALPHA.clut (1 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
-5.6.2.8. ALPHA.clut.output.masked...
+5.6.1.9. ALPHA.clut.output.masked...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
     |CLUT Source File: ALPHA.clut (1 cases)
@@ -782,18 +876,18 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |CLUT Source File: ALPHA.clut (1 cases)
     |CLUT Output Format Version: 5.5
     |CLUT Output Complete.
-5.6.2.9. ALPHA.clut.output.reviewed is empty.
-5.6.2.10. ALPHA.clut.output.time.text...
-    |# %C %x
+5.6.1.10. ALPHA.clut.output.reviewed is empty.
+5.6.1.11. ALPHA.clut.output.time.text...
     |./ALPHA.clut.bash 0
-5.6.2.11. ALPHA.clutc.20210516_120433_1546498 contains 3 files.
-5.6.2.11.1. 00.compiled.bash...
+    |#  %C %x
+5.6.1.12. ALPHA.clutc.20210529_095750_904922 contains 3 files.
+5.6.1.12.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210516_120433_1546498/00.compiled.bash...
+    |#  ./ALPHA.clutc.20210529_095750_904922/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-05-16 at 12:04:33.
+    |#  Created by clutc on 2021-05-29 at 09:57:50.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -817,7 +911,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/05.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.09.review.clutr.20210529_095746_872734/05.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -991,7 +1085,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.09.review.clutr.20210516_120430_1520187/05.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.09.review.clutr.20210529_095746_872734/05.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1172,9 +1266,9 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |exit 0
     |
     |#-----------------------------------------------------------------------------------------
-5.6.2.11.2. 00.namelist.text...
+5.6.1.12.2. 00.namelist.text...
     |NoArguments
-5.6.2.11.3. 01.bash...
+5.6.1.12.3. 01.bash...
     |function clutCaseRunTimeForTestCase01() {
     |  #
     |  local -r CluInstrumentation="${*} "
@@ -1224,54 +1318,54 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-5.6.2.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210516_120433_1547044
-5.6.2.13. ALPHA.clutr.20210516_120433_1547044 contains 2 files.
-5.6.2.13.1. 01.Alpha is empty.
-5.6.2.13.2. 01.Omega is empty.
-5.6.2.14. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-5.6.2.15. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
-5.6.2.16. BETA_exercise.golden.masked...
+5.6.1.13. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210529_095750_905332
+5.6.1.14. ALPHA.clutr.20210529_095750_905332 contains 2 files.
+5.6.1.14.1. 01.Alpha is empty.
+5.6.1.14.2. 01.Omega is empty.
+5.6.1.15. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+5.6.1.16. BETA_exercise.golden is a symbolic link to ../Testing/BETA_exercise.output
+5.6.1.17. BETA_exercise.golden.masked...
     |TC1: Good news, everyone!
     |TC2: You miss Morbo.
-5.6.2.17. BETA_exercise.output...
+5.6.1.18. BETA_exercise.output...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-5.6.2.18. BETA_exercise.output.delta...
+5.6.1.19. BETA_exercise.output.delta...
     |2c2
     |< TC2: You miss Morbo.
     |---
     |> TC2: I miss Morbo.
-5.6.2.19. BETA_exercise.output.masked...
+5.6.1.20. BETA_exercise.output.masked...
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
-5.6.2.20. BETA_exercise.output.reviewed is empty.
-5.6.2.21. BETA_exercise.output.time.text...
-    |# %C %x
+5.6.1.21. BETA_exercise.output.reviewed is empty.
+5.6.1.22. BETA_exercise.output.time.text...
     |./BETA_exercise.bash 0
-5.6.2.22. GAMMA_exercise...
+    |#  %C %x
+5.6.1.23. GAMMA_exercise...
     |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
-5.6.2.23. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-5.6.2.24. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
-5.6.2.25. GAMMA_exercise.golden.masked...
+5.6.1.24. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+5.6.1.25. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
+5.6.1.26. GAMMA_exercise.golden.masked...
     |TC1: Apple
     |TC2: Banana
-5.6.2.26. GAMMA_exercise.output...
+5.6.1.27. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-5.6.2.27. GAMMA_exercise.output.delta...
+5.6.1.28. GAMMA_exercise.output.delta...
     |1,2c1,2
     |< TC1: Apple
     |< TC2: Banana
     |---
     |> TC1: I dunno. Fry?
     |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-5.6.2.28. GAMMA_exercise.output.masked...
+5.6.1.29. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-5.6.2.29. GAMMA_exercise.output.reviewed is empty.
-5.6.2.30. GAMMA_exercise.output.time.text...
-    |# %C %x
+5.6.1.30. GAMMA_exercise.output.reviewed is empty.
+5.6.1.31. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 CLUT Source File: kamaji.09.review.clut (5 cases)
 CLUT Output Format Version: 5.5

@@ -21,7 +21,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.2.3. spit .kamaji.conf time-output-format %C %x
 1.2.4. spit .kamaji.conf verbosity-level heavy
 1.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-1.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/01.Working
+1.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/01.Working
 1.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -54,27 +54,30 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 1.4.1.  kamaji grades
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_875050.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |echo "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_875050.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/01.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_875050.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_875050.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/01.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_875050,pid_%PID%,g' GAMMA_exercise.output.pid_875050.partial.text
+    |mv GAMMA_exercise.output.pid_875050.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_875050.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_875050.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_875050.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_875050.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_875050.partial.text GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
     |cp GAMMA_exercise.output.masked GAMMA_exercise.output.delta
@@ -85,29 +88,41 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 1.5. Finalizations.
 1.6. Workspace Impact...
-    |Only in 01.Omega: .kamaji.sed
     |Only in 01.Omega: Working
-1.6.1. .kamaji.sed (created) is empty.
-1.6.2. Working (created) contains 8 files.
-1.6.2.1. .kamaji.last_target.text...
+1.6.1. Working (created) contains 9 files.
+1.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output.grade
-1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-1.6.2.3. GAMMA_exercise [UNKNOWN]...
+1.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji grades
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+1.6.1.3. .kamaji.sed.filelist.text...
+    |
+1.6.1.4. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-1.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-1.6.2.5. GAMMA_exercise.output...
+1.6.1.5. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+1.6.1.6. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-1.6.2.6. GAMMA_exercise.output.delta...
+1.6.1.7. GAMMA_exercise.output.delta...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-1.6.2.7. GAMMA_exercise.output.masked...
+1.6.1.8. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-1.6.2.8. GAMMA_exercise.output.time.text...
-    |# %C %x
+1.6.1.9. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 2. CompiledExercise_Grade_Fail.
 2.1. Requirements.
@@ -118,7 +133,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 2.2.3. spit .kamaji.conf time-output-format %C %x
 2.2.4. spit .kamaji.conf verbosity-level heavy
 2.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-2.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/02.Working
+2.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/02.Working
 2.2.7. create_exercise_compilable_alpha_output Testing/GAMMA_exercise.output WRONG
 2.3. Initial Workspace contains 4 files...
     |.kamaji.conf
@@ -156,33 +171,37 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 2.4.1.  kamaji grades
 2.4.1.1. Exit Status 1!
 2.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_884266.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |#    Testing/GAMMA_exercise.output
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |ln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden
     |echo "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_884266.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise.golden.masked does not exist
     |kamaji make GAMMA_exercise.golden.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial 2>&1
-    |mv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.pid_884266.partial.text 2>&1
+    |mv GAMMA_exercise.golden.masked.pid_884266.partial.text GAMMA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/02.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_884266.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_884266.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/02.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_884266,pid_%PID%,g' GAMMA_exercise.output.pid_884266.partial.text
+    |mv GAMMA_exercise.output.pid_884266.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_884266.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_884266.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_884266.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_884266.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_884266.partial.text GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
     |diff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1
@@ -193,35 +212,47 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 2.5. Finalizations.
 2.6. Workspace Impact...
-    |Only in 02.Omega: .kamaji.sed
     |Only in 02.Omega: Working
-2.6.1. .kamaji.sed (created) is empty.
-2.6.2. Working (created) contains 10 files.
-2.6.2.1. .kamaji.last_target.text...
+2.6.1. Working (created) contains 11 files.
+2.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output.grade
-2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-2.6.2.3. GAMMA_exercise [UNKNOWN]...
+2.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji grades
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+2.6.1.3. .kamaji.sed.filelist.text...
+    |
+2.6.1.4. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-2.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-2.6.2.5. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
-2.6.2.6. GAMMA_exercise.golden.masked...
+2.6.1.5. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+2.6.1.6. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
+2.6.1.7. GAMMA_exercise.golden.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
-2.6.2.7. GAMMA_exercise.output...
+2.6.1.8. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-2.6.2.8. GAMMA_exercise.output.delta...
+2.6.1.9. GAMMA_exercise.output.delta...
     |2c2
     |< TC2: Now I gotta kajigger instead of a whatchacallit, you stupid kajigger!
     |---
     |> TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-2.6.2.9. GAMMA_exercise.output.masked...
+2.6.1.10. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-2.6.2.10. GAMMA_exercise.output.time.text...
-    |# %C %x
+2.6.1.11. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 3. CompiledExercise_Grade_Pass.
 3.1. Requirements.
@@ -232,7 +263,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 3.2.3. spit .kamaji.conf time-output-format %C %x
 3.2.4. spit .kamaji.conf verbosity-level heavy
 3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-3.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/03.Working
+3.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/03.Working
 3.2.7. create_exercise_compilable_alpha_output Testing/GAMMA_exercise.output RIGHT
 3.3. Initial Workspace contains 4 files...
     |.kamaji.conf
@@ -270,33 +301,37 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 3.4.1.  kamaji grades
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_892139.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
     |#    Testing/GAMMA_exercise.output
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |ln --symbolic ../Testing/GAMMA_exercise.output GAMMA_exercise.golden
     |echo "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_892139.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise.golden.masked does not exist
     |kamaji make GAMMA_exercise.golden.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.partial 2>&1
-    |mv GAMMA_exercise.golden.masked.partial GAMMA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.golden > GAMMA_exercise.golden.masked.pid_892139.partial.text 2>&1
+    |mv GAMMA_exercise.golden.masked.pid_892139.partial.text GAMMA_exercise.golden.masked
+    |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/03.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_892139.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_892139.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/03.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_892139,pid_%PID%,g' GAMMA_exercise.output.pid_892139.partial.text
+    |mv GAMMA_exercise.output.pid_892139.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_892139.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_892139.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_892139.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_892139.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_892139.partial.text GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
     |diff --text --ignore-space-change GAMMA_exercise.golden.masked GAMMA_exercise.output.masked > GAMMA_exercise.output.delta 2>&1
@@ -307,31 +342,43 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 3.5. Finalizations.
 3.6. Workspace Impact...
-    |Only in 03.Omega: .kamaji.sed
     |Only in 03.Omega: Working
-3.6.1. .kamaji.sed (created) is empty.
-3.6.2. Working (created) contains 10 files.
-3.6.2.1. .kamaji.last_target.text...
+3.6.1. Working (created) contains 11 files.
+3.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output.grade
-3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-3.6.2.3. GAMMA_exercise [UNKNOWN]...
+3.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji grades
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+3.6.1.3. .kamaji.sed.filelist.text...
+    |
+3.6.1.4. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-3.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-3.6.2.5. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
-3.6.2.6. GAMMA_exercise.golden.masked...
+3.6.1.5. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+3.6.1.6. GAMMA_exercise.golden is a symbolic link to ../Testing/GAMMA_exercise.output
+3.6.1.7. GAMMA_exercise.golden.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-3.6.2.7. GAMMA_exercise.output...
+3.6.1.8. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-3.6.2.8. GAMMA_exercise.output.delta is empty.
-3.6.2.9. GAMMA_exercise.output.masked...
+3.6.1.9. GAMMA_exercise.output.delta is empty.
+3.6.1.10. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-3.6.2.10. GAMMA_exercise.output.time.text...
-    |# %C %x
+3.6.1.11. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 4. CompiledExercise_Make_cpp.
 4.1. Requirements.
@@ -342,7 +389,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 4.2.3. spit .kamaji.conf time-output-format %C %x
 4.2.4. spit .kamaji.conf verbosity-level heavy
 4.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-4.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/04.Working
+4.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/04.Working
 4.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -375,20 +422,19 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 4.4.1.  kamaji make GAMMA_exercise.cpp
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_899044.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |ERROR: The 'GAMMA_exercise.cpp' file cannot be made; it is not a known derivative.
 4.5. Finalizations.
 4.6. Workspace Impact...
-    |Only in 04.Omega: .kamaji.sed
     |Only in 04.Omega: Working
-4.6.1. .kamaji.sed (created) is empty.
-4.6.2. Working (created) contains 2 files.
-4.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
-4.6.2.2. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+4.6.1. Working (created) contains 2 files.
+4.6.1.1. .kamaji.sed.filelist.text...
+    |
+4.6.1.2. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 5. CompiledExercise_Make_output.
 5.1. Requirements.
@@ -399,7 +445,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 5.2.3. spit .kamaji.conf time-output-format %C %x
 5.2.4. spit .kamaji.conf verbosity-level heavy
 5.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-5.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/05.Working
+5.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/05.Working
 5.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -432,10 +478,10 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 5.4.1.  kamaji make GAMMA_exercise.output
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_901219.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |echo "GAMMA_exercise.output" > Working/.kamaji.last_target.text
     |# GT Working/GAMMA_exercise does not exist
@@ -443,33 +489,32 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_901219.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_901219.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/05.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_901219,pid_%PID%,g' GAMMA_exercise.output.pid_901219.partial.text
+    |mv GAMMA_exercise.output.pid_901219.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_901219.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_901219.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_901219.partial.text.time.text
 5.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 5.5. Finalizations.
 5.6. Workspace Impact...
-    |Only in 05.Omega: .kamaji.sed
     |Only in 05.Omega: Working
-5.6.1. .kamaji.sed (created) is empty.
-5.6.2. Working (created) contains 6 files.
-5.6.2.1. .kamaji.last_target.text...
+5.6.1. Working (created) contains 6 files.
+5.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output
-5.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-5.6.2.3. GAMMA_exercise [UNKNOWN]...
+5.6.1.2. .kamaji.sed.filelist.text...
+    |
+5.6.1.3. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-5.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-5.6.2.5. GAMMA_exercise.output...
+5.6.1.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+5.6.1.5. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-5.6.2.6. GAMMA_exercise.output.time.text...
-    |# %C %x
+5.6.1.6. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 6. CompiledExercise_Make_output_masked.
 6.1. Requirements.
@@ -480,7 +525,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 6.2.3. spit .kamaji.conf time-output-format %C %x
 6.2.4. spit .kamaji.conf verbosity-level heavy
 6.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-6.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/06.Working
+6.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/06.Working
 6.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -513,51 +558,66 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 6.4.1.  kamaji make GAMMA_exercise.output.masked
 6.4.1.1. Exit Status 0!
 6.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_904618.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |echo "GAMMA_exercise.output.masked" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_904618.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/06.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_904618.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_904618.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/06.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_904618,pid_%PID%,g' GAMMA_exercise.output.pid_904618.partial.text
+    |mv GAMMA_exercise.output.pid_904618.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_904618.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_904618.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_904618.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_904618.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_904618.partial.text GAMMA_exercise.output.masked
 6.4.1.3. STDOUT [text]...
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 6.5. Finalizations.
 6.6. Workspace Impact...
-    |Only in 06.Omega: .kamaji.sed
     |Only in 06.Omega: Working
-6.6.1. .kamaji.sed (created) is empty.
-6.6.2. Working (created) contains 7 files.
-6.6.2.1. .kamaji.last_target.text...
+6.6.1. Working (created) contains 8 files.
+6.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output.masked
-6.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-6.6.2.3. GAMMA_exercise [UNKNOWN]...
+6.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji make GAMMA_exercise.output.masked
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:50
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+6.6.1.3. .kamaji.sed.filelist.text...
+    |
+6.6.1.4. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-6.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-6.6.2.5. GAMMA_exercise.output...
+6.6.1.5. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+6.6.1.6. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-6.6.2.6. GAMMA_exercise.output.masked...
+6.6.1.7. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-6.6.2.7. GAMMA_exercise.output.time.text...
-    |# %C %x
+6.6.1.8. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 7. CompiledExercise_Make_output_delta.
 7.1. Requirements.
@@ -568,7 +628,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.2.3. spit .kamaji.conf time-output-format %C %x
 7.2.4. spit .kamaji.conf verbosity-level heavy
 7.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-7.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/07.Working
+7.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/07.Working
 7.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -601,27 +661,30 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 7.4.1.  kamaji make GAMMA_exercise.output.delta
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_907233.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |echo "GAMMA_exercise.output.delta" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_907233.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/07.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_907233.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_907233.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/07.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_907233,pid_%PID%,g' GAMMA_exercise.output.pid_907233.partial.text
+    |mv GAMMA_exercise.output.pid_907233.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_907233.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_907233.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_907233.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_907233.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_907233.partial.text GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
     |cp GAMMA_exercise.output.masked GAMMA_exercise.output.delta
@@ -629,29 +692,41 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 7.5. Finalizations.
 7.6. Workspace Impact...
-    |Only in 07.Omega: .kamaji.sed
     |Only in 07.Omega: Working
-7.6.1. .kamaji.sed (created) is empty.
-7.6.2. Working (created) contains 8 files.
-7.6.2.1. .kamaji.last_target.text...
+7.6.1. Working (created) contains 9 files.
+7.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output.delta
-7.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-7.6.2.3. GAMMA_exercise [UNKNOWN]...
+7.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji make GAMMA_exercise.output.delta
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:50
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+7.6.1.3. .kamaji.sed.filelist.text...
+    |
+7.6.1.4. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-7.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-7.6.2.5. GAMMA_exercise.output...
+7.6.1.5. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+7.6.1.6. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-7.6.2.6. GAMMA_exercise.output.delta...
+7.6.1.7. GAMMA_exercise.output.delta...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-7.6.2.7. GAMMA_exercise.output.masked...
+7.6.1.8. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-7.6.2.8. GAMMA_exercise.output.time.text...
-    |# %C %x
+7.6.1.9. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 8. CompiledExercise_Make_output_grade.
 8.1. Requirements.
@@ -662,7 +737,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.2.3. spit .kamaji.conf time-output-format %C %x
 8.2.4. spit .kamaji.conf verbosity-level heavy
 8.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-8.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/08.Working
+8.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/08.Working
 8.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -695,27 +770,30 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 8.4.1.  kamaji make GAMMA_exercise.output.grade
 8.4.1.1. Exit Status 1!
 8.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_908700.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |echo "GAMMA_exercise.output.grade" > Working/.kamaji.last_target.text
+    |# GT Working/.kamaji.sed.composit.sed does not exist
+    |kamaji make .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.pid_908700.partial.text .kamaji.sed.composit.sed
     |# GT Working/GAMMA_exercise does not exist
     |kamaji make GAMMA_exercise
     |make --no-print-directory GAMMA_exercise
     |# GT Working/GAMMA_exercise.output does not exist
     |kamaji make GAMMA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.time.text.partial ./GAMMA_exercise > GAMMA_exercise.output.partial 2>&1
-    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/08.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' GAMMA_exercise.output.partial
-    |mv GAMMA_exercise.output.partial GAMMA_exercise.output
-    |echo "# %C %x" >> GAMMA_exercise.output.time.text
-    |cat GAMMA_exercise.output.time.text.partial >> GAMMA_exercise.output.time.text
-    |rm  GAMMA_exercise.output.time.text.partial
+    |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.pid_908700.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.pid_908700.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/08.Working/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_908700,pid_%PID%,g' GAMMA_exercise.output.pid_908700.partial.text
+    |mv GAMMA_exercise.output.pid_908700.partial.text GAMMA_exercise.output
+    |echo "#  %C %x" >> GAMMA_exercise.output.pid_908700.partial.text.time.text
+    |cat GAMMA_exercise.output.pid_908700.partial.text.time.text >> GAMMA_exercise.output.time.text
+    |rm  GAMMA_exercise.output.pid_908700.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
     |kamaji make GAMMA_exercise.output.masked
-    |sed --file=.kamaji.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.partial 2>&1
-    |mv GAMMA_exercise.output.masked.partial GAMMA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed GAMMA_exercise.output > GAMMA_exercise.output.masked.pid_908700.partial.text 2>&1
+    |mv GAMMA_exercise.output.masked.pid_908700.partial.text GAMMA_exercise.output.masked
     |# GT Working/GAMMA_exercise.output.delta does not exist
     |kamaji make GAMMA_exercise.output.delta
     |cp GAMMA_exercise.output.masked GAMMA_exercise.output.delta
@@ -726,29 +804,41 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
     |g++     GAMMA_exercise.cpp   -o GAMMA_exercise
 8.5. Finalizations.
 8.6. Workspace Impact...
-    |Only in 08.Omega: .kamaji.sed
     |Only in 08.Omega: Working
-8.6.1. .kamaji.sed (created) is empty.
-8.6.2. Working (created) contains 8 files.
-8.6.2.1. .kamaji.last_target.text...
+8.6.1. Working (created) contains 9 files.
+8.6.1.1. .kamaji.last_target.text...
     |GAMMA_exercise.output.grade
-8.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-8.6.2.3. GAMMA_exercise [UNKNOWN]...
+8.6.1.2. .kamaji.sed.composit.sed...
+    |#
+    |#  .kamaji.sed.composit.sed
+    |#
+    |#  User request:  kamaji make GAMMA_exercise.output.grade
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:51
+    |#
+    |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
+    |#
+    |#  No masking sed script files active.
+    |#
+    |#  (eof)
+8.6.1.3. .kamaji.sed.filelist.text...
+    |
+8.6.1.4. GAMMA_exercise [UNKNOWN]...
     |<meta> Data file type (GAMMA_EXERCISE) without well-defined dump handler.
     |<meta> The file utility describes its MIME type as "application/x-executable; charset=binary"
-8.6.2.4. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
-8.6.2.5. GAMMA_exercise.output...
+8.6.1.5. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+8.6.1.6. GAMMA_exercise.output...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-8.6.2.6. GAMMA_exercise.output.delta...
+8.6.1.7. GAMMA_exercise.output.delta...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-8.6.2.7. GAMMA_exercise.output.masked...
+8.6.1.8. GAMMA_exercise.output.masked...
     |TC1: I dunno. Fry?
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
-8.6.2.8. GAMMA_exercise.output.time.text...
-    |# %C %x
+8.6.1.9. GAMMA_exercise.output.time.text...
     |./GAMMA_exercise 0
+    |#  %C %x
 
 9. CompiledExercise_Make_nonsense.
 9.1. Requirements.
@@ -759,7 +849,7 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 9.2.3. spit .kamaji.conf time-output-format %C %x
 9.2.4. spit .kamaji.conf verbosity-level heavy
 9.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
-9.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210516_120430_1520595/09.Working
+9.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.05.compiled_exercise_processing.clutr.20210529_095746_873133/09.Working
 9.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -792,20 +882,19 @@ CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 9.4.1.  kamaji make GAMMA_exercise.nonsense
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_909238.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |ERROR: The 'GAMMA_exercise.nonsense' file cannot be made; it is not a known derivative.
 9.5. Finalizations.
 9.6. Workspace Impact...
-    |Only in 09.Omega: .kamaji.sed
     |Only in 09.Omega: Working
-9.6.1. .kamaji.sed (created) is empty.
-9.6.2. Working (created) contains 2 files.
-9.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
-9.6.2.2. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+9.6.1. Working (created) contains 2 files.
+9.6.1.1. .kamaji.sed.filelist.text...
+    |
+9.6.1.2. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 CLUT Source File: kamaji.05.compiled_exercise_processing.clut (9 cases)
 CLUT Output Format Version: 5.5

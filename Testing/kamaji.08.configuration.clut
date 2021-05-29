@@ -46,9 +46,9 @@ function create_complete_configuration_file() {
   spit ${FSpec} "data-filename-list      CHARLIE"
   spit ${FSpec} "find-expression-list    -name UNIFORM"
   spit ${FSpec} "last-target-filename    DELTA"
-  spit ${FSpec} "makefile-filename       ECHO"
-  spit ${FSpec} "mask-sed-script         FOXTROT"
-  spit ${FSpec} "ruleset-filename        INDIA"
+# spit ${FSpec} "makefile-filename       ECHO"
+# spit ${FSpec} "mask-sed-script         FOXTROT"
+# spit ${FSpec} "ruleset-filename        INDIA"
   spit ${FSpec} "script-type-list        JULIETT"
   spit ${FSpec} "verbosity-level         KILO"
   spit ${FSpec} "working-folder          LIMA"
@@ -77,7 +77,7 @@ function testCaseDefinitionsOriginal() {
   clut_shared_initialize        "export KAMAJI_CONFIG_BASE_DSPEC=\${PWD}"
   #
   clut_case_name		SetConfiguration_ReplaceValue
-  clut_case_parameter		"set makefile-filename OSCAR"
+  clut_case_parameter		"set short-review-tailpipe OSCAR"
   clut_case_end
   #
   clut_case_name		SetConfiguration_AddToList
@@ -133,6 +133,14 @@ function testCaseDefinitionsOriginal() {
   do
     #
     clut_case_name		SetConfiguration_${VariableNameItem}
+    #
+    if [ "${VariableNameItem}" = "makefile-filename" ] \
+    || [ "${VariableNameItem}" = "mask-sed-script"   ] \
+    || [ "${VariableNameItem}" = "ruleset-filename"  ]
+    then
+       clut_case_disable "The ${VariableNameItem} configuration variable is no longer supported."
+    fi
+    #
     clut_case_parameter		"set ${VariableNameItem} value-4-${VariableNameItem}"
     clut_case_end
     #

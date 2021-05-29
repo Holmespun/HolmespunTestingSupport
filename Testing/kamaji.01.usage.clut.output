@@ -17,7 +17,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 1.1. Requirements.
     |None.
 1.2. Initializations.
-1.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/01.Working
+1.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/01.Working
 1.2.2. mkdir Testing
 1.3. Initial Workspace contains one file...
     |Testing
@@ -82,18 +82,17 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |kamaji version 1.00
 1.5. Finalizations.
 1.6. Workspace Impact...
-    |Only in 01.Omega: .kamaji.sed
     |Only in 01.Omega: Working
-1.6.1. .kamaji.sed (created) is empty.
-1.6.2. Working (created) contains one file.
-1.6.2.1. .kamaji.sed is a symbolic link to ../.kamaji.sed
+1.6.1. Working (created) contains one file.
+1.6.1.1. .kamaji.sed.filelist.text...
+    |
 
 2. Usage.
     |General usage should be displayed.
 2.1. Requirements.
     |None.
 2.2. Initializations.
-2.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/02.Working
+2.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/02.Working
 2.3. Initial Workspace is empty.
 2.4. Target CLU Call.
 2.4.1.  kamaji usage
@@ -161,7 +160,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 3.1. Requirements.
     |None.
 3.2. Initializations.
-3.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/03.Working
+3.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/03.Working
 3.3. Initial Workspace is empty.
 3.4. Target CLU Call.
 3.4.1.  kamaji help
@@ -229,7 +228,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 4.1. Requirements.
     |None.
 4.2. Initializations.
-4.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/04.Working
+4.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/04.Working
 4.2.2. mkdir Testing
 4.3. Initial Workspace contains one file...
     |Testing
@@ -294,13 +293,15 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |kamaji version 1.00
 4.5. Finalizations.
 4.6. Workspace Impact...
-    |Only in 04.Omega: .kamaji.sed
     |Only in 04.Omega: Working
-4.6.1. .kamaji.sed (created) is empty.
-4.6.2. Working (created) contains 2 files.
-4.6.2.1. .kamaji.ruleset.bash...
+4.6.1. Working (created) contains 2 files.
+4.6.1.1. .kamaji.ruleset.bash...
     |#
-    |#  Working/.kamaji.ruleset.bash
+    |#  .kamaji.ruleset.bash
+    |#
+    |#  User request:  kamaji fast bobo
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -311,26 +312,26 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |#
     |#  Where FName == file name within the working-folder
     |#        FSpec == file specification outside of the working-folder
-    |#
-    |__KamajiBaseSourceList[.kamaji.sed]="  .kamaji.sed"
-    |#
+    |__KamajiBaseSourceList[.kamaji.sed.composit.sed]="  .kamaji.sed.filelist.text"
     |__KamajiClassifiedList[Grade]=""
     |__KamajiClassifiedList[Output]=""
     |__KamajiClassifiedList[Review]=""
-    |__KamajiClassifiedList[SedMaskingScript]=" .kamaji.sed"
-    |#
-    |__KamajiMyParentalList[.kamaji.sed]=""
-    |#
-    |__KamajiRepresentative[.kamaji.sed]="../.kamaji.sed"
+    |__KamajiClassifiedList[SedScriptComposit]=" .kamaji.sed.composit.sed"
+    |__KamajiClassifiedList[SedScriptListing]=" .kamaji.sed.filelist.text"
+    |__KamajiMyChildrenList[.kamaji.sed.filelist.text]="  .kamaji.sed.composit.sed"
+    |__KamajiMyParentalList[.kamaji.sed.composit.sed]=" .kamaji.sed.filelist.text"
+    |__KamajiMyParentalList[.kamaji.sed.filelist.text]=""
+    |__KamajiRepresentative[.kamaji.sed.filelist.text]=""
     |#
     |#  (eof)
-4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
+4.6.1.2. .kamaji.sed.filelist.text...
+    |
 
 5. Help_configure.
 5.1. Requirements.
     |None.
 5.2. Initializations.
-5.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/05.Working
+5.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/05.Working
 5.3. Initial Workspace is empty.
 5.4. Target CLU Call.
 5.4.1.  kamaji help configure
@@ -382,7 +383,6 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    last-target-filename    .kamaji.last_target.text
     |    long-review-command     vimdiff -R
     |    long-review-line-count  51
-    |    mask-sed-script         .kamaji.sed
     |    new-review-command      cat --number
     |    script-type-list        bash sh py rb
     |    short-review-command    diff
@@ -444,12 +444,6 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    output will be indented, you can view it a page at a time, and it will not
     |    clutter your display after your review.
     |    
-    |    makefile-filename <filename> - The name of the file into which a makefile
-    |    is exported.
-    |    
-    |    mask-sed-script <file-specification> - Specification for the user-defined
-    |    sed script that is used to mask output files.
-    |    
     |    new-review-command <command> - The command used to perform a new review. A
     |    new review is one for which there is no baseline output file to compare to.
     |    The command is called from within the working-folder, and is passed the
@@ -457,10 +451,6 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    
     |    new-review-tailpipe <command> [ | <command> ]... - A command into which the
     |    new-review-command output is piped.
-    |    
-    |    ruleset-filename <filename> - The name of the file in which the ruleset is
-    |    stored. The ruleset is stored and used by the 'export ruleset' request and
-    |    'fast' modifier. the file is stored in the working-folder.
     |    
     |    script-type-list [<extension>]... - A list of file name extensions that are
     |    used to store executable scripts.
@@ -509,7 +499,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 6.1. Requirements.
     |None.
 6.2. Initializations.
-6.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/06.Working
+6.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/06.Working
 6.3. Initial Workspace is empty.
 6.4. Target CLU Call.
 6.4.1.  kamaji help export
@@ -568,8 +558,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |in this way.
     |
     |Users can request that kamaji export its current ruleset for future use using
-    |the 'export' request. The ruleset-filename configuration variable can be used
-    |to name the file in which the ruleset is stored.
+    |the 'export' request.
     |
     |The 'fast' modifier can be used to ask kamaji to load an exported ruleset
     |instead of generating one itself. The 'fast' modifier will generate and export
@@ -585,7 +574,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 7.1. Requirements.
     |None.
 7.2. Initializations.
-7.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/07.Working
+7.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/07.Working
 7.3. Initial Workspace is empty.
 7.4. Target CLU Call.
 7.4.1.  kamaji help grade
@@ -620,8 +609,9 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |output files only after they are masked to remove non-deterministic values
     |(e.g. dates, times, account names).
     |
-    |Masking is performed by a user-defined sed script; the mask-sed-script
-    |configuration value can be used to specify the location of that script.
+    |Masking is performed by a user-defined sed script; one or more .kamaji.sed
+    |scripts are used based on their position in the development directory hierarchy
+    |(i.e. in the same manner as user-defined configuration files).
     |
     |A 'grade last' request with grade the output associated with the last make
     |target processed by kamaji the last time it was invoked. The "last" target is
@@ -650,7 +640,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 8.1. Requirements.
     |None.
 8.2. Initializations.
-8.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/08.Working
+8.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/08.Working
 8.3. Initial Workspace is empty.
 8.4. Target CLU Call.
 8.4.1.  kamaji help make
@@ -706,7 +696,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 9.1. Requirements.
     |None.
 9.2. Initializations.
-9.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/09.Working
+9.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/09.Working
 9.3. Initial Workspace is empty.
 9.4. Target CLU Call.
 9.4.1.  kamaji help set
@@ -758,7 +748,6 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    last-target-filename    .kamaji.last_target.text
     |    long-review-command     vimdiff -R
     |    long-review-line-count  51
-    |    mask-sed-script         .kamaji.sed
     |    new-review-command      cat --number
     |    script-type-list        bash sh py rb
     |    short-review-command    diff
@@ -820,12 +809,6 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    output will be indented, you can view it a page at a time, and it will not
     |    clutter your display after your review.
     |    
-    |    makefile-filename <filename> - The name of the file into which a makefile
-    |    is exported.
-    |    
-    |    mask-sed-script <file-specification> - Specification for the user-defined
-    |    sed script that is used to mask output files.
-    |    
     |    new-review-command <command> - The command used to perform a new review. A
     |    new review is one for which there is no baseline output file to compare to.
     |    The command is called from within the working-folder, and is passed the
@@ -833,10 +816,6 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
     |    
     |    new-review-tailpipe <command> [ | <command> ]... - A command into which the
     |    new-review-command output is piped.
-    |    
-    |    ruleset-filename <filename> - The name of the file in which the ruleset is
-    |    stored. The ruleset is stored and used by the 'export ruleset' request and
-    |    'fast' modifier. the file is stored in the working-folder.
     |    
     |    script-type-list [<extension>]... - A list of file name extensions that are
     |    used to store executable scripts.
@@ -885,7 +864,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 10.1. Requirements.
     |None.
 10.2. Initializations.
-10.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/10.Working
+10.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/10.Working
 10.3. Initial Workspace is empty.
 10.4. Target CLU Call.
 10.4.1.  kamaji help show
@@ -925,7 +904,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 11.1. Requirements.
     |None.
 11.2. Initializations.
-11.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/11.Working
+11.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/11.Working
 11.3. Initial Workspace is empty.
 11.4. Target CLU Call.
 11.4.1.  kamaji usage fast
@@ -967,7 +946,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 12.1. Requirements.
     |None.
 12.2. Initializations.
-12.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/12.Working
+12.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/12.Working
 12.3. Initial Workspace is empty.
 12.4. Target CLU Call.
 12.4.1.  kamaji usage help
@@ -1008,7 +987,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 13.1. Requirements.
     |None.
 13.2. Initializations.
-13.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/13.Working
+13.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/13.Working
 13.3. Initial Workspace is empty.
 13.4. Target CLU Call.
 13.4.1.  kamaji usage meticulous
@@ -1075,7 +1054,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 14.1. Requirements.
     |None.
 14.2. Initializations.
-14.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/14.Working
+14.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/14.Working
 14.3. Initial Workspace is empty.
 14.4. Target CLU Call.
 14.4.1.  kamaji usage noisy
@@ -1117,7 +1096,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 15.1. Requirements.
     |None.
 15.2. Initializations.
-15.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/15.Working
+15.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/15.Working
 15.3. Initial Workspace is empty.
 15.4. Target CLU Call.
 15.4.1.  kamaji usage quiet
@@ -1159,7 +1138,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 16.1. Requirements.
     |None.
 16.2. Initializations.
-16.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/16.Working
+16.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/16.Working
 16.3. Initial Workspace is empty.
 16.4. Target CLU Call.
 16.4.1.  kamaji usage silent
@@ -1201,7 +1180,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 17.1. Requirements.
     |None.
 17.2. Initializations.
-17.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/17.Working
+17.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/17.Working
 17.3. Initial Workspace is empty.
 17.4. Target CLU Call.
 17.4.1.  kamaji usage usage
@@ -1242,7 +1221,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 18.1. Requirements.
     |None.
 18.2. Initializations.
-18.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/18.Working
+18.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/18.Working
 18.3. Initial Workspace is empty.
 18.4. Target CLU Call.
 18.4.1.  kamaji usage verbose
@@ -1284,7 +1263,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 19.1. Requirements.
     |None.
 19.2. Initializations.
-19.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/19.Working
+19.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/19.Working
 19.3. Initial Workspace is empty.
 19.4. Target CLU Call.
 19.4.1.  kamaji help execute
@@ -1334,7 +1313,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 20.1. Requirements.
     |None.
 20.2. Initializations.
-20.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/20.Working
+20.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/20.Working
 20.3. Initial Workspace is empty.
 20.4. Target CLU Call.
 20.4.1.  kamaji help invoke
@@ -1384,7 +1363,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 21.1. Requirements.
     |None.
 21.2. Initializations.
-21.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/21.Working
+21.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/21.Working
 21.3. Initial Workspace is empty.
 21.4. Target CLU Call.
 21.4.1.  kamaji help run
@@ -1434,7 +1413,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 22.1. Requirements.
     |None.
 22.2. Initializations.
-22.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/22.Working
+22.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/22.Working
 22.3. Initial Workspace is empty.
 22.4. Target CLU Call.
 22.4.1.  kamaji help review
@@ -1495,7 +1474,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 23.1. Requirements.
     |None.
 23.2. Initializations.
-23.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/23.Working
+23.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/23.Working
 23.3. Initial Workspace is empty.
 23.4. Target CLU Call.
 23.4.1.  kamaji help bless
@@ -1538,7 +1517,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 24.1. Requirements.
     |None.
 24.2. Initializations.
-24.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/24.Working
+24.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/24.Working
 24.3. Initial Workspace is empty.
 24.4. Target CLU Call.
 24.4.1.  kamaji help baseline
@@ -1581,7 +1560,7 @@ CLUT Source File: kamaji.01.usage.clut (25 cases)
 25.1. Requirements.
     |None.
 25.2. Initializations.
-25.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210510_091711_2093039/25.Working
+25.2.1. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.01.usage.clutr.20210529_095747_875059/25.Working
 25.3. Initial Workspace is empty.
 25.4. Target CLU Call.
 25.4.1.  kamaji help delta

@@ -19,7 +19,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.2.1. mkdir Testing
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf verbosity-level heavy
-1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210510_091852_2100776/01.Working
+1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210529_095746_872605/01.Working
 1.2.5. create_production_script_alpha ALPHA.bash
 1.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 1.3. Initial Workspace contains 4 files...
@@ -59,20 +59,26 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.4.1.  kamaji export makefile
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_874629.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |kamaji export makefile
+    |mv .kamaji.make.pid_874629.partial.text .kamaji.make
 1.5. Finalizations.
 1.6. Workspace Impact...
-    |Only in 01.Omega: .kamaji.sed
     |Only in 01.Omega: Working
-1.6.1. .kamaji.sed (created) is empty.
-1.6.2. Working (created) contains 4 files.
-1.6.2.1. .kamaji.make...
+1.6.1. Working (created) contains 4 files.
+1.6.1.1. .kamaji.make...
+    |#
+    |#  .kamaji.make
+    |#
+    |#  User request:  kamaji export makefile
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
+    |#
     |#
     |#  kamaji export makefile
     |#
@@ -96,14 +102,17 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |QUIET ?= @
     |
-    |KamajiGradeTargetList :=
-    |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
+    |KamajiOutputTargetList :=
+    |KamajiOutputTargetList += Working/ALPHA.clut.output
     |
     |KamajiDeltaTargetList :=
     |KamajiDeltaTargetList += Working/ALPHA.clut.output.delta
     |
-    |.PHONY: kamaji-grade kamaji-delta kamaji-output
-    |.PHONY: kamaji-last
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
+    |
+    |.PHONY: kamaji-grade  kamaji-delta
+    |.PHONY: kamaji-output kamaji-last
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -113,7 +122,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast delta
     |
-    |kamaji-output : $(KamajiGradeTargetList:.grade=)
+    |kamaji-output : $(KamajiOutputTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast invoke
     |
@@ -125,31 +134,38 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |Working/ALPHA.clut.bash : Working/.kamaji.ruleset.bash Working/ALPHA.bash Working/ALPHA.clut
+    |$(KamajiOutputTargetList) : | Working/.kamaji.ruleset.bash
+    |
+    |Working/.kamaji.sed.composit.sed : Working/.kamaji.sed.filelist.text
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output : Working/.kamaji.ruleset.bash Working/ALPHA.clut.bash
+    |Working/ALPHA.clut.bash : Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.delta : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.masked
+    |Working/ALPHA.clut.output : Working/ALPHA.clut.bash
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.grade : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.delta
+    |Working/ALPHA.clut.output.delta : Working/ALPHA.clut.output.masked
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/ALPHA.clut.output
+    |Working/ALPHA.clut.output.grade : Working/ALPHA.clut.output.delta
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |Working/ALPHA.clut.output.masked : Working/.kamaji.sed.composit.sed Working/ALPHA.clut.output
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
     |#
     |#  (eof}
-1.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-1.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
-1.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+1.6.1.2. .kamaji.sed.filelist.text...
+    |
+1.6.1.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+1.6.1.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
 
 2. ShowMakefile_ScriptExercise.
 2.1. Requirements.
@@ -158,7 +174,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.2.1. mkdir Testing
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf verbosity-level heavy
-2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210510_091852_2100776/02.Working
+2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210529_095746_872605/02.Working
 2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -182,19 +198,25 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.4.1.  kamaji export mak
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_878553.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |kamaji export makefile
+    |mv .kamaji.make.pid_878553.partial.text .kamaji.make
 2.5. Finalizations.
 2.6. Workspace Impact...
-    |Only in 02.Omega: .kamaji.sed
     |Only in 02.Omega: Working
-2.6.1. .kamaji.sed (created) is empty.
-2.6.2. Working (created) contains 3 files.
-2.6.2.1. .kamaji.make...
+2.6.1. Working (created) contains 3 files.
+2.6.1.1. .kamaji.make...
+    |#
+    |#  .kamaji.make
+    |#
+    |#  User request:  kamaji export mak
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
+    |#
     |#
     |#  kamaji export makefile
     |#
@@ -218,14 +240,17 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |QUIET ?= @
     |
-    |KamajiGradeTargetList :=
-    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
+    |KamajiOutputTargetList :=
+    |KamajiOutputTargetList += Working/BETA_exercise.output
     |
     |KamajiDeltaTargetList :=
     |KamajiDeltaTargetList += Working/BETA_exercise.output.delta
     |
-    |.PHONY: kamaji-grade kamaji-delta kamaji-output
-    |.PHONY: kamaji-last
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
+    |
+    |.PHONY: kamaji-grade  kamaji-delta
+    |.PHONY: kamaji-output kamaji-last
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -235,7 +260,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast delta
     |
-    |kamaji-output : $(KamajiGradeTargetList:.grade=)
+    |kamaji-output : $(KamajiOutputTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast invoke
     |
@@ -247,26 +272,33 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |Working/BETA_exercise.output : Working/.kamaji.ruleset.bash Working/BETA_exercise.bash
+    |$(KamajiOutputTargetList) : | Working/.kamaji.ruleset.bash
+    |
+    |Working/.kamaji.sed.composit.sed : Working/.kamaji.sed.filelist.text
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.masked
+    |Working/BETA_exercise.output : Working/BETA_exercise.bash
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.delta
+    |Working/BETA_exercise.output.delta : Working/BETA_exercise.output.masked
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/BETA_exercise.output
+    |Working/BETA_exercise.output.grade : Working/BETA_exercise.output.delta
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |Working/BETA_exercise.output.masked : Working/.kamaji.sed.composit.sed Working/BETA_exercise.output
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
     |#
     |#  (eof}
-2.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-2.6.2.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+2.6.1.2. .kamaji.sed.filelist.text...
+    |
+2.6.1.3. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
 
 3. ShowMakefile_CompiledExercise.
 3.1. Requirements.
@@ -275,7 +307,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 3.2.1. mkdir Testing
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf verbosity-level heavy
-3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210510_091852_2100776/03.Working
+3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210529_095746_872605/03.Working
 3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
 3.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -308,19 +340,25 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 3.4.1.  kamaji expo makefile
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_882050.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export makefile
+    |mv .kamaji.make.pid_882050.partial.text .kamaji.make
 3.5. Finalizations.
 3.6. Workspace Impact...
-    |Only in 03.Omega: .kamaji.sed
     |Only in 03.Omega: Working
-3.6.1. .kamaji.sed (created) is empty.
-3.6.2. Working (created) contains 3 files.
-3.6.2.1. .kamaji.make...
+3.6.1. Working (created) contains 3 files.
+3.6.1.1. .kamaji.make...
+    |#
+    |#  .kamaji.make
+    |#
+    |#  User request:  kamaji expo makefile
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:47
+    |#
     |#
     |#  kamaji export makefile
     |#
@@ -344,14 +382,17 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |QUIET ?= @
     |
-    |KamajiGradeTargetList :=
-    |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
+    |KamajiOutputTargetList :=
+    |KamajiOutputTargetList += Working/GAMMA_exercise.output
     |
     |KamajiDeltaTargetList :=
     |KamajiDeltaTargetList += Working/GAMMA_exercise.output.delta
     |
-    |.PHONY: kamaji-grade kamaji-delta kamaji-output
-    |.PHONY: kamaji-last
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
+    |
+    |.PHONY: kamaji-grade  kamaji-delta
+    |.PHONY: kamaji-output kamaji-last
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -361,7 +402,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast delta
     |
-    |kamaji-output : $(KamajiGradeTargetList:.grade=)
+    |kamaji-output : $(KamajiOutputTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast invoke
     |
@@ -373,30 +414,37 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |Working/GAMMA_exercise : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.cpp
+    |$(KamajiOutputTargetList) : | Working/.kamaji.ruleset.bash
+    |
+    |Working/.kamaji.sed.composit.sed : Working/.kamaji.sed.filelist.text
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output : Working/.kamaji.ruleset.bash Working/GAMMA_exercise
+    |Working/GAMMA_exercise : Working/GAMMA_exercise.cpp
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.masked
+    |Working/GAMMA_exercise.output : Working/GAMMA_exercise
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.delta
+    |Working/GAMMA_exercise.output.delta : Working/GAMMA_exercise.output.masked
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output
+    |Working/GAMMA_exercise.output.grade : Working/GAMMA_exercise.output.delta
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.masked : Working/.kamaji.sed.composit.sed Working/GAMMA_exercise.output
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
     |#
     |#  (eof}
-3.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-3.6.2.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+3.6.1.2. .kamaji.sed.filelist.text...
+    |
+3.6.1.3. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 4. ShowMakefile_ThreeKinds.
 4.1. Requirements.
@@ -405,7 +453,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.2.1. mkdir Testing
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf verbosity-level heavy
-4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210510_091852_2100776/04.Working
+4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210529_095746_872605/04.Working
 4.2.5. create_production_script_alpha ALPHA.bash
 4.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 4.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -478,24 +526,30 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.4.1.  kamaji export makefile
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
+    |mv .kamaji.sed.filelist.text.pid_886179.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
-    |ln --symbolic ../.kamaji.sed .kamaji.sed
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export makefile
+    |mv .kamaji.make.pid_886179.partial.text .kamaji.make
 4.5. Finalizations.
 4.6. Workspace Impact...
-    |Only in 04.Omega: .kamaji.sed
     |Only in 04.Omega: Working
-4.6.1. .kamaji.sed (created) is empty.
-4.6.2. Working (created) contains 6 files.
-4.6.2.1. .kamaji.make...
+4.6.1. Working (created) contains 6 files.
+4.6.1.1. .kamaji.make...
+    |#
+    |#  .kamaji.make
+    |#
+    |#  User request:  kamaji export makefile
+    |#
+    |#  Date and time: 2021-05-29 at 09:57:48
+    |#
     |#
     |#  kamaji export makefile
     |#
@@ -519,18 +573,23 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |
     |QUIET ?= @
     |
-    |KamajiGradeTargetList :=
-    |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
-    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
-    |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
+    |KamajiOutputTargetList :=
+    |KamajiOutputTargetList += Working/ALPHA.clut.output
+    |KamajiOutputTargetList += Working/BETA_exercise.output
+    |KamajiOutputTargetList += Working/GAMMA_exercise.output
     |
     |KamajiDeltaTargetList :=
     |KamajiDeltaTargetList += Working/ALPHA.clut.output.delta
     |KamajiDeltaTargetList += Working/BETA_exercise.output.delta
     |KamajiDeltaTargetList += Working/GAMMA_exercise.output.delta
     |
-    |.PHONY: kamaji-grade kamaji-delta kamaji-output
-    |.PHONY: kamaji-last
+    |KamajiGradeTargetList :=
+    |KamajiGradeTargetList += Working/ALPHA.clut.output.grade
+    |KamajiGradeTargetList += Working/BETA_exercise.output.grade
+    |KamajiGradeTargetList += Working/GAMMA_exercise.output.grade
+    |
+    |.PHONY: kamaji-grade  kamaji-delta
+    |.PHONY: kamaji-output kamaji-last
     |
     |kamaji-grade : $(KamajiGradeTargetList)
     |	@echo "make $@"
@@ -540,7 +599,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast delta
     |
-    |kamaji-output : $(KamajiGradeTargetList:.grade=)
+    |kamaji-output : $(KamajiOutputTargetList)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast invoke
     |
@@ -552,69 +611,76 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |	@echo "make $@"
     |	$(QUIET) kamaji fast silent show version
     |
-    |Working/ALPHA.clut.bash : Working/.kamaji.ruleset.bash Working/ALPHA.bash Working/ALPHA.clut
+    |$(KamajiOutputTargetList) : | Working/.kamaji.ruleset.bash
+    |
+    |Working/.kamaji.sed.composit.sed : Working/.kamaji.sed.filelist.text
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output : Working/.kamaji.ruleset.bash Working/ALPHA.clut.bash
+    |Working/ALPHA.clut.bash : Working/ALPHA.bash Working/ALPHA.clut
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.delta : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.masked
+    |Working/ALPHA.clut.output : Working/ALPHA.clut.bash
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.grade : Working/.kamaji.ruleset.bash Working/ALPHA.clut.output.delta
+    |Working/ALPHA.clut.output.delta : Working/ALPHA.clut.output.masked
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/ALPHA.clut.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/ALPHA.clut.output
+    |Working/ALPHA.clut.output.grade : Working/ALPHA.clut.output.delta
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output : Working/.kamaji.ruleset.bash Working/BETA_exercise.bash
+    |Working/ALPHA.clut.output.masked : Working/.kamaji.sed.composit.sed Working/ALPHA.clut.output
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.masked
+    |Working/BETA_exercise.output : Working/BETA_exercise.bash
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/BETA_exercise.output.delta
+    |Working/BETA_exercise.output.delta : Working/BETA_exercise.output.masked
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/BETA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/BETA_exercise.output
+    |Working/BETA_exercise.output.grade : Working/BETA_exercise.output.delta
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.cpp
+    |Working/BETA_exercise.output.masked : Working/.kamaji.sed.composit.sed Working/BETA_exercise.output
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output : Working/.kamaji.ruleset.bash Working/GAMMA_exercise
+    |Working/GAMMA_exercise : Working/GAMMA_exercise.cpp
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.delta : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.masked
+    |Working/GAMMA_exercise.output : Working/GAMMA_exercise
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.grade : Working/.kamaji.ruleset.bash Working/GAMMA_exercise.output.delta
+    |Working/GAMMA_exercise.output.delta : Working/GAMMA_exercise.output.masked
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
-    |Working/GAMMA_exercise.output.masked : Working/.kamaji.ruleset.bash Working/.kamaji.sed Working/GAMMA_exercise.output
+    |Working/GAMMA_exercise.output.grade : Working/GAMMA_exercise.output.delta
+    |	@echo "kamaji make $@"
+    |	$(QUIET) kamaji fast make $@
+    |
+    |Working/GAMMA_exercise.output.masked : Working/.kamaji.sed.composit.sed Working/GAMMA_exercise.output
     |	@echo "kamaji make $@"
     |	$(QUIET) kamaji fast make $@
     |
     |#
     |#  (eof}
-4.6.2.2. .kamaji.sed is a symbolic link to ../.kamaji.sed
-4.6.2.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
-4.6.2.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-4.6.2.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
-4.6.2.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
+4.6.1.2. .kamaji.sed.filelist.text...
+    |
+4.6.1.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
+4.6.1.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
+4.6.1.5. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
+4.6.1.6. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
 
 CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 CLUT Output Format Version: 5.5
