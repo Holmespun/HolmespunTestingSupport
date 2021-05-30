@@ -17,9 +17,10 @@
 #       AppendArrayIndexValue
 #       RetrieveArrayValueAtIndex
 #
-#       DiagnosticHeavy
-#       DiagnosticLight
-#       DiagnosticComplex
+#       EchoDiagnosticHeavyMaskingNo
+#       EchoDiagnosticHeavyMaskingYes
+#       EchoDiagnosticLight
+#
 #       EchoAbsoluteDirectorySpecFor
 #       EchoAgeRelation
 #       EchoAndExecuteStandardCheckingStderr
@@ -201,6 +202,9 @@ declare -A __KamajiConfigurationValue
 
 declare    __KamajiDataFileNameList="TBD"
 
+declare    __KamajiDiagnosticHeavy="TBD"
+declare    __KamajiDiagnosticLight="TBD"
+
 declare    __KamajiEnvironmentMasking="TBD"
 
 declare    __KamajiGoldenDSpec="TBD"
@@ -214,8 +218,6 @@ declare    __KamajiNikrowDSpec="TBD"    # Back out of the working-folder.
 declare    __KamajiScriptExtensionList="TBD"
 
 declare    __KamajiTimeFormat="TBD"
-
-declare    __KamajiVerbosityRequested="TBD"
 
 declare    __KamajiWorkinDSpec="TBD"
 
@@ -279,7 +281,7 @@ function RetrieveArrayValueAtIndex() {
   #
   eval "${Conditional}"
   #
-  [ "${Result}" = "UNDEFINED" ] && echoInColorMauve "${ItemReference}=${Result}" >&2
+  [ "${Result}" = "UNDEFINED" ] && echoInColorMauve "${ItemReference}=${Result}" 1>&2
   #
   echo "${Result}"
   #
@@ -287,47 +289,50 @@ function RetrieveArrayValueAtIndex() {
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function DiagnosticHeavy() { [ "${__KamajiVerbosityRequested}" = "heavy" ] && echoInColorBlue "${*}" 1>&2; }
+function EchoDiagnosticHeavyMaskingNo() { echoInColorBlue "${*}" 1>&2; }
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function DiagnosticLight() { [ "${__KamajiVerbosityRequested}" != "quiet" ] && echo "${*}" 1>&2; }
+function EchoDiagnosticHeavyMaskingYes() { echoInColorBlue "${*}" | eval sed ${__KamajiEnvironmentMasking} 1>&2; }
 
 #----------------------------------------------------------------------------------------------------------------------
 
-function DiagnosticComplex() {
-  #
-  local MessageLight="${1}"
-  local MessageHeavy="${2}"
-  #
-  if [ "${__KamajiVerbosityRequested}" = "light" ]
-  then
-     #
-     echoInColorWhite "${MessageLight}" 1>&2
-     #
-  elif [ "${__KamajiVerbosityRequested}" = "heavy" ]
-  then
-     #
-     echoInColorWhite "${MessageLight} $(echoInColorBlue ${MessageHeavy})" 1>&2
-     #
-  fi
-  #
-}
+function EchoDiagnosticLight() { echo "${*}" 1>&2; }
 
 #----------------------------------------------------------------------------------------------------------------------
 
 function EchoAbsoluteDirectorySpecFor() {
   #
-  local -r ParentDSpec=${1}
-  local -r NestedDSpec=${2-}
+  local -r ParentDSpec="${1}"
+  local -r NestedDSpec="${2-}"
   #
-  local -r WhereWeWere=${PWD}
-
-  cd ${ParentDSpec}/${NestedDSpec}
+  if [ -e "${ParentDSpec}/${NestedDSpec}" ]
+  then
      #
-     echo ${PWD}
+     (cd "${ParentDSpec}/${NestedDSpec}"; echo ${PWD})
      #
-  cd ${WhereWeWere}/
+  elif [ ${#NestedDSpec} -eq 0 ]
+  then
+     #
+     echo "$(cd "${ParentDSpec}"; echo ${PWD})"
+     #
+  else
+     #
+     local -r DirnameOfNestedDSpec="$(dirname ${NestedDSpec})"
+     local -r BasenameOfNestedDSpec="$(basename ${NestedDSpec})"
+     #
+     if [ "${DirnameOfNestedDSpec}" = "." ]
+     then
+        #
+        echo "$(cd "${ParentDSpec}"; echo ${PWD})/${BasenameOfNestedDSpec}"
+        #
+     else
+        #
+        EchoAbsoluteDirectorySpecFor "${ParentDSpec}/${DirnameOfNestedDSpec}" "${BasenameOfNestedDSpec}"
+        #
+     fi
+     #
+  fi
   #
 }
 
@@ -450,7 +455,7 @@ function EchoAndExecuteInWorkingStdout() {
   #
   local -i Status
   #
-  DiagnosticHeavy "${SystemRequest}" 1>&2
+  ${__KamajiDiagnosticHeavy} "${SystemRequest}" 1>&2
   #
   cd ${__KamajiWorkinDSpec}/
      #
@@ -478,7 +483,7 @@ function EchoAndExecuteInWorkingToFile() {
   #
   local -i Status
   #
-  DiagnosticHeavy "${SystemRequest} > ${CaptureOutput} 2>&1" 1>&2
+  ${__KamajiDiagnosticHeavy} "${SystemRequest} > ${CaptureOutput} 2>&1" 1>&2
   #
   cd ${__KamajiWorkinDSpec}/
      #
@@ -500,7 +505,7 @@ function EchoAndExecute() {
   #
   local -i Status
   #
-  DiagnosticHeavy "${SystemRequest}" 1>&2
+  ${__KamajiDiagnosticHeavy} "${SystemRequest}" 1>&2
   #
   IFS=
      #
@@ -1072,28 +1077,6 @@ function KamajiConfigurationCheckValues() {
      #
   fi
   #
-  local -r EnvMaskMarker="$(KamajiConfigurationEchoValue environment-masking)"
-  #
-  local -r EnvMaskPrefix="${EnvMaskMarker%% *}"
-  local    EnvMaskSuffix="${EnvMaskMarker#* }"
-  #
-  __KamajiEnvironmentMasking=
-  #
-  if [ "${EnvMaskPrefix}" != "NONE" ]
-  then
-     #
-     [ "${EnvMaskSuffix}" = "${EnvMaskMarker}" ] && EnvMaskSuffix=
-     #
-     __KamajiEnvironmentMasking+=" --expression='s,${WorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,${HOME},${EnvMaskPrefix}HOME${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,${USER},${EnvMaskPrefix}USER${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,${LOGNAME},${EnvMaskPrefix}LOGNAME${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,$(uname -n),${EnvMaskPrefix}HOSTNAME${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,\<$(date '+%Z')\>,${EnvMaskPrefix}TIMEZONE${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,pid_$$,pid_${EnvMaskPrefix}PID${EnvMaskSuffix},g'"
-     #
-  fi
-  #
   local -r DefaultTimeFormat="Time %E %e %S %U %P Memory %M %t %K %D %p %X %Z %F %R %W %c %w I/O %I %O %r %s %k %x %C"
   #
   __KamajiTimeFormat="$(KamajiConfigurationEchoValue time-output-format)"
@@ -1141,6 +1124,7 @@ function KamajiConfigurationCheckValues() {
           #
           #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
           #
+#TODO: NO. This will be put into the ruleset.
           AppendArrayIndexValue __KamajiMyParentalList "${__KamajiSedCompositFName}" " ${ItemOfSedFSpec}"
           #
           break
@@ -1246,7 +1230,63 @@ function KamajiConfigurationLoadValues() {
   #
   spit ${__KamajiConfigLogFSpec} "#  (eof)"
   #
-  #  Define oft-used configuration items.
+  #  Determine the specification of the working directory; impacts environmental masking.
+  #
+  __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder)
+  #
+  #  Determine if environmental masking should be used; impacts heavy diagnostics.
+  #
+  local -r EnvMaskMarker="$(KamajiConfigurationEchoValue environment-masking)"
+  #
+  local -r EnvMaskPrefix="${EnvMaskMarker%% *}"
+  local    EnvMaskSuffix="${EnvMaskMarker#* }"
+  #
+  local -r WorkinDSpec=$(EchoAbsoluteDirectorySpecFor . ${__KamajiWorkinDSpec})
+  #
+  __KamajiEnvironmentMasking=
+  #
+  if [ "${EnvMaskPrefix}" != "NONE" ]
+  then
+     #
+     [ "${EnvMaskSuffix}" = "${EnvMaskMarker}" ] && EnvMaskSuffix=
+     #
+     __KamajiEnvironmentMasking+=" --expression='s,${WorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${HOME},${EnvMaskPrefix}HOME${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${USER},${EnvMaskPrefix}USER${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${LOGNAME},${EnvMaskPrefix}LOGNAME${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,$(uname -n),${EnvMaskPrefix}HOSTNAME${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,\<$(date '+%Z')\>,${EnvMaskPrefix}TIMEZONE${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,pid_$$,pid_${EnvMaskPrefix}PID${EnvMaskSuffix},g'"
+     #
+  fi
+  #
+  #  Determine the initial verbosity level.
+  #
+  local VerbosityRequested=$(KamajiConfigurationEchoValue verbosity-level)
+  #
+  if [ "${VerbosityRequested}" = "heavy" ]
+  then
+     #
+     __KamajiDiagnosticLight=EchoDiagnosticLight
+     __KamajiDiagnosticHeavy=EchoDiagnosticHeavyMaskingNo
+     #
+     [ ${#__KamajiEnvironmentMasking} -gt 0 ] && __KamajiDiagnosticHeavy=EchoDiagnosticHeavyMaskingYes
+     #
+  elif [ "${VerbosityRequested}" = "light" ]
+  then
+     #
+     __KamajiDiagnosticLight=EchoDiagnosticLight
+     __KamajiDiagnosticHeavy=:
+     #
+  else
+     #
+     __KamajiDiagnosticLight=:
+     __KamajiDiagnosticHeavy=:
+     #
+     #
+  fi
+  #
+  #  Define other oft-used configuration items.
   #
   __KamajiGoldenDSpec=$(KamajiConfigurationEchoValue baseline-folder)
   #
@@ -1257,10 +1297,6 @@ function KamajiConfigurationLoadValues() {
   __KamajiScriptExtensionList=$(KamajiConfigurationEchoValue script-type-list)
   #
   __KamajiScriptExtensionList=":${__KamajiScriptExtensionList// /:}:"
-  #
-  __KamajiVerbosityRequested=$(KamajiConfigurationEchoValue verbosity-level)
-  #
-  __KamajiWorkinDSpec=$(KamajiConfigurationEchoValue working-folder)
   #
   __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/$(KamajiConfigurationEchoValue last-target-filename)
   #
@@ -1348,7 +1384,7 @@ function KamajiModifierFast() {
      #
   fi
   #
-  DiagnosticHeavy "source ${RulesetFSpec}"
+  ${__KamajiDiagnosticHeavy} "source ${RulesetFSpec}"
   #
   source ${RulesetFSpec}
   #
@@ -1366,7 +1402,8 @@ function KamajiModifierSilent() {
   shift 1
   local -r ModifiedRequest="${*}"
   #
-  __KamajiVerbosityRequested="quiet"
+  __KamajiDiagnosticLight=:
+  __KamajiDiagnosticHeavy=:
   #
   KamajiMain ${ModifiedRequest}
   #
@@ -1938,15 +1975,17 @@ function KamajiModifierVerbose() {
   shift 1
   local -r ModifiedRequest="${*}"
   #
-  if [ "${__KamajiVerbosityRequested}" = "quiet" ]
+  if [ "${__KamajiDiagnosticLight}" = ":" ]
   then
      #
-     __KamajiVerbosityRequested="light"
+     __KamajiDiagnosticLight=EchoDiagnosticLight
      #
-  elif [ "${__KamajiVerbosityRequested}" = "light" ]
+  elif [ "${__KamajiDiagnosticHeavy}" = ":" ]
   then
      #
-     __KamajiVerbosityRequested="heavy"
+     __KamajiDiagnosticHeavy=EchoDiagnosticHeavyMaskingNo
+     #
+     [ ${#__KamajiEnvironmentMasking} -gt 0 ] && __KamajiDiagnosticHeavy=EchoDiagnosticHeavyMaskingYes
      #
   fi
   #
@@ -2284,7 +2323,7 @@ function KamajiBuildRulesForTestingSource_Unknown() {
   if [ ${#LessOfIgnoreFType} -eq ${#ListOfIgnoreFType} ]
   then
      #
-     DiagnosticLight "# Ignoring ${SourceFSpec} (unknown classification)."
+     ${__KamajiDiagnosticLight} "# Ignoring ${SourceFSpec} (unknown classification)."
      #
   else
      #
@@ -2302,7 +2341,7 @@ function KamajiBuildRulesForTestingSource() {
   #
   local -r SourceFSpec=${1}
   #
-  DiagnosticHeavy "#    ${SourceFSpec}"
+  ${__KamajiDiagnosticHeavy} "#    ${SourceFSpec}"
   #
   local -r SourceFName=$(basename ${SourceFSpec})
   local -r SourceFType=$(Xtension ${SourceFName})
@@ -2509,11 +2548,11 @@ function KamajiBuildRulesLoadXtraDependents() {
 
 function KamajiBuildRules() {
   #
-  DiagnosticHeavy "# Building rules based on baseline files..."
+  ${__KamajiDiagnosticHeavy} "# Building rules based on baseline files..."
   #
   local -r FindCommand="find -L ${__KamajiGoldenDSpec} $(KamajiConfigurationEchoValue find-expression-list -type f)"
   #
-  DiagnosticHeavy "${FindCommand}"
+  ${__KamajiDiagnosticHeavy} "${FindCommand}"
   #
   local -r ListOfSourceFSpec=$(${FindCommand} | sort)
   #
@@ -2653,7 +2692,7 @@ function KamajiRequestBless() {
        #
        #  Save the target name to support the next "make last" request.
        #
-       DiagnosticLight "${__KamajiScriptFName} ${Request} ${TargetFName%.review}"
+       ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${TargetFName%.review}"
        #
        EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastMakeTargetFSpec}"
        #
@@ -2703,7 +2742,7 @@ function KamajiRequestConfigure() {
   shift 2
   local -r Value="${*}"
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Name} ${Value}"
+  ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${Name} ${Value}"
   #
   [ ${#Value} -eq 0 ] && EchoErrorAndExit 2 "Empty values are not allowed in a configuration file."
   #
@@ -2740,7 +2779,7 @@ function KamajiRequestExport_configuration() {
   local -r Object=${2}
   local -r ToFSpec=${3-}
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
+  ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
   #
   StartWorkingFile   ${__KamajiConfigurationFName}.${__KamajiPartialSuffix}
   #
@@ -2760,7 +2799,7 @@ function KamajiRequestExport_makefile() {
   local -r Object=${2}
   local -r ToFSpec=${3-}
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
+  ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
   #
   local -r MakefileFName=${__KamajiMakefileFName}.${__KamajiPartialSuffix}
   #
@@ -2944,7 +2983,7 @@ function KamajiRequestExport_ruleset() {
   local -r Object=${2}
   local -r ToFSpec=${3-}
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
+  ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${Object} ${ToFSpec}"
   #
   local -r RulesetFName=${__KamajiRulesetFName}.${__KamajiPartialSuffix}
   #
@@ -3029,7 +3068,7 @@ function KamajiRequestGradeOrOutputOrReviewOrDelta() {
      then
         TargetFList=$(KamajiOrderByLatestBaseSource ${__KamajiClassifiedList[${TargetClass}]})
      else
-        DiagnosticHeavy "# There are no files to ${Request}; no CLUT or unit test exercises defined."
+        ${__KamajiDiagnosticHeavy} "# There are no files to ${Request}; no CLUT or unit test exercises defined."
      fi
      #
   else
@@ -3203,7 +3242,7 @@ function KamajiRequestShow_configuration() {
   #
   local    Key
   #
-  DiagnosticLight "${__KamajiScriptFName} ${Request} ${Object}"
+  ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${Object}"
   #
   echo "List of configurable items:"
   #
@@ -3715,7 +3754,7 @@ function KamajiMake() {
     #
     ReasonToAct=$(EchoAgeRelation ${__KamajiWorkinDSpec}/${ParentFName} ${__KamajiWorkinDSpec}/${TargetFName})
     #
-    DiagnosticHeavy "# ${ReasonToAct}"
+    ${__KamajiDiagnosticHeavy} "# ${ReasonToAct}"
     #
     [ "${ReasonToAct:0:2}" = "GT" ] && break
     #
@@ -3726,7 +3765,7 @@ function KamajiMake() {
   if [ "${ReasonToAct:0:2}" = "GT" ]
   then
      #
-     DiagnosticLight "${__KamajiScriptFName} make ${TargetFName}"
+     ${__KamajiDiagnosticLight} "${__KamajiScriptFName} make ${TargetFName}"
      #
      local SourceClass=$(echo ${ListOfParentClass} | xargs printf "_%s")
      #

@@ -67,7 +67,7 @@ You do not want this addition to the PATH variable to be active after the reposi
 
 	~~~~
 	$ kamaji verbose verbose invoke printf.clut
-	mv .kamaji.sed.filelist.text.pid_870768.partial.text .kamaji.sed.filelist.text
+	mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
 	# Building rules based on baseline files...
 	find -L Testing -type f
 	#    Testing/printf.clut
@@ -79,9 +79,9 @@ You do not want this addition to the PATH variable to be active after the reposi
 	clutc printf.clut /usr/bin/printf printf.clut.bash
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
-	./printf.clut.bash > printf.clut.output.pid_870768.partial.text 2>&1
-	sed --in-place  --expression='s,%WORKING%/ClutQuickStart.20210529_095746_870441/ClutQuickStart/Working,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_870768,pid_%PID%,g' printf.clut.output.pid_870768.partial.text
-	mv printf.clut.output.pid_870768.partial.text printf.clut.output
+	./printf.clut.bash > printf.clut.output.pid_%PID%.partial.text 2>&1
+	sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' printf.clut.output.pid_%PID%.partial.text
+	mv printf.clut.output.pid_%PID%.partial.text printf.clut.output
 	$
 	~~~~
 
@@ -162,14 +162,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20210529_095746_872597
-	./Working/printf.clutc.20210529_095746_872597/00.compiled.bash
-	./Working/printf.clutc.20210529_095746_872597/00.namelist.text
-	./Working/printf.clutc.20210529_095746_872597/01.bash
+	./Working/printf.clutc.20210530_134804_962112
+	./Working/printf.clutc.20210530_134804_962112/00.compiled.bash
+	./Working/printf.clutc.20210530_134804_962112/00.namelist.text
+	./Working/printf.clutc.20210530_134804_962112/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20210529_095747_873576
-	./Working/printf.clutr.20210529_095747_873576/01.Alpha
-	./Working/printf.clutr.20210529_095747_873576/01.Omega
+	./Working/printf.clutr.20210530_134804_963338
+	./Working/printf.clutr.20210530_134804_963338/01.Alpha
+	./Working/printf.clutr.20210530_134804_963338/01.Omega
 	$
 	~~~~
 
