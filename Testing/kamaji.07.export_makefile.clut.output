@@ -19,7 +19,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.2.1. mkdir Testing
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf verbosity-level heavy
-1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_134804_961791/01.Working
+1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_170248_1184333/01.Working
 1.2.5. create_production_script_alpha ALPHA.bash
 1.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 1.3. Initial Workspace contains 4 files...
@@ -59,15 +59,15 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 1.4.1.  kamaji export makefile MAKEFILE.text
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |kamaji export makefile MAKEFILE.text
-    |mv .kamaji.make.pid_%PID%.partial.text .kamaji.make
-    |cp .kamaji.make %WORKING%/kamaji.07.export_makefile.clutr.20210530_134804_961791/01.Working/MAKEFILE.text
+    |mv .kamaji.make.%DATE-TIME-PID%.partial.text .kamaji.make
+    |cp .kamaji.make %WORKING%/kamaji.07.export_makefile.clutr.20210530_170248_1184333/01.Working/MAKEFILE.text
 1.5. Finalizations.
 1.6. Workspace Impact...
     |Only in 01.Omega: MAKEFILE.text
@@ -78,7 +78,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji export makefile MAKEFILE.text
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:48
     |#
     |#
     |#  kamaji export makefile
@@ -170,7 +170,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji export makefile MAKEFILE.text
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:48
     |#
     |#
     |#  kamaji export makefile
@@ -267,7 +267,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.2.1. mkdir Testing
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf verbosity-level heavy
-2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_134804_961791/02.Working
+2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_170248_1184333/02.Working
 2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -291,13 +291,13 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 2.4.1.  kamaji export mak /dev/stdout
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |kamaji export makefile /dev/stdout
-    |mv .kamaji.make.pid_%PID%.partial.text .kamaji.make
+    |mv .kamaji.make.%DATE-TIME-PID%.partial.text .kamaji.make
     |cat .kamaji.make > /dev/stdout 2>&1
 2.4.1.3. STDOUT [text]...
     |#
@@ -305,7 +305,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji export mak /dev/stdout
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#
     |#  kamaji export makefile
@@ -396,7 +396,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji export mak /dev/stdout
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#
     |#  kamaji export makefile
@@ -488,7 +488,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 3.2.1. mkdir Testing
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf verbosity-level heavy
-3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_134804_961791/03.Working
+3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_170248_1184333/03.Working
 3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
 3.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -526,7 +526,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji expo makefile /dev/stderr
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#
     |#  kamaji export makefile
@@ -621,7 +621,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji expo makefile /dev/stderr
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#
     |#  kamaji export makefile
@@ -717,7 +717,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.2.1. mkdir Testing
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf verbosity-level heavy
-4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_134804_961791/04.Working
+4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.07.export_makefile.clutr.20210530_170248_1184333/04.Working
 4.2.5. create_production_script_alpha ALPHA.bash
 4.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 4.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -790,7 +790,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
 4.4.1.  kamaji export makefile
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
@@ -801,7 +801,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export makefile 
-    |mv .kamaji.make.pid_%PID%.partial.text .kamaji.make
+    |mv .kamaji.make.%DATE-TIME-PID%.partial.text .kamaji.make
 4.5. Finalizations.
 4.6. Workspace Impact...
     |Only in 04.Omega: Working
@@ -812,7 +812,7 @@ CLUT Source File: kamaji.07.export_makefile.clut (4 cases)
     |#
     |#  User request:  kamaji export makefile
     |#
-    |#  Date and time: 2021-05-30 at 13:48:06
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#
     |#  kamaji export makefile

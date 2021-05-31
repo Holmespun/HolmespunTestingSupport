@@ -21,7 +21,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 1.2.3. spit .kamaji.conf time-output-format %C %x
 1.2.4. spit .kamaji.conf verbosity-level heavy
 1.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-1.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/01.Working
+1.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/01.Working
 1.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -45,7 +45,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 1.4.1.  kamaji grades
 1.4.1.1. Exit Status 1!
 1.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -53,19 +53,19 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
     |# GT Working/.kamaji.sed.composit.sed does not exist
     |kamaji make .kamaji.sed.composit.sed
-    |mv .kamaji.sed.composit.sed.pid_%PID%.partial.text .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.%DATE-TIME-PID%.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.output.masked.pid_%PID%.partial.text BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |cp BETA_exercise.output.masked BETA_exercise.output.delta
@@ -84,7 +84,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |#
     |#  User request:  kamaji grades
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:48
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -116,7 +116,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 2.2.3. spit .kamaji.conf time-output-format %C %x
 2.2.4. spit .kamaji.conf verbosity-level heavy
 2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-2.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/02.Working
+2.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/02.Working
 2.2.7. spit Testing/BETA_exercise.output TC1: Bad news, everyone!
 2.2.8. spit Testing/BETA_exercise.output TC2: I miss Morbo.
 2.3. Initial Workspace contains 4 files...
@@ -146,7 +146,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 2.4.1.  kamaji grades
 2.4.1.1. Exit Status 1!
 2.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -156,24 +156,24 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
     |# GT Working/.kamaji.sed.composit.sed does not exist
     |kamaji make .kamaji.sed.composit.sed
-    |mv .kamaji.sed.composit.sed.pid_%PID%.partial.text .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.%DATE-TIME-PID%.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.golden.masked.pid_%PID%.partial.text BETA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.golden.masked.%DATE-TIME-PID%.partial.text BETA_exercise.golden.masked
     |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.output.masked.pid_%PID%.partial.text BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
@@ -192,7 +192,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |#
     |#  User request:  kamaji grades
     |#
-    |#  Date and time: 2021-05-30 at 13:48:05
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -230,7 +230,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 3.2.3. spit .kamaji.conf time-output-format %C %x
 3.2.4. spit .kamaji.conf verbosity-level heavy
 3.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-3.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/03.Working
+3.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/03.Working
 3.2.7. spit Testing/BETA_exercise.output TC1: Good news, everyone!
 3.2.8. spit Testing/BETA_exercise.output TC2: I miss Morbo.
 3.3. Initial Workspace contains 4 files...
@@ -260,7 +260,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 3.4.1.  kamaji grades
 3.4.1.1. Exit Status 0!
 3.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -270,24 +270,24 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
     |# GT Working/.kamaji.sed.composit.sed does not exist
     |kamaji make .kamaji.sed.composit.sed
-    |mv .kamaji.sed.composit.sed.pid_%PID%.partial.text .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.%DATE-TIME-PID%.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.golden.masked does not exist
     |kamaji make BETA_exercise.golden.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.golden.masked.pid_%PID%.partial.text BETA_exercise.golden.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.golden > BETA_exercise.golden.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.golden.masked.%DATE-TIME-PID%.partial.text BETA_exercise.golden.masked
     |# LT Working/.kamaji.sed.filelist.text is older-than Working/.kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.output.masked.pid_%PID%.partial.text BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |diff --text --ignore-space-change BETA_exercise.golden.masked BETA_exercise.output.masked > BETA_exercise.output.delta 2>&1
@@ -306,7 +306,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |#
     |#  User request:  kamaji grades
     |#
-    |#  Date and time: 2021-05-30 at 13:48:06
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -340,7 +340,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 4.2.3. spit .kamaji.conf time-output-format %C %x
 4.2.4. spit .kamaji.conf verbosity-level heavy
 4.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-4.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/04.Working
+4.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/04.Working
 4.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -364,7 +364,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 4.4.1.  kamaji make BETA_exercise.bash
 4.4.1.1. Exit Status 1!
 4.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -387,7 +387,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 5.2.3. spit .kamaji.conf time-output-format %C %x
 5.2.4. spit .kamaji.conf verbosity-level heavy
 5.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-5.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/05.Working
+5.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/05.Working
 5.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -411,7 +411,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 5.4.1.  kamaji make BETA_exercise.output
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -419,12 +419,12 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output" > Working/.kamaji.last_target.text
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
 5.5. Finalizations.
 5.6. Workspace Impact...
     |Only in 05.Omega: Working
@@ -450,7 +450,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 6.2.3. spit .kamaji.conf time-output-format %C %x
 6.2.4. spit .kamaji.conf verbosity-level heavy
 6.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-6.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/06.Working
+6.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/06.Working
 6.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -474,7 +474,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 6.4.1.  kamaji make BETA_exercise.output.masked
 6.4.1.1. Exit Status 0!
 6.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -482,19 +482,19 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.masked" > Working/.kamaji.last_target.text
     |# GT Working/.kamaji.sed.composit.sed does not exist
     |kamaji make .kamaji.sed.composit.sed
-    |mv .kamaji.sed.composit.sed.pid_%PID%.partial.text .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.%DATE-TIME-PID%.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.output.masked.pid_%PID%.partial.text BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text BETA_exercise.output.masked
 6.5. Finalizations.
 6.6. Workspace Impact...
     |Only in 06.Omega: Working
@@ -507,7 +507,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |#
     |#  User request:  kamaji make BETA_exercise.output.masked
     |#
-    |#  Date and time: 2021-05-30 at 13:48:07
+    |#  Date and time: 2021-05-30 at 17:02:50
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -536,7 +536,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 7.2.3. spit .kamaji.conf time-output-format %C %x
 7.2.4. spit .kamaji.conf verbosity-level heavy
 7.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-7.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/07.Working
+7.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/07.Working
 7.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -560,7 +560,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 7.4.1.  kamaji make BETA_exercise.output.delta
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -568,19 +568,19 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.delta" > Working/.kamaji.last_target.text
     |# GT Working/.kamaji.sed.composit.sed does not exist
     |kamaji make .kamaji.sed.composit.sed
-    |mv .kamaji.sed.composit.sed.pid_%PID%.partial.text .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.%DATE-TIME-PID%.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.output.masked.pid_%PID%.partial.text BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |cp BETA_exercise.output.masked BETA_exercise.output.delta
@@ -596,7 +596,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |#
     |#  User request:  kamaji make BETA_exercise.output.delta
     |#
-    |#  Date and time: 2021-05-30 at 13:48:07
+    |#  Date and time: 2021-05-30 at 17:02:51
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -628,7 +628,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 8.2.3. spit .kamaji.conf time-output-format %C %x
 8.2.4. spit .kamaji.conf verbosity-level heavy
 8.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-8.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/08.Working
+8.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/08.Working
 8.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -652,7 +652,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 8.4.1.  kamaji make BETA_exercise.output.grade
 8.4.1.1. Exit Status 1!
 8.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -660,19 +660,19 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |echo "BETA_exercise.output.grade" > Working/.kamaji.last_target.text
     |# GT Working/.kamaji.sed.composit.sed does not exist
     |kamaji make .kamaji.sed.composit.sed
-    |mv .kamaji.sed.composit.sed.pid_%PID%.partial.text .kamaji.sed.composit.sed
+    |mv .kamaji.sed.composit.sed.%DATE-TIME-PID%.partial.text .kamaji.sed.composit.sed
     |# GT Working/BETA_exercise.output does not exist
     |kamaji make BETA_exercise.output
-    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.pid_%PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.pid_%PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,pid_%PID%,pid_%PID%,g' BETA_exercise.output.pid_%PID%.partial.text
-    |mv BETA_exercise.output.pid_%PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.pid_%PID%.partial.text.time.text
-    |cat BETA_exercise.output.pid_%PID%.partial.text.time.text >> BETA_exercise.output.time.text
-    |rm  BETA_exercise.output.pid_%PID%.partial.text.time.text
+    |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
+    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
+    |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
+    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
+    |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
     |kamaji make BETA_exercise.output.masked
-    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.pid_%PID%.partial.text 2>&1
-    |mv BETA_exercise.output.masked.pid_%PID%.partial.text BETA_exercise.output.masked
+    |sed --file=.kamaji.sed.composit.sed BETA_exercise.output > BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text 2>&1
+    |mv BETA_exercise.output.masked.%DATE-TIME-PID%.partial.text BETA_exercise.output.masked
     |# GT Working/BETA_exercise.output.delta does not exist
     |kamaji make BETA_exercise.output.delta
     |cp BETA_exercise.output.masked BETA_exercise.output.delta
@@ -691,7 +691,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
     |#
     |#  User request:  kamaji make BETA_exercise.output.grade
     |#
-    |#  Date and time: 2021-05-30 at 13:48:08
+    |#  Date and time: 2021-05-30 at 17:02:51
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -723,7 +723,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 9.2.3. spit .kamaji.conf time-output-format %C %x
 9.2.4. spit .kamaji.conf verbosity-level heavy
 9.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
-9.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_134804_962295/09.Working
+9.2.6. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.04.script_exercise_processing.clutr.20210530_170248_1184866/09.Working
 9.3. Initial Workspace contains 3 files...
     |.kamaji.conf
     |Testing
@@ -747,7 +747,7 @@ CLUT Source File: kamaji.04.script_exercise_processing.clut (9 cases)
 9.4.1.  kamaji make BETA_exercise.nonsense
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash

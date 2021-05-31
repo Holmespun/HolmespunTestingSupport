@@ -170,11 +170,11 @@ source $(whereHolmespunLibraryBashing)/Library/spit_spite_spitn_and_spew.bash
 
 declare -r __KamajiIfsOriginal="${IFS}"
 
-declare -r __KamajiPartialSuffix="pid_$$.partial.text"
-
 declare -r __KamajiUserRequest="${*}"
 
 declare -r __KamajiDatStamp=$(date '+%Y%m%d_%H%M%S')
+
+declare -r __KamajiPartialSuffix="${__KamajiDatStamp}_$$.partial.text"
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -185,7 +185,9 @@ declare -r __KamajiConfigurationFName=.${__KamajiScriptFRoot}.conf
 declare -r __KamajiMaskingScriptFName=.${__KamajiScriptFRoot}.sed
 declare -r __KamajiXtraDependentFName=.${__KamajiScriptFRoot}.deps
 
-declare -r __KamajiConfigLogFSpec=$(mktemp --dry-run -t ${__KamajiConfigurationFName}_${__KamajiDatStamp}_$$_XXXX.text)
+declare -r __KamajiConfigLogFForm=${__KamajiConfigurationFName}_${__KamajiDatStamp}_XXXXXX_${__KamajiPartialSuffix}
+
+declare -r __KamajiConfigLogFSpec=$(mktemp --dry-run -t ${__KamajiConfigLogFForm})
 
 declare -r __KamajiMakefileFName=.${__KamajiScriptFRoot}.make
 
@@ -1250,13 +1252,15 @@ function KamajiConfigurationLoadValues() {
      #
      [ "${EnvMaskSuffix}" = "${EnvMaskMarker}" ] && EnvMaskSuffix=
      #
+     local -r PartialFormat="%DATE-TIME-PID%.partial.text"
+     #
      __KamajiEnvironmentMasking+=" --expression='s,${WorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,${HOME},${EnvMaskPrefix}HOME${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,${USER},${EnvMaskPrefix}USER${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,${LOGNAME},${EnvMaskPrefix}LOGNAME${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,$(uname -n),${EnvMaskPrefix}HOSTNAME${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,\<$(date '+%Z')\>,${EnvMaskPrefix}TIMEZONE${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,pid_$$,pid_${EnvMaskPrefix}PID${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,${__KamajiPartialSuffix},${PartialFormat},g'"
      #
   fi
   #
@@ -2859,23 +2863,23 @@ function KamajiRequestExport_makefile() {
      spit  ${MakefileFName} ".PHONY: ${__KamajiScriptFName}-output ${__KamajiScriptFName}-last"
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "${__KamajiScriptFName}-grade : \$(KamajiGradeTargetList)"
-     spite ${MakefileFName} "\t@echo \"make \$@\""
+#    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast grade"
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "${__KamajiScriptFName}-delta : \$(KamajiDeltaTargetList)"
-     spite ${MakefileFName} "\t@echo \"make \$@\""
+#    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast delta"
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "${__KamajiScriptFName}-output : \$(KamajiOutputTargetList)"
-     spite ${MakefileFName} "\t@echo \"make \$@\""
+#    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast invoke"
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "${__KamajiScriptFName}-last :"
-     spite ${MakefileFName} "\t@echo \"make \$@\""
+#    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast make last"
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "${__KamajiWorkinDSpec}/${__KamajiRulesetFName} :"
-     spite ${MakefileFName} "\t@echo \"make \$@\""
+#    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast silent show version"
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "\$(KamajiOutputTargetList) : | ${__KamajiWorkinDSpec}/${__KamajiRulesetFName}"
@@ -2954,7 +2958,7 @@ function KamajiRequestExport_makefile() {
        do
          #
          spit  ${MakefileFName} "${OutputLine}"
-         spite ${MakefileFName} "\t@echo \"${__KamajiScriptFName} make \$@\""
+#        spite ${MakefileFName} "\t@echo \"${__KamajiScriptFName} make \$@\""
          spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast make \$@"
          spit  ${MakefileFName}
          #
@@ -3485,7 +3489,8 @@ function KamajiMake_Output_from_Naked_Or_Script() {
   if [ ${#__KamajiTimeFormat} -gt 0 ]
   then
      #
-     EchoAndExecuteInWorkingStdout "echo \"#  ${__KamajiTimeFormat}\" >> ${TargetFName}.time.text"
+     EchoAndExecuteInWorkingStdout      \
+                "echo \"#  ${__KamajiTimeFormat}\" >> ${TargetFName%.${__KamajiPartialSuffix}}.time.text"
      #
      EchoAndExecuteInWorkingStdout "cat ${TargetFName}.time.text >> ${TargetFName%.${__KamajiPartialSuffix}}.time.text"
      #

@@ -19,7 +19,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 1.2.1. mkdir Testing
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf verbosity-level heavy
-1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/01.Working
+1.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/01.Working
 1.2.5. create_production_script_alpha ALPHA.bash
 1.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 1.3. Initial Workspace contains 4 files...
@@ -59,15 +59,15 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 1.4.1.  kamaji export ruleset RULESET.text
 1.4.1.1. Exit Status 0!
 1.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |kamaji export ruleset RULESET.text
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
-    |cp .kamaji.ruleset.bash %WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/01.Working/RULESET.text
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
+    |cp .kamaji.ruleset.bash %WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/01.Working/RULESET.text
 1.5. Finalizations.
 1.6. Workspace Impact...
     |Only in 01.Omega: RULESET.text
@@ -78,7 +78,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset RULESET.text
     |#
-    |#  Date and time: 2021-05-30 at 13:46:36
+    |#  Date and time: 2021-05-30 at 17:02:48
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -138,7 +138,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset RULESET.text
     |#
-    |#  Date and time: 2021-05-30 at 13:46:36
+    |#  Date and time: 2021-05-30 at 17:02:48
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -203,7 +203,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 2.2.1. mkdir Testing
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf verbosity-level heavy
-2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/02.Working
+2.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/02.Working
 2.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -227,13 +227,13 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 2.4.1.  kamaji expo ruleset /dev/stdout
 2.4.1.1. Exit Status 0!
 2.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |kamaji export ruleset /dev/stdout
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
     |cat .kamaji.ruleset.bash > /dev/stdout 2>&1
 2.4.1.3. STDOUT [text]...
     |#
@@ -241,7 +241,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji expo ruleset /dev/stdout
     |#
-    |#  Date and time: 2021-05-30 at 13:46:36
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -295,7 +295,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji expo ruleset /dev/stdout
     |#
-    |#  Date and time: 2021-05-30 at 13:46:36
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -350,7 +350,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 3.2.1. mkdir Testing
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf verbosity-level heavy
-3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/03.Working
+3.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/03.Working
 3.2.5. create_exercise_compilable_alpha Testing/GAMMA_exercise.cpp
 3.3. Initial Workspace contains 3 files...
     |.kamaji.conf
@@ -388,7 +388,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset /dev/stderr
     |#
-    |#  Date and time: 2021-05-30 at 13:46:36
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -446,7 +446,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset /dev/stderr
     |#
-    |#  Date and time: 2021-05-30 at 13:46:36
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -505,7 +505,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 4.2.1. mkdir Testing
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf verbosity-level heavy
-4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/04.Working
+4.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/04.Working
 4.2.5. create_production_script_alpha ALPHA.bash
 4.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 4.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -578,7 +578,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 4.4.1.  kamaji export ru /dev/null
 4.4.1.1. Exit Status 0!
 4.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
@@ -589,7 +589,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export ruleset /dev/null
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
     |cat .kamaji.ruleset.bash > /dev/null 2>&1
 4.5. Finalizations.
 4.6. Workspace Impact...
@@ -601,7 +601,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ru /dev/null
     |#
-    |#  Date and time: 2021-05-30 at 13:46:37
+    |#  Date and time: 2021-05-30 at 17:02:49
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -707,7 +707,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 5.2.1. mkdir Testing
 5.2.2. spit .kamaji.conf baseline-folder Testing
 5.2.3. spit .kamaji.conf verbosity-level heavy
-5.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/05.Working
+5.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/05.Working
 5.2.5. create_production_script_alpha ALPHA.bash
 5.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 5.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -780,14 +780,14 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 5.4.1.  kamaji fast make GAMMA_exercise
 5.4.1.1. Exit Status 0!
 5.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
     |#    Testing/BETA_exercise.bash
     |#    Testing/GAMMA_exercise.cpp
     |kamaji export ruleset 
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
     |ln --symbolic ../ALPHA.bash ALPHA.bash
     |ln --symbolic ../Testing/ALPHA.clut ALPHA.clut
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
@@ -810,7 +810,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji fast make GAMMA_exercise
     |#
-    |#  Date and time: 2021-05-30 at 13:46:37
+    |#  Date and time: 2021-05-30 at 17:02:50
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -918,7 +918,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 6.2.1. mkdir Testing
 6.2.2. spit .kamaji.conf baseline-folder Testing
 6.2.3. spit .kamaji.conf verbosity-level heavy
-6.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/06.Working
+6.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/06.Working
 6.2.5. create_production_script_alpha ALPHA.bash
 6.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
 6.2.7. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -926,7 +926,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 6.2.9. kamaji export ruleset
 6.2.9.1. Exit Status 0!
 6.2.9.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/ALPHA.clut
@@ -937,7 +937,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/GAMMA_exercise.cpp GAMMA_exercise.cpp
     |kamaji export ruleset 
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
 6.3. Initial Workspace contains 13 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -1016,7 +1016,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset
     |#
-    |#  Date and time: 2021-05-30 at 13:46:38
+    |#  Date and time: 2021-05-30 at 17:02:50
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1141,7 +1141,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 7.2.1. mkdir Testing
 7.2.2. spit .kamaji.conf baseline-folder Testing
 7.2.3. spit .kamaji.conf verbosity-level heavy
-7.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/07.Working
+7.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/07.Working
 7.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 7.2.6. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
 7.2.7. spit .kamaji.conf data-extension-list text
@@ -1175,7 +1175,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 7.4.1.  kamaji export ruleset
 7.4.1.1. Exit Status 0!
 7.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -1183,7 +1183,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.text BETA_exercise.text
     |kamaji export ruleset 
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
 7.5. Finalizations.
 7.6. Workspace Impact...
     |Only in 07.Omega: Working
@@ -1194,7 +1194,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset
     |#
-    |#  Date and time: 2021-05-30 at 13:46:38
+    |#  Date and time: 2021-05-30 at 17:02:51
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1255,7 +1255,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 8.2.1. mkdir Testing
 8.2.2. spit .kamaji.conf baseline-folder Testing
 8.2.3. spit .kamaji.conf verbosity-level heavy
-8.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/08.Working
+8.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/08.Working
 8.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 8.2.6. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
 8.2.7. spit .kamaji.conf data-extension-list text
@@ -1289,7 +1289,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 8.4.1.  kamaji export ruleset
 8.4.1.1. Exit Status 0!
 8.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -1297,7 +1297,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ln --symbolic ../Testing/BETA_exercise.bash BETA_exercise.bash
     |ln --symbolic ../Testing/BETA_exercise.text BETA_exercise.text
     |kamaji export ruleset 
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
 8.5. Finalizations.
 8.6. Workspace Impact...
     |Only in 08.Omega: Working
@@ -1308,7 +1308,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset
     |#
-    |#  Date and time: 2021-05-30 at 13:46:39
+    |#  Date and time: 2021-05-30 at 17:02:51
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1369,7 +1369,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 9.2.1. mkdir Testing
 9.2.2. spit .kamaji.conf baseline-folder Testing
 9.2.3. spit .kamaji.conf verbosity-level heavy
-9.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/09.Working
+9.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/09.Working
 9.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 9.2.6. spit Testing/BETA_exercise.text Just some data that BETA depends upon.
 9.2.7. spit .kamaji.conf data-extension-list text
@@ -1403,7 +1403,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 9.4.1.  kamaji export ruleset
 9.4.1.1. Exit Status 1!
 9.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -1423,7 +1423,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 10.2.1. mkdir Testing
 10.2.2. spit .kamaji.conf baseline-folder Testing
 10.2.3. spit .kamaji.conf verbosity-level heavy
-10.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/10.Working
+10.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/10.Working
 10.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 10.2.6. spit Testing/THETA_library.bash A script that BETA depends upon.
 10.2.7. spit Testing/THETA_library.text Some data that THETA depends upon.
@@ -1465,7 +1465,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 10.4.1.  kamaji export ruleset
 10.4.1.1. Exit Status 0!
 10.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
@@ -1475,7 +1475,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |ln --symbolic ../Testing/THETA_library.bash THETA_library.bash
     |ln --symbolic ../Testing/THETA_library.text THETA_library.text
     |kamaji export ruleset 
-    |mv .kamaji.ruleset.bash.pid_%PID%.partial.text .kamaji.ruleset.bash
+    |mv .kamaji.ruleset.bash.%DATE-TIME-PID%.partial.text .kamaji.ruleset.bash
 10.5. Finalizations.
 10.6. Workspace Impact...
     |Only in 10.Omega: Working
@@ -1486,7 +1486,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
     |#
     |#  User request:  kamaji export ruleset
     |#
-    |#  Date and time: 2021-05-30 at 13:46:39
+    |#  Date and time: 2021-05-30 at 17:02:52
     |#
     |#  __KamajiBaseSourceList[TargetFName]="SourceFName": What recipe should I follow given FName as a target?
     |#  __KamajiClassifiedList[TargetPhony]="SourceFName...": What files are direct sources of this target?
@@ -1552,7 +1552,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 11.2.1. mkdir Testing
 11.2.2. spit .kamaji.conf baseline-folder Testing
 11.2.3. spit .kamaji.conf verbosity-level heavy
-11.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_134635_913170/11.Working
+11.2.4. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.06.export_ruleset.clutr.20210530_170248_1185075/11.Working
 11.2.5. create_exercise_script_alpha Testing/BETA_exercise.bash
 11.2.6. spit Testing/ZETA_library.bash A script that nothing depends upon.
 11.2.7. spit Testing/ZETA_library.text Some data that ZETA depends upon.
@@ -1592,7 +1592,7 @@ CLUT Source File: kamaji.06.export_ruleset.clut (11 cases)
 11.4.1.  kamaji export ruleset
 11.4.1.1. Exit Status 1!
 11.4.1.2. STDERR [text]...
-    |mv .kamaji.sed.filelist.text.pid_%PID%.partial.text .kamaji.sed.filelist.text
+    |mv .kamaji.sed.filelist.text.%DATE-TIME-PID%.partial.text .kamaji.sed.filelist.text
     |# Building rules based on baseline files...
     |find -L Testing -type f
     |#    Testing/BETA_exercise.bash
