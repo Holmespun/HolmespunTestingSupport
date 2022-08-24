@@ -621,9 +621,9 @@ function __clutCaseRunTimeExecute() {
      if [ ${#StandardInputFSpec} -gt 0 ]
      then
         #
-        clutCaseRunTimeReport 2 "${CommandToExecute} <<< ${StandardInputFSpec}"
+        clutCaseRunTimeReport 2 "${CommandToExecute} <<< $(cat ${StandardInputFSpec})"
         #
-        eval ${CommandToExecute} <<< ${StandardInputFSpec}
+        eval ${CommandToExecute} <<< $(cat ${StandardInputFSpec})
         #
         ExitStatus=${?}
         #
@@ -644,9 +644,9 @@ function __clutCaseRunTimeExecute() {
      if [ ${#StandardInputFSpec} -gt 0 ]
      then
         #
-        clutCaseRunTimeReport 2 "${CommandToExecute} <<< ${StandardInputFSpec}"
+        clutCaseRunTimeReport 2 "${CommandToExecute} <<< $(cat ${StandardInputFSpec})"
         #
-        eval ${CommandToExecute} <<< ${StandardInputFSpec}	> ${StandardOutputFSpec} 2> ${StandardErrorsFSpec}
+        eval ${CommandToExecute} <<< $(cat ${StandardInputFSpec}) > ${StandardOutputFSpec} 2> ${StandardErrorsFSpec}
         #
         ExitStatus=${?}
         #

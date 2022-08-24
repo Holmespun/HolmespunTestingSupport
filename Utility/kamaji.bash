@@ -130,6 +130,7 @@
 #  20210526 BGH; data class defined.
 #  20210526 BGH; sed masking scripts treated same as configuration files, mask-sed-script configuration item removed.
 #  20210528 BGH; removed makefile-filename and ruleset-filename configuration variables.
+#  20210601 BGH; removed last-target-filename.
 #
 #  Problems detected when the representative of a script is called: The files it sources are  not in the same relative
 #  hierarchy as the symbolic link. Created a Bash script representative that worked very well, but a Bash script
@@ -183,6 +184,7 @@ declare -r __KamajiScriptFRoot=${__KamajiScriptFName%%.*}
 
 declare -r __KamajiConfigurationFName=.${__KamajiScriptFRoot}.conf
 declare -r __KamajiMaskingScriptFName=.${__KamajiScriptFRoot}.sed
+declare -r __KamajiLastTargetWasFName=.${__KamajiScriptFRoot}.last_target.text
 declare -r __KamajiXtraDependentFName=.${__KamajiScriptFRoot}.deps
 
 declare -r __KamajiConfigLogFForm=${__KamajiConfigurationFName}_${__KamajiDatStamp}_XXXXXX_${__KamajiPartialSuffix}
@@ -211,7 +213,7 @@ declare    __KamajiEnvironmentMasking="TBD"
 
 declare    __KamajiGoldenDSpec="TBD"
 
-declare    __KamajiLastMakeTargetFSpec="TBD"
+declare    __KamajiLastTargetWasFSpec="TBD"
 
 declare    __KamajiMalleableConfigFSpec="TBD"
 
@@ -1114,8 +1116,6 @@ function KamajiConfigurationCheckValues() {
      #
   else
      #
-     rm ${__KamajiWorkinDSpec}/${__KamajiSedFileListFName}.${__KamajiPartialSuffix}
-     #
      for ItemOfSedFSpec in ${ListOfSedFSpec}
      do
        #
@@ -1124,16 +1124,15 @@ function KamajiConfigurationCheckValues() {
           #
           #  The composit must be rebuilt because one of its sources has changed.
           #
-          #  __KamajiMyParentalList[TargetFName]="SourceFName...": What files are direct sources of this target?
-          #
-#TODO: NO. This will be put into the ruleset.
-          AppendArrayIndexValue __KamajiMyParentalList "${__KamajiSedCompositFName}" " ${ItemOfSedFSpec}"
+          PublishWorkingFile ${__KamajiSedFileListFName}.${__KamajiPartialSuffix}
           #
           break
           #
        fi
        #
      done
+     #
+     rm --force ${__KamajiWorkinDSpec}/${__KamajiSedFileListFName}.${__KamajiPartialSuffix}
      #
   fi
   #
@@ -1171,14 +1170,13 @@ function KamajiConfigurationLoadValues() {
   __KamajiConfigurationDefault["data-filename-list"]=
   __KamajiConfigurationDefault["environment-masking"]="% %"
   __KamajiConfigurationDefault["find-expression-list"]=
-  __KamajiConfigurationDefault["last-target-filename"]="${__KamajiConfigurationFName%.*}.last_target.text"
-  __KamajiConfigurationDefault["long-review-command"]="vimdiff -R"
+  __KamajiConfigurationDefault["long-review-command"]="vimdiff -R -c 'set diffopt+=iwhite'"
   __KamajiConfigurationDefault["long-review-line-count"]=51
   __KamajiConfigurationDefault["long-review-tailpipe"]=
   __KamajiConfigurationDefault["new-review-command"]="cat --number"
   __KamajiConfigurationDefault["new-review-tailpipe"]=
   __KamajiConfigurationDefault["script-type-list"]="bash sh py rb"
-  __KamajiConfigurationDefault["short-review-command"]="diff"
+  __KamajiConfigurationDefault["short-review-command"]="diff --ignore-space-change"
   __KamajiConfigurationDefault["short-review-tailpipe"]=
   __KamajiConfigurationDefault["time-output-format"]="NONE"
   __KamajiConfigurationDefault["verbosity-level"]="quiet"
@@ -1302,7 +1300,7 @@ function KamajiConfigurationLoadValues() {
   #
   __KamajiScriptExtensionList=":${__KamajiScriptExtensionList// /:}:"
   #
-  __KamajiLastMakeTargetFSpec=${__KamajiWorkinDSpec}/$(KamajiConfigurationEchoValue last-target-filename)
+  __KamajiLastTargetWasFSpec=${__KamajiWorkinDSpec}/${__KamajiLastTargetWasFName}
   #
 }
   
@@ -1507,10 +1505,6 @@ function KamajiModifierUsage_configure() {
                 "'-name \"W*\" -prune -o -path ./.git -prune -o -print'"                                        \
                 "instructs find to ignore files that start with the capital letter W,"                          \
                 "and any files in the ./.git subdirectory."
-  #
-  EchoPara80-4  "last-target-filename <filename> -"                                                             \
-                "The name of the file in which the filename of the last make target is stored;"                 \
-                "the file is stored in the working-folder."
   #
   EchoPara80-4  "long-review-command <command> -"                                                               \
                 "The command used to perform a long review."                                                    \
@@ -2669,9 +2663,9 @@ function KamajiRequestBless() {
           #
           #  Use the last target as the target here.
           #
-          [ -e ${__KamajiLastMakeTargetFSpec} ] || continue
+          [ -e ${__KamajiLastTargetWasFSpec} ] || continue
           #
-          SourceFName=$(cat ${__KamajiLastMakeTargetFSpec})
+          SourceFName=$(cat ${__KamajiLastTargetWasFSpec})
           #
        elif [ "${__KamajiBaseSourceList[${SourceFName}]+IS_SET}" != "IS_SET" ]
        then
@@ -2698,7 +2692,7 @@ function KamajiRequestBless() {
        #
        ${__KamajiDiagnosticLight} "${__KamajiScriptFName} ${Request} ${TargetFName%.review}"
        #
-       EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastMakeTargetFSpec}"
+       EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastTargetWasFSpec}"
        #
        #  Determine the golden output file associated with this output.
        #
@@ -3090,9 +3084,9 @@ function KamajiRequestGradeOrOutputOrReviewOrDelta() {
           #
           #  Use the last target as the target here.
           #
-          [ -e ${__KamajiLastMakeTargetFSpec} ] || continue
+          [ -e ${__KamajiLastTargetWasFSpec} ] || continue
           #
-          SourceFName=$(cat ${__KamajiLastMakeTargetFSpec})
+          SourceFName=$(cat ${__KamajiLastTargetWasFSpec})
           #
        fi
        #
@@ -3118,7 +3112,7 @@ function KamajiRequestGradeOrOutputOrReviewOrDelta() {
     #
     #  Save the target name to support the next "make last" request.
     #
-    EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastMakeTargetFSpec}"
+    EchoAndExecute "echo \"${TargetFName}\" > ${__KamajiLastTargetWasFSpec}"
     #
     #  Call for the target to be made.
     #
@@ -3176,9 +3170,9 @@ function KamajiRequestMake() {
        if [ ${#GivnSourceFLast} -eq 0 ]
        then
           #
-          [ -e ${__KamajiLastMakeTargetFSpec} ] || continue
+          [ -e ${__KamajiLastTargetWasFSpec} ] || continue
           #
-          GivnSourceFLast=$(cat ${__KamajiLastMakeTargetFSpec})
+          GivnSourceFLast=$(cat ${__KamajiLastTargetWasFSpec})
           #
        fi
        #
@@ -3213,7 +3207,7 @@ function KamajiRequestMake() {
        #
        GivnSourceFLast=${Target}
        #
-       EchoAndExecute "echo \"${GivnSourceFLast}\" > ${__KamajiLastMakeTargetFSpec}"
+       EchoAndExecute "echo \"${GivnSourceFLast}\" > ${__KamajiLastTargetWasFSpec}"
        #
     fi
     #

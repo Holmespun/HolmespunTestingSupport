@@ -132,7 +132,7 @@ function __clutCaseRunTimeDumpImageFile() {
   #
 # local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
   #
-  echo "<meta> Image file:$(file ${TargetFSpec} | sed --expression='s,.*:,,')."
+  echo "<meta> Binary-format image file:$(file ${TargetFSpec} | sed --expression='s,.*:,,')."
   #
 # echo "<meta> The file has an md5sum of ${Checksum}."
   #
@@ -349,18 +349,21 @@ function __clutCaseRunTimeDumpZip() {
 
 function clutFileRunTimeDumpFormatRegistrationStandard() {
   #
+  clutFileRunTimeDumpFormatRegistration	AUX		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	BASH		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	C		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	C++		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CC		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CHANGES		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CLUT		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	CODE		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CONF		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CPP		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CSS		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	CSV		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	DELTA		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	DIFF		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	DUMP		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	FA		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	FAI		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	FASTA		__clutCaseRunTimeDumpTextPlain
@@ -372,9 +375,11 @@ function clutFileRunTimeDumpFormatRegistrationStandard() {
   clutFileRunTimeDumpFormatRegistration	HMMCPP		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	HMMHPP		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	HPP		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	HTM		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	HTML		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	JS		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	JSON		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	LATEX		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	LOG		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	MAKE		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	MAKEFILE	__clutCaseRunTimeDumpTextPlain
@@ -385,6 +390,7 @@ function clutFileRunTimeDumpFormatRegistrationStandard() {
   clutFileRunTimeDumpFormatRegistration	SECONDS		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	SED		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	SH		__clutCaseRunTimeDumpTextPlain
+  clutFileRunTimeDumpFormatRegistration	TEX		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	TEXT		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	TXT		__clutCaseRunTimeDumpTextPlain
   clutFileRunTimeDumpFormatRegistration	XML		__clutCaseRunTimeDumpTextPlain

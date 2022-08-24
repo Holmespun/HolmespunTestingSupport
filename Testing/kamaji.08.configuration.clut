@@ -45,7 +45,7 @@ function create_complete_configuration_file() {
   spit ${FSpec} "data-extension-list     BRAVO"
   spit ${FSpec} "data-filename-list      CHARLIE"
   spit ${FSpec} "find-expression-list    -name UNIFORM"
-  spit ${FSpec} "last-target-filename    DELTA"
+# spit ${FSpec} "last-target-filename    DELTA"
 # spit ${FSpec} "makefile-filename       ECHO"
 # spit ${FSpec} "mask-sed-script         FOXTROT"
 # spit ${FSpec} "ruleset-filename        INDIA"
@@ -134,9 +134,10 @@ function testCaseDefinitionsOriginal() {
     #
     clut_case_name		SetConfiguration_${VariableNameItem}
     #
-    if [ "${VariableNameItem}" = "makefile-filename" ] \
-    || [ "${VariableNameItem}" = "mask-sed-script"   ] \
-    || [ "${VariableNameItem}" = "ruleset-filename"  ]
+    if [ "${VariableNameItem}" = "last-target-filename" ] \
+    || [ "${VariableNameItem}" = "makefile-filename"    ] \
+    || [ "${VariableNameItem}" = "mask-sed-script"      ] \
+    || [ "${VariableNameItem}" = "ruleset-filename"     ]
     then
        clut_case_disable "The ${VariableNameItem} configuration variable is no longer supported."
     fi

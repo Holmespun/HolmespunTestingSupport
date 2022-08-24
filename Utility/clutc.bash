@@ -1122,6 +1122,15 @@ function clut_case_initialize() {
 function clut_case_initializer() { clut_case_initialize ${*}; }
  
 #----------------------------------------------------------------------------------------------------------------------
+
+function clut_case_initializesc() {
+  #
+  clut_case_initialize $(echo "${*}" | sed --expression="s,',\\\\\\\\\\\',g"    \
+                                           --expression="s,<,\\\\\\\\\\\<,g" --expression="s,>,\\\\\\\\\\\>,g")
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
 ###
 ###  @fn	clut_case_name
 ###  @param	Name	The name of the new test case.
@@ -1157,6 +1166,8 @@ function clut_case_parameter() {
   __ClutCaseParameterList="${__ClutCaseParameterList} ${*}"
   #
 }
+
+function clut_case_option() { clut_case_parameter ${*}; }
 
 #----------------------------------------------------------------------------------------------------------------------
 ###

@@ -20,7 +20,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 1.2.2. spit .kamaji.conf baseline-folder Testing
 1.2.3. spit .kamaji.conf time-output-format %C %x
 1.2.4. spit .kamaji.conf verbosity-level heavy
-1.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/01.Working
+1.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210601_191040_887067/01.Working
 1.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 1.2.7. spit .kamaji.conf new-review-command cat --number --show-ends
 1.3. Initial Workspace contains 3 files...
@@ -61,7 +61,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
     |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> BETA_exercise.output.time.text
     |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
     |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
@@ -98,7 +98,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#  User request:  kamaji review
     |#
-    |#  Date and time: 2021-05-30 at 17:02:48
+    |#  Date and time: 2021-06-01 at 19:10:40
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -119,8 +119,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC2: I miss Morbo.
 1.6.1.8. BETA_exercise.output.reviewed is empty.
 1.6.1.9. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
     |#  %C %x
+    |./BETA_exercise.bash 0
 
 2. Review_Match.
 2.1. Requirements.
@@ -130,7 +130,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 2.2.2. spit .kamaji.conf baseline-folder Testing
 2.2.3. spit .kamaji.conf time-output-format %C %x
 2.2.4. spit .kamaji.conf verbosity-level heavy
-2.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/02.Working
+2.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210601_191040_887067/02.Working
 2.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 2.2.7. spit Testing/BETA_exercise.output TC1: Good news, everyone!
 2.2.8. spit Testing/BETA_exercise.output TC2: I miss Morbo.
@@ -182,7 +182,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
     |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> BETA_exercise.output.time.text
     |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
     |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
@@ -218,7 +218,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#  User request:  kamaji review
     |#
-    |#  Date and time: 2021-05-30 at 17:02:49
+    |#  Date and time: 2021-06-01 at 19:10:41
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -240,8 +240,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC1: Good news, everyone!
     |TC2: I miss Morbo.
 2.6.1.10. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
     |#  %C %x
+    |./BETA_exercise.bash 0
 
 3. Review_Short.
 3.1. Requirements.
@@ -251,7 +251,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 3.2.2. spit .kamaji.conf baseline-folder Testing
 3.2.3. spit .kamaji.conf time-output-format %C %x
 3.2.4. spit .kamaji.conf verbosity-level heavy
-3.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/03.Working
+3.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210601_191040_887067/03.Working
 3.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 3.2.7. spit .kamaji.conf short-review-command diff --side-by-side --width=74
 3.2.8. spit Testing/BETA_exercise.output TC1: Good news, everyone!
@@ -305,7 +305,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
     |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> BETA_exercise.output.time.text
     |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
     |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
@@ -346,7 +346,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#  User request:  kamaji review
     |#
-    |#  Date and time: 2021-05-30 at 17:02:49
+    |#  Date and time: 2021-06-01 at 19:10:42
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -373,8 +373,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC2: I miss Morbo.
 3.6.1.10. BETA_exercise.output.reviewed is empty.
 3.6.1.11. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
     |#  %C %x
+    |./BETA_exercise.bash 0
 
 4. Review_Long.
 4.1. Requirements.
@@ -384,7 +384,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 4.2.2. spit .kamaji.conf baseline-folder Testing
 4.2.3. spit .kamaji.conf time-output-format %C %x
 4.2.4. spit .kamaji.conf verbosity-level heavy
-4.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/04.Working
+4.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210601_191040_887067/04.Working
 4.2.6. create_exercise_script_alpha Testing/BETA_exercise.bash
 4.2.7. spit .kamaji.conf long-review-line-count 2
 4.2.8. spit .kamaji.conf long-review-command diff
@@ -440,7 +440,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
     |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> BETA_exercise.output.time.text
     |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
     |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
@@ -483,7 +483,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#  User request:  kamaji review
     |#
-    |#  Date and time: 2021-05-30 at 17:02:50
+    |#  Date and time: 2021-06-01 at 19:10:42
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -510,8 +510,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC2: I miss Morbo.
 4.6.1.10. BETA_exercise.output.reviewed is empty.
 4.6.1.11. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
     |#  %C %x
+    |./BETA_exercise.bash 0
 
 5. Review_all_together_now.
 5.1. Requirements.
@@ -521,7 +521,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
 5.2.2. spit .kamaji.conf baseline-folder Testing
 5.2.3. spit .kamaji.conf time-output-format %C %x
 5.2.4. spit .kamaji.conf verbosity-level heavy
-5.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/05.Working
+5.2.5. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.09.review.clutr.20210601_191040_887067/05.Working
 5.2.6. create_production_script_alpha ALPHA.bash
 5.2.7. create_production_script_alpha_clut Testing/ALPHA.clut
 5.2.8. create_exercise_script_alpha Testing/BETA_exercise.bash
@@ -646,7 +646,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=GAMMA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./GAMMA_exercise > GAMMA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' GAMMA_exercise.output.%DATE-TIME-PID%.partial.text
     |mv GAMMA_exercise.output.%DATE-TIME-PID%.partial.text GAMMA_exercise.output
-    |echo "#  %C %x" >> GAMMA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> GAMMA_exercise.output.time.text
     |cat GAMMA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> GAMMA_exercise.output.time.text
     |rm  GAMMA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/GAMMA_exercise.output.masked does not exist
@@ -685,7 +685,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text ./BETA_exercise.bash > BETA_exercise.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' BETA_exercise.output.%DATE-TIME-PID%.partial.text
     |mv BETA_exercise.output.%DATE-TIME-PID%.partial.text BETA_exercise.output
-    |echo "#  %C %x" >> BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> BETA_exercise.output.time.text
     |cat BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text >> BETA_exercise.output.time.text
     |rm  BETA_exercise.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/BETA_exercise.output.masked does not exist
@@ -721,7 +721,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
     |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
-    |echo "#  %C %x" >> ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text
+    |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
     |rm  ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text
     |# GT Working/ALPHA.clut.output.masked does not exist
@@ -768,7 +768,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#  User request:  kamaji review
     |#
-    |#  Date and time: 2021-05-30 at 17:02:51
+    |#  Date and time: 2021-06-01 at 19:10:43
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -779,7 +779,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |
 5.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
 5.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-5.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210530_170251_1214987/00.compiled.bash
+5.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191044_921610/00.compiled.bash
 5.6.1.7. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -878,16 +878,16 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |CLUT Output Complete.
 5.6.1.10. ALPHA.clut.output.reviewed is empty.
 5.6.1.11. ALPHA.clut.output.time.text...
-    |./ALPHA.clut.bash 0
     |#  %C %x
-5.6.1.12. ALPHA.clutc.20210530_170251_1214987 contains 3 files.
+    |./ALPHA.clut.bash 0
+5.6.1.12. ALPHA.clutc.20210601_191044_921610 contains 3 files.
 5.6.1.12.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210530_170251_1214987/00.compiled.bash...
+    |#  ./ALPHA.clutc.20210601_191044_921610/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-05-30 at 17:02:51.
+    |#  Created by clutc on 2021-06-01 at 19:10:44.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -911,7 +911,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/05.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.09.review.clutr.20210601_191040_887067/05.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -1085,7 +1085,7 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.09.review.clutr.20210530_170248_1184440/05.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.09.review.clutr.20210601_191040_887067/05.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1318,8 +1318,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-5.6.1.13. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210530_170251_1215407
-5.6.1.14. ALPHA.clutr.20210530_170251_1215407 contains 2 files.
+5.6.1.13. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191044_922054
+5.6.1.14. ALPHA.clutr.20210601_191044_922054 contains 2 files.
 5.6.1.14.1. 01.Alpha is empty.
 5.6.1.14.2. 01.Omega is empty.
 5.6.1.15. BETA_exercise.bash is a symbolic link to ../Testing/BETA_exercise.bash
@@ -1340,8 +1340,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC2: I miss Morbo.
 5.6.1.21. BETA_exercise.output.reviewed is empty.
 5.6.1.22. BETA_exercise.output.time.text...
-    |./BETA_exercise.bash 0
     |#  %C %x
+    |./BETA_exercise.bash 0
 5.6.1.23. GAMMA_exercise...
     |This is an Executable and Linkable Format (ELF) file; a textual dump would contain non-deterministic data.
 5.6.1.24. GAMMA_exercise.cpp is a symbolic link to ../Testing/GAMMA_exercise.cpp
@@ -1364,8 +1364,8 @@ CLUT Source File: kamaji.09.review.clut (5 cases)
     |TC2: Now I gotta whatchacallit instead of a kajigger, you stupid whatchacallit!
 5.6.1.30. GAMMA_exercise.output.reviewed is empty.
 5.6.1.31. GAMMA_exercise.output.time.text...
-    |./GAMMA_exercise 0
     |#  %C %x
+    |./GAMMA_exercise 0
 
 CLUT Source File: kamaji.09.review.clut (5 cases)
 CLUT Output Format Version: 5.5
