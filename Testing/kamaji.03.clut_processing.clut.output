@@ -22,7 +22,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 1.2.4. spit .kamaji.conf verbosity-level heavy
 1.2.5. create_production_script_alpha ALPHA.bash
 1.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-1.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/01.Working
+1.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/01.Working
 1.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -77,7 +77,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
+    |sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
     |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
@@ -104,7 +104,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#  User request:  kamaji grades
     |#
-    |#  Date and time: 2021-06-01 at 19:10:40
+    |#  Date and time: 2022-09-04 at 13:44:54
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -115,7 +115,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 1.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
 1.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-1.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191040_891509/00.compiled.bash
+1.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134454_1188907/00.compiled.bash
 1.6.1.7. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -215,14 +215,14 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 1.6.1.10. ALPHA.clut.output.time.text...
     |#  %C %x
     |./ALPHA.clut.bash 0
-1.6.1.11. ALPHA.clutc.20210601_191040_891509 contains 3 files.
+1.6.1.11. ALPHA.clutc.20220904_134454_1188907 contains 3 files.
 1.6.1.11.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191040_891509/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134454_1188907/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:40.
+    |#  Created by clutc on 2022-09-04 at 13:44:54.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -246,7 +246,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/01.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/01.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -420,7 +420,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/01.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/01.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -653,8 +653,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-1.6.1.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191041_892399
-1.6.1.13. ALPHA.clutr.20210601_191041_892399 contains 2 files.
+1.6.1.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20220904_134454_1190120
+1.6.1.13. ALPHA.clutr.20220904_134454_1190120 contains 2 files.
 1.6.1.13.1. 01.Alpha is empty.
 1.6.1.13.2. 01.Omega is empty.
 
@@ -668,7 +668,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 2.2.4. spit .kamaji.conf verbosity-level heavy
 2.2.5. create_production_script_alpha ALPHA.bash
 2.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-2.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/02.Working
+2.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/02.Working
 2.2.8. spit Testing/ALPHA.clut.output This is some bogus baseline output.
 2.3. Initial Workspace contains 5 files...
     |.kamaji.conf
@@ -734,7 +734,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
+    |sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
     |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
@@ -761,7 +761,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#  User request:  kamaji grades
     |#
-    |#  Date and time: 2021-06-01 at 19:10:41
+    |#  Date and time: 2022-09-04 at 13:44:55
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -772,7 +772,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 2.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
 2.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-2.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191041_899641/00.compiled.bash
+2.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134455_1199468/00.compiled.bash
 2.6.1.7. ALPHA.clut.golden is a symbolic link to ../Testing/ALPHA.clut.output
 2.6.1.8. ALPHA.clut.golden.masked...
     |This is some bogus baseline output.
@@ -878,14 +878,14 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 2.6.1.12. ALPHA.clut.output.time.text...
     |#  %C %x
     |./ALPHA.clut.bash 0
-2.6.1.13. ALPHA.clutc.20210601_191041_899641 contains 3 files.
+2.6.1.13. ALPHA.clutc.20220904_134455_1199468 contains 3 files.
 2.6.1.13.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191041_899641/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134455_1199468/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:41.
+    |#  Created by clutc on 2022-09-04 at 13:44:55.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -909,7 +909,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/02.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/02.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -1083,7 +1083,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/02.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/02.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1316,8 +1316,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-2.6.1.14. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191041_900510
-2.6.1.15. ALPHA.clutr.20210601_191041_900510 contains 2 files.
+2.6.1.14. ALPHA.clutr is a symbolic link to ALPHA.clutr.20220904_134455_1200475
+2.6.1.15. ALPHA.clutr.20220904_134455_1200475 contains 2 files.
 2.6.1.15.1. 01.Alpha is empty.
 2.6.1.15.2. 01.Omega is empty.
 
@@ -1331,7 +1331,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 3.2.4. spit .kamaji.conf verbosity-level heavy
 3.2.5. create_production_script_alpha ALPHA.bash
 3.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-3.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/03.Working
+3.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/03.Working
 3.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -1398,7 +1398,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 4.2.4. spit .kamaji.conf verbosity-level heavy
 4.2.5. create_production_script_alpha ALPHA.bash
 4.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-4.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/04.Working
+4.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/04.Working
 4.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -1457,15 +1457,15 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 4.6.1.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 4.6.1.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-4.6.1.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191042_908679/00.compiled.bash
-4.6.1.6. ALPHA.clutc.20210601_191042_908679 contains 3 files.
+4.6.1.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134456_1210221/00.compiled.bash
+4.6.1.6. ALPHA.clutc.20220904_134456_1210221 contains 3 files.
 4.6.1.6.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191042_908679/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134456_1210221/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:42.
+    |#  Created by clutc on 2022-09-04 at 13:44:56.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -1489,7 +1489,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/04.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/04.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -1663,7 +1663,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/04.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/04.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -1907,7 +1907,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 5.2.4. spit .kamaji.conf verbosity-level heavy
 5.2.5. create_production_script_alpha ALPHA.bash
 5.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-5.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/05.Working
+5.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/05.Working
 5.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -1959,7 +1959,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
+    |sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
     |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
@@ -1974,7 +1974,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 5.6.1.3. ALPHA.bash is a symbolic link to ../ALPHA.bash
 5.6.1.4. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-5.6.1.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191043_912852/00.compiled.bash
+5.6.1.5. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134457_1214605/00.compiled.bash
 5.6.1.6. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -2010,14 +2010,14 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 5.6.1.7. ALPHA.clut.output.time.text...
     |#  %C %x
     |./ALPHA.clut.bash 0
-5.6.1.8. ALPHA.clutc.20210601_191043_912852 contains 3 files.
+5.6.1.8. ALPHA.clutc.20220904_134457_1214605 contains 3 files.
 5.6.1.8.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191043_912852/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134457_1214605/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:43.
+    |#  Created by clutc on 2022-09-04 at 13:44:57.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -2041,7 +2041,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/05.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/05.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -2215,7 +2215,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/05.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/05.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -2448,8 +2448,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-5.6.1.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191043_913646
-5.6.1.10. ALPHA.clutr.20210601_191043_913646 contains 2 files.
+5.6.1.9. ALPHA.clutr is a symbolic link to ALPHA.clutr.20220904_134457_1215410
+5.6.1.10. ALPHA.clutr.20220904_134457_1215410 contains 2 files.
 5.6.1.10.1. 01.Alpha is empty.
 5.6.1.10.2. 01.Omega is empty.
 
@@ -2463,7 +2463,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 6.2.4. spit .kamaji.conf verbosity-level heavy
 6.2.5. create_production_script_alpha ALPHA.bash
 6.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-6.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/06.Working
+6.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/06.Working
 6.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -2518,7 +2518,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
+    |sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
     |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
@@ -2539,7 +2539,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#  User request:  kamaji make ALPHA.clut.output.masked
     |#
-    |#  Date and time: 2021-06-01 at 19:10:43
+    |#  Date and time: 2022-09-04 at 13:44:57
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -2550,7 +2550,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 6.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
 6.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-6.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191043_917779/00.compiled.bash
+6.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134457_1219536/00.compiled.bash
 6.6.1.7. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -2618,14 +2618,14 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 6.6.1.9. ALPHA.clut.output.time.text...
     |#  %C %x
     |./ALPHA.clut.bash 0
-6.6.1.10. ALPHA.clutc.20210601_191043_917779 contains 3 files.
+6.6.1.10. ALPHA.clutc.20220904_134457_1219536 contains 3 files.
 6.6.1.10.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191043_917779/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134457_1219536/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:43.
+    |#  Created by clutc on 2022-09-04 at 13:44:57.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -2649,7 +2649,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/06.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/06.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -2823,7 +2823,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/06.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/06.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -3056,8 +3056,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-6.6.1.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191043_918237
-6.6.1.12. ALPHA.clutr.20210601_191043_918237 contains 2 files.
+6.6.1.11. ALPHA.clutr is a symbolic link to ALPHA.clutr.20220904_134457_1219976
+6.6.1.12. ALPHA.clutr.20220904_134457_1219976 contains 2 files.
 6.6.1.12.1. 01.Alpha is empty.
 6.6.1.12.2. 01.Omega is empty.
 
@@ -3071,7 +3071,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 7.2.4. spit .kamaji.conf verbosity-level heavy
 7.2.5. create_production_script_alpha ALPHA.bash
 7.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-7.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/07.Working
+7.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/07.Working
 7.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -3126,7 +3126,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
+    |sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
     |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
@@ -3150,7 +3150,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#  User request:  kamaji make ALPHA.clut.output.delta
     |#
-    |#  Date and time: 2021-06-01 at 19:10:44
+    |#  Date and time: 2022-09-04 at 13:44:58
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -3161,7 +3161,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 7.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
 7.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-7.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191044_921823/00.compiled.bash
+7.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134458_1223457/00.compiled.bash
 7.6.1.7. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -3261,14 +3261,14 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 7.6.1.10. ALPHA.clut.output.time.text...
     |#  %C %x
     |./ALPHA.clut.bash 0
-7.6.1.11. ALPHA.clutc.20210601_191044_921823 contains 3 files.
+7.6.1.11. ALPHA.clutc.20220904_134458_1223457 contains 3 files.
 7.6.1.11.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191044_921823/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134458_1223457/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:44.
+    |#  Created by clutc on 2022-09-04 at 13:44:58.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -3292,7 +3292,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/07.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/07.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -3466,7 +3466,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/07.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/07.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -3699,8 +3699,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-7.6.1.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191044_922235
-7.6.1.13. ALPHA.clutr.20210601_191044_922235 contains 2 files.
+7.6.1.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20220904_134458_1223865
+7.6.1.13. ALPHA.clutr.20220904_134458_1223865 contains 2 files.
 7.6.1.13.1. 01.Alpha is empty.
 7.6.1.13.2. 01.Omega is empty.
 
@@ -3714,7 +3714,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 8.2.4. spit .kamaji.conf verbosity-level heavy
 8.2.5. create_production_script_alpha ALPHA.bash
 8.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-8.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/08.Working
+8.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/08.Working
 8.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash
@@ -3769,7 +3769,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |# GT Working/ALPHA.clut.output does not exist
     |kamaji make ALPHA.clut.output
     |/usr/bin/time --format='%C %x' --output=ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text ./ALPHA.clut.bash > ALPHA.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-    |sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
+    |sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' ALPHA.clut.output.%DATE-TIME-PID%.partial.text
     |mv ALPHA.clut.output.%DATE-TIME-PID%.partial.text ALPHA.clut.output
     |echo "#  %C %x" >> ALPHA.clut.output.time.text
     |cat ALPHA.clut.output.%DATE-TIME-PID%.partial.text.time.text >> ALPHA.clut.output.time.text
@@ -3796,7 +3796,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#  User request:  kamaji make ALPHA.clut.output.grade
     |#
-    |#  Date and time: 2021-06-01 at 19:10:44
+    |#  Date and time: 2022-09-04 at 13:44:58
     |#
     |#  The KAMAJI_CONFIG_BASE_DSPEC variable is being used to limit configuration file scope.
     |#
@@ -3807,7 +3807,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |
 8.6.1.4. ALPHA.bash is a symbolic link to ../ALPHA.bash
 8.6.1.5. ALPHA.clut is a symbolic link to ../Testing/ALPHA.clut
-8.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20210601_191044_924743/00.compiled.bash
+8.6.1.6. ALPHA.clut.bash is a symbolic link to ALPHA.clutc.20220904_134458_1226520/00.compiled.bash
 8.6.1.7. ALPHA.clut.output...
     |CLUT Output Begins...
     |CLUT Output Format Version: 5.5
@@ -3907,14 +3907,14 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 8.6.1.10. ALPHA.clut.output.time.text...
     |#  %C %x
     |./ALPHA.clut.bash 0
-8.6.1.11. ALPHA.clutc.20210601_191044_924743 contains 3 files.
+8.6.1.11. ALPHA.clutc.20220904_134458_1226520 contains 3 files.
 8.6.1.11.1. 00.compiled.bash...
     |#!/bin/bash
     |#----------------------------------------------------------------------------------------
     |#
-    |#  ./ALPHA.clutc.20210601_191044_924743/00.compiled.bash...
+    |#  ./ALPHA.clutc.20220904_134458_1226520/00.compiled.bash...
     |#
-    |#  Created by clutc on 2021-06-01 at 19:10:44.
+    |#  Created by clutc on 2022-09-04 at 13:44:58.
     |#
     |#  CLUT cases were defined in ALPHA.clut; there were 1 of them.
     |#
@@ -3938,7 +3938,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#----------------------------------------------------------------------------------------
     |
-    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/08.Working:${PATH}"
+    |export PATH="%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/08.Working:${PATH}"
     |
     |#----------------------------------------------------------------------------------------
     |#
@@ -4112,7 +4112,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |#
     |#-----------------------------------------------------------------------------------------
     |
-    |source %WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/08.Working/Working/ALPHA.clut
+    |source %WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/08.Working/Working/ALPHA.clut
     |
     |#---------------------------------------------------------------------------------------
     |
@@ -4345,8 +4345,8 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
     |  clutCaseRunTimeDescribeEnd 
     |  #
     |}
-8.6.1.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20210601_191044_924941
-8.6.1.13. ALPHA.clutr.20210601_191044_924941 contains 2 files.
+8.6.1.12. ALPHA.clutr is a symbolic link to ALPHA.clutr.20220904_134458_1226715
+8.6.1.13. ALPHA.clutr.20220904_134458_1226715 contains 2 files.
 8.6.1.13.1. 01.Alpha is empty.
 8.6.1.13.2. 01.Omega is empty.
 
@@ -4360,7 +4360,7 @@ CLUT Source File: kamaji.03.clut_processing.clut (9 cases)
 9.2.4. spit .kamaji.conf verbosity-level heavy
 9.2.5. create_production_script_alpha ALPHA.bash
 9.2.6. create_production_script_alpha_clut Testing/ALPHA.clut
-9.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20210601_191040_887352/09.Working
+9.2.7. export KAMAJI_CONFIG_BASE_DSPEC=%WORKING%/kamaji.03.clut_processing.clutr.20220904_134454_1183489/09.Working
 9.3. Initial Workspace contains 4 files...
     |.kamaji.conf
     |ALPHA.bash

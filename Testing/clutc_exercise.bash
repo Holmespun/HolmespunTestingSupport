@@ -147,7 +147,7 @@ function createClutBasic() {
   spit ${FSpec} "  clut_case_purpose           'This test case has a name... and it's a boy's name.'"
   spit ${FSpec} "  clut_case_requirement       ABCD-0010 Rainy-Day"
   spit ${FSpec} "  clut_case_initialize        createTextFile INPUT.text Some input text"
-  spit ${FSpec} "  clut_case_stdin_source      input.text"
+  spit ${FSpec} "  clut_case_stdin_source      INPUT.text"
   spit ${FSpec} "  clut_case_end"
   spit ${FSpec} "  #"
   spit ${FSpec} "  clut_case_begin             CreateOutputFile"

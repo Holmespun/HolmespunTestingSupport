@@ -100,7 +100,7 @@ myAwesomeProgram.clut...
    |  clut_case_purpose           'This test case has a name... and it's a boy's name.'
    |  clut_case_requirement       ABCD-0010 Rainy-Day
    |  clut_case_initialize        createTextFile INPUT.text Some input text
-   |  clut_case_stdin_source      input.text
+   |  clut_case_stdin_source      INPUT.text
    |  clut_case_end
    |  #
    |  clut_case_begin             CreateOutputFile
@@ -199,9 +199,9 @@ myAwesomeProgram.clut.bash...
    |#!/bin/bash
    |#----------------------------------------------------------------------------------------
    |#
-   |#  ./myAwesomeProgram.clutc.20210510_084917_1998288/00.compiled.bash...
+   |#  ./myAwesomeProgram.clutc.20220904_134453_1181035/00.compiled.bash...
    |#
-   |#  Created by clutc on 2021-05-10 at 08:49:17.
+   |#  Created by clutc on 2022-09-04 at 13:44:53.
    |#
    |#  CLUT cases were defined in myAwesomeProgram.clut; there were 7 of them.
    |#
@@ -653,7 +653,7 @@ myAwesomeProgram.clut.bash...
    |     #
    |     clutCaseRunTimeReport 1 Target CLU Call.
    |     #
-   |     clutCaseRunTimeUtilityExecute "input.text" "${CluInstrumentation}myAwesomeProgram"
+   |     clutCaseRunTimeUtilityExecute "INPUT.text" "${CluInstrumentation}myAwesomeProgram"
    |     #
    |     clutCaseRunTimeReport 1 Finalizations.
    |     #
@@ -863,7 +863,7 @@ myAwesomeProgram.clut.bash...
    |     #
    |     clutCaseRunTimeReport 1 Target CLU Call.
    |     #
-   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2021-05-10_output.fuzzy2"
+   |     clutCaseRunTimeUtilityExecute "" "${CluInstrumentation}myAwesomeProgram Create 2022-09-04_output.fuzzy2"
    |     #
    |     clutCaseRunTimeReport 1 Finalizations.
    |     #
@@ -1121,7 +1121,7 @@ myAwesomeProgram.clut.output...
    |3.3.1. INPUT.text...
    |    |TIME Some input text
    |3.4. Target CLU Call.
-   |3.4.1.  myAwesomeProgram <<< input.text
+   |3.4.1.  myAwesomeProgram <<< TIME Some input text
    |3.4.1.1. Exit Status 1!
    |3.4.1.2. STDERR [text]...
    |    |Error: Unknown instruction '' encountered.

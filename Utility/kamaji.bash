@@ -1241,7 +1241,8 @@ function KamajiConfigurationLoadValues() {
   local -r EnvMaskPrefix="${EnvMaskMarker%% *}"
   local    EnvMaskSuffix="${EnvMaskMarker#* }"
   #
-  local -r WorkinDSpec=$(EchoAbsoluteDirectorySpecFor . ${__KamajiWorkinDSpec})
+  local -r SymboLinkWorkinDSpec=$(EchoAbsoluteDirectorySpecFor . ${__KamajiWorkinDSpec})
+  local -r CanonicalWorkinDSpec=$(readlink -m ${SymboLinkWorkinDSpec})
   #
   __KamajiEnvironmentMasking=
   #
@@ -1252,8 +1253,13 @@ function KamajiConfigurationLoadValues() {
      #
      local -r PartialFormat="%DATE-TIME-PID%.partial.text"
      #
-     __KamajiEnvironmentMasking+=" --expression='s,${WorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
-     __KamajiEnvironmentMasking+=" --expression='s,${HOME},${EnvMaskPrefix}HOME${EnvMaskSuffix},g'"
+     if [ "${SymboLinkWorkinDSpec}" != "${CanonicalWorkinDSpec}" ]
+     then
+        __KamajiEnvironmentMasking="--expression='s,${SymboLinkWorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
+     fi
+     #
+     __KamajiEnvironmentMasking+=" --expression='s,${CanonicalWorkinDSpec},${EnvMaskPrefix}WORKING${EnvMaskSuffix},g'"
+     __KamajiEnvironmentMasking+=" --expression='s,$(readlink -m ${HOME}),${EnvMaskPrefix}HOME${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,${USER},${EnvMaskPrefix}USER${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,${LOGNAME},${EnvMaskPrefix}LOGNAME${EnvMaskSuffix},g'"
      __KamajiEnvironmentMasking+=" --expression='s,$(uname -n),${EnvMaskPrefix}HOSTNAME${EnvMaskSuffix},g'"

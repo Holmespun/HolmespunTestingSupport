@@ -80,7 +80,7 @@ You do not want this addition to the PATH variable to be active after the reposi
 	# GT Working/printf.clut.output does not exist
 	kamaji make printf.clut.output
 	./printf.clut.bash > printf.clut.output.%DATE-TIME-PID%.partial.text 2>&1
-	sed --in-place  --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' printf.clut.output.%DATE-TIME-PID%.partial.text
+	sed --in-place --expression='s,%WORKING%,%WORKING%,g' --expression='s,%WORKING%,%WORKING%,g' --expression='s,%HOME%,%HOME%,g' --expression='s,%USER%,%USER%,g' --expression='s,%USER%,%LOGNAME%,g' --expression='s,%HOSTNAME%,%HOSTNAME%,g' --expression='s,\<%TIMEZONE%\>,%TIMEZONE%,g' --expression='s,%DATE-TIME-PID%.partial.text,%DATE-TIME-PID%.partial.text,g' printf.clut.output.%DATE-TIME-PID%.partial.text
 	mv printf.clut.output.%DATE-TIME-PID%.partial.text printf.clut.output
 	$
 	~~~~
@@ -162,14 +162,14 @@ Let's look at the files created by this process:
 	./Working/printf.clut.output.delta
 	./Working/printf.clut.output.masked
 	./Working/printf.clut.output.reviewed
-	./Working/printf.clutc.20210530_170402_1234846
-	./Working/printf.clutc.20210530_170402_1234846/00.compiled.bash
-	./Working/printf.clutc.20210530_170402_1234846/00.namelist.text
-	./Working/printf.clutc.20210530_170402_1234846/01.bash
+	./Working/printf.clutc.20220904_134454_1183061
+	./Working/printf.clutc.20220904_134454_1183061/00.compiled.bash
+	./Working/printf.clutc.20220904_134454_1183061/00.namelist.text
+	./Working/printf.clutc.20220904_134454_1183061/01.bash
 	./Working/printf.clutr
-	./Working/printf.clutr.20210530_170402_1235918
-	./Working/printf.clutr.20210530_170402_1235918/01.Alpha
-	./Working/printf.clutr.20210530_170402_1235918/01.Omega
+	./Working/printf.clutr.20220904_134454_1184261
+	./Working/printf.clutr.20220904_134454_1184261/01.Alpha
+	./Working/printf.clutr.20220904_134454_1184261/01.Omega
 	$
 	~~~~
 
