@@ -2838,7 +2838,7 @@ function KamajiRequestExport_makefile() {
      spit  ${MakefileFName} ""
      spit  ${MakefileFName} "QUIET ?= @"
      #
-     for TargetClass in Output Delta Grade
+     for TargetClass in Output Delta
      do
        #
        spit ${MakefileFName} ""
@@ -2862,15 +2862,15 @@ function KamajiRequestExport_makefile() {
      spit  ${MakefileFName} ".PHONY: ${__KamajiScriptFName}-grade  ${__KamajiScriptFName}-delta"
      spit  ${MakefileFName} ".PHONY: ${__KamajiScriptFName}-output ${__KamajiScriptFName}-last"
      spit  ${MakefileFName} ""
-     spit  ${MakefileFName} "${__KamajiScriptFName}-grade : \$(KamajiGradeTargetList)"
+     spit  ${MakefileFName} "${__KamajiScriptFName}-grade : \$(KamajiDeltaTargetList)"
 #    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast grade"
      spit  ${MakefileFName} ""
-     spit  ${MakefileFName} "${__KamajiScriptFName}-delta : \$(KamajiDeltaTargetList)"
+     spit  ${MakefileFName} "${__KamajiScriptFName}-delta : \$(KamajiOutputTargetList)"
 #    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast delta"
      spit  ${MakefileFName} ""
-     spit  ${MakefileFName} "${__KamajiScriptFName}-output : \$(KamajiOutputTargetList)"
+     spit  ${MakefileFName} "${__KamajiScriptFName}-output :"
 #    spite ${MakefileFName} "\t@echo \"make \$@\""
      spite ${MakefileFName} "\t\$(QUIET) ${__KamajiScriptFName} fast invoke"
      spit  ${MakefileFName} ""
