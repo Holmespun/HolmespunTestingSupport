@@ -106,11 +106,7 @@ function __clutCaseRunTimeDumpGzip() {
   #
   local -r TargetFSpec="${1}"
   #
-# local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
-  #
   echo "<meta> Gzip file."
-  #
-# echo "<meta> The file has an md5sum of ${Checksum}."
   #
   echo "<meta> The archive contains the following files..."
   #
@@ -316,6 +312,26 @@ function __clutCaseRunTimeDumpSqliteDatabaseMasked() {
 
 #----------------------------------------------------------------------------------------------------------------------
 ###
+###  @fn	__clutCaseRunTimeDumpTarGzip
+###  @param	TargetFSpec	The specification for the target file.
+###  @brief	Displays meta-data about a tar archive file whose content is compressed using gzip format.
+###
+#----------------------------------------------------------------------------------------------------------------------
+
+function __clutCaseRunTimeDumpTarGzip() {
+  #
+  local -r TargetFSpec="${1}"
+  #
+  echo "<meta> Tar Gzip file."
+  #
+  echo "<meta> The archive contains the following files..."
+  #
+  tar tvfz "${TargetFSpec}" | sed --expression='s,^.*[0-9][0-9]:[0-9][0-9] ,,' --expression='s,^,<meta>     ,' | sort
+  #
+}
+
+#----------------------------------------------------------------------------------------------------------------------
+###
 ###  @fn	__clutCaseRunTimeDumpZip
 ###  @param	TargetFSpec	The specification for the target file.
 ###  @brief	Displays meta-data about a file whose content is compressed using zip format.
@@ -327,11 +343,7 @@ function __clutCaseRunTimeDumpZip() {
   #
   local -r TargetFSpec="${1}"
   #
-# local -r Checksum=$(md5sum "${TargetFSpec}" | sed --expression='s, .*,,')
-  #
   echo "<meta> Zip file."
-  #
-# echo "<meta> The file has an md5sum of ${Checksum}."
   #
   echo "<meta> The archive contains the following files..."
   #
@@ -409,6 +421,8 @@ function clutFileRunTimeDumpFormatRegistrationStandard() {
   clutFileRunTimeDumpFormatRegistration SQLITE_HIDE	__clutCaseRunTimeDumpSqliteDatabaseHidden
   #
   clutFileRunTimeDumpFormatRegistration SQLITE_MASKED	__clutCaseRunTimeDumpSqliteDatabaseMasked
+  #
+  clutFileRunTimeDumpFormatRegistration	TZ		__clutCaseRunTimeDumpTarGzip
   #
   clutFileRunTimeDumpFormatRegistration	A		__clutCaseRunTimeDumpObjectFile
   clutFileRunTimeDumpFormatRegistration	BED		__clutCaseRunTimeDumpTextTabSeparatedValues
